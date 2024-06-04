@@ -1,0 +1,4 @@
+objects
+*.o
+*.a
+minishell
