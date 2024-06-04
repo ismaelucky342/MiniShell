@@ -1,3 +1,3 @@
 # MiniShell
 Our own fully functional Shell terminal
-Puto
+Efficiency is not guaranteed!
