@@ -3,27 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:22:51 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:22:54 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/15 10:56:39 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+//#include <stdio.h>
 
 int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
-		return (c -32);
-	return (c);
+	{
+		return (c - 32);
+	}
+	else
+	{
+		return (c);
+	}
 }
-
-/*#include <ctype.h>
-#include <stdio.h>
-
-int main(void)
+/*int		main()
 {
-	printf("aqui->%c<-aqui\n", ft_toupper('a'));
-	return (0);
+	char	ch = 'a'; 
+	
+	int lowerch = ft_tolower(ch); 
+
+	printf("%c\n", lowerch);
+
+	return 0;
 }*/

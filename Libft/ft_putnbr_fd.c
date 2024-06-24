@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 11:00:54 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/22 11:00:56 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483648)
-		write (fd, "-2147483648", 11);
-	else if (n < 0)
+	long int	copia;
+
+	copia = n;
+	if (copia < 0)
 	{
-		n = -n;
-		write (fd, "-", 1);
-		ft_putnbr_fd(n, fd);
+		copia = (copia * -1);
+		write(fd, "-", 1);
 	}
-	else if (n > 9)
+	if (copia > 9)
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
+		ft_putnbr_fd(copia / 10, fd);
+		ft_putchar_fd((copia % 10) + '0', fd);
 	}
 	else
-		write (fd, &(char){n + 48}, 1);
+		ft_putchar_fd(copia + '0', fd);
 }

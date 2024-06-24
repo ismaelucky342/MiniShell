@@ -3,48 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:19:22 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:19:24 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	count;
+	size_t	i;
 
-	if (dest != 0 || src != 0)
+	i = 0;
+	if (!dst && !src)
+		return (0);
+	while (i < n)
 	{
-		count = 0;
-		while (count < n)
-		{
-			*(char *)(dest + count) = *(char *)(src + count);
-			count ++;
-		}
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		i++;
 	}
-	return (dest);
+	return (dst);
 }
+/*int		main(){
 
-/*#include <stdio.h>
-#include <string.h>
+	char	destino[] = "hola";
+	char	origen[] = "mundo";
+	size_t	t = 5; 
 
-int main (void)
-{
-	char str[34];
-	char str2[34];
-
-	strcpy(str,"Hola");
-	strcpy(str2,"Hola");
-	puts(str);
-	puts(str2);
-
-	memcpy(str +2,str,6);
-	puts(str);
-	ft_memcpy(str2 +2,str2,5);
-	puts(str2);
-
-	return(0);
+	void	*resultado = ft_memcpy(destino, origen, t);
+	printf("la cadena resultante es: %s", resultado); 
+	return 0; 
 }*/

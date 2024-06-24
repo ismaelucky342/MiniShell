@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:18:50 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:18:51 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,25 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t			count_str;
 	unsigned char	*str;
+	size_t			i;
 
 	str = (unsigned char *)s;
-	count_str = 0;
-	while (count_str < n)
+	i = 0;
+	while (i < n)
 	{
-		if (str[count_str] == (unsigned char)c)
-			return ((void *)(s + count_str));
-		count_str ++;
+		if (str[i] == (unsigned char)c)
+			return ((void *)&str[i]);
+		i++;
 	}
-	return (0);
+	return (NULL);
 }
+/*int		main(){
+	const char *string = "patata";
+	char	car = 'a';
+	size_t 	inicio = 6; 
 
-/*#include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-	char	test[21];
-	int		nb;
-
-	nb = 15;
-	strcpy(test, "aaaaaaaaaaaaaaaaaaa");
-	printf("%s\n", (char *)memchr(test, 'b', nb));
-	printf("%s\n", (char *)ft_memchr(test, 'b', nb));
-	int tab[7] = {-49, 49, 1, -1, 0, -2, 2};
-	//printf("%s", (char *)ft_memchr(tab, -1, 7));
-	//return (0);
+	void *resultado = ft_memchr(string, car, inicio);
+	printf("%s", resultado);
+	return 0; 
 }*/

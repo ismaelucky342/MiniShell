@@ -3,56 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:17:20 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:17:22 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:46:38 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static void	ft_checkspaces(const char *str, int *count)
-{
-	while (str[*count] == ' ' || str[*count] == '\t' || str[*count] == '\n'
-		|| str[*count] == '\r' || str[*count] == '\v' || str[*count] == '\f')
-		*count = *count +1;
-}
-
-static void	ft_check1sign(const char *str, int *sign, int *count)
-{
-	if (str[*count] == '-')
-	{
-		*sign = 1;
-		*count = *count +1;
-	}
-	else if (str[*count] == '+')
-	{
-		*sign = 0;
-		*count = *count +1;
-	}
-}
+#include <stdio.h>
 
 int	ft_atoi(const char *str)
 {
-	int		count;
-	int		sign;
-	int		res;
+	int	num;
+	int	sign;
+	int	i;
 
-	count = 0;
-	res = 0;
-	sign = 0;
-	ft_checkspaces(str, &count);
-	ft_check1sign(str, &sign, &count);
-	while (str[count] >= '0' && str[count] <= '9')
+	num = 0;
+	sign = 1;
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		if (sign == 1)
-			res -= str[count] - '0';
-		else
-			res += str[count] - '0';
-		if (str[count +1] >= '0' && str[count +1] <= '9')
-			res = res * 10;
-		count ++;
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
-	return (res);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + (str[i] - '0');
+		i++;
+	}
+	return (num * sign);
 }
+
+/*int		main()
+{
+	
+    const char *str1 = "123";
+    const char *str2 = "-456";
+    const char *str3 = "   789";
+    const char *str4 = "   +987";
+    const char *str5 = "   -654";
+    const char *str6 = "   123abc";
+
+    printf("'%s' convertido a entero: %d\n", str1, ft_atoi(str1));
+    printf("'%s' convertido a entero: %d\n", str2, ft_atoi(str2));
+    printf("'%s' convertido a entero: %d\n", str3, ft_atoi(str3));
+    printf("'%s' convertido a entero: %d\n", str4, ft_atoi(str4));
+    printf("'%s' convertido a entero: %d\n", str5, ft_atoi(str5));
+    printf("'%s' convertido a entero: %d\n", str6, ft_atoi(str6));
+
+    return 0;
+}*/

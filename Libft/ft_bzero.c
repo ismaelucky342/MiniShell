@@ -3,45 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:17:34 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:17:36 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 21:52:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//#include <stdio.h>
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	count;
-
-	count = 0;
-	while (count < n)
-	{
-		((char *)s)[count] = 0;
-		count ++;
-	}
+	ft_memset(s, 0, n);
 }
-
-/*#include <unistd.h>
-#include <string.h>
-
-int main (void)
+/*int		main()
 {
-	char str[34];
-	char str2[34];
 
-	strcpy(str,"This is string.h library function");
-	strcpy(str2,"This is string.h library function");
+	char	str[10] = "hola"; 
 
-	bzero(str,4);
-	ft_bzero(str2,4);
-
-	write(1, str, 34);
-	write(1, "\n", 1);
-	write(1, str2, 34);
-	write(1, "\n", 1);
-
-	return(0);
+	printf("Antes de bzero: %s\n", str);
+	ft_bzero(str, 5); 
+	printf("Despues de bzero: %s\n",str);
+	return (0);
 }*/

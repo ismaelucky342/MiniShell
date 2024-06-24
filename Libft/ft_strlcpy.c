@@ -3,48 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:20:58 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:20:59 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <stdio.h>
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t	count;
+	size_t	i;
 
-	count = 0;
-	if (size != 0)
+	if (src != NULL && dst != NULL && dstsize != 0)
 	{
-		while (count < size -1 && src[count] != 0)
+		i = 0;
+		while (src[i] != '\0' && i < (dstsize - 1))
 		{
-			dest[count] = src[count];
-			count ++;
+			dst[i] = src[i];
+			i++;
 		}
-		dest[count] = 0;
+		dst[i] = '\0';
 	}
-	count = 0;
-	while (src[count] != 0)
-		count ++;
-	return (count);
+	return (ft_strlen(src));
 }
+/*int		main(){
 
-/*#include <stdio.h>
-#include <string.h>
+	char	destino[] = "mundo"; 
+	const	char *origen = "hola"; 
+	size_t	t = 5; 
 
-int	main(void)
-{
-	char	src[24] = 	"Pasas que cosannnnnnnnn";
-	char	aqui[] = 	"tengo 14 char";
-	char	src2[24] = 	"Pasas que cosannnnnnnnn";
-	char	aqui2[] = 	"tengo 14 char";
-
-	printf("%d\n", ft_strlcpy(aqui, src, 14));
-	printf("%s\n", aqui);
-	printf("%lu\n", strlcpy(aqui2, src2, 14));
-	printf("%s\n", aqui2);
-	return (0);
+	size_t resultado = ft_strlcpy(destino, origen, t);
+	printf("el resultado es: %zu\n", resultado);
+	printf("la cadena copiada es: %s", destino);
+	return 0; 
 }*/

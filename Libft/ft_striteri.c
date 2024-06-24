@@ -3,26 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 10:38:26 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/22 10:38:28 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int		index;
+	unsigned int	i;
 
-	if (s)
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (s[i])
 	{
-		index = 0;
-		while (s[index] != 0)
-		{
-			f(index, &(s[index]));
-			index ++;
-		}
+		f(i, &s[i]);
+		i++;
 	}
 }
+/*void	printchari(unsigned int i, char *c)
+{
+	printf("%u: %c\n", i, *c);
+}*/
+/*int		main()
+{
+	char	string1[] = "hola que tal";
+
+	printf("La cadena original es: %s\n",string1);
+	ft_striteri(string1, &printchari);
+
+	return 0; 
+}*/

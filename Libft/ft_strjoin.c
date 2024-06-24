@@ -3,49 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 15:37:12 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/12 15:37:15 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		len1;
-	int		len2;
-	int		count;
-	char	*res;
+	char	*str;
+	int		a;
+	int		b;
+	int		i;
 
-	if (!s1)
-		return (ft_strdup(s2));
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	res = (char *)malloc(len1 + len2 +1);
-	if (res == 0)
-		return (0);
-	count = 0;
-	while (count < (len1 + len2))
+	if (!s1 || !s2)
+		return (NULL);
+	a = ft_strlen(s1);
+	b = ft_strlen(s2);
+	i = 0;
+	str = malloc(a + b + 1);
+	if (!str)
+		return (NULL);
+	while (s1[i])
 	{
-		if (count < len1)
-			res[count] = s1[count];
-		else
-			res[count] = s2[count - len1];
-		count ++;
+		str[i] = s1[i];
+		i++;
 	}
-	res[count] = 0;
-	return (res);
+	while (s2[i - a])
+	{
+		str[i] = s2[i - a];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
-/*#include <stdio.h>
-
-int	main(void)
+/*int 	main()
 {
-	char	test1[30] = "Hello ";
-	char	test2[30] = " World";
+	const	char *string1 = "hola";
+	const	char *string2 = " mundo";
 
-	printf("%s\n", ft_strjoin(test1, test2));
-	return (0);
+	char	*resultado = ft_strjoin(string1, string2);
+	if(resultado)
+	{
+		printf("la cadena unida es: %s", resultado);
+		free(resultado); 
+	}else{
+		printf("ERROR CADENA NULA");
+	}
+	return 0; 
 }*/

@@ -3,61 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:19:35 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:19:36 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-static void	*revmemcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (dest != 0 || src != 0)
+	unsigned char		*dest_cpy;
+	const unsigned char	*src_cpy;
+
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	dest_cpy = (unsigned char *)dest;
+	src_cpy = (const unsigned char *)src;
+	if (dest <= src)
 	{
-		while (n > 0)
-		{
-			*(char *)(dest + n -1) = *(char *)(src + n -1);
-			n --;
-		}
+		while (n--)
+			*dest_cpy++ = *src_cpy++;
+	}
+	else
+	{
+		dest_cpy += n;
+		src_cpy += n;
+		while (n--)
+			*--dest_cpy = *--src_cpy;
 	}
 	return (dest);
 }
+/*int		main(){
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
-{
-	if (dst == 0 && src == 0)
-		return (0);
-	if (dst < src)
-		ft_memcpy(dst, src, n);
-	else
-		revmemcpy(dst, src, n);
-	return (dst);
-}
+	char	destino[] = "abcde";
+	char	origen[] = "poiss";
+	size_t	t = 5; 
 
-/*int main (void)
-{
-	int size = 128 * 1024 * 1024;
- 	char *dst = (char *)malloc(sizeof(char) * size);
- 	char *data = (char *)malloc(sizeof(char) * size);
-
- 	__builtin___memset_chk (data, 'A', size, __builtin_object_size (data, 0));
-
-	memmove(dst, data, size);
-
-	char str[17];
-
-	strcpy(str,"0123456789101112");
-	puts(str);
-
-	memmove(str +1,str,14);
-	write(1, str, 25);
-	write(1, "\n", 1);
-	strcpy(str,"0123456789101112");
-	ft_memmove(str +1,str,14);
-	write(1, str, 25);
-	write(1, "\n", 1);
-
-	return(0);
+	void	*resultado = ft_memmove(destino, origen, t);
+	printf("la cadena resultante es: %s", (char *)resultado); 
+	return 0; 
 }*/

@@ -3,47 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:20:00 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:20:01 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t	count;
+	size_t	i;
 
-	count = 0;
-	while (count < len)
+	i = 0;
+	while (i < len)
 	{
-		*(char *)b = (unsigned char)c;
-		count ++;
-		b ++;
+		((unsigned char *)b)[i] = c;
+		i++;
 	}
-	b = b - count;
 	return (b);
 }
 
-/*#include <stdio.h>
-#include <string.h>
-
-int main (void)
+/*int		main()
 {
-   char str[50];
-   char str2[50];
+	char	string1[] = "hello world"; 
+	char 	c = 'o';
+	size_t len = 11; 
 
-   strcpy(str,"This is string.h library function");
-   strcpy(str2,"This is string.h library function");
-   puts(str);
-   puts(str2);
+	void	*resultado = ft_memset(string1, c, len);
 
-   memset(str,'$',50);
-   puts(str);
-   ft_memset(str2,'&',50);
-   puts(str2);
-   
-   return(0);
+	printf("%s", resultado);
+	return 0; 
 }*/

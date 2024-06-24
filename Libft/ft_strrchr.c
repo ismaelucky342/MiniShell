@@ -3,37 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:22:03 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:22:05 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/20 18:29:18 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_strrchr(const char *s, int c)
+//#include <stdio.h>
+char	*ft_strrchr(const char *str, int c)
 {
-	int		count_str;
-	char	*str;
-	char	*res;
-	int		control;
+	int	i;
 
-	count_str = 0;
-	control = 0;
-	str = (char *)s;
-	while (str[count_str] != 0)
+	i = 0;
+	while (str[i])
+		i++;
+	while (i >= 0)
 	{
-		if (str[count_str] == (unsigned char)c)
-		{
-			res = str + count_str;
-			control = 1;
-		}
-		count_str ++;
+		if (str[i] == (char)c)
+			return ((char *)(str + i));
+		i--;
 	}
-	if (str[count_str] == (unsigned char)c)
-		return (str + count_str);
-	if (control == 1)
-		return (res);
-	return (0);
+	return (NULL);
 }
+/*int		main(){
+	const	char *string1 = "fsdahsa";
+	int		byte =  'a';
+
+	char	*ultimaAparicion = ft_strrchr(string1, byte);
+
+	if(ultimaAparicion){
+		printf("Caracter %s encontrado en posicion %i",
+	   	ultimaAparicion, ultimaAparicion-string1);
+
+	}else {
+		printf("ERROR");
+	}
+	return (0);
+}*/

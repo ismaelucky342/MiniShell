@@ -3,51 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:20:40 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:20:42 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+//#include <stdio.h>
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	size_dest;
-	size_t	size_src;
-	size_t	count;
+	size_t	i;
+	size_t	j;
+	size_t	dst_len;
+	size_t	src_len;
 
-	if (!size && !dest)
-		return (0);
-	size_dest = ft_strlen(dest);
-	size_src = ft_strlen(src);
-	if (size <= size_dest)
-		return (size + size_src);
-	else
-		size_src += size_dest;
-	count = 0;
-	while (src[count] != 0 && size_dest < size -1)
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	i = 0;
+	while (i < size && dst[i] != '\0')
+		i++;
+	if (i == size)
+		return (size + src_len);
+	j = 0;
+	while (src[j] && i + j + 1 < size)
 	{
-		dest[size_dest] = src[count];
-		size_dest ++;
-		count ++;
+		dst[i + j] = src[j];
+		j++;
 	}
-	dest[size_dest] = 0;
-	return (size_src);
+	if (i < size)
+	{
+		dst[i + j] = '\0';
+	}
+	else if (size > 0)
+		dst[size - 1] = '\0';
+	return (dst_len + src_len);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-
-int	main(void)
+/*int 	main()
 {
-	char	test1[10] = "hola ";
-	char	test2[10] = "hola ";
+	const	char *origen = "hola";
+	char 		 destino[20] = " mundo";
+	
 
-	printf("%u\n", ft_strlcat(test1, "hola", 6));
-	printf("%s\n", test1);
-	printf("%lu\n", strlcat(test2, "hola", 6));
-	printf("%s\n", test2);
-	return (0);
+	size_t	resultado = ft_strlcat(destino, origen, 20);
+	if(resultado)
+	{
+		printf("el resultado es: %zu\n", resultado);
+		printf("%s\n", destino);
+		
+	}else{
+		printf("ERROR CADENA NULA");
+	}
+	return 0; 
 }*/

@@ -3,32 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:19:04 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:19:07 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/13 03:08:46 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+//#include <stdio.h>
+int	ft_memcmp(const void *dst, const void *str, size_t n)
 {
-	unsigned int	count;
-	size_t			comp;
-	char			*str1;
-	char			*str2;
+	unsigned char	*str2;
+	unsigned char	*dst2;
 
-	count = 0;
-	comp = 0;
-	str1 = (char *)s1;
-	str2 = (char *)s2;
-	while (count < n)
-	{
-		comp = (unsigned char)str1[count] - (unsigned char)str2[count];
-		if (comp != 0)
-			return (comp);
-		count ++;
-	}
-	return (comp);
+	dst2 = (unsigned char *)dst;
+	str2 = (unsigned char *)str;
+	if (n)
+		while (n--)
+			if (*dst2++ != *str2++)
+				return (*(--dst2) - *(--str2));
+	return (0);
 }
+
+/*int		main(){
+
+	const char *destino = "holaa";
+	const char *origen = "holap";
+
+	int		resultado = ft_memcmp(destino, origen, 5);
+    if (resultado != 0) {
+        printf("Strings are different, and the difference is: %d\n", resultado);
+    } else {
+        printf("Strings are identical\n");
+    }
+	return 0; 
+}*/

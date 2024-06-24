@@ -3,29 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:20:13 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:20:15 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/20 18:28:46 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *str, int c)
 {
-	int		count_str;
-	char	*str;
+	unsigned char	b;
+	int				i;
 
-	str = (char *)s;
-	count_str = 0;
-	while (str[count_str] != 0)
+	b = (unsigned char)c;
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if (str[count_str] == (unsigned char)c)
-			return (str + count_str);
-		count_str ++;
+		if ((unsigned char)str[i] == b)
+			return ((char *)&str[i]);
+		i++;
 	}
-	if (str[count_str] == (unsigned char)c)
-		return (str + count_str);
-	return (0);
+	if (b == '\0')
+		return ((char *)&str[i]);
+	return (NULL);
 }
+/*int		main(){
+
+	const	char *string = "hola mundo";
+	int		busqueda = 'u'; 
+
+	char	*resultado =  ft_strchr(string, busqueda);
+	printf("Caracter '%c' encontrado en la posicion: %ld\n",
+ *resultado, resultado - string);
+	return 0; 
+}*/

@@ -3,87 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 15:20:39 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/16 15:20:42 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/06/12 00:37:49 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*minint(char *res)
+static int	ft_get_size(long *ln)
 {
-	res = (char *)malloc(12);
-	if (res == 0)
-		return (0);
-	ft_strlcpy(res, "-2147483648", 12);
-	return (res);
-}
+	int	size;
+	int	i;
 
-static void	ft_passnb(int nb, char *res)
-{
-	if (nb < 0)
+	size = 1;
+	i = *ln;
+	while (i / 10 != 0)
 	{
-		nb = -nb;
-		ft_passnb(nb, res);
+		size++;
+		i /= 10;
 	}
-	else if (nb > 9)
+	if (*ln < 0)
 	{
-		ft_passnb(nb / 10, res -1);
-		ft_passnb(nb % 10, res);
+		*ln *= -1;
+		size++;
 	}
-	else
-		*res = nb + 48;
-}
-
-static int	ft_numsize(int n)
-{
-	int		i;
-
-	i = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		i ++;
-		n /= 10;
-	}
-	return (i);
+	return (size);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*res;
-	int		n2;
-	int		len;
-	int		sign;
+	char	*c;
+	int		size;
+	int		i;
+	long	ln;
 
-	res = 0;
-	sign = 0;
-	if (n == -2147483648)
-		return (minint(res));
-	n2 = n;
-	if (n < 0)
+	ln = n;
+	size = ft_get_size(&ln);
+	c = malloc(size + 1);
+	if (c == NULL)
+		return (NULL);
+	c[size] = '\0';
+	c[0] = '-';
+	if (n == 0)
+		c[0] = '0';
+	i = 1;
+	while (i < size + 1 && ln != 0)
 	{
-		n2 = -n;
-		sign = 1;
+		c[size - i] = (ln % 10) + '0';
+		ln /= 10;
+		i++;
 	}
-	len = ft_numsize(n2);
-	res = malloc(len +1 + sign);
-	if (res == 0)
-		return (0);
-	ft_passnb(n, &res[len + sign -1]);
-	if (sign == 1)
-		res[0] = '-';
-	res[len + sign] = 0;
-	return (res);
+	return (c);
 }
-
-/*#include <stdio.h>
-int	main(void)
-{
-	char	*test = ft_itoa(1234);
-	printf("%s\n", test);
-	return (0);
-}*/

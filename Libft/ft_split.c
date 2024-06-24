@@ -3,115 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 10:52:46 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/16 10:52:49 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	occurrences(char const *s, char c)
+//#include <stdio.h>
+static int	wordlen(const char *s, char c)
 {
-	int		index;
-	int		res;
+	int	len;
 
-	index = 0;
-	res = 0;
-	while (s[index])
+	len = 0;
+	while (*s && *s != c)
 	{
-		if (s[index] == c && s[index +1] && s[index +1] != c)
-			res ++;
-		index ++;
-	}
-	return (res);
-}
-
-static char	*splitter(char const *s, int index, char c)
-{
-	int		count;
-	int		count2;
-	char	*res;
-
-	while (*s && index > 0)
-	{
-		if (*s == c && *(s +1) != c)
-			index --;
+		len++;
 		s++;
 	}
+	return (len);
+}
+
+static int	countwords(const char *s, char c)
+{
+	int	count;
+
 	count = 0;
-	while (s[count] && s[count] != c)
-		count ++;
-	res = (char *)malloc(count +1);
-	if (res == 0)
-		return (0);
-	res[count] = 0;
-	count2 = 0;
-	while (count > count2)
+	while (*s)
 	{
-		res[count2] = s[count2];
-		count2 ++;
-	}
-	return (res);
-}
-
-static char	**filler(char const *s, char c)
-{
-	int		nseg;
-	char	**res;
-	int		index;
-
-	nseg = occurrences(s, c) + 1;
-	res = (char **)malloc((nseg +1) * sizeof(char *));
-	if (res == 0)
-		return (0);
-	res[nseg] = 0;
-	index = 0;
-	while (index < nseg)
-	{
-		res[index] = splitter(s, index, c);
-		if (res[index] == 0)
+		if (*s != c)
 		{
-			while (index-- > 0)
-				free(res[index]);
-			free (res);
-			return (0);
+			count++;
+			s += wordlen(s, c);
 		}
-		index ++;
+		else
+			s++;
 	}
-	return (res);
+	return (count);
 }
 
-static char	**case_empty(void)
+static void	*free_strs(char**strs)
 {
-	char	**res;
+	int	i;
 
-	res = (char **)malloc(sizeof(char **));
-	if (res == 0)
-		return (0);
-	res[0] = 0;
-	return (res);
+	i = 0;
+	while (strs[i])
+		free(strs[i++]);
+	free(strs);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	if (!s)
-		return (0);
-	while (*s == c)
-	{
-		if (*s == 0)
-			return (case_empty());
-		s ++;
-	}
-	if (*s == 0)
-		return (case_empty());
-	return (filler(s, c));
-}
+	char	**strs;
+	int		i;
+	int		count ;
 
-/*int	main(void)
+	if (!s)
+		return (NULL);
+	count = countwords(s, c);
+	strs = malloc(sizeof(char *) * (count + 1));
+	if (!strs)
+		return (NULL);
+	strs[count] = NULL;
+	i = 0;
+	while (*s)
+	{
+		if (*s != c)
+		{
+			strs[i] = ft_substr(s, 0, wordlen(s, c));
+			if (!strs[i++])
+				return (free_strs(strs));
+			s += wordlen(s, c);
+		}
+		else
+			s++;
+	}
+	return (strs);
+}
+/*int		main()
 {
-	char	**test;
-	test = ft_split("hello!", ' ');
-	return (0);
+	const	char *string1 = "hola me llamo ismael";
+	char	c = ' '; 
+	int i = 0; 
+
+	char	**resultado = ft_split(string1, c);
+
+	while(resultado[i] != '\0')
+	{
+		printf("%s", resultado[i]);
+		free(resultado[i]);
+		i++;
+	}
+	free(resultado);
+	
+	return 0; 
 }*/

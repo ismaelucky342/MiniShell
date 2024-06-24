@@ -3,47 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:21:49 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/01/09 11:21:51 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_strnstr(const char *str, const char *to_find, size_t len)
+//#include <stdio.h>
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	count_str;
-	size_t	count_find;
+	size_t	i;
+	size_t	j;
 
-	if (len == 0 && !str)
-		return (0);
-	count_str = 0;
-	if (*to_find == 0)
-		return ((char *)str);
-	while (str[count_str] != 0 && count_str < len)
+	if (*needle == '\0' || needle == NULL)
+		return ((char *)haystack);
+	i = 0;
+	while (haystack[i] != '\0' && i < len)
 	{
-		count_find = 0;
-		while (str[count_str + count_find] == to_find[count_find])
+		j = 0;
+		while (needle[j] == haystack[i + j] && i + j < len)
 		{
-			if (count_str + count_find >= len)
-				return (0);
-			count_find ++;
-			if (to_find[count_find] == 0)
-				return ((char *)&str[count_str]);
+			if (needle[j + 1] == '\0')
+				return ((char *)haystack + i);
+			j++;
 		}
-		count_str ++;
+		i++;
 	}
-	return (0);
+	return (NULL);
 }
-
-/*#include <stdio.h>
-
-int	main(void)
+/*int		main()
 {
-	char	teststr[] = "ajajjjajaxdhholahola";
+	const	char *cadena = "hola mundo "; 
+	const 	char *subcadena = "mundo"; 
 
-	printf("%s\n", ft_strnstr(teststr, NULL, 15));
-	return (0);
+	size_t lon = 11; 
+	char *resultado = ft_strnstr(cadena, subcadena, 11);
+	printf("la subcadena %s, fue encontrada en: %s", subcadena, resultado);
+
+	return 0;
 }*/
