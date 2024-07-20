@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_char2bin.c                                      :+:      :+:    :+:   */
+/*   ft_monkey_hash.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 09:35:46 by ismherna          #+#    #+#             */
-/*   Updated: 2024/06/10 14:58:29 by ismherna         ###   ########.fr       */
+/*   Created: 2021/10/31 15:48:19 by jahuang           #+#    #+#             */
+/*   Updated: 2024/07/20 21:57:12 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-void	ft_char2bin(unsigned char c, char *ret, size_t *j)
+
+int	ft_monkey_hash(char *str, int length)
 {
-	int		k;
+	int	index;
+	int	result;
+	int	monkey_number;
 
-	k = 7;
-	while (k >= 0)
+	index = 0;
+	result = 0;
+	monkey_number = 89;
+	while (str[index])
 	{
-		if (c & (1 << k))
-			ret[*j] = '1';
-		else
-			ret[*j] = '0';
-		(*j)++;
-		k--;
+		result += monkey_number * (int)str[index] * index;
+		index++;
 	}
+	return (result % length);
 }

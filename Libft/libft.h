@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/06/11 23:58:26 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/07/11 19:36:52 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,55 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+# if BUFFER_SIZE < 1
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+typedef union u_content
+{
+	int			i;
+	long		l;
+	long long	ll;
+	char		c;
+	float		f;
+	double		d;
+	void		*ptr;
+	char		*str;
+	void		*oth;
+}			t_content;
+
+typedef enum e_type
+{
+	INT,
+	LONG,
+	LONG_LONG,
+	CHAR,
+	FLOAT,
+	DOUBLE,
+	PTR,
+	STR,
+	OTHER
+}			t_type;
+
+typedef struct s_list
+{
+	t_type				type;
+	t_content			content;
+	struct s_list		*next;
+	struct s_list		*prev;
+}				t_list;
+
+typedef struct s_bufflist
+{
+	int					readrtn;
+	char				buff[BUFFER_SIZE];
+	struct s_bufflist	*next;
+}				t_bufflist;
+
 
 typedef int			t_bool;
 # define TRUE 1
