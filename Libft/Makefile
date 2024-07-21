@@ -85,23 +85,23 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
 
 all: speak $(NAME)
-	@echo "$(GREEN)--------------------------------------------$(NC)"
-	@echo "$(GREEN)-------------- Libft Is Ready --------------$(NC)"
-	@echo "$(GREEN)--------------------------------------------$(NC)\n"
+	@echo "$(GREEN)----------------------------------------------------------------$(NC)"
+	@echo "$(GREEN)------------------------ Libft Is Ready ------------------------$(NC)"
+	@echo "$(GREEN)----------------------------------------------------------------$(NC)\n"
 
 $(NAME): $(OBJ) libft.h
 	@ar -rcs $(NAME) $(OBJ)
-	@echo "$(GREEN)-------- Libft.a Finished Compiling --------$(NC)\n"
+	@echo "$(GREEN)------------------ Libft.a Finished Compiling ------------------$(NC)\n"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 
 speak:
-	@echo "$(YELLOW)------------- Compiling Libft --------------$(NC)"
+	@echo "$(YELLOW)----------------------- Compiling Libft ------------------------$(NC)"
 
 clean:
 	@rm -f $(OBJ) $(B_OBJ)
-	@echo "$(RED)-------------- Libft Cleaned ---------------$(NC)"
+	@echo "$(RED)------------------------ Libft Cleaned -------------------------$(NC)"
 
 fclean: clean
 	@rm -f $(NAME)

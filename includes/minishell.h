@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:19:12 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/07/21 13:49:11 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/07/21 14:11:23 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,17 @@ typedef struct s_token
 extern int			g_exit_code;
 
 /*PARSING*/
-void				ft_free_redir_list(t_redir *redir_list);
-void				ft_free_ast_value(char **value);
-void				ft_free_ast_node(t_ast *ast_node);
-void				ft_free_ast(t_ast *ast_tree);
+void				ft_free_rlist(t_redir *redir_list);
+void				ft_free_tree_val(char **value);
+void				ft_free_tree_node(t_ast *ast_node);
+void				ft_free_tree(t_ast *ast_tree);
 int					ft_count_element(t_token *token_list);
 t_ast				*ft_malloc_node(int nb_element);
 int					ft_is_redir(int token_type);
-t_ast				*ft_create_ast_node(t_token *token_list, int nb_element);
-t_ast				*ft_create_ast(t_token *token_list);
-t_redir				*ft_init_redir_node(int token_type);
-t_redir				*ft_add_redir_node(t_redir *redir_list,
-						t_token *token_list);
+t_ast				*ft_create_tree_node(t_token *token_list, int nb_element);
+t_ast				*ft_create_tree(t_token *token_list);
+t_redir				*ft_init_rnode(int token_type);
+t_redir				*ft_add_rnode(t_redir *redir_list, t_token *token_list);
+
 
 #endif
