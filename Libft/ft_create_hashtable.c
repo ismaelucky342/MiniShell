@@ -6,11 +6,11 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 15:47:54 by jahuang           #+#    #+#             */
-/*   Updated: 2024/07/20 21:57:25 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/07/21 12:46:42 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
 t_hashtable	*ft_create_hashtable(int length)
 {

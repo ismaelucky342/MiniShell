@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_delete_element.c                                :+:      :+:    :+:   */
+/*   ft_add_element.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 12:25:49 by jahuang           #+#    #+#             */
-/*   Updated: 2024/07/20 21:56:36 by ismherna         ###   ########.fr       */
+/*   Created: 2022/01/27 12:15:31 by jahuang           #+#    #+#             */
+/*   Updated: 2024/07/21 12:46:56 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_hashtable	*ft_delete_element(t_hashtable *ht, char *key)
+t_hashtable	*ft_add_element(t_hashtable *ht, char *key, char *value)
 {
-	int			hash_index;
-	t_element	**elem_arr;
+	int	hash;
 
-	hash_index = ft_monkey_hash(key, ht->length);
-	elem_arr = ht->element_array;
-	while (elem_arr[hash_index])
+	hash = ft_monkey_hash(key, ht->length);
+	while (ht->element_array[hash])
 	{
-		if (ft_strncmp(elem_arr[hash_index]->key, key, ft_strlen(key)) == 0)
+		if (ft_strncmp(ht->element_array[hash]->key, key, ft_strlen(key)) == 0)
 		{
-			ft_free_element(elem_arr[hash_index]);
-			elem_arr[hash_index] = NULL;
+			ht = ft_ch_value(ht, key, value, 0);
 			return (ht);
 		}
-		hash_index = (hash_index + 1) % ht->length;
+		hash = (hash + 1) % ht->length;
 	}
+	ht->element_array[hash] = ft_create_element(key, value);
 	return (ht);
 }

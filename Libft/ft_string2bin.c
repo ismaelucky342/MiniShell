@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_element.c                                   :+:      :+:    :+:   */
+/*   ft_string2bin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 12:15:31 by jahuang           #+#    #+#             */
-/*   Updated: 2024/07/20 21:56:19 by ismherna         ###   ########.fr       */
+/*   Created: 2024/06/10 14:09:31 by ismherna          #+#    #+#             */
+/*   Updated: 2024/06/12 01:38:57 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_hashtable	*ft_add_element(t_hashtable *ht, char *key, char *value)
+char	*ft_string2bin(char *s, size_t i, size_t j)
 {
-	int	hash;
+	char	*ret;
+	size_t	len;
+	char	c;
+	int		k;
 
-	hash = ft_monkey_hash(key, ht->length);
-	while (ht->element_array[hash])
+	len = ft_strlen(s);
+	ret = ft_calloc(len * 8 + 1, sizeof(char));
+	if (ret == NULL)
+		return (NULL);
+	while (i < len)
 	{
-		if (ft_strncmp(ht->element_array[hash]->key, key, ft_strlen(key)) == 0)
+		c = s[i];
+		k = 7;
+		while (k >= 0)
 		{
-			ht = ft_ch_value(ht, key, value, 0);
-			return (ht);
+			if ((c >> k) & 1)
+				ret[j++] = '1';
+			else
+				ret[j++] = '0';
+			k--;
 		}
-		hash = (hash + 1) % ht->length;
+		i++;
 	}
-	ht->element_array[hash] = ft_create_element(key, value);
-	return (ht);
+	ret[j] = '\0';
+	return (ret);
 }

@@ -1,20 +1,9 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/22 15:48:04 by ismherna          #+#    #+#              #
-#    Updated: 2024/06/11 21:22:29 by ismherna         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+GREEN = \033[1;32m
+YELLOW = \033[1;33m
+RED = \033[0;31m
+NC = \033[0m
 
-NAME	=	libft.a
-INCLUDE	= 	libft.h \
-
-
-SRC		=	ft_printf.c			\
+SRC =	ft_printf.c			\
 			ft_ishexdigit.c     \
 			ft_isspace.c 		\
 			ft_string.c			\
@@ -77,48 +66,46 @@ SRC		=	ft_printf.c			\
 			ft_addFS.c \
 			ft_char2bin.c	\
 			ft_string2bin.c	\
-			ft_bin2ascii.c
+			ft_bin2ascii.c	\
+			ft_print_hashtable.c	\
+			ft_monkey_hash.c \
+			ft_get_value.c \
+			ft_delete_element.c \
+			ft_create_hashtable.c \
+			ft_create_element.c \
+			ft_add_element.c \
+			ft_arraylen.c	\
+			ft_next_prime.c \
+			ft_is_prime.c 
+NAME = libft.a
 
-OBJ		=	${SRC:.c=.o}
+OBJ = $(SRC:.c=.o)
 
-CC		=	gcc
-RM		=	rm -f
-AR		=	ar rc
-RN		=	ranlib
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
 
-CFLAGS	=	-Wall -Wextra -Werror
+all: speak $(NAME)
+	@echo "$(GREEN)--------------------------------------------$(NC)"
+	@echo "$(GREEN)-------------- Libft Is Ready --------------$(NC)"
+	@echo "$(GREEN)--------------------------------------------$(NC)\n"
 
-# Colors
-DEF_COLOR   =   \033[0;39m
-GRAY        =   \033[0;90m
-RED         =   \033[0;91m
-GREEN       =   \033[0;92m
-YELLOW      =   \033[0;93m
-BLUE        =   \033[0;94m
-MAGENTA     =   \033[0;95m
-CYAN        =   \033[0;96m
-WHITE       =   \033[0;97m
+$(NAME): $(OBJ) libft.h
+	@ar -rcs $(NAME) $(OBJ)
+	@echo "$(GREEN)-------- Libft.a Finished Compiling --------$(NC)\n"
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+%.o: %.c
+	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 
-$(NAME):	${OBJ} 
-	@echo "Compiling .."
-	${AR} ${NAME} ${OBJ}
-	${RN} ${NAME}
-	@echo "$(GREEN)libft compiled!$(DEF_COLOR)"
-	@echo "$(BLUE)Compiled Objects:  $(words $(NAME)  ${OBJ})$(DEF_COLOR)"
+speak:
+	@echo "$(YELLOW)------------- Compiling Libft --------------$(NC)"
 
 clean:
-	@echo "$(RED)Removing .o  ...$(DEF_COLOR)"
-	${RM} ${OBJ}
-	@echo "$(BLUE)Deleted Objects: $(words ${OBJ})  ${OBJ}$(DEF_COLOR)"
-	@echo "$(GREEN)Done !"
+	@rm -f $(OBJ) $(B_OBJ)
+	@echo "$(RED)-------------- Libft Cleaned ---------------$(NC)"
 
 fclean: clean
-	@echo "$(RED)Removing libft.a ...$(DEF_COLOR)"	
-	${RM} $(NAME)
-	@echo "$(BLUE)Deleted Objects:  $(words $(NAME))  $(NAME)$(DEF_COLOR)"
-	@echo "$(GREEN)Done !$(DEF_COLOR)"
+	@rm -f $(NAME)
 
-re: fclean all  
+re: fclean all
+
+.PHONY: all speak clean fclean re

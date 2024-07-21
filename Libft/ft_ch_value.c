@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ch_value.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jahuang <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 12:27:10 by jahuang           #+#    #+#             */
-/*   Updated: 2022/01/27 12:27:27 by jahuang          ###   ########.fr       */
+/*   Updated: 2024/07/21 12:47:11 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
 t_element	*ft_get_element(t_hashtable *ht, char *key)
 {

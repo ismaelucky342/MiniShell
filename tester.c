@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 void	ft_print_token_list(t_token *token_list)
 {

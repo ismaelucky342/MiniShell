@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_env_hashtable.c                          :+:      :+:    :+:   */
+/*   env_hash.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 00:16:12 by jahuang           #+#    #+#             */
-/*   Updated: 2024/07/20 21:58:30 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:48:50 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 void	ft_env2hashtable(char **env, t_hashtable *hashtable, int array_len)
 {
@@ -21,7 +21,7 @@ void	ft_env2hashtable(char **env, t_hashtable *hashtable, int array_len)
 
 	while (*env)
 	{
-		char_index = ft_index_of(*env, '=');
+		char_index = ft_index(*env, '=');
 		key = ft_substr(*env, 0, char_index);
 		value = ft_substr(
 				*env,

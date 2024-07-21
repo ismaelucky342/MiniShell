@@ -6,11 +6,11 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 18:08:00 by jahuang           #+#    #+#             */
-/*   Updated: 2024/07/20 21:57:13 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/07/21 12:46:50 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
 char	*ft_get_value(t_hashtable *hashtable, char *key)
 {

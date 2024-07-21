@@ -1,4 +1,18 @@
-#include "minishell.h"
+
+#include "../includes/minishell.h"
+
+void	ft_free_redir_list(t_redir *redir_list)
+{
+	t_redir	*ptr;
+
+	while (redir_list)
+	{
+		ptr = redir_list;
+		redir_list = redir_list->next;
+		free(ptr->value);
+		free(ptr);
+	}
+}
 
 void	ft_free_ast_value(char **value)
 {

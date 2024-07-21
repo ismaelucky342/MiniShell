@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/07/11 19:36:52 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:27:59 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,59 +19,23 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-# if BUFFER_SIZE < 1
-#  undef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
-typedef union u_content
-{
-	int			i;
-	long		l;
-	long long	ll;
-	char		c;
-	float		f;
-	double		d;
-	void		*ptr;
-	char		*str;
-	void		*oth;
-}			t_content;
-
-typedef enum e_type
-{
-	INT,
-	LONG,
-	LONG_LONG,
-	CHAR,
-	FLOAT,
-	DOUBLE,
-	PTR,
-	STR,
-	OTHER
-}			t_type;
-
-typedef struct s_list
-{
-	t_type				type;
-	t_content			content;
-	struct s_list		*next;
-	struct s_list		*prev;
-}				t_list;
-
-typedef struct s_bufflist
-{
-	int					readrtn;
-	char				buff[BUFFER_SIZE];
-	struct s_bufflist	*next;
-}				t_bufflist;
-
 
 typedef int			t_bool;
 # define TRUE 1
 # define FALSE 0
+
+/*STRUCT HASH */
+typedef struct s_element
+{
+	char			*key;
+	char			*value;
+}					t_element;
+
+typedef struct s_hashtable
+{
+	t_element		**element_array;
+	int				length;
+}					t_hashtable;
 
 // new functions
 void				ft_bin2ascii(char *s);
@@ -86,7 +50,6 @@ int64_t				ft_atoll(const char *str);
 int					ft_sqrt(int number);
 int					checkd_bf(int *numbers, int count);
 void				ins_sort(int array[], int n);
-int					ft_index(int n, int *arr);
 
 // printf
 int					ft_print_char(int character);
@@ -96,6 +59,7 @@ int					ft_print_number(int n);
 int					ft_print_unsigned(unsigned int n);
 int					ft_print_hex(unsigned int num, const char word);
 int					ft_print_pointer(unsigned long long ptr);
+
 // libft
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -147,4 +111,22 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+/*HASH FUNCTIONS*/
+t_hashtable			*ft_add_element(t_hashtable *ht, char *key, char *value);
+t_element			*ft_get_element(t_hashtable *ht, char *key);
+t_hashtable			*ft_ch_value(t_hashtable *ht, char *key, char *value, int is_apnd);
+t_element			*ft_create_element(char *key, char *value);
+t_hashtable			*ft_create_hashtable(int length);
+t_hashtable			*ft_delete_element(t_hashtable *ht, char *key);
+void				ft_free_hashtable(t_hashtable *hashtable);
+void				ft_free_element(t_element *element);
+char				*ft_get_value(t_hashtable *hashtable, char *key);
+int					ft_monkey_hash(char *str, int length);
+void				ft_print_hashtable(t_hashtable *hashtable, char *delimeter);
+int					ft_arraylen(char **str);
+int					ft_next_prime(int nbr);
+int					ft_index(char *str, char c);
+int					ft_is_prime(int nbr);
+
 #endif

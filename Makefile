@@ -4,32 +4,19 @@ RED = \033[0;31m
 NC = \033[0m
 
 NAME = minishell
-INCLUDEPATH = 
 
 SRC_DIR =	src
 SRC		=	env/env_hash.c\
 			env/print_env.c\
-			hashtable/ft_add_element.c\
-			hashtable/ft_ch_value.c\
-			hashtable/ft_create_element.c\
-			hashtable/ft_create_hashtable.c\
-			hashtable/ft_delete_element.c\
-			hashtable/ft_free_hashtable.c\
-			hashtable/ft_get_value.c\
-			hashtable/ft_monkey_hash.c\
-			hashtable/ft_print_hashtable.c\
-			parsing/free_tree.c\
-			parsing/ft_count_element.c\
-			parsing/ft_create_tree_node.c\
-			parsing/ft_is_redir.c\
-			parsing/ft_malloc_node.c\
-			parsing/ft_node_redirect.c\
-			parsing/ft_rlist_cleanup.c\
-			parsing/parser.c\
+			parsing/ft_free_tree.c\
+			parsing/ft_add_rnode.c \
+			parsing/parser.c \
 			signals/signals.c\
+			main/minishell.c \
 
 OBJ_DIR  = objects
-OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+
+OBJ = $(SRC:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
@@ -40,10 +27,19 @@ all: $(NAME)
 	@echo "$(GREEN)----------------------------------------------------------------$(NC)"
 	@echo "$(GREEN)---------------------- Minishell Is Ready ----------------------$(NC)"
 	@echo "$(GREEN)----------------------------------------------------------------$(NC)"
+	@echo ""
+	@echo "$(GREEN) ███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗     $(NC)"
+	@echo "$(GREEN) ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║     $(NC)"
+	@echo "$(GREEN) ██╔████╔██║██║██╔██╗ ██║██║███████╗███████║█████╗  ██║     ██║     $(NC)"
+	@echo "$(GREEN) ██║╚██╔╝██║██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║     ██║     $(NC)"
+	@echo "$(GREEN) ██║ ╚═╝ ██║██║██║ ╚████║██║███████║██║  ██║███████╗███████╗███████╗$(NC)"
+	@echo "$(GREEN) ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝$(NC)"
+                                                                   
 
-$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) minishell.h
+
+$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) includes/minishell.h
 	@echo "$(YELLOW)--------------------- Compiling Minishell ----------------------$(NC)"
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME) -I $(INCLUDEPATH)
+	@$(CC) $(CFLAGS) $(addprefix $(OBJ_DIR)/, $(OBJ)) $(LIBFT) -o $(NAME)
 	@echo "$(GREEN)------------------ Minishell Finished Compiling ----------------$(NC)\n"
 
 $(LIBFT):
@@ -52,9 +48,13 @@ $(LIBFT):
 $(OBJ_DIR):
 	@echo "$(YELLOW)------------------ Creating Object Directory -------------------$(NC)"
 	@mkdir $(OBJ_DIR)
+	@mkdir $(OBJ_DIR)/env
+	@mkdir $(OBJ_DIR)/parsing
+	@mkdir $(OBJ_DIR)/signals
+	@mkdir $(OBJ_DIR)/main
 
-%.o: ../$(SRC_DIR)/%.c
-	@$(CC) $(CFLAGS) -c -o $@ $<
+%.o: %.c
+	@$(CC) $(CFLAGS) -c -o $(addprefix $(OBJ_DIR)/, $@) $<
 
 clean:
 	@make -sC ./Libft fclean

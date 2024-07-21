@@ -6,14 +6,14 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:19:12 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/07/20 22:01:11 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/07/21 13:49:11 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "../libft/libft.h"
+# include "../Libft/libft.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <readline/history.h>
@@ -27,18 +27,6 @@
 # include <unistd.h>
 
 # define BUFFER_SIZE 3000
-
-typedef struct s_element
-{
-	char			*key;
-	char			*value;
-}					t_element;
-
-typedef struct s_hashtable
-{
-	t_element		**element_array;
-	int				length;
-}					t_hashtable;
 
 enum				e_node_type
 {
@@ -101,5 +89,18 @@ typedef struct s_token
 
 extern int			g_exit_code;
 
+/*PARSING*/
+void				ft_free_redir_list(t_redir *redir_list);
+void				ft_free_ast_value(char **value);
+void				ft_free_ast_node(t_ast *ast_node);
+void				ft_free_ast(t_ast *ast_tree);
+int					ft_count_element(t_token *token_list);
+t_ast				*ft_malloc_node(int nb_element);
+int					ft_is_redir(int token_type);
+t_ast				*ft_create_ast_node(t_token *token_list, int nb_element);
+t_ast				*ft_create_ast(t_token *token_list);
+t_redir				*ft_init_redir_node(int token_type);
+t_redir				*ft_add_redir_node(t_redir *redir_list,
+						t_token *token_list);
 
 #endif

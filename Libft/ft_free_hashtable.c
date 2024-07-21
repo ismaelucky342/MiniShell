@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_hashtable.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jahuang <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 15:42:04 by jahuang           #+#    #+#             */
-/*   Updated: 2022/01/21 23:59:15 by jahuang          ###   ########.fr       */
+/*   Updated: 2024/07/21 12:48:47 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
 /*
 **	Functions to free the hash table.

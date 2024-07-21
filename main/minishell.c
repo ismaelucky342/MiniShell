@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_env.c                                        :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 10:30:42 by jahuang           #+#    #+#             */
+/*   Created: 2024/07/21 13:41:41 by ismherna          #+#    #+#             */
 /*   Updated: 2024/07/21 13:48:50 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ft_print_env(t_hashtable *env_hashtable, int is_export)
+int	main(int argc, char **argv, char **env)
 {
-	int			index;
-	t_element	*env_element;
-
-	index = 0;
-	if (!env_hashtable)
-		return ;
-	while (index < env_hashtable->length)
-	{
-		if (env_hashtable->element_array[index])
-		{
-			env_element = env_hashtable->element_array[index];
-			if (is_export)
-				printf("export ");
-			printf("%s=", env_element->key);
-			if (is_export)
-				printf("\"%s\"", env_element->value);
-			else
-				printf("%s", env_element->value);
-			printf("\n");
-		}
-		index++;
-	}
-}
+	if (argc)
+		if (argv)
+			if (env)
+				return (0);
+	return (0);
+} 
