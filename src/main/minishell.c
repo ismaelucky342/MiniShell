@@ -41,13 +41,13 @@ int	main(void)
 	while (1)                 // Bucle infinito para mantener el shell
 	{
 		token_tree = NULL;           // Inicializa el árbol de tokens a NULL
-		ft_restore_terminal(0);      // Restaura la configuración del terminal
+		restore_terminal(0);      // Restaura la configuración del terminal
 		ft_configure_terminal();      // Configura el terminal para la entrada del usuario
 		
 		// Parsear la entrada del usuario y construir el árbol de sintaxis (AST)
 		type = parser(&token_tree, exec);
 		
-		ft_restore_terminal(1);      // Restaura la configuración original del terminal
+		restore_terminal(1);      // Restaura la configuración original del terminal
 		exec->type = type;           // Almacena el tipo de nodo en exec
 		exec->tree = token_tree;     // Almacena el árbol de tokens en exec
 		
@@ -59,7 +59,7 @@ int	main(void)
 		execution(token_tree, type, exec); //falata crearlo 
 		
 		// Libera la memoria del árbol de tokens (AST)
-		node_tree_delete(token_tree, type); // falta crearla
+		ft_ast_node_delete(token_tree, type); // falta crearla
 		
 		// Resetea el árbol de tokens en exec para la siguiente iteración
 		exec->tree = NULL;

@@ -83,6 +83,11 @@ typedef struct s_exec
     int exit_status;
 } t_exec;
 
+//env
+void ft_env2hashtable(char **env, t_hashtable *hashtable, int array_len);
+t_hashtable *ft_create_envhash(char **env);
+void	ft_print_env(t_hashtable *env_hashtable, int is_export);
+
 //colors
 char *color_string(char *str, char *color); 
 
@@ -91,7 +96,7 @@ int				check_quotes(char *command);
 char			*check_unclosed(char *command, t_exec *exec);
 t_node_type		split_by_operator(t_token *token_last, t_ast_node **head);
 t_node_type		tokens_to_tree(t_token *tokens, t_ast_node **head);
-t_ast_node		*new_node(void);
+t_ast_node		*ft_ast_new_node(void);
 t_ast_node		*new_redir_node(void);
 t_token			*delete_parens(t_token *token_first);
 
@@ -109,7 +114,7 @@ t_node_type		err_pars(char *message, t_cmd *redirects, t_token **tokens);
 void			print_syntax_err(t_token *token);
 void			free_str_array(char **arr);
 void			cmd_free(t_cmd *cmd);
-void			node_tree_delete(t_ast_node *node, t_node_type type);
+void			ft_ast_node_delete(t_ast_node *node, t_node_type type);
 void			free_env(char ***env);
 
 // Debug functions
@@ -148,8 +153,8 @@ char			**word_splitting(char **args);
 
 // Signal handling functions
 void			parser_handler(int signal);
-void			execution_handler(int signal);
-void			ft_restore_terminal(int i);
+void			exec_handler(int signal);
+void			restore_terminal(int i);
 void			ft_configure_terminal(void);
 
 #endif
