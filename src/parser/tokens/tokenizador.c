@@ -1,4 +1,4 @@
-#include "../includes/minishell"
+#include "../includes/minishell.h"
 
 t_token_type t_type_process(const char *string)
 {

@@ -8,7 +8,7 @@ void	ft_ast_node_delete(void *node, t_node_type type)
 		cmd_free((t_cmd *)node);
 	else if (type == REDIR)
 	{
-		cmd_free(((t_redir *)node)->redirects);
+		cmd_free(((t_redir *)node)->redir);
 		ft_ast_node_delete(((t_redir *)node)->next, ((t_redir *)node)->type);
 		free(node);
 	}

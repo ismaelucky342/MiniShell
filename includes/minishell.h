@@ -62,8 +62,8 @@ typedef enum e_node_type
 typedef struct s_cmd
 {
 	char	**args;
-	char	**redirects;
-	int		*redirect_type;
+	char	**redir;
+	int		*redir_type;
 }	t_cmd;
 
 typedef struct s_ast_node
@@ -92,7 +92,10 @@ void	ft_print_env(t_hashtable *env_hashtable, int is_export);
 char *color_string(char *str, char *color); 
 
 // Parser functions
+char			*get_line(void);
+int				heredoc(char *limiter); 
 int				check_quotes(char *command);
+char 			*create_the_prompt(t_exec *exec);
 char			*check_unclosed(char *command, t_exec *exec);
 t_node_type		split_by_operator(t_token *token_last, t_ast_node **head);
 t_node_type		tokens_to_tree(t_token *tokens, t_ast_node **head);
@@ -106,11 +109,11 @@ t_token			*get_pipe(t_token *tokens);
 t_token			*get_operator(t_token *tokens);
 
 // Redirect functions
-int				redirects_get(t_token **token_first, t_cmd **redirects);
+int				redir_get(t_token **token_first, t_cmd **redir);
 int				climb_tree(t_ast_node *node, t_node_type type);
 
 // Cleanup functions
-t_node_type		err_pars(char *message, t_cmd *redirects, t_token **tokens);
+t_node_type		err_pars(char *message, t_cmd *redir, t_token **tokens);
 void			print_syntax_err(t_token *token);
 void			free_str_array(char **arr);
 void			cmd_free(t_cmd *cmd);
