@@ -83,6 +83,9 @@ typedef struct s_exec
 	int			exit_status;
 }	t_exec;
 
+//colors
+char *color_string(char *str, char *color); 
+
 // Parser functions
 char			*check_unclosed(char *command, t_exec *exec);
 t_node_type		split_by_operator(t_token *token_last, t_ast_node **head);
