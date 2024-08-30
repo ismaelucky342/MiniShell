@@ -1,106 +1,151 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 12:19:12 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/07/21 14:11:23 by ismherna         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "../Libft/libft.h"
-# include <errno.h>
-# include <fcntl.h>
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <stddef.h>
+# include "../libft/includes/libft.h"
 # include <stdio.h>
-# include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/wait.h>
 # include <unistd.h>
+# include <stdbool.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <signal.h>
+# include <sys/types.h>
+# include <dirent.h>
+# include <termios.h>
+# define DEBUG 0
 
-# define BUFFER_SIZE 3000
+// Colors
+# define RED_INCIDATOR "\002\001\e[1m\e[31m●\e[0m\002"
+# define MAGENTA_INCIDATOR "\002\001\e[1m\e[35m●\e[0m\002"
+# define RESET "\e[0m\002"
+# define RED "\002\001\e[1m\e[31m"
+# define GREEN "\002\001\e[1m\e[32m"
+# define YELLOW "\002\001\e[1m\e[33m"
+# define BLUE "\002\001\e[34m"
+# define MAGENTA "\002\001\e[1m\e[35m"
+# define CYAN "\002\001\e[1m\e[36m"
+// # define BACKGROUND "\033[48;5;93m"
 
-enum				e_node_type
+typedef enum e_token_type
 {
-	NODE_CMD = 0,
-	NODE_PIPE,
-};
-
-enum				e_redir_type
-{
-	REDIR_OUT = 0,
-	REDIR_APPEND_OUT,
-	REDIR_IN,
-	REDIR_HEREDOC,
-};
-
-typedef struct s_redir
-{
-	char			*value;
-	int				redir_type;
-	struct s_redir	*next;
-}					t_redir;
-
-typedef struct s_ast
-{
-	char			**value;
-	t_redir			*redir_list;
-	int				node_type;
-	struct s_ast	*left;
-	struct s_ast	*right;
-}					t_ast;
-
-enum				e_char_type
-{
-	CHAR_GENERAL = -1,
-	CHAR_PIPE = '|',
-	CHAR_GREATER = '>',
-	CHAR_LESSER = '<',
-	CHAR_DOLLER = '$',
-	CHAR_S_QUOTE = 39,
-	CHAR_D_QUOTE = '"',
-};
-
-enum				e_token_type
-{
-	TOKEN_WORD = 0,
-	TOKEN_PIPE,
-	TOKEN_GREATER,
-	TOKEN_GREATGREATER,
-	TOKEN_LESSER,
-	TOKEN_LESSLESSER,
-};
+	T_WORD,
+	T_SEPARATOR,
+	T_PIPE,
+	T_AND,
+	T_OR,
+	T_LPAREN,
+	T_RPAREN,
+	T_REDIR_IN,
+	T_REDIR_OUT,
+	T_REDIR_APPEND,
+	T_REDIR_HEREDOC,
+}	t_token_type;
 
 typedef struct s_token
 {
+	t_token_type	type;
 	char			*value;
-	int				token_type;
-	struct s_token	*prev;
+	int				quote;
 	struct s_token	*next;
-}					t_token;
+	struct s_token	*prev;
+}	t_token;
 
-extern int			g_exit_code;
+typedef enum e_node_type
+{
+	ERROR,
+	REDIR,
+	AND,
+	OR,
+	PIPE,
+	CMD,
+}	t_node_type;
 
-/*PARSING*/
-void				ft_free_rlist(t_redir *redir_list);
-void				ft_free_tree_val(char **value);
-void				ft_free_tree_node(t_ast *ast_node);
-void				ft_free_tree(t_ast *ast_tree);
-int					ft_count_element(t_token *token_list);
-t_ast				*ft_malloc_node(int nb_element);
-int					ft_is_redir(int token_type);
-t_ast				*ft_create_tree_node(t_token *token_list, int nb_element);
-t_ast				*ft_create_tree(t_token *token_list);
-t_redir				*ft_init_rnode(int token_type);
-t_redir				*ft_add_rnode(t_redir *redir_list, t_token *token_list);
+typedef struct s_cmd
+{
+	char	**args;
+	char	**redirects;
+	int		*redirect_type;
+}	t_cmd;
 
+typedef struct s_ast_node
+{
+	t_node_type		type;
+	void			*value; // Puede ser un comando, redirección, etc.
+	struct s_ast_node **children; // Array de punteros a hijos
+	int				children_count; // Número de hijos
+}	t_ast_node;
+
+typedef struct s_exec
+{
+	char		***env;
+	t_ast_node	*tree;
+	t_node_type	type;
+	int			sub_process;
+	int			exit_status;
+}	t_exec;
+
+// Parser functions
+char			*check_unclosed(char *command, t_exec *exec);
+t_node_type		split_by_operator(t_token *token_last, t_ast_node **head);
+t_node_type		tokens_to_tree(t_token *tokens, t_ast_node **head);
+t_ast_node		*new_node(void);
+t_ast_node		*new_redir_node(void);
+t_token			*delete_parens(t_token *token_first);
+
+// Pipeline functions
+int				count_words(t_token *tokens);
+t_token			*get_pipe(t_token *tokens);
+t_token			*get_operator(t_token *tokens);
+
+// Redirect functions
+int				redirects_get(t_token **token_first, t_cmd **redirects);
+int				climb_tree(t_ast_node *node, t_node_type type);
+
+// Cleanup functions
+t_node_type		err_pars(char *message, t_cmd *redirects, t_token **tokens);
+void			print_syntax_err(t_token *token);
+void			free_str_array(char **arr);
+void			cmd_free(t_cmd *cmd);
+void			node_tree_delete(t_ast_node *node, t_node_type type);
+void			free_env(char ***env);
+
+// Debug functions
+void			debug_print_token_array(t_token *token_first);
+void			get_next_debug(t_ast_node *node, t_node_type type, int i);
+
+// Is_checks functions
+int				is_quote(char c);
+int				is_separator(char c);
+int				is_redirect(t_token_type type);
+int				is_operator(t_token_type type);
+int				is_variable(char c);
+
+// Tokenizer functions
+t_token_type	get_token_type(char *string);
+t_token			*get_next_token(char *string, t_token *token_last);
+void			token_delete(t_token **tokens);
+void			token_delete_all(t_token **tokens);
+t_token			*token_add(t_token *tokens, t_token_type token_type);
+t_token			*token_split(t_token *tokens, int direction);
+t_token			*skip_parens(t_token *tokens, int direction);
+
+// Command execution functions
+t_node_type		parser(t_ast_node **token_tree, t_exec *exec);
+char			*get_env(char **environ, char *var);
+void			execution(t_ast_node *tree, t_node_type type, t_exec *exec);
+int				exit_shell(t_exec *exec, char **arg, int status);
+
+// Variable expansion functions
+char			*expand_tilde(char *arg, char **env);
+char			*expand_variables(char *command, t_exec *exec);
+char			*expander(char *arg);
+char			**expander_array(char **args, t_exec *exec);
+int				heredoc_expand(int heredoc, t_exec *exec);
+char			**word_splitting(char **args);
+
+// Signal handling functions
+void			parser_handler(int signal);
+void			execution_handler(int signal);
+void			ft_restore_terminal(int i);
+void			ft_configure_terminal(void);
 
 #endif
