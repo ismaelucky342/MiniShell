@@ -120,8 +120,8 @@ int				is_operator(t_token_type type);
 int				is_variable(char c);
 
 // Tokenizer functions
-t_token_type	get_token_type(char *string);
-t_token			*get_next_token(char *string, t_token *token_last);
+t_token_type	t_type_process(char *string);
+t_token			*next_token(char *string, t_token *token_last);
 void			token_delete(t_token **tokens);
 void			token_delete_all(t_token **tokens);
 t_token			*token_add(t_token *tokens, t_token_type token_type);

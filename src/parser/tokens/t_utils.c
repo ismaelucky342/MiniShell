@@ -53,11 +53,11 @@ t_token *add_token(t_token *token_last, t_token_type token_type)
     if (!new_token = (t_token *)malloc(sizeof(t_token)))
         return NULL; 
 
-    new_token->next = NULL;
-    new_token->prev = token_last;
-    new_token->type = token_type;
-    new_token->value = NULL;
-    new_token->quote = 0;
+        new_token->next = NULL;
+        new_token->prev = token_last;
+        new_token->type = token_type;
+        new_token->value = NULL;
+        new_token->quote = 0;
 
     if (token_last)
         token_last->next = new_token;
