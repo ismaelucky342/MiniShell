@@ -1,7 +1,7 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "../Libft/includes/libft.h"
+# include "../Libft/libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdbool.h>
@@ -76,12 +76,12 @@ typedef struct s_ast_node
 
 typedef struct s_exec
 {
-	char		***env;
-	t_ast_node	*tree;
-	t_node_type	type;
-	int			sub_process;
-	int			exit_status;
-}	t_exec;
+    t_hashtable *env_hashtable;  
+    t_ast_node *tree;
+    t_node_type type;
+    int sub_process;
+    int exit_status;
+} t_exec;
 
 //colors
 char *color_string(char *str, char *color); 
