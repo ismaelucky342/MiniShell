@@ -110,7 +110,7 @@ t_token			*get_operator(t_token *tokens);
 
 // Redirect functions
 int				redir_get(t_token **token_first, t_cmd **redir);
-int				climb_tree(t_ast_node *node, t_node_type type);
+int				ast_walker(t_ast_node *node, t_node_type type);
 
 // Cleanup functions
 t_node_type		err_pars(char *message, t_cmd *redir, t_token **tokens);
