@@ -12,6 +12,14 @@
 
 #include "../includes/minishell.h"
 
+int general_signal;
+
+
+
+
+
+
+
 /*
 Inicialización de Variables:
 
