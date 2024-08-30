@@ -12,11 +12,23 @@
 
 #include "../includes/minishell.h"
 
-int	main(int argc, char **argv, char **env)
-{
-	if (argc)
-		if (argv)
-			if (env)
-				return (0);
-	return (0);
-} 
+/*
+Inicialización de Variables:
+
+	señales 
+	tokens arbol 
+	type: identificar comando en el arbol 
+	exec entonrno y etc  
+
+
+
+Inicialización exec: 
+
+	Crear un entorno 
+	Inicializamos la estructura, como el estado de salida
+
+Bucle Principal
+
+
+*/
+
