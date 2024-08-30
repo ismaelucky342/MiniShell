@@ -6,8 +6,8 @@ NC = \033[0m
 NAME = minishell
 
 SRC_DIR =	src
-SRC		=	env/env_hash.c\
-			env/print_env.c\
+SRC		=	src/parser/env/env_hash.c\
+			src/parser/env/print_env.c\
 			parsing/ft_free_tree.c\
 			parsing/ft_free_tree_val.c\
 			parsing/ft_free_tree_node.c\

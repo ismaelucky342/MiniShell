@@ -10,6 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+RESUMEN: 
+1. Iniciar shell -> 2. Configurar terminal 
+-> 3. Leer comando -> 4. Parsear comando (AST) 
+-> 5. Ejecutar comando -> 6. Limpiar recursos 
+-> 7. Reiniciar bucle
+
+*/
 #include "minishell.h"
 #include "execution.h"
 
@@ -89,8 +97,3 @@ t_exec	*fill_struct(void)
 	exec->type = 0;                   // Inicializa el tipo de nodo a 0
 	return (exec); // Retorna la estructura t_exec inicializada
 }
-
-/*
-RESUMEN: 
-
-*/
