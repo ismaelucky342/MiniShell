@@ -28,11 +28,11 @@ t_ast_node	*new_redir_node(void)
 	return (node);
 }
 
-t_token	*delete_parens(t_token *token_first)
+t_token	*delete_parentesiss(t_token *token_first)
 {
 	t_token	*token_last;
 
-	token_last = skip_parens(token_first, 1);
+	token_last = skip_parentesiss(token_first, 1);
 	if (token_last->next)
 	{
 		print_syntax_err(token_last);

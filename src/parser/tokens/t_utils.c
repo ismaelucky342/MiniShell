@@ -57,7 +57,7 @@ t_token *add_token(t_token *token_last, t_token_type token_type)
         new_token->prev = token_last;
         new_token->type = token_type;
         new_token->value = NULL;
-        new_token->quote = 0;
+        new_token->quotes = 0;
 
     if (token_last)
         token_last->next = new_token;
@@ -88,7 +88,7 @@ t_token	*token_split(t_token *tokens, int direction)
 	return tmp;
 }
 
-t_token *parentesis(t_token *tokens, int direction)
+t_token *parentesistesis(t_token *tokens, int direction)
 {
     int level = 1;
 
@@ -101,9 +101,9 @@ t_token *parentesis(t_token *tokens, int direction)
 
         if (tokens)
         {
-            if (tokens->type == T_LPAREN)
+            if (tokens->type == T_Lparentesis)
                 level += direction;
-            else if (tokens->type == T_RPAREN)
+            else if (tokens->type == T_Rparentesis)
                 level -= direction;
         }
     }

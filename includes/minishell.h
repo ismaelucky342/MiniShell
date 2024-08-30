@@ -87,6 +87,7 @@ typedef struct s_exec
 char *color_string(char *str, char *color); 
 
 // Parser functions
+int				check_quotes(char *command);
 char			*check_unclosed(char *command, t_exec *exec);
 t_node_type		split_by_operator(t_token *token_last, t_ast_node **head);
 t_node_type		tokens_to_tree(t_token *tokens, t_ast_node **head);

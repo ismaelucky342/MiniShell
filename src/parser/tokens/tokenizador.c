@@ -13,9 +13,9 @@ t_token_type t_type_process(const char *string)
     if (!ft_strncmp(string, "<<", 2))
         return T_REDIR_HEREDOC;
     if (!ft_strncmp(string, "(", 1))
-        return T_LPAREN;
+        return T_Lparentesis;
     if (!ft_strncmp(string, ")", 1))
-        return T_RPAREN;
+        return T_Rparentesis;
     if (!ft_strncmp(string, "|", 1))
             return T_PIPE;
     if (!ft_strncmp(string, ">", 1))
@@ -29,16 +29,16 @@ t_token *words(char **string, t_token *token_last)
 {
     t_token_type token_type = T_WORD;
     int i = 0;
-    char quote = 0;
+    char quotes = 0;
 
-    while ((token_type == T_WORD || quote) && (*string)[i])
+    while ((token_type == T_WORD || quotes) && (*string)[i])
     {
-        if ((*string)[i] == quote)
-            quote = 0;
-        else if (!quote && ((*string)[i] == '\'' || (*string)[i] == '"'))
+        if ((*string)[i] == quotes)
+            quotes = 0;
+        else if (!quotes && ((*string)[i] == '\'' || (*string)[i] == '"'))
         {
-            token_last->quote = 1;
-            quote = (*string)[i];
+            token_last->quotes = 1;
+            quotes = (*string)[i];
         }
         token_type = t_type_process((*string) + i);
         i++;

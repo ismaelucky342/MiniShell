@@ -63,6 +63,7 @@ t_node_type parser(void **ast_root, t_exec *exec)
     signal(SIGINT, parser_handler);
     signal(SIGQUIT, parser_handler);
     command = NULL;
+    
     while (!command || !*command || *command == '\n')
     {
         free(command);
@@ -71,11 +72,13 @@ t_node_type parser(void **ast_root, t_exec *exec)
             exit_shell(exec, NULL, exec->exit_status);
     }
     command = check_unclosed(command, exec);
+    
     if (!command)
         return (ERROR);
     tokens = get_next_token(command, NULL);
     free(command);
     type_first = split_by_operator(tokens, ast_root);
+    
     if (type_first == ERROR && tokens)
     {
         exec->exit_status = 2;
