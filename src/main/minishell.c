@@ -43,7 +43,7 @@ int	main(void)
 		exec->type = type;           // Almacena el tipo de nodo en exec
 		exec->tree = token_tree;     // Almacena el árbol de tokens en exec
 		
-		// Si no es un terminal interactivo y hay un error de parseo, sale del shell
+		// Si hay un error de parseo, sale del shell
 		if (!isatty(STDIN_FILENO) && type == ERROR)//esa funcion verifica el fd hay que crearla o si se puede usarla de la stdlib
 			exit_shell(exec, NULL, exec->exit_status); //falta crearlo 
 		
@@ -78,7 +78,7 @@ t_exec	*fill_struct(void)
 	if (!exec->env_hashtable) 
 	{
 		free(exec);
-		perror("Error initializing env hashtable"); 
+		perror("Error initializing env"); 
 		return (NULL);
 	}
 	
@@ -91,42 +91,6 @@ t_exec	*fill_struct(void)
 }
 
 /*
-Inicialización de Variables:
+RESUMEN: 
 
-	señales
-	tokens arbol
-	type: identificar comando en el arbol
-	exec entonrno y etc
-
-
-
-Inicialización exec:
-
-	Crear un entorno
-	Inicializamos la estructura, como el estado de salida
-
-Bucle Principal:
-
-	ft_restore_terminal(0): Restauramos la configuración inicial del terminal
-	ft_configure_terminal: preparamos el terminal
-
-	Parseo de Comandos: El parser convierte la entrada del usuario en un árbol de sintaxis. La salida del parser es el tipo de nodo (comando, redirección, etc.) y el árbol (token_tree).
-
-	ft_restore_terminal(1): Restaura el terminal a su estado previo después del parseo.
-
-	Verificación de Errores
-
-	Ejecución de Comandos
-
-	Limpieza
-
-
-
-
-Flujo General:
-	Inicialización del entorno de ejecución.
-	Configuración del terminal para capturar comandos.
-	Parseo de la entrada del usuario y construcción del árbol de sintaxis.
-	Ejecución del comando basado en el árbol generado.
-	Limpieza de los recursos utilizados.
 */
