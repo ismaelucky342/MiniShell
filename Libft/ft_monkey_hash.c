@@ -12,7 +12,6 @@
 
 #include "libft.h"
 
-
 int	ft_monkey_hash(char *str, int length)
 {
 	int	index;

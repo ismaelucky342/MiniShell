@@ -81,5 +81,5 @@ int main() {
     ft_printf("Hexadecimal (mayúsculas): %X\n", hexadecimal);
     ft_printf("Símbolo del porcentaje: %%\n");
 
-    return 0;
+    return (0);
 }*/

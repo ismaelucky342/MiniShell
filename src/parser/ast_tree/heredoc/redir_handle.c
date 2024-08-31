@@ -1,4 +1,16 @@
-#include "../include/minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redir_handle.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/31 16:52:47 by dgomez-l          #+#    #+#             */
+/*   Updated: 2024/08/31 16:52:48 by dgomez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../../../includes/minishell.h"
 
 int redir_handler(t_redir *redir)
 {
@@ -11,7 +23,7 @@ int redir_handler(t_redir *redir)
 	{
 		if (cmd->redir_type[i] >= 3)
 		{
-			cmd->redir[i] = expander(cmd->redir[i]); //taki taki rumba
+			cmd->redir[i] = expander(cmd->redir[i]);//taki taki rumba
 			if (cmd->redir_type[i] == 4)
 				cmd->redir_type[i] = heredoc(cmd->redir[i]);
 			else

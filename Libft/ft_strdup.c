@@ -29,9 +29,9 @@ char	*ft_strdup(const char *s1)
 
 /*int		main()
 {
-	const char *string1 = "hola mundo"; 
+	const char *string1 = "hola mundo";
 
-	char	*resultado = ft_strdup(string1); 
+	char	*resultado = ft_strdup(string1);
 	printf("la original es: %s\n y la duplicada: %s\n ",string1, resultado);
-	return 0; 
+	return (0);
 }*/

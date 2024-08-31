@@ -115,7 +115,8 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 /*HASH FUNCTIONS*/
 t_hashtable			*ft_add_element(t_hashtable *ht, char *key, char *value);
 t_element			*ft_get_element(t_hashtable *ht, char *key);
-t_hashtable			*ft_ch_value(t_hashtable *ht, char *key, char *value, int is_apnd);
+t_hashtable			*ft_ch_value(t_hashtable *ht, char *key, char *value,
+						int is_apnd);
 t_element			*ft_create_element(char *key, char *value);
 t_hashtable			*ft_create_hashtable(int length);
 t_hashtable			*ft_delete_element(t_hashtable *ht, char *key);

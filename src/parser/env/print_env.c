@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
 void	ft_print_env(t_hashtable *env_hashtable, int is_export)
 {

@@ -1,5 +1,16 @@
-#include "minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_handler.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/31 15:22:27 by dgomez-l          #+#    #+#             */
+/*   Updated: 2024/08/31 15:22:29 by dgomez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../../../includes/minishell.h"
 
 void	parse_handler(int signal)
 {
@@ -14,5 +25,5 @@ void	parse_handler(int signal)
 		}
 	}
 	if (signal == SIGQUIT)
-
+		return ;
 }

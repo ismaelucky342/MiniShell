@@ -40,7 +40,7 @@ void	ins_sort(int array[], int n)
 // {
 // 	int	i;
 
-// 	for (i = 0; i < n; i++)
+// 	for (i = 0;i < n;i++)
 // 		printf("%d ", array[i]);
 // }
 // // Main Function

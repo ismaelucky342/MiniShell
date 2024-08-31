@@ -37,5 +37,5 @@ int	ft_memcmp(const void *dst, const void *str, size_t n)
     } else {
         printf("Strings are identical\n");
     }
-	return 0; 
+	return (0);
 }*/

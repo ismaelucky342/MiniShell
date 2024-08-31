@@ -1,6 +1,18 @@
-#include "../includes/minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_line.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/31 16:52:29 by dgomez-l          #+#    #+#             */
+/*   Updated: 2024/08/31 16:52:30 by dgomez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *get_line(void)
+#include "../../../../includes/minishell.h"
+
+char	*get_line(void)
 {
 	char	*line;
 	char	*tmp;

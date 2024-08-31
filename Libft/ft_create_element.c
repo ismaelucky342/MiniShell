@@ -12,7 +12,6 @@
 
 #include "libft.h"
 
-
 t_element	*ft_create_element(char *key, char *value)
 {
 	t_element	*new_element;

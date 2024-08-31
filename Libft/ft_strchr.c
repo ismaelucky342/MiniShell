@@ -33,10 +33,10 @@ char	*ft_strchr(const char *str, int c)
 /*int		main(){
 
 	const	char *string = "hola mundo";
-	int		busqueda = 'u'; 
+	int		busqueda = 'u';
 
 	char	*resultado =  ft_strchr(string, busqueda);
 	printf("Caracter '%c' encontrado en la posicion: %ld\n",
  *resultado, resultado - string);
-	return 0; 
+	return (0);
 }*/

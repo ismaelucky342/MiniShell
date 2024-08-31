@@ -51,9 +51,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if(resultado)
 	{
 		printf("la cadena unida es: %s", resultado);
-		free(resultado); 
+		free(resultado);
 	}else{
 		printf("ERROR CADENA NULA");
 	}
-	return 0; 
+	return (0);
 }*/

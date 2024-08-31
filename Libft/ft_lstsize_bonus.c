@@ -41,5 +41,5 @@ int	ft_lstsize(t_list *lst)
     free(node2);
     free(node3);
 
-    return 0;
+    return (0);
 }*/

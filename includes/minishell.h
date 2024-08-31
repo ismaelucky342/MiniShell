@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/31 15:07:41 by dgomez-l          #+#    #+#             */
+/*   Updated: 2024/08/31 15:07:48 by dgomez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -42,11 +54,11 @@ typedef enum e_token_type
 
 typedef struct s_token
 {
-	t_token_type	type;
-	char			*value;
-	int				quote;
-	struct s_token	*next;
-	struct s_token	*prev;
+	t_token_type		type;
+	char				*value;
+	int					quote;
+	struct s_token		*next;
+	struct s_token		*prev;
 }	t_token;
 
 typedef enum e_node_type
@@ -61,41 +73,42 @@ typedef enum e_node_type
 
 typedef struct s_cmd
 {
-	char	**args;
-	char	**redir;
-	int		*redir_type;
+	char				**args;
+	char				**redir;
+	int					*redir_type;
 }	t_cmd;
 
 typedef struct s_ast_node
 {
-	t_node_type		type;
-	void			*value; // Puede ser un comando, redirección, etc.
-	struct s_ast_node **children; // Array de punteros a hijos
-	int				children_count; // Número de hijos
+	t_node_type			type;
+	void				*value;// Puede ser un comando, redirección, etc.
+	struct s_ast_node	**children;// Array de punteros a hijos
+	int					children_count;// Número de hijos
 }	t_ast_node;
 
 typedef struct s_exec
 {
-    t_hashtable *env_hashtable;  
-    t_ast_node *tree;
-    t_node_type type;
-    int sub_process;
-    int exit_status;
-} t_exec;
+	t_hashtable			*env_hashtable;
+	t_ast_node			*tree;
+	t_node_type			type;
+	int					sub_process;
+	int					exit_status;
+}		t_exec;
 
 //env
-void ft_env2hashtable(char **env, t_hashtable *hashtable, int array_len);
-t_hashtable *ft_create_envhash(char **env);
-void	ft_print_env(t_hashtable *env_hashtable, int is_export);
+void			ft_env2hashtable(char **env, t_hashtable *hashtable,
+					int array_len);
+t_hashtable		*ft_create_envhash(char **env);
+void			ft_print_env(t_hashtable *env_hashtable, int is_export);
 
 //colors
-char *color_string(char *str, char *color); 
+char			*color_string(char *str, char *color);
 
 // Parser functions
 char			*get_line(void);
-int				heredoc(char *limiter); 
+int				heredoc(char *limiter);
 int				check_quotes(char *command);
-char 			*create_the_prompt(t_exec *exec);
+char			*create_the_prompt(t_exec *exec);
 char			*check_unclosed(char *command, t_exec *exec);
 t_node_type		split_by_operator(t_token *token_last, t_ast_node **head);
 t_node_type		tokens_to_tree(t_token *tokens, t_ast_node **head);

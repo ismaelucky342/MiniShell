@@ -1,4 +1,16 @@
-#include "minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   delete_parentesis.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/31 15:49:37 by dgomez-l          #+#    #+#             */
+/*   Updated: 2024/08/31 15:49:40 by dgomez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../../../includes/minishell.h"
 
 t_token	*delete_parentesiss(t_token *token_first)
 {

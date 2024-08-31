@@ -5,20 +5,37 @@ NC = \033[0m
 
 NAME = minishell
 
-SRC_DIR =	src
-SRC		=	src/parser/env/env_hash.c\
+SRC		=	src/execution/builtins/cd.c\
+			src/execution/nodes/pipes.c\
+			src/execution/utils/error.c\
+			src/main/cleanup.c\
+			src/main/minishell.c\
+			src/main/signals/configure_terminal.c\
+			src/main/signals/exec_handler.c\
+			src/main/signals/parse_handler.c\
+			src/main/signals/restore_terminal.c\
+			src/parser/ast_tree/ast_utils/delete_parentesis.c\
+			src/parser/ast_tree/ast_utils/ft_ast_new_node.c\
+			src/parser/ast_tree/ast_utils/ft_ast_new_redir_node.c\
+			src/parser/ast_tree/ast_utils/ft_ast_node_delete.c\
+			src/parser/ast_tree/heredoc/ast_walker.c\
+			src/parser/ast_tree/heredoc/cmd_handle.c\
+			src/parser/ast_tree/heredoc/ft_get_line.c\
+			src/parser/ast_tree/heredoc/heredoc.c\
+			src/parser/ast_tree/heredoc/redir_handle.c\
+			src/parser/ast_tree/redirection.c\
+			src/parser/ast_tree/tree_errors.c\
+			src/parser/ast_tree/pipe_line.c\
+			src/parser/checker/check_quotes.c\
+			src/parser/checker/check_unclosed.c\
+			src/parser/checker/check.c\
+			src/parser/env/env_hash.c\
 			src/parser/env/print_env.c\
-			parsing/ft_free_tree.c\
-			parsing/ft_free_tree_val.c\
-			parsing/ft_free_tree_node.c\
-			parsing/ft_create_tree_node.c \
-			parsing/ft_malloc_node.c \
-			parsing/ft_free_rlist.c\
-			parsing/ft_init_rnode.c \
-			parsing/ft_add_rnode.c \
-			parsing/parser.c \
-			signals/signals.c\
-			main/minishell.c \
+			src/parser/parser.c\
+			src/parser/prompt/prompt_colors.c\
+			src/parser/prompt/prompt.c\
+			src/parser/tokens/tokenizador.c\
+			src/parser/tokens/t_utils.c\
 
 OBJ_DIR  = objects
 
@@ -55,10 +72,22 @@ $(LIBFT):
 $(OBJ_DIR):
 	@echo "$(YELLOW)------------------ Creating Object Directory -------------------$(NC)"
 	@mkdir $(OBJ_DIR)
-	@mkdir $(OBJ_DIR)/env
-	@mkdir $(OBJ_DIR)/parsing
-	@mkdir $(OBJ_DIR)/signals
-	@mkdir $(OBJ_DIR)/main
+	@mkdir $(OBJ_DIR)/src
+	@mkdir $(OBJ_DIR)/src/execution
+	@mkdir $(OBJ_DIR)/src/execution/builtins
+	@mkdir $(OBJ_DIR)/src/execution/nodes
+	@mkdir $(OBJ_DIR)/src/execution/utils
+	@mkdir $(OBJ_DIR)/src/main
+	@mkdir $(OBJ_DIR)/src/main/signals
+	@mkdir $(OBJ_DIR)/src/parser
+	@mkdir $(OBJ_DIR)/src/parser/ast_tree
+	@mkdir $(OBJ_DIR)/src/parser/ast_tree/ast_utils
+	@mkdir $(OBJ_DIR)/src/parser/ast_tree/heredoc
+	@mkdir $(OBJ_DIR)/src/parser/checker
+	@mkdir $(OBJ_DIR)/src/parser/env
+	@mkdir $(OBJ_DIR)/src/parser/prompt
+	@mkdir $(OBJ_DIR)/src/parser/tokens
+	@echo "$(GREEN)-------------------- Object Directory Done ---------------------$(NC)"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c -o $(addprefix $(OBJ_DIR)/, $@) $<
@@ -73,5 +102,7 @@ fclean: clean
 	@echo "$(RED)---------------------- Minishell Cleaned -----------------------$(NC)"
 
 re: fclean all
+
+.DEFAULT_GOAL: all
 
 .PHONY: all clean fclean re

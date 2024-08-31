@@ -25,11 +25,11 @@ int	ft_tolower(int c)
 }
 /*int		main()
 {
-	char	ch = 'A'; 
+	char	ch = 'A';
 	
-	int lowerch = ft_tolower(ch); 
+	int lowerch = ft_tolower(ch);
 
 	printf("%c\n", lowerch);
 
-	return 0;
+	return (0);
 }*/

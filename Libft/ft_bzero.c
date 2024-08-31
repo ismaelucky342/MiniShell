@@ -19,10 +19,10 @@ void	ft_bzero(void *s, size_t n)
 /*int		main()
 {
 
-	char	str[10] = "hola"; 
+	char	str[10] = "hola";
 
 	printf("Antes de bzero: %s\n", str);
-	ft_bzero(str, 5); 
+	ft_bzero(str, 5);
 	printf("Despues de bzero: %s\n",str);
 	return (0);
 }*/

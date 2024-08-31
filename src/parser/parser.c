@@ -1,4 +1,4 @@
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 static char *get_user_prompt(t_exec *exec)
 {
@@ -85,7 +85,7 @@ t_node_type parser(void **ast_root, t_exec *exec)
     }
     else
     {
-        process_ast(*ast_root); 
+        process_ast(*ast_root);
     }
     return (type_first);
 }

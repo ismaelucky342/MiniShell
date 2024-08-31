@@ -40,9 +40,9 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	char	destino[] = "abcde";
 	char	origen[] = "poiss";
-	size_t	t = 5; 
+	size_t	t = 5;
 
 	void	*resultado = ft_memmove(destino, origen, t);
-	printf("la cadena resultante es: %s", (char *)resultado); 
-	return 0; 
+	printf("la cadena resultante es: %s", (char *)resultado);
+	return (0);
 }*/
