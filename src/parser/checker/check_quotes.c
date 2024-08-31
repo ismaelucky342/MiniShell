@@ -15,15 +15,15 @@
 int	check_quotes(char *command)
 {
 	char	quotes;
-	int		parentesis;
+	int		parenthesis;
 
-	parentesis = 0;
-	while (*command && parentesis >= 0)
+	parenthesis = 0;
+	while (*command && parenthesis >= 0)
 	{
 		if (*command == '(')
-			parentesis++;
+			parenthesis++;
 		if (*command == ')')
-			parentesis--;
+			parenthesis--;
 		if (*command == '"' || *command == '\'')
 		{
 			quotes = *command;
@@ -33,9 +33,9 @@ int	check_quotes(char *command)
 			if (!*command)
 				return (-1 - !isatty(STDIN_FILENO));
 		}
-		if (parentesis < 0)
+		if (parenthesis < 0)
 			return (-2);
 		command++;
 	}
-	return ((-1 - !isatty(STDIN_FILENO)) * (parentesis > 0));
+	return ((-1 - !isatty(STDIN_FILENO)) * (parenthesis > 0));
 }

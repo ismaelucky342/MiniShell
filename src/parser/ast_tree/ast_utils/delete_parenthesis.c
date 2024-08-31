@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_parentesis.c                                :+:      :+:    :+:   */
+/*   delete_parenthesis.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,11 +12,11 @@
 
 #include "../../../../includes/minishell.h"
 
-t_token	*delete_parentesiss(t_token *token_first)
+t_token	*delete_parenthesis(t_token *token_first)
 {
-	t_token	*token_last;
+	t_token		*token_last;
 
-	token_last = skip_parentesiss(token_first, 1);
+	token_last = skip_parenthesis(token_first, 1);
 	if (token_last->next)
 	{
 		print_syntax_err(token_last);

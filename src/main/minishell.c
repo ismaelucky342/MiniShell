@@ -26,7 +26,7 @@ t_exec	*fill_struct(void);//es un prototipo me gustan
 
 int	main(void)
 {
-	void		*token_tree;// Apuntador al árbol (AST)
+	t_ast_node	*token_tree;// Apuntador al árbol (AST)
 	t_node_type	type;// Tipo de nodo en el árbol de sintaxis
 	t_exec		*exec;// Estructura que guarda el estado de ejecución
 
@@ -45,7 +45,7 @@ int	main(void)
 		ft_configure_terminal();// Configura el terminal para la entrada del usuario
 		
 		// Parsear la entrada del usuario y construir el árbol de sintaxis (AST)
-		type = parser(&token_tree, exec);
+		type = parser((t_ast_node **)&token_tree, exec);
 		
 		restore_terminal(1);	// Restaura la configuración original del terminal
 		exec->type = type;		// Almacena el tipo de nodo en exec

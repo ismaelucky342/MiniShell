@@ -5,37 +5,37 @@ NC = \033[0m
 
 NAME = minishell
 
-SRC		=	src/execution/builtins/cd.c\
-			src/execution/nodes/pipes.c\
-			src/execution/utils/error.c\
-			src/main/cleanup.c\
-			src/main/minishell.c\
-			src/main/signals/configure_terminal.c\
-			src/main/signals/exec_handler.c\
-			src/main/signals/parse_handler.c\
-			src/main/signals/restore_terminal.c\
-			src/parser/ast_tree/ast_utils/delete_parentesis.c\
-			src/parser/ast_tree/ast_utils/ft_ast_new_node.c\
-			src/parser/ast_tree/ast_utils/ft_ast_new_redir_node.c\
-			src/parser/ast_tree/ast_utils/ft_ast_node_delete.c\
-			src/parser/ast_tree/heredoc/ast_walker.c\
-			src/parser/ast_tree/heredoc/cmd_handle.c\
-			src/parser/ast_tree/heredoc/ft_get_line.c\
-			src/parser/ast_tree/heredoc/heredoc.c\
-			src/parser/ast_tree/heredoc/redir_handle.c\
-			src/parser/ast_tree/redirection.c\
-			src/parser/ast_tree/tree_errors.c\
-			src/parser/ast_tree/pipe_line.c\
-			src/parser/checker/check_quotes.c\
-			src/parser/checker/check_unclosed.c\
-			src/parser/checker/check.c\
-			src/parser/env/env_hash.c\
-			src/parser/env/print_env.c\
-			src/parser/parser.c\
-			src/parser/prompt/prompt_colors.c\
-			src/parser/prompt/prompt.c\
-			src/parser/tokens/tokenizador.c\
-			src/parser/tokens/t_utils.c\
+SRC		=	src/execution/builtins/cd.c \
+			src/execution/nodes/pipes.c \
+			src/execution/utils/error.c \
+			src/main/cleanup.c \
+			src/main/minishell.c \
+			src/main/signals/configure_terminal.c \
+			src/main/signals/exec_handler.c \
+			src/main/signals/parse_handler.c \
+			src/main/signals/restore_terminal.c \
+			src/parser/ast_tree/ast_utils/delete_parenthesis.c \
+			src/parser/ast_tree/ast_utils/ft_ast_new_node.c \
+			src/parser/ast_tree/ast_utils/ft_ast_new_redir_node.c \
+			src/parser/ast_tree/ast_utils/ft_ast_node_delete.c \
+			src/parser/ast_tree/heredoc/ast_walker.c \
+			src/parser/ast_tree/heredoc/cmd_handle.c \
+			src/parser/ast_tree/heredoc/ft_get_line.c \
+			src/parser/ast_tree/heredoc/heredoc.c \
+			src/parser/ast_tree/heredoc/redir_handle.c \
+			src/parser/ast_tree/redirection.c \
+			src/parser/ast_tree/tree_errors.c \
+			src/parser/ast_tree/pipe_line.c \
+			src/parser/checker/check_quotes.c \
+			src/parser/checker/check_unclosed.c \
+			src/parser/checker/check.c \
+			src/parser/env/env_hash.c \
+			src/parser/env/print_env.c \
+			src/parser/parser.c \
+			src/parser/prompt/prompt_colors.c \
+			src/parser/prompt/prompt.c \
+			src/parser/tokens/tokenizador.c \
+			src/parser/tokens/t_utils.c \
 
 OBJ_DIR  = objects
 

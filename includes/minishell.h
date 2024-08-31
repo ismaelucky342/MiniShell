@@ -81,9 +81,9 @@ typedef struct s_cmd
 typedef struct s_ast_node
 {
 	t_node_type			type;
-	void				*value;// Puede ser un comando, redirección, etc.
-	struct s_ast_node	**children;// Array de punteros a hijos
-	int					children_count;// Número de hijos
+	void				*value; // Puede ser un comando, redirección, etc.
+	struct s_ast_node	**children; // Array de punteros a hijos
+	int					children_count; // Número de hijos
 }	t_ast_node;
 
 typedef struct s_exec
@@ -114,7 +114,7 @@ t_node_type		split_by_operator(t_token *token_last, t_ast_node **head);
 t_node_type		tokens_to_tree(t_token *tokens, t_ast_node **head);
 t_ast_node		*ft_ast_new_node(void);
 t_ast_node		*new_redir_node(void);
-t_token			*delete_parens(t_token *token_first);
+t_token			*delete_parents(t_token *token_first);
 
 // Pipeline functions
 int				count_words(t_token *tokens);
@@ -130,7 +130,7 @@ t_node_type		err_pars(char *message, t_cmd *redir, t_token **tokens);
 void			print_syntax_err(t_token *token);
 void			free_str_array(char **arr);
 void			cmd_free(t_cmd *cmd);
-void			ft_ast_node_delete(t_ast_node *node, t_node_type type);
+void			ft_ast_node_delete(void *node, t_node_type type);
 void			free_env(char ***env);
 
 // Debug functions
@@ -151,7 +151,7 @@ void			token_delete(t_token **tokens);
 void			token_delete_all(t_token **tokens);
 t_token			*token_add(t_token *tokens, t_token_type token_type);
 t_token			*token_split(t_token *tokens, int direction);
-t_token			*skip_parens(t_token *tokens, int direction);
+t_token			*skip_parenthesis(t_token *tokens, int direction);
 
 // Command execution functions
 t_node_type		parser(t_ast_node **token_tree, t_exec *exec);

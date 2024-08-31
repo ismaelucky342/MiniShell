@@ -98,7 +98,7 @@ t_token	*token_split(t_token *tokens, int direction)
 	return (tmp);
 }
 
-t_token	*parentesistesis(t_token *tokens, int direction)
+t_token	*skip_parenthesis(t_token *tokens, int direction)
 {
 	int		level = 1;
 
@@ -111,9 +111,9 @@ t_token	*parentesistesis(t_token *tokens, int direction)
 
 		if (tokens)
 		{
-			if (tokens->type == T_Lparentesis)
+			if (tokens->type == T_Lparenthesis)
 				level += direction;
-			else if (tokens->type == T_Rparentesis)
+			else if (tokens->type == T_Rparenthesis)
 				level -= direction;
 		}
 	}

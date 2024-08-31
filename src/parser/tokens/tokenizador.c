@@ -25,9 +25,9 @@ t_token_type	t_type_process(const char *string)
 	if (!ft_strncmp(string, "<<", 2))
 		return (T_REDIR_HEREDOC);
 	if (!ft_strncmp(string, "(", 1))
-		return (T_Lparentesis);
+		return (T_Lparenthesis);
 	if (!ft_strncmp(string, ")", 1))
-		return (T_Rparentesis);
+		return (T_Rparenthesis);
 	if (!ft_strncmp(string, "|", 1))
 		return (T_PIPE);
 	if (!ft_strncmp(string, ">", 1))

@@ -44,7 +44,6 @@ void				ft_char2bin(unsigned char c, char *ret, size_t *j);
 char				*ft_add_fs(char *start, char c);
 int					ft_ishexdigit(int c);
 int					ft_isspace(int c);
-void				display_error(char *error_msg, t_bool yeet);
 void				free_2d(char **arr);
 int64_t				ft_atoll(const char *str);
 int					ft_sqrt(int number);
@@ -96,11 +95,13 @@ char				*ft_itoa(int n);
 char				*ft_strjoin(const char *s1, const char *s2);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_substr(char const *s, unsigned int start, size_t len);
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_front(t_list **list, t_list *new);
 int					ft_lstsize(t_list *lst);

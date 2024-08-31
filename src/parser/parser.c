@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/31 18:38:41 by dgomez-l          #+#    #+#             */
+/*   Updated: 2024/08/31 18:38:42 by dgomez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/minishell.h"
 
-static char *get_user_prompt(t_exec *exec)
+static char	*get_user_prompt(t_exec *exec)
 {
     char *prompt;
     char *prompt_tmp;
@@ -15,7 +27,7 @@ static char *get_user_prompt(t_exec *exec)
     return (prompt_tmp);
 }
 
-static char *create_prompt_with_folder(char *folder, char *user_prompt)
+static char	*create_prompt_with_folder(char *folder, char *user_prompt)
 {
     char *prompt_tmp;
     char *prompt;
@@ -33,7 +45,7 @@ static char *create_prompt_with_folder(char *folder, char *user_prompt)
     return (prompt_tmp);
 }
 
-char *create_the_prompt(t_exec *exec)
+char	*create_the_prompt(t_exec *exec)
 {
     char *cwd;
     char *folder;
@@ -54,7 +66,7 @@ char *create_the_prompt(t_exec *exec)
 }
 
 
-t_node_type parser(void **ast_root, t_exec *exec)
+t_node_type	parser(void **ast_root, t_exec *exec)
 {
     char *command;
     t_token *tokens;
