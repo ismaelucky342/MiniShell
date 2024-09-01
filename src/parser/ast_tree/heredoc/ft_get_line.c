@@ -12,7 +12,7 @@
 
 #include "../../../../includes/minishell.h"
 
-char	*get_line(void)
+char	*ft_get_line(void)
 {
 	char	*line;
 	char	*tmp;
