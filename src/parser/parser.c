@@ -66,7 +66,7 @@ char	*create_the_prompt(t_exec *exec)
 }
 
 
-t_node_type	parser(void **ast_root, t_exec *exec)
+t_node_type	parser(t_ast_node **ast_root, t_exec *exec)
 {
     char *command;
     t_token *tokens;
