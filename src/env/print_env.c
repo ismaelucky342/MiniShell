@@ -12,28 +12,28 @@
 
 #include "../../../includes/minishell.h"
 
-void	ft_print_env(t_hashtable *env_hashtable, int is_export)
+void ft_print_env(t_hashtable *env_hashtable, int is_export)
 {
-	int			index;
-	t_element	*env_element;
+    int index;
+    t_element *env_element;
 
-	index = 0;
-	if (!env_hashtable)
-		return ;
-	while (index < env_hashtable->length)
-	{
-		if (env_hashtable->element_array[index])
-		{
-			env_element = env_hashtable->element_array[index];
-			if (is_export)
-				printf("export ");
-			printf("%s=", env_element->key);
-			if (is_export)
-				printf("\"%s\"", env_element->value);
-			else
-				printf("%s", env_element->value);
-			printf("\n");
-		}
-		index++;
-	}
+    if (!env_hashtable)
+        return;
+
+    for (index = 0; index < env_hashtable->size; index++)
+    {
+        env_element = env_hashtable->element_array[index];
+        while (env_element)
+        {
+            if (is_export)
+                printf("export ");
+            printf("%s=", env_element->key);
+            if (is_export)
+                printf("\"%s\"", env_element->value);
+            else
+                printf("%s", env_element->value);
+            printf("\n");
+            env_element = env_element->next; // Manejo de colisiones
+        }
+    }
 }

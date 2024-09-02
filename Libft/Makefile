@@ -77,6 +77,20 @@ SRC =	checkD_bf.c \
 		ft_toupper.c \
 		ft_unsigned.c \
 		ins_sort.c \
+		ft_del_list_np.c \
+		ft_new_node.c \
+		ft_add_node_end_np.c \
+		ft_add_node_f_nextto_np.c  \
+		ft_add_node_f_prevto_np.c  \
+		ft_add_node_nextto_np.c \
+		ft_add_node_prevto_np \
+		ft_add_node_start_np.c \
+		ft_del_node_end_np.c \
+		ft_del_node_np.c \
+		ft_del_node_start_np.c \
+		ft_foreach_node_f_np.c \
+		ft_swap_node_np.c \
+		mmalloc.c
 		
 NAME = libft.a
 

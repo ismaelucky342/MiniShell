@@ -19,12 +19,44 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <mmalloc.h>
+# include <stdarg.h>
+
+# define DLL_SUCCESS 0
+# define DLL_FAILURE 1
+
+/*---------------------------------------------LIST AND MMALLOC------------------------------------------------*/
+
+typedef struct s_list
+{
+	void			*data;
+	struct s_list	*next;
+}					t_list;
+
+extern t_list		*g_all_malloc;
+
+void				*mmalloc(unsigned int size);
+void				*mrealloc(void *ptr, size_t size);
+int					free_all_malloc(void);
+int					mfree(void **to_free);
+
+/*--------------------------------------------DOUBLE LINKED LIST--------------------------------------------------*/
+
+typedef struct						s_pattern_list_np
+{
+	struct s_pattern_list_np		*next;
+	struct s_pattern_list_np		*prev;
+}									t_pattern_list_np;
+
+typedef struct s_pattern_list_np	t_pnp;
+
+/*-------------------------------------------------BOOLEAN--------------------------------------------------------*/
 
 typedef int			t_bool;
 # define TRUE 1
 # define FALSE 0
 
-/*STRUCT HASH */
+/*---------------------------------------------STRUCT HASH --------------------------------------------------*/
 typedef struct s_element
 {
 	char			*key;
@@ -36,6 +68,7 @@ typedef struct s_hashtable
 	t_element		**element_array;
 	int				length;
 }					t_hashtable;
+
 
 // new functions
 void				ft_bin2ascii(char *s);
@@ -96,11 +129,6 @@ char				*ft_strjoin(const char *s1, const char *s2);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
 
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_front(t_list **list, t_list *new);
@@ -130,5 +158,33 @@ int					ft_arraylen(char **str);
 int					ft_next_prime(int nbr);
 int					ft_index(char *str, char c);
 int					ft_is_prime(int nbr);
+
+/*DOUBLE LINKED LIST FILES*/
+void								ft_del_list_np(t_pnp **begin_list);
+void								*ft_new_node(
+										size_t size, void (*f)(void *, int,
+										va_list), int nb_arg, ...);
+void								ft_add_node_end_np(t_pnp **begin_list,
+	t_pnp *new);
+void								ft_add_node_f_nextto_np(
+	t_pnp **begin_list, t_pnp *new, int(*f)(t_pnp *curr));
+void								ft_add_node_f_prevto_np(
+	t_pnp **begin_list, t_pnp *new, int(*f)(t_pnp *curr));
+void								ft_add_node_nextto_np(t_pnp *prev,
+	t_pnp *new);
+void								ft_add_node_prevto_np(t_pnp **start,
+	t_pnp *next, t_pnp *new);
+void								ft_add_node_start_np(t_pnp **begin_list,
+	t_pnp *new);
+void								ft_del_node_end_np(t_pnp **begin_list,
+	void (*f)(t_pnp *curr));
+void								ft_del_node_np(t_pnp **begin_list,
+	t_pnp *del, void (*f)(t_pnp *curr));
+void								ft_del_node_start_np(t_pnp **begin_list,
+	void (*f)(t_pnp *curr));
+void								ft_foreach_node_f_np(t_pnp **begin_list,
+	int(*f)(t_pnp *curr));
+void								ft_swap_node_np(t_pnp **begin_list,
+	t_pnp *node_a, t_pnp *node_b);
 
 #endif
