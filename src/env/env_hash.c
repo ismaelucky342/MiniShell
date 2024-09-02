@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_hash.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apollo <apollo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:48:50 by ismherna          #+#    #+#             */
-/*   Updated: 2024/07/21 13:48:50 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:09:58 by apollo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void ft_env2hashtable(char **env, t_hashtable *hashtable, int array_len)
 {

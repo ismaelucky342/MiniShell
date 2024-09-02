@@ -1,6 +1,8 @@
 #ifndef AST_H
 # define AST_H
 # include "minishell.h"
+# include "slexer.h"
+# include "tokens.h"
 /*------------------------------------------AST STRUCTURES AREA--------------------------------------------------*/
 
 /*===============================================UTILS============================================================*/
@@ -90,8 +92,7 @@ typedef struct s_pipe_node
 	struct s_pipe_node *next; // Apunta al siguiente nodo en la lista
 	struct s_pipe_node *prev; // Apunta al nodo anterior en la lista
 	int pipe_fds[2];         
-		// Descriptores del pipe (pipe_fds[0] para lectura,
-		pipe_fds[1] para escritura)
+		// Descriptores del pipe (pipe_fds[0] para lectura,pipe_fds[1] para escritura)
 }					t_pipe_node;
 
 // Estructura para almacenar los identificadores de procesos en una lista doblemente enlazada
@@ -130,7 +131,7 @@ typedef enum e_binary_option
 /*---------------------------------------AST FILES------------------------------------------*/
 
 int					add_token_into_node(
-	t_astb *tool, t_token **tokendest, t_ast_token type);
+	t_astb *tool, t_token **tokendest, t_ast_tokens type);
 void				set_root_to_node(t_astb *tool, t_ast_node *node);
 void				search_place_node(
 	t_astb *tool, t_ast_node *node, t_token_type_key type);
@@ -147,7 +148,7 @@ t_ast_node				*ast_builder(int sloc);
 
 /*---------------------------------------AST INTERPRETER FILES------------------------------*/
 
-int						asti_error(char *name, int opt);
+int						astTOKEN_error(char *name, int opt);
 int						node__cmd_controller(t_ast_node *cmd);
 int						node__controller(t_ast_node *node);
 int						ast_interpreter(t_ast_node *ast);

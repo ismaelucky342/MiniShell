@@ -9,7 +9,8 @@ typedef enum e_token_type
 	TYPE_SEMICOLON,
 	TYPE_DOUBLE_QUOTE,
 	TYPE_LEFT_PAREN,
-	TYPE_NONE TYPE_ERR,
+	TYPE_NONE,
+    TYPE_ERR,
 	TYPE_END_TOKEN,
 	TYPE_SPACE,
 	TYPE_RIGHT_PAREN,
@@ -70,7 +71,7 @@ typedef struct s_token_map
 	t_token_type		idx;
 }						t_token_map;
 
-extern t_token			g_defined_tokens[NUM_DEFINED_TOKENS];
+extern t_token		g_defined_tokens[NUM_DEFINED_TOKENS];
 extern t_token_string	g_token_str[NUM_DEFINED_TOKENS];
 extern t_token_map		g_token_map[NUM_DEFINED_TOKENS];
 
@@ -83,7 +84,7 @@ int						token__iseot(t_token *token);
 int						token__isword(t_token *token);
 int						token__issep(t_token *token);
 int						token__isredir(t_token *token);
-int						token__isparen(t_token *token);
+int						token__isparenthesis(t_token *token);
 void					token__print(t_token *t);
 
 #endif

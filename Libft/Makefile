@@ -83,14 +83,21 @@ SRC =	checkD_bf.c \
 		ft_add_node_f_nextto_np.c  \
 		ft_add_node_f_prevto_np.c  \
 		ft_add_node_nextto_np.c \
-		ft_add_node_prevto_np \
+		ft_add_node_prevto_np.c \
 		ft_add_node_start_np.c \
 		ft_del_node_end_np.c \
 		ft_del_node_np.c \
 		ft_del_node_start_np.c \
 		ft_foreach_node_f_np.c \
 		ft_swap_node_np.c \
-		mmalloc.c
+		mmalloc.c	\
+		ft_dprintf.c \
+		ft_strnlen.c \
+		skip_atoi.c \
+		to_c.c \
+		to_s.c \
+		to_nbr.c \
+		to_n.c 
 		
 NAME = libft.a
 

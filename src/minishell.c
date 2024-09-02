@@ -6,7 +6,7 @@
 /*   By: apollo <apollo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:41:41 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/02 12:47:37 by apollo           ###   ########.fr       */
+/*   Updated: 2024/09/02 16:20:06 by apollo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,21 @@ void	print_prompt(int sloc)
 	(!g_exit && sloc) ? g_exit = sloc : 0;
 	if (!getcwd(prompt, LINE_MAX))
 	{
-		ft_dprintf(2, "%s➜  %sminishell > %s", !g_exit ? C_G_GREEN : C_G_RED,
-			C_G_CYAN, C_RES);
+		ft_dprintf(2, "%s➜  %sminishell > %s", !g_exit ? COLOR_BOLD_GREEN_TEXT : COLOR_BOLD_RED_TEXT,
+			COLOR_BOLD_CYAN_TEXT, COLOR_RESET);
 		return ;
 	}
 	i = -1;
 	while (prompt[++i])
 		if (prompt[i] == '/')
 			last = i + 1;
-	ft_dprintf(2, "%s➜  %s%s > %s", !g_exit ? C_G_GREEN : C_G_RED, C_G_CYAN,
-		&prompt[last], C_RES);
+	ft_dprintf(2, "%s➜  %s%s > %s", !g_exit ? COLOR_BOLD_GREEN_TEXT : COLOR_BOLD_RED_TEXT, COLOR_BOLD_CYAN_TEXT,
+		&prompt[last], COLOR_RESET);
 }
 
 void	sig_handler(int signo)
 {
-	if (signo == SIGINT && ft_dprintf(STDOUT, "\n"))
+	if (signo == SIGINT && ft_dprintf(STDOUT_FILENO, "\n"))
 	{
 		g_reset = 1;
 		g_exit = 130;
@@ -59,6 +59,9 @@ int	main(int ac, char **av, char **env)
 	int			sloc;
 	t_ast_node		*ast;
 	t_hashtable	*env_hashtable;
+
+	(void)ac;
+	(void)av;
 
 	// Inicializa el entorno usando la tabla hash
 	env_hashtable = ft_create_envhash(env);
@@ -85,7 +88,7 @@ int	main(int ac, char **av, char **env)
 #endif
 			sloc = ast_interpreter(ast);
 			g_exit = sloc;
-			node__del(&ast, RECURCIVLY);
+			node__del(&ast, CLEAN_NODE_AND_CHILDS);
 		}
 		else
 		{
