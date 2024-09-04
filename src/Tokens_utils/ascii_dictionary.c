@@ -67,7 +67,7 @@ t_character_type    g_token_ascii_table[256] = {
 */
 
 t_token    g_defined_tokens[NUM_DEFINED_TOKENS] = {
-    {NULL, NULL, TOKEN_ERR, "", 0, 0},
+    {NULL, NULL, TOKEN_ERROR, "", 0, 0},
     {NULL, NULL, TOKEN_END_TOKEN, "", 0, 0},
     {NULL, NULL, TOKEN_SPACE, "", 0, 0},
     {NULL, NULL, TOKEN_IGNORE, "", 0, 0},
@@ -89,7 +89,7 @@ t_token    g_defined_tokens[NUM_DEFINED_TOKENS] = {
 };
 
 t_token_string    g_token_str[NUM_DEFINED_TOKENS] = {
-    {TOKEN_ERR, "ERR"},
+    {TOKEN_ERROR, "ERR"},
     {TOKEN_END_TOKEN, "EOT"},
     {TOKEN_SPACE, "SPACE"},
     {TOKEN_IGNORE, "PASS"},
@@ -111,7 +111,7 @@ t_token_string    g_token_str[NUM_DEFINED_TOKENS] = {
 };
 
 t_token_map    g_token_map[NUM_DEFINED_TOKENS] = {
-    {TOKEN_ERR, TYPE_ERR},
+    {TOKEN_ERROR, TYPE_ERROR},
     {TOKEN_END_TOKEN, TYPE_END_TOKEN},
     {TOKEN_SPACE, TYPE_SPACE},
     {TOKEN_IGNORE, TYPE_IGNORE},

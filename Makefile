@@ -13,14 +13,21 @@ SRC		=	src/env/env_hash.c \
 			src/ast_tree/ft_node_new.c	\
 			src/ast_tree/ft_tree_build_err.c \
 			src/env/print_env.c \
-			src/tokens/ascii_dictionary.c \
-			src/tokens/ft_token_copy.c \
-			src/tokens/ft_token_del.c \
-			src/tokens/ft_token_list_del.c \
-			src/tokens/ft_token_new.c \
-			src/tokens/ft_token_parenthesis.c \
-			src/tokens/ft_token_type.c	\
+			src/Tokens_utils/ascii_dictionary.c \
+			src/Tokens_utils/ft_token_copy.c \
+			src/Tokens_utils/ft_token_del.c \
+			src/Tokens_utils/ft_token_list_del.c \
+			src/Tokens_utils/ft_token_new.c \
+			src/Tokens_utils/ft_token_parenthesis.c \
+			src/Tokens_utils/ft_token_type.c	\
 			src/minishell.c		\
+			src/Tokens_utils/Tokenizer/ft_tokenizer_refill_line.c	\
+			src/Tokens_utils/Tokenizer/tokenizer_actions.c	\
+			src/Tokens_utils/Tokenizer/tokenizer_delete.c	\
+			src/Tokens_utils/Tokenizer/tokenizer_errors.c	\
+			src/Tokens_utils/Tokenizer/tokenizer_new.c	\
+			src/Tokens_utils/Tokenizer/tokenizer_type.c	\
+			src/Tokens_utils/Tokenizer/tokenizer.c
 
 OBJ_DIR  = objects
 
@@ -60,7 +67,9 @@ $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)/src
 	@mkdir $(OBJ_DIR)/src/env
 	@mkdir $(OBJ_DIR)/src/ast_tree
-	@mkdir $(OBJ_DIR)/src/tokens
+	@mkdir $(OBJ_DIR)/src/Tokens_utils
+	@mkdir $(OBJ_DIR)/src/Tokens_utils/Tokenizer
+
 
 	@echo "$(GREEN)-------------------- Object Directory Done ---------------------$(NC)"
 

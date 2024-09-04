@@ -3,13 +3,13 @@
 int		init_tool(t_astb *tool, int sloc)
 {
 	ft_bzero(tool, sizeof(t_astb));
-	if (!(tool->ast_lexer = lexer__new(sloc)))
+	if (!(tool->ast_tokenizer = ft_tokenizer_new(sloc)))
 		return (ERROR);
-	if ((tool->current_token = lexer__get_next_token(tool->ast_lexer)) == NULL)
+	if ((tool->current_token = ft_tokenizer_get_next_token(tool->ast_tokenizer)) == NULL)
 		return (ERROR);
 	if (!tool->current_token || tool->current_token->type == TOKEN_END_TOKEN)
 	{
-		lexer__del(&tool->ast_lexer);
+		ft_tokenizer_delete(&tool->ast_tokenizer);
 		return (EMPTY);
 	}
 	tool->previous_token = NULL;
@@ -28,9 +28,9 @@ t_ast_node	*ast_builder(int sloc)
 		return (ast_builder(sloc));
 	if (ret != ERROR && process(&tool) != ERROR)
 	{
-		lexer__del(&tool.ast_lexer);
+		ft_tokenizer_delete(&tool.ast_tokenizer);
 		return (tool.ast_tree);
 	}
-	lexer__del(&tool.ast_lexer);
+	ft_tokenizer_delete(&tool.ast_tokenizer);
 	return (NULL);
 }

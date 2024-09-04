@@ -80,7 +80,7 @@ static int	ft_cont(char *buf, const char **format, va_list ap, int i)
 	return (i);
 }
 
-int			ft_dprintf(int fd, const char *format, ...)
+int			ft_printf_fd(int fd, const char *format, ...)
 {
 	char	buf[PF_BUFF_SIZE];
 	va_list	ap;

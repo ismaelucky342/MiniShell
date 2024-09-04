@@ -5,7 +5,7 @@ int		coincidence(t_astb *tool, t_token_type_key type)
 	if (!token__istype(tool->current_token, type))
 		return (astb_error(tool, BAD_TOKEN));
 	tool->previous_token = tool->current_token;
-	if ((tool->current_token = lexer__get_next_token(tool->ast_lexer)) == NULL)
+	if ((tool->current_token = ft_tokenizer_get_next_token(tool->ast_tokenizer)) == NULL)
 		return (ERROR);
 	return (SUCCESS);
 }

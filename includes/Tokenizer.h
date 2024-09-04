@@ -1,8 +1,9 @@
-#ifndef SLEXER_H
-# define SLEXER_H
+#ifndef TOKENIZER_H
+# define TOKENIZER_H
 #include "minishell.h"
 #include "tokens.h"
-/*-------------------------------------LEXER STRUCT--------------------------------------------------------------*/
+/*-------------------------------------TOKENIZER STRUCT--------------------------------------------------------------*/
+int					g_reset;
 
 typedef enum e_foreach_option
 {
@@ -23,7 +24,7 @@ typedef enum e_error_code
 		// Característica no soportada para subshells
 	ERROR_UNSUPPORTED_FEATURE_HEREDOC, 
 		// Característica no soportada para heredoc
-	ERROR_GNL                          
+	ERROR_GET_NEXT_LINE                          
 		// Error en la función Get Next Line (GNL)
 }					t_error_code;
 
@@ -36,7 +37,7 @@ typedef enum e_debug_option
 	DEBUG_PRINT_POSITION_ONLY    // Marca y muestra solo la posición
 }					t_debug_option;
 
-typedef struct s_lexer
+typedef struct s_tokenizer
 {
 	char *current_line;   // Línea actual que se está analizando
 	int line_length;      // Longitud de la línea
@@ -45,7 +46,7 @@ typedef struct s_lexer
 	char previous_char;   // Carácter anterior al actual
 	char current_char;    // Carácter actual que se está analizando
 	char line_start_char; // Carácter de inicio para el análisis de la línea
-}					t_lexer;
+}					t_tokenizer;
 
 typedef enum e_character_type
 {
@@ -68,27 +69,28 @@ typedef enum e_character_type
 	CHAR_TYPE_NONE = 0x8000             // Ningún tipo de carácter específico
 }					t_character_type;
 
-/*-------------------------------------LEXER FILES---------------------------------------------------------------*/
+/*-------------------------------------TOKENIZER FILES---------------------------------------------------------------*/
 
+t_token				*ft_tokenizer_handle_defined_token(t_tokenizer *tz);
 void				print_prompt(int sloc);
-t_lexer				*lexer__new(int sloc);
-void				lexer__del(t_lexer **lex);
-int					lexer__error(int opt, t_lexer *lex);
-int					lexer__istype(t_lexer *lex, t_character_type type);
-int					lexer__istype_start(t_lexer *lex, t_character_type type);
-char				lexer__peek(t_lexer *lex);
-int					lexer__isword(t_lexer *lex);
-int					lexer__isquote(t_lexer *lex);
-int					lexer__advance(t_lexer *lex, int n);
-int					lexer__pass_quotes(t_lexer *lex, t_character_type type);
-t_token				*lexer__token_grabber(t_lexer *lex, t_token_type_key type);
-int					lexer__refill_line(t_lexer *lex, int sloc);
-t_token				*lexer__get_next_token(t_lexer *lex);
-void				lexer__set_start_pos(t_lexer *lex, int new_pos);
-int					unsupported_feature(t_lexer *lex, int *type, char curr,
+t_tokenizer				*ft_tokenizer_new(int sloc);
+void				ft_tokenizer_delete(t_tokenizer **tz);
+int					ft_tokenizer_error(int opt, t_tokenizer *tz);
+int					ft_tokenizer_istype(t_tokenizer tz, t_character_type type);
+int					ft_tokenizer_istype_start(t_tokenizer tz, t_character_type type);
+char				ft_tokenizer_peek(t_tokenizer tz);
+int					ft_tokenizer_isword(t_tokenizer tz);
+int					ft_tokenizer_isquote(t_tokenizer tz);
+int					ft_tokenizer_advance(t_tokenizer *tz, int n);
+int					ft_tokenizer_pass_quotes(t_tokenizer *tz, t_character_type type);
+t_token				*ft_tokenizer_token_grabber(t_tokenizer *tz, t_token_type_key type);
+int					ft_tokenizer_refill_line(t_tokenizer *tz, int sloc);
+t_token				*ft_tokenizer_get_next_token(t_tokenizer *tz);
+void				ft_tokenizer_set_start_pos(t_tokenizer *tz, int new_pos);
+int					unsupported_feature(t_tokenizer *tz, int *type, char curr,
 						char next);
-int					lexer__deftoken_double(t_lexer *lex, int *len, char curr,
+int					ft_tokenizer_deftoken_double(t_tokenizer *tz, int *len, char curr,
 						char next);
-int					lexer__isdefined_token(t_lexer *lex, int adv);
+int					ft_tokenizer_isdefined_token(t_tokenizer *tz, int adv);
 
 #endif

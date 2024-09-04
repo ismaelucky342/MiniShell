@@ -1,7 +1,7 @@
 #ifndef AST_H
 # define AST_H
 # include "minishell.h"
-# include "slexer.h"
+# include "Tokenizer.h"
 # include "tokens.h"
 /*------------------------------------------AST STRUCTURES AREA--------------------------------------------------*/
 
@@ -57,7 +57,7 @@ typedef struct ast_ast_node
 typedef struct s_astb
 {
 	t_ast_node		*ast_tree;
-	t_lexer			*ast_lexer;
+	t_tokenizer			*ast_tokenizer;
 	t_token			*current_token;
 	t_token			*previous_token;
 	t_ast_node		*tree_possition;

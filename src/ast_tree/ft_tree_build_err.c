@@ -5,9 +5,9 @@ int		astb_error(t_astb *tool, int opt)
 	if (opt == BAD_TOKEN)
 	{
 		if (tool->current_token->type == TOKEN_END_TOKEN)
-			ft_dprintf(2, "minishell: syntax error: unexpected end of file\n");
+			ft_printf_fd(2, "minishell: syntax error: unexpected end of file\n");
 		else
-			ft_dprintf(2,
+			ft_printf_fd(2,
 				"minishell: syntax error near unexpected token \'%s\'\n",
 				tool->current_token->value);
 	}

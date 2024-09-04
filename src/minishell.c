@@ -29,7 +29,7 @@ void	print_prompt(int sloc)
 	(!g_exit && sloc) ? g_exit = sloc : 0;
 	if (!getcwd(prompt, LINE_MAX))
 	{
-		ft_dprintf(2, "%s➜  %sminishell > %s", !g_exit ? COLOR_BOLD_GREEN_TEXT : COLOR_BOLD_RED_TEXT,
+		ft_printf_fd(2, "%s➜  %sminishell > %s", !g_exit ? COLOR_BOLD_GREEN_TEXT : COLOR_BOLD_RED_TEXT,
 			COLOR_BOLD_CYAN_TEXT, COLOR_RESET);
 		return ;
 	}
@@ -37,20 +37,20 @@ void	print_prompt(int sloc)
 	while (prompt[++i])
 		if (prompt[i] == '/')
 			last = i + 1;
-	ft_dprintf(2, "%s➜  %s%s > %s", !g_exit ? COLOR_BOLD_GREEN_TEXT : COLOR_BOLD_RED_TEXT, COLOR_BOLD_CYAN_TEXT,
+	ft_printf_fd(2, "%s➜  %s%s > %s", !g_exit ? COLOR_BOLD_GREEN_TEXT : COLOR_BOLD_RED_TEXT, COLOR_BOLD_CYAN_TEXT,
 		&prompt[last], COLOR_RESET);
 }
 
 void	sig_handler(int signo)
 {
-	if (signo == SIGINT && ft_dprintf(STDOUT_FILENO, "\n"))
+	if (signo == SIGINT && ft_printf_fd(STDOUT_FILENO, "\n"))
 	{
 		g_reset = 1;
 		g_exit = 130;
 		print_prompt(0);
 	}
 	else if (signo == SIGQUIT)
-		ft_dprintf(2, "\b\b  \b\b");
+		ft_printf_fd(2, "\b\b  \b\b");
 }
 
 

@@ -10,7 +10,7 @@ typedef enum e_token_type
 	TYPE_DOUBLE_QUOTE,
 	TYPE_LEFT_PAREN,
 	TYPE_NONE,
-    TYPE_ERR,
+    TYPE_ERROR,
 	TYPE_END_TOKEN,
 	TYPE_SPACE,
 	TYPE_RIGHT_PAREN,
@@ -28,7 +28,7 @@ typedef enum e_token_type
 
 typedef enum e_token_type_key
 {
-	TOKEN_ERR = 0x0,
+	TOKEN_ERROR = 0x0,
 	TOKEN_RIGHT_PAREN = 0x80,
 	TOKEN_REDIR_INPUT = 0x100,
 	TOKEN_SEMICOLON = 0x8000,

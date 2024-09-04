@@ -15,7 +15,7 @@
 
 # include "../Libft/libft.h"
 # include "AST.h"
-# include "slexer.h"
+# include "Tokenizer.h"
 # include "tokens.h"
 # include <limits.h> 
 # include <dirent.h>
@@ -35,7 +35,6 @@
 #endif
 
 # define BUILTINS 7
-int					g_reset;
 unsigned int		g_exit;
 
 

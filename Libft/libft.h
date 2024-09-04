@@ -4,17 +4,30 @@
 
 # include <stdarg.h>
 # include <stddef.h>
+#include <limits.h>
 # include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define PF_BUFF_SIZE 16384
-# define C_SPEC "cspdiuxX%n"
-# define NULLSTR "(null)"
+# include <fcntl.h>
 
 # define DLL_SUCCESS 0
 # define DLL_FAILURE 1
 
+/*------------------------------------------FT_PRINTF DEFINES----------------------------------------------*/
+
+# define PF_BUFF_SIZE 16384
+# define C_SPEC "cspdiuxX%n"
+# define NULLSTR "(null)"
+
+/*------------------------------------------GET NEXT LINE DEFINES----------------------------------------------*/
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
+# endif
 /*---------------------------------------------PRINTF STRUCTS--------------------------------------------------*/
 
 typedef enum e_ft_printf_dir
@@ -93,14 +106,14 @@ void	ins_sort(int array[], int n);
 /*----------------------------------------------PRINTF--------------------------------------------------------*/
 // dprintf update 
 int	ft_printf(const char *format, ...);
-int	ft_dprintf(int fd, const char *format, ...);
+int	ft_printf_fd(int fd, const char *format, ...);
 int	ft_strnlen(char *str, int n);
 int	skip_atoi(const char **s);
 int	to_c(char *buf, int *dir, va_list ap);
 int	to_s(char *buf, int *dir, va_list ap);
 int	to_nbr(char *buf, int *dir, va_list ap);
 void	to_n(int i, int *dir, va_list ap);
-int	ft_dprintf(int fd, const char *format, ...);
+int	ft_printf_fd(int fd, const char *format, ...);
 //simple printf
 int	ft_print_char(int character);
 int	ft_printf(const char *str, ...);
@@ -191,5 +204,16 @@ void	ft_del_node_np(t_pnp **begin_list, t_pnp *del, void (*f)(t_pnp *curr));
 void	ft_del_node_start_np(t_pnp **begin_list, void (*f)(t_pnp *curr));
 void	ft_foreach_node_f_np(t_pnp **begin_list, int (*f)(t_pnp *curr));
 void	ft_swap_node_np(t_pnp **begin_list, t_pnp *node_a, t_pnp *node_b);
+
+/*----------------------------------------------------GET NEXT LINE ------------------------------------------------------------*/
+//char	*get_next_line(int fd); V1
+char	*get_next_line_v2(void); //V2
+char	*get_next_line_bonus(int fd);
+char	*get_next_line_v1(int fd);
+char	*ft_strdup_gnl(char *s);
+size_t	ft_strlen_gnl(char *s);
+char	*ft_substr_gnl(char *s, unsigned int start, size_t len);
+char	*ft_strjoin_gnl(char *s1, char *s2);
+void	fill_str_gnl(char *res, char *s1, char *s2);
 
 #endif

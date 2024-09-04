@@ -91,13 +91,17 @@ SRC =	checkD_bf.c \
 		ft_foreach_node_f_np.c \
 		ft_swap_node_np.c \
 		mmalloc.c	\
-		ft_dprintf.c \
+		ft_printf_fd.c \
 		ft_strnlen.c \
 		skip_atoi.c \
 		to_c.c \
 		to_s.c \
 		to_nbr.c \
-		to_n.c 
+		to_n.c \
+		get_next_line_v1.c \
+		get_next_line_v2.c \
+		get_next_line_utils.c \
+		get_next_line_bonus.c 
 		
 NAME = libft.a
 
