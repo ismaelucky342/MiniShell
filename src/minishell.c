@@ -36,6 +36,7 @@ void	print_prompt(int sloc)
 		return ;
 	}
 	i = -1;
+	
 	while (prompt[++i])
 		if (prompt[i] == '/')
 			last = i + 1;
