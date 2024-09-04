@@ -36,7 +36,7 @@ void	print_prompt(int sloc)
 		return ;
 	}
 	i = -1;
-	
+
 	while (prompt[++i])
 		if (prompt[i] == '/')
 			last = i + 1;
@@ -74,7 +74,6 @@ int	main(int ac, char **av, char **env)
 		return (1);
 	}
 
-	ft_print_env(env_hashtable, 0);
 
 	sloc = 0;
 	g_exit = 0;
@@ -87,22 +86,18 @@ int	main(int ac, char **av, char **env)
 		if ((ast = ast_builder(sloc)))
 		{
 #if DEBUG == 1
-			tree_draw(ast); // Opcional: Dibuja el árbol si DEBUG está habilitado
+			ft_print_env(env_hashtable, 0);
+			//tree_draw(ast); // Opcional: Dibuja el árbol si DEBUG está habilitado
 #endif
 			//sloc = ast_interpreter(ast);
 			g_exit = sloc;
 			ft_node_delete(&ast, CLEAN_NODE_AND_CHILDS);
 		}
 		else
-		{
 			g_exit = 2; // Error en la construcción del AST
-		}
 	}
 
-	// Libera todos los recursos y la memoria
 	free_all_malloc();
-
-	// Libera la tabla hash y sus elementos
 	ft_free_hashtable(env_hashtable);
 
 	return (0);

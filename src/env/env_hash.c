@@ -26,7 +26,7 @@ void ft_env2hashtable(char **env, t_hashtable *hashtable, int array_len)
         if (char_index == -1)
         {
             env++;
-            continue; // Skip invalid environment entries
+            continue;
         }
 
         key = ft_substr(*env, 0, char_index);
@@ -38,26 +38,25 @@ void ft_env2hashtable(char **env, t_hashtable *hashtable, int array_len)
             free(key);
             free(value);
             env++;
-            continue; // Skip invalid allocations
+            continue;
         }
 
         hash_index = ft_monkey_hash(key, array_len);
 
-        // Manejo de colisiones mediante encadenamiento
-        while (hashtable->element_array[hash_index])
+        t_element *current = hashtable->element_array[hash_index];
+        while (current)
         {
-            if (strcmp(hashtable->element_array[hash_index]->key, key) == 0)
+            if (strcmp(current->key, key) == 0)
             {
-                // Clave ya existe, actualizar valor
-                free(hashtable->element_array[hash_index]->value);
-                hashtable->element_array[hash_index]->value = value;
+                free(current->value);
+                current->value = value;
                 free(key);
                 break;
             }
-            hash_index = (hash_index + 1) % array_len;
+            current = current->next;
         }
 
-        if (!hashtable->element_array[hash_index])
+        if (!current)
         {
             new_element = ft_create_element(key, value);
             if (!new_element)
@@ -68,6 +67,7 @@ void ft_env2hashtable(char **env, t_hashtable *hashtable, int array_len)
                 env++;
                 continue;
             }
+            new_element->next = hashtable->element_array[hash_index];
             hashtable->element_array[hash_index] = new_element;
         }
 
@@ -105,3 +105,5 @@ t_hashtable *ft_create_envhash(char **env)
     ft_env2hashtable(env, env_hashtable, array_len);
     return env_hashtable;
 }
+
+

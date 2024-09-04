@@ -123,9 +123,7 @@ $(NAME): $(OBJ) libft.h
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
-
-speak:
-	@echo "$(YELLOW)----------------------- Compiling Libft ------------------------$(NC)"
+	@printf "%-100s\r" ">Libft compiling: ""$(CC) -o $@"
 
 clean:
 	@rm -f $(OBJ) $(B_OBJ)

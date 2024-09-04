@@ -17,28 +17,26 @@ void ft_print_env(t_hashtable *env_hashtable, int is_export)
     int index;
     t_element *env_element;
 
-    index = 0;
-    if (!env_hashtable)
+    if (!env_hashtable || !env_hashtable->element_array)
+    {
+        fprintf(stderr, "Error: Invalid hashtable or element array\n");
         return;
-    
-    // Iterar a través de la tabla hash usando 'length' en lugar de 'size'
+    }
+
     for (index = 0; index < env_hashtable->length; index++)
     {
         env_element = env_hashtable->element_array[index];
-        
-        // Iterar a través de la lista enlazada en caso de colisiones
+
         while (env_element)
         {
-            if (is_export)
-                printf("export ");
-            printf("%s=", env_element->key);
-            if (is_export)
-                printf("\"%s\"", env_element->value);
-            else
-                printf("%s", env_element->value);
-            printf("\n");
+            if (env_element->key && env_element->value)
+            {
+                if (is_export)
+                    printf("export ");
+                printf("%s=%s\n", env_element->key, env_element->value);
+            }
 
-            env_element = env_element->next; // Manejo de colisiones
+            env_element = env_element->next;
         }
     }
 }

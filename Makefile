@@ -31,7 +31,7 @@ SRC		=	src/env/env_hash.c \
 
 OBJ_DIR  = objects
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
@@ -42,7 +42,7 @@ all: $(NAME)
 	@echo "$(GREEN)----------------------------------------------------------------$(NC)"
 	@echo "$(GREEN)---------------------- Minishell Is Ready ----------------------$(NC)"
 	@echo "$(GREEN)----------------------------------------------------------------$(NC)"
-	@echo ""
+	@echo "																				"
 	@echo "$(GREEN) ███$(RED)╗$(GREEN)   ███$(RED)╗$(GREEN) ██$(RED)╗$(GREEN) ███$(RED)╗$(GREEN)   ██$(RED)╗$(GREEN) ██$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ██$(RED)╗$(GREEN)  ██$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ██$(RED)╗$(GREEN)      ██$(RED)╗$(GREEN)     $(NC)"
 	@echo "$(GREEN) ████$(RED)╗$(GREEN) ████$(RED)║$(GREEN) ██$(RED)║$(GREEN) ████$(RED)╗$(GREEN)  ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)╔════╝$(GREEN) ██$(RED)║$(GREEN)  ██$(RED)║$(GREEN) ██$(RED)╔════╝$(GREEN) ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
 	@echo "$(GREEN) ██$(RED)╔$(GREEN)████$(RED)╔$(GREEN)██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)╔$(GREEN)██$(RED)╗$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ███████$(RED)╗$(GREEN) ███████$(RED)║$(GREEN) █████$(RED)╗$(GREEN)   ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
@@ -55,7 +55,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) includes/minishell.h
 	@echo "$(YELLOW)--------------------- Compiling Minishell ----------------------$(NC)"
-	@$(CC) $(CFLAGS) $(addprefix $(OBJ_DIR)/, $(OBJ)) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 	@echo "$(GREEN)------------------ Minishell Finished Compiling ----------------$(NC)\n"
 
 $(LIBFT):
@@ -63,18 +63,17 @@ $(LIBFT):
 
 $(OBJ_DIR):
 	@echo "$(YELLOW)------------------ Creating Object Directory -------------------$(NC)"
-	@mkdir $(OBJ_DIR)
-	@mkdir $(OBJ_DIR)/src
-	@mkdir $(OBJ_DIR)/src/env
-	@mkdir $(OBJ_DIR)/src/ast_tree
-	@mkdir $(OBJ_DIR)/src/Tokens_utils
-	@mkdir $(OBJ_DIR)/src/Tokens_utils/Tokenizer
-
-
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/src/env
+	@mkdir -p $(OBJ_DIR)/src/ast_tree
+	@mkdir -p $(OBJ_DIR)/src/Tokens_utils
+	@mkdir -p $(OBJ_DIR)/src/Tokens_utils/Tokenizer
 	@echo "$(GREEN)-------------------- Object Directory Done ---------------------$(NC)"
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c -o $(addprefix $(OBJ_DIR)/, $@) $<
+$(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
+	@mkdir -p $(dir $@)  # Esto garantiza que el directorio exista
+	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
+	@printf "%-100s\r" ">Minishell compiling: ""$(CC) -o $@"
 
 clean:
 	@make -sC ./Libft fclean
@@ -90,3 +89,4 @@ re: fclean all
 .DEFAULT_GOAL: all
 
 .PHONY: all clean fclean re
+
