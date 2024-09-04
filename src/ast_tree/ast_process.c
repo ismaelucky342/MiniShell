@@ -2,7 +2,7 @@
 
 int		process_call_next(t_astb *tool, t_ast_node **sep)
 {
-	if (token__issep(tool->current_token))
+	if (ft_token_issep(tool->current_token))
 	{
 		*sep = node__new(SEPARATOR);
 		if (add_token_into_node(tool, &(*sep)->separators, ASTSEPARATOR) == ERROR)
@@ -19,16 +19,16 @@ int		process(t_astb *tool)
 	t_ast_node		*cmd;
 	t_ast_node		*sep;
 
-	if (tool->previous_token && (token__istype(tool->previous_token, TOKEN_SEMICOLON) &&
-		token__iseot(tool->current_token)))
+	if (tool->previous_token && (ft_token_istype(tool->previous_token, TOKEN_SEMICOLON) &&
+		ft_token_iseot(tool->current_token)))
 		return (SUCCESS);
-	if (token__issep(tool->current_token) || token__iseot(tool->current_token))
+	if (ft_token_issep(tool->current_token) || ft_token_iseot(tool->current_token))
 		return (astb_error(tool, BAD_TOKEN));
 	cmd = node__new(CMD);
-	while (token__isword(tool->current_token) ||
-		token__isredir(tool->current_token))
+	while (ft_token_isword(tool->current_token) ||
+		ft_token_isword(tool->current_token))
 	{
-		if (token__isredir(tool->current_token))
+		if (ft_token_isword(tool->current_token))
 		{
 			if (add_token_into_node(tool, &cmd->redirections, ASTREDIR) == ERROR)
 				return (ERROR);

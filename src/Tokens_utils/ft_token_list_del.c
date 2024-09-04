@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-void			token__list_del(t_token **token)
+void			ft_token_list_del(t_token **token)
 {
 	t_token		*tmp;
 	t_token		*tmpnext;
@@ -9,7 +9,7 @@ void			token__list_del(t_token **token)
 	while (tmp)
 	{
 		tmpnext = tmp->next;
-		token__del(&tmp);
+		ft_token_del(&tmp);
 		tmp = tmpnext;
 	}
 }

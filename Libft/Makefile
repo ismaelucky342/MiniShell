@@ -101,7 +101,9 @@ SRC =	checkD_bf.c \
 		get_next_line_v1.c \
 		get_next_line_v2.c \
 		get_next_line_utils.c \
-		get_next_line_bonus.c 
+		get_next_line_bonus.c \
+		ft_strncpy.c 	\
+		ft_strsub.c
 		
 NAME = libft.a
 

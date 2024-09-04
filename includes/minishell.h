@@ -35,7 +35,7 @@
 #endif
 
 # define BUILTINS 7
-unsigned int		g_exit;
+extern unsigned int g_exit;
 
 
 /*-----------------------------------------RETURN SIGNAL--------------------------------------------------*/

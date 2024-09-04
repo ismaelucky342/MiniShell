@@ -2,9 +2,9 @@
 
 void	node__del(t_ast_node **node, int opt)
 {
-	token__list_del(&(*node)->av);
-	token__list_del(&(*node)->redirections);
-	token__list_del(&(*node)->separators);
+	ft_token_list_del(&(*node)->av);
+	ft_token_list_del(&(*node)->redirections);
+	ft_token_list_del(&(*node)->separators);
 	if (opt == CLEAN_NODE_AND_CHILDS)
 	{
 		(*node)->left ? node__del(&(*node)->left, opt) : 0;

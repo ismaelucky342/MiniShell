@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-void			token__del(t_token **token)
+void			ft_token_del(t_token **token)
 {
 	if (*token)
 	{

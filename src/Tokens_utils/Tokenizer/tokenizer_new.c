@@ -8,7 +8,7 @@ t_tokenizer			*ft_tokenizer_new(int sloc)
 
 	if (ft_tokenizer_refill_line(tz, sloc) == ERROR)
 	{
-		ft_toke(&tz);
+		ft_tokenizer_delete(&tz);
 		return (NULL);
 	}
 	return (tz);

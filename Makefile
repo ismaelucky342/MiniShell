@@ -20,7 +20,6 @@ SRC		=	src/env/env_hash.c \
 			src/Tokens_utils/ft_token_new.c \
 			src/Tokens_utils/ft_token_parenthesis.c \
 			src/Tokens_utils/ft_token_type.c	\
-			src/minishell.c		\
 			src/Tokens_utils/Tokenizer/ft_tokenizer_refill_line.c	\
 			src/Tokens_utils/Tokenizer/tokenizer_actions.c	\
 			src/Tokens_utils/Tokenizer/tokenizer_delete.c	\
@@ -28,6 +27,7 @@ SRC		=	src/env/env_hash.c \
 			src/Tokens_utils/Tokenizer/tokenizer_new.c	\
 			src/Tokens_utils/Tokenizer/tokenizer_type.c	\
 			src/Tokens_utils/Tokenizer/tokenizer.c
+			src/minishell.c
 
 OBJ_DIR  = objects
 

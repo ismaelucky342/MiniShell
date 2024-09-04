@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-t_token			*token__copy(t_token *token)
+t_token			*ft_token_copy(t_token *token)
 {
 	t_token		*new;
 
