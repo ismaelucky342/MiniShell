@@ -3,14 +3,14 @@
 int		coincidence(t_astb *tool, t_token_type_key type)
 {
 	if (!ft_token_istype(tool->current_token, type))
-		return (astb_error(tool, BAD_TOKEN));
+		return (ft_tree_build_error(tool, BAD_TOKEN));
 	tool->previous_token = tool->current_token;
 	if ((tool->current_token = ft_tokenizer_get_next_token(tool->ast_tokenizer)) == NULL)
 		return (ERROR);
 	return (SUCCESS);
 }
 
-int		insert_node(t_astb *tool, t_token **tokendest, t_ast_tokens type)
+int		insert_into_node(t_astb *tool, t_token **tokendest, t_ast_tokens type)
 {
 	if (type == ASTREDIR &&
 		coincidence(tool, ft_token_isword(tool->current_token)) == ERROR)
@@ -45,7 +45,7 @@ void	find_for_node(t_astb *tool, t_ast_node *node, t_token_type_key type)
 		!ft_token_istype(tool->tree_possition->separators, type)))
 		tool->tree_possition = tool->tree_possition->Father;
 	if (!tool->tree_possition)
-		set_root_to_node(tool, node);
+		node_source(tool, node);
 	else
 	{
 		node->left = tool->tree_possition->right;
@@ -56,13 +56,13 @@ void	find_for_node(t_astb *tool, t_ast_node *node, t_token_type_key type)
 	}
 }
 
-int		insert_into_ast(t_astb *tool, t_ast_node *node)
+int		insert_node(t_astb *tool, t_ast_node *node)
 {
 	if (tool->ast_tree == NULL)
 	{
 		if (node->type == SEPARATOR)
-			return (astb_error(tool, BAD_TOKEN));
-		set_root_to_node(tool, node);
+			return (ft_tree_build_error(tool, BAD_TOKEN));
+		node_source(tool, node);
 	}
 	else
 	{
@@ -71,13 +71,13 @@ int		insert_into_ast(t_astb *tool, t_ast_node *node)
 		else if (node->type == SEPARATOR)
 		{
 			if (!node->separators)
-				return (astb_error(tool, BAD_TOKEN));
+				return (ft_tree_build_error(tool, BAD_TOKEN));
 			if (ft_token_istype(node->separators, TOKEN_PIPE))
-				search_place_node(tool, node, TYPE_LOGICAL_AND | TYPE_LOGICAL_OR | TYPE_SEMICOLON);
+				find_for_node(tool, node, TYPE_LOGICAL_AND | TYPE_LOGICAL_OR | TYPE_SEMICOLON);
 			else if (ft_token_istype(node->separators, TYPE_LOGICAL_AND | TYPE_LOGICAL_OR))
-				search_place_node(tool, node, TOKEN_SEMICOLON);
+				find_for_node(tool, node, TOKEN_SEMICOLON);
 			else if (ft_token_istype(node->separators, TOKEN_SEMICOLON))
-				set_root_to_node(tool, node);
+				node_source(tool, node);
 			tool->tree_possition = node;
 		}
 	}

@@ -1,6 +1,6 @@
 # include "../../includes/minishell.h"
 
-t_ast_node	*node__new(t_ast_node_type type)
+t_ast_node	*ft_node_new(t_ast_node_type type)
 {
 	t_ast_node		*new;
 

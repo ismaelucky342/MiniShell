@@ -19,6 +19,8 @@ RESUMEN:
 
 */
 #include "../includes/minishell.h"
+int g_reset; 
+unsigned int g_exit; 
 
 void	print_prompt(int sloc)
 {
@@ -86,9 +88,9 @@ int	main(int ac, char **av, char **env)
 #if DEBUG == 1
 			tree_draw(ast); // Opcional: Dibuja el árbol si DEBUG está habilitado
 #endif
-			sloc = ast_interpreter(ast);
+			//sloc = ast_interpreter(ast);
 			g_exit = sloc;
-			node__del(&ast, CLEAN_NODE_AND_CHILDS);
+			ft_node_delete(&ast, CLEAN_NODE_AND_CHILDS);
 		}
 		else
 		{

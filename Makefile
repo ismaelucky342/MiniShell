@@ -26,7 +26,7 @@ SRC		=	src/env/env_hash.c \
 			src/Tokens_utils/Tokenizer/tokenizer_errors.c	\
 			src/Tokens_utils/Tokenizer/tokenizer_new.c	\
 			src/Tokens_utils/Tokenizer/tokenizer_type.c	\
-			src/Tokens_utils/Tokenizer/tokenizer.c
+			src/Tokens_utils/Tokenizer/tokenizer.c \
 			src/minishell.c
 
 OBJ_DIR  = objects

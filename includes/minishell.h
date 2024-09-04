@@ -111,7 +111,7 @@ t_hashtable			*ft_create_envhash(char **env);
 void				ft_print_env(t_hashtable *env_hashtable, int is_export);
 
 /*------------------------------------EXECUTION FILES------------------------------------------------------*/
-
+/*
 int					xecho(int argc, char **args, int out);
 int					xpwd(int argc, char **args, int out);
 int					xexit(int argc, char **args, int out);
@@ -124,6 +124,7 @@ int					launch(t_ast_node *cmd, char **av);
 int					execute_fork(t_ast_node *cmd, int out);
 int					execute_simple(t_ast_node *cmd);
 char				*get_path(char *command, int *err);
+*/
 
 
 #endif

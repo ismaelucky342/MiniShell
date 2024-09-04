@@ -1,6 +1,6 @@
 # include "../../includes/minishell.h"
 
-int		astb_error(t_astb *tool, int opt)
+int		ft_tree_build_error(t_astb *tool, int opt)
 {
 	if (opt == BAD_TOKEN)
 	{
