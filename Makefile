@@ -39,10 +39,6 @@ CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
 LIBFT = ./Libft/libft.a
 
 all: $(NAME)
-	@echo "$(GREEN)----------------------------------------------------------------$(NC)"
-	@echo "$(GREEN)---------------------- Minishell Is Ready ----------------------$(NC)"
-	@echo "$(GREEN)----------------------------------------------------------------$(NC)"
-	@echo "																				"
 	@echo "$(GREEN) ███$(RED)╗$(GREEN)   ███$(RED)╗$(GREEN) ██$(RED)╗$(GREEN) ███$(RED)╗$(GREEN)   ██$(RED)╗$(GREEN) ██$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ██$(RED)╗$(GREEN)  ██$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ██$(RED)╗$(GREEN)      ██$(RED)╗$(GREEN)     $(NC)"
 	@echo "$(GREEN) ████$(RED)╗$(GREEN) ████$(RED)║$(GREEN) ██$(RED)║$(GREEN) ████$(RED)╗$(GREEN)  ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)╔════╝$(GREEN) ██$(RED)║$(GREEN)  ██$(RED)║$(GREEN) ██$(RED)╔════╝$(GREEN) ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
 	@echo "$(GREEN) ██$(RED)╔$(GREEN)████$(RED)╔$(GREEN)██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)╔$(GREEN)██$(RED)╗$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ███████$(RED)╗$(GREEN) ███████$(RED)║$(GREEN) █████$(RED)╗$(GREEN)   ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
@@ -57,11 +53,15 @@ $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) includes/minishell.h
 	@echo "$(YELLOW)--------------------- Compiling Minishell ----------------------$(NC)"
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 	@echo "$(GREEN)------------------ Minishell Finished Compiling ----------------$(NC)\n"
+	@echo "$(GREEN)----------------------------------------------------------------$(NC)"
+	@echo "$(GREEN)---------------------- Minishell Is Ready ----------------------$(NC)"
+	@echo "$(GREEN)----------------------------------------------------------------$(NC)\n"
 
 $(LIBFT):
 	@make -sC ./Libft
 
 $(OBJ_DIR):
+	@echo "$(RED)--------------- Object Directory Does Not Exist ----------------$(NC)"
 	@echo "$(YELLOW)------------------ Creating Object Directory -------------------$(NC)"
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/src/env
