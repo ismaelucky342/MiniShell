@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-void		*ft_new_node(
+void	*ft_new_node(
 	size_t size, void (*f)(void *, int, va_list), int nb_arg, ...)
 {
 	va_list	ap;

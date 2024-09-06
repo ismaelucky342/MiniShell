@@ -35,6 +35,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str[i] = '\0';
 	return (str);
 }
+
 /*int		main(){
 
 	const	char *stringI = "hola muundo";

@@ -12,17 +12,17 @@
 
 #include "libft.h"
 
-void		ft_del_node_np(t_pnp **begin_list, t_pnp *del,
+void	ft_del_node_np(t_pnp **lst, t_pnp *del,
 	void (*f)(t_pnp *curr))
 {
 	t_pnp	*tmp;
 
-	tmp = *begin_list;
+	tmp = *lst;
 	if (tmp == del)
 	{
-		*begin_list = (*begin_list)->next;
-		if (*begin_list)
-			(*begin_list)->prev = NULL;
+		*lst = (*lst)->next;
+		if (*lst)
+			(*lst)->prev = NULL;
 	}
 	else
 	{

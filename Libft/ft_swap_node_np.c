@@ -64,17 +64,17 @@ static inline void	swap_all(t_pnp *node_a, t_pnp *node_b)
 		next_b->prev = node_a;
 }
 
-void				ft_swap_node_np(t_pnp **begin_list, t_pnp *node_a,
+void	ft_swap_node_np(t_pnp **lst, t_pnp *node_a,
 	t_pnp *node_b)
 {
-	if (!(begin_list) || !(*begin_list) || !node_a || !node_b)
+	if (!(lst) || !(*lst) || !node_a || !node_b)
 		return ;
-	if (*begin_list == node_a)
-		*begin_list = node_b;
-	else if (*begin_list == node_b)
-		*begin_list = node_a;
-	if (node_a->prev == node_b || node_b->prev == node_a ||
-		node_a->prev == node_b || node_b->prev == node_a)
+	if (*lst == node_a)
+		*lst = node_b;
+	else if (*lst == node_b)
+		*lst = node_a;
+	if (node_a->prev == node_b || node_b->prev == node_a
+		|| node_a->prev == node_b || node_b->prev == node_a)
 		swap_near(node_a, node_b);
 	else
 		swap_all(node_a, node_b);

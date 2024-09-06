@@ -12,19 +12,19 @@
 
 #include "libft.h"
 
-void		ft_add_node_end_np(t_pnp **begin_list, t_pnp *new)
+void	ft_add_node_end_np(t_pnp **lst, t_pnp *new)
 {
 	t_pnp	*tmp;
 
-	if (!(*begin_list))
+	if (!(*lst))
 	{
-		*begin_list = new;
+		*lst = new;
 		new->next = NULL;
 		new->prev = NULL;
 	}
 	else
 	{
-		tmp = *begin_list;
+		tmp = *lst;
 		while (tmp && tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;

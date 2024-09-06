@@ -12,9 +12,33 @@
 
 #include "../includes/minishell.h"
 
+<<<<<<< HEAD
 int				g_reset;
 
 unsigned int	g_exit;
+=======
+void	print_prompt(int sloc)
+{
+	char	prompt[LINE_MAX];
+	int		i;
+	int		last;
+
+	(!g_exit && sloc) ? g_exit = sloc : 0;
+	if (!getcwd(prompt, LINE_MAX))
+	{
+		ft_printf_fd(2, "%s➜  %sminishell > %s", !g_exit ? COLOR_BOLD_GREEN_TEXT : COLOR_BOLD_RED_TEXT,
+			COLOR_BOLD_CYAN_TEXT, COLOR_RESET);
+		return ;
+	}
+	i = -1;
+
+	while (prompt[++i])
+		if (prompt[i] == '/')
+			last = i + 1;
+	ft_printf_fd(2, "%s➜  %s%s > %s", !g_exit ? COLOR_BOLD_GREEN_TEXT : COLOR_BOLD_RED_TEXT, COLOR_BOLD_CYAN_TEXT,
+		&prompt[last], COLOR_RESET);
+}
+>>>>>>> 549d495cad994d844209ca1e6b3a26e09eda232a
 
 void	sig_handler(int signo)
 {
@@ -28,6 +52,7 @@ void	sig_handler(int signo)
 		ft_printf_fd(2, "\b\b  \b\b");
 }
 
+<<<<<<< HEAD
 static int	process_ast(int sloc)
 {
 	t_ast_node	*ast;
@@ -52,6 +77,8 @@ static void	cleanup(t_hashtable *env_hashtable)
 	ft_free_hashtable(env_hashtable);
 }
 
+=======
+>>>>>>> 549d495cad994d844209ca1e6b3a26e09eda232a
 int	main(int ac, char **av, char **env)
 {
 	int			sloc;
@@ -68,6 +95,14 @@ int	main(int ac, char **av, char **env)
 		perror("Failed to create environment hash");
 		return (1);
 	}
+<<<<<<< HEAD
+=======
+
+	//ft_print_env(env_hashtable, 0);
+	sloc = 0;
+	g_exit = 0;
+
+>>>>>>> 549d495cad994d844209ca1e6b3a26e09eda232a
 	while (1)
 	{
 		setup_signal_handlers();
