@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:00:20 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 12:03:46 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:02:26 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ typedef enum e_binary_option
 }						t_binary_option;
 
 /*-------------------------AST FILES-----------------------*/
-
 int						coincidence(t_astb *tool, t_token_type_key type);
 int						insert_into_node(t_astb *tool, t_token **tokendest,
 							t_ast_tokens type);
@@ -138,8 +137,8 @@ int						insert_node(t_astb *tool, t_ast_node *node);
 int						process_call_next(t_astb *tool, t_ast_node **sep);
 int						process(t_astb *tool);
 int						ft_tree_build_error(t_astb *tool, int opt);
-t_ast_node				*ft_node_new(t_ast_node_type type);
-void					ft_node_delete(t_ast_node **node, int opt);
+t_ast_node				*ft_node_new(t_ast_node_type type, t_mem_context *ctx);
+void					ft_node_delete(t_ast_node **node, int opt, t_mem_context *ctx);
 int						init_tool(t_astb *tool, int sloc);
 t_ast_node				*ast_builder(int sloc);
 

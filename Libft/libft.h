@@ -120,6 +120,10 @@ void		ins_sort(int array[], int n);
 
 /*---------------PRINTF--------------------------------*/
 // dprintf update
+void		ft_specifier(int *dir, const char **format, int i, va_list ap);
+void		handle_format_flags(int *dir, const char **f);
+void		process_width_precision(int *dir, const char **f, va_list ap);
+void		ft_initdir(int *dir, const char **f, va_list ap);
 int			ft_printf(const char *format, ...);
 int			ft_printf_fd(int fd, const char *format, ...);
 int			ft_strnlen(char *str, int n);
@@ -168,7 +172,8 @@ char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s1);
-char		*ft_strsub(char const *s, unsigned int start, size_t len);
+char		*ft_strsub(t_mem_context *ctx, char const *s, unsigned int start,
+					size_t len);
 char		*ft_strncpy(char *s1, const char *s2, size_t n);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putchar_fd(char c, int fd);
@@ -211,7 +216,7 @@ int			ft_index(char *str, char c);
 int			ft_is_prime(int nbr);
 
 /*------------------DOUBLE LINKED LIST FILES------------------------------*/
-void		ft_del_list_np(t_pnp **lst);
+void		ft_del_list_np(t_pnp **lst, t_mem_context *ctx);
 void		*ft_new_node(size_t size,
 				void (*f)(void *, int, va_list), int nb_arg, ...);
 void		ft_add_node_end_np(t_pnp **lst, t_pnp *new);
@@ -222,9 +227,12 @@ void		ft_add_node_f_prevto_np(t_pnp **lst, t_pnp *new,
 void		ft_add_node_nextto_np(t_pnp *prev, t_pnp *new);
 void		ft_add_node_prevto_np(t_pnp **start, t_pnp *next, t_pnp *new);
 void		ft_add_node_start_np(t_pnp **lst, t_pnp *new);
-void		ft_del_node_end_np(t_pnp **lst, void (*f)(t_pnp *curr));
-void		ft_del_node_np(t_pnp **lst, t_pnp *del, void (*f)(t_pnp *curr));
-void		ft_del_node_start_np(t_pnp **lst, void (*f)(t_pnp *curr));
+void		ft_del_node_end_np(t_pnp **lst, void (*f)(t_pnp *curr),
+				t_mem_context *ctx);
+void		ft_del_node_np(t_pnp **lst, t_pnp *del, void (*f)(t_pnp *curr),
+				t_mem_context *ctx);
+void		ft_del_node_start_np(t_pnp **lst, void (*f)(t_pnp *curr),
+				t_mem_context *ctx);
 void		ft_foreach_node_f_np(t_pnp **lst, int (*f)(t_pnp *curr));
 void		ft_swap_node_np(t_pnp **lst, t_pnp *node_a, t_pnp *node_b);
 
