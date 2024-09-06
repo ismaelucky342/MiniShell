@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:17:29 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 12:30:47 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:40:04 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,6 @@ int						unsupported_feature(t_tokenizer *tz, int *type,
 							char curr, char next);
 int						ft_tokenizer_deftoken_double(t_tokenizer *tz, int *len,
 							char curr, char next);
-int						ft_tokenizer_isdefined_token(t_tokenizer *tz, int adv);
+int						ft_isdefined_token(t_tokenizer *tz, int adv);
 
 #endif

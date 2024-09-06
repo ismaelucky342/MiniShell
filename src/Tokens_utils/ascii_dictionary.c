@@ -18,7 +18,7 @@
  que tienen el mismo sentido (según nuestro léxico).
 */
 
-t_character_type g_token_dictionary[255] = {
+t_character_type	g_token_dictionary[255] = {
 ['\0'] = CHAR_TYPE_END_OF_TEXT,
 [0x01] = CHAR_TYPE_END_OF_TEXT,
 [0x02] = CHAR_TYPE_PASS,

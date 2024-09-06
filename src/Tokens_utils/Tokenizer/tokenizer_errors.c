@@ -1,37 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tokenizer_errors.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/06 12:40:33 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/06 12:40:35 by ismherna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../includes/minishell.h"
 
-int ft_tokenizer_error(int opt, t_tokenizer *tz)
+int	ft_tokenizer_error(int opt, t_tokenizer *tz)
 {
-    if (opt == ERROR_UNKNOWN)
-        ft_printf_fd(2, "minishell: unexpected \'end of line\' after \'%c\'\n",
-        tz->previous_char);
-    else if (opt == ERROR_UNSUPPORTED_FEATURE)
-        ft_printf_fd(2, "minishell: warning this is not supported \'%c\'\n",
-        tz->current_char);
-    else if (opt == ERROR_UNSUPPORTED_FEATURE_AND)
-        ft_printf_fd(2, "minishell: warning this is not supported \'&&\'\n");
-    else if (opt == ERROR_UNSUPPORTED_FEATURE_OR)
-        ft_printf_fd(2, "minishell: warning this is not supported \'||\'\n");
-    else if (opt == ERROR_UNSUPPORTED_FEATURE_SUBSHELL)
-        ft_printf_fd(2, "minishell: warning subshells not supported\n");
-    else if (opt == ERROR_UNSUPPORTED_FEATURE_HEREDOC)
-        ft_printf_fd(2, "minishell: warning heredocs not supported\n");
-    else if (opt == ERROR_GET_NEXT_LINE)
-        return 0; 
-    else
-        ft_printf_fd(2, "minishell: invalid character \'%c\' (%#x)\n",
-            tz->current_char, tz->current_char);
-    return (ERROR);
+	if (opt == ERROR_UNKNOWN)
+		ft_printf_fd(2, "minishell: unexpected \'end of line\' after \'%c\'\n",
+				tz->previous_char);
+	else if (opt == ERROR_UNSUPPORTED_FEATURE)
+		ft_printf_fd(2, "minishell: warning this is not supported \'%c\'\n",
+				tz->current_char);
+	else if (opt == ERROR_UNSUPPORTED_FEATURE_AND)
+		ft_printf_fd(2, "minishell: warning this is not supported \'&&\'\n");
+	else if (opt == ERROR_UNSUPPORTED_FEATURE_OR)
+		ft_printf_fd(2, "minishell: warning this is not supported \'||\'\n");
+	else if (opt == ERROR_UNSUPPORTED_FEATURE_SUBSHELL)
+		ft_printf_fd(2, "minishell: warning subshells not supported\n");
+	else if (opt == ERROR_UNSUPPORTED_FEATURE_HEREDOC)
+		ft_printf_fd(2, "minishell: warning heredocs not supported\n");
+	else if (opt == ERROR_GET_NEXT_LINE)
+		return (0);
+	else
+		ft_printf_fd(2, "minishell: invalid character \'%c\' (%#x)\n",
+				tz->current_char, tz->current_char);
+	return (ERROR);
 }
 
-int			unsupported_feature(t_tokenizer *tz, int *token_type, char curr, char next)
+int	unsupported_feature(t_tokenizer *tz, int *token_type, char curr, char next)
 {
 	if (curr == '(' && !(*token_type = TYPE_ERROR))
 		ft_tokenizer_error(ERROR_UNSUPPORTED_FEATURE_SUBSHELL, tz);
 	else if (curr == ')' && !(*token_type = TYPE_ERROR))
 		ft_tokenizer_error(ERROR_UNSUPPORTED_FEATURE_SUBSHELL, tz);
 	else if (tz->line_length > 1 && curr == '<' && next == '<' &&
-		!(*token_type = TYPE_ERROR))
+				!(*token_type = TYPE_ERROR))
 		ft_tokenizer_error(ERROR_UNSUPPORTED_FEATURE_HEREDOC, tz);
 	else if (curr == '&' && !(*token_type = TYPE_ERROR))
 		ft_tokenizer_error(ERROR_UNSUPPORTED_FEATURE, tz);
@@ -40,7 +52,8 @@ int			unsupported_feature(t_tokenizer *tz, int *token_type, char curr, char next
 	return (1);
 }
 
-int			ft_tokenizer_deftoken_double(t_tokenizer *tz, int *len, char curr, char next)
+int	ft_tokenizer_deftoken_double(t_tokenizer *tz, int *len, char curr,
+		char next)
 {
 	if (tz->line_length > 1 && curr == '&' && next == '&' && (*len = 2))
 		return (TYPE_LOGICAL_AND);
@@ -51,7 +64,7 @@ int			ft_tokenizer_deftoken_double(t_tokenizer *tz, int *len, char curr, char ne
 	return (0);
 }
 
-int			ft_tokenizer_isdefined_token(t_tokenizer *tz, int adv)
+int	ft_isdefined_token(t_tokenizer *tz, int adv)
 {
 	int		type_len[2];
 	char	current_next[2];
@@ -59,17 +72,21 @@ int			ft_tokenizer_isdefined_token(t_tokenizer *tz, int adv)
 	if (!tz->current_line && (type_len[1] = 0))
 		return (TYPE_ERROR);
 	current_next[0] = tz->current_char;
-	current_next[1] = tz->line_length > 1 ? tz->current_line[tz->current_position + 1] : 0;
-	if ((type_len[0] = ft_tokenizer_deftoken_double(tz, &type_len[1], current_next[0], current_next[1])) == TYPE_ERROR)
+	current_next[1] = tz->line_length > 1 ? tz->current_line[tz->current_position
+		+ 1] : 0;
+	if ((type_len[0] = ft_tokenizer_deftoken_double(tz, &type_len[1],
+				current_next[0], current_next[1])) == TYPE_ERROR)
 	{
-		if (unsupported_feature(tz, &type_len[0], current_next[0], current_next[1]))
+		if (unsupported_feature(tz, &type_len[0], current_next[0],
+				current_next[1]))
 			return (type_len[0]);
 		else if (current_next[0] == '<' && (type_len[1] = 1))
 			type_len[0] = TYPE_REDIR_INPUT;
 		else if (current_next[0] == '>' && (type_len[1] = 1))
 			type_len[0] = TYPE_REDIR_OUTPUT;
-		else if (type_len[0] == TYPE_ERROR && current_next[0] == '|' && (type_len[1] = 1))
-            type_len[0] = TYPE_PIPE;
+		else if (type_len[0] == TYPE_ERROR && current_next[0] == '|'
+				&& (type_len[1] = 1))
+			type_len[0] = TYPE_PIPE;
 		else if (current_next[0] == ';' && (type_len[1] = 1))
 			type_len[0] = TYPE_SEMICOLON;
 		else if (!type_len[0])

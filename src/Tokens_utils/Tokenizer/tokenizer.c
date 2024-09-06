@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:54:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 12:29:31 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:40:08 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_token	*ft_tokenizer_handle_defined_token(t_tokenizer *tz)
 	{
 		return (ft_token_copy(&g_defined_tokens[TOKEN_END_TOKEN]));
 	}
-	index = ft_tokenizer_isdefined_token(tz, FOREACH_ADVANCE_ITERATOR);
+	index = ft_isdefined_token(tz, FOREACH_ADVANCE_ITERATOR);
 	if (index != TYPE_NONE)
 	{
 		if (index == TYPE_ERROR)
@@ -43,46 +43,45 @@ t_token	*ft_tokenizer_handle_defined_token(t_tokenizer *tz)
 	return (NULL);
 }
 
-t_token*ft_tokenizer_get_next_token(t_tokenizer *tz)
+t_token	*ft_tokenizer_get_next_token(t_tokenizer *tz)
 {
-	t_token				*token;
-	t_character_type	quote_type;
-	int					index;
+	t_token					*token;
+	t_character_type		quote_type;
+	int						index;
 
 	token = ft_tokenizer_handle_defined_token(tz);
 	if (token != NULL)
 	{
 		return (token);
 	}
-	while (!ft_tokenizer_istype(tz,
-			CHAR_TYPE_END_OF_TEXT | CHAR_TYPE_SPACE | CHAR_TYPE_PASS | CHAR_TYPE_ERROR))
+	return (ft_tokenizer_get_next_token_part2(tz));
+}
+
+t_token	*ft_tokenizer_get_next_token_part2(t_tokenizer *tz)
+{
+	t_character_type		quote_type;
+	int						index;
+
+	while (!ft_tokenizer_istype(tz, CHAR_TYPE_END_OF_TEXT | CHAR_TYPE_SPACE
+			| CHAR_TYPE_PASS | CHAR_TYPE_ERROR))
 	{
 		if (ft_tokenizer_istype(tz, CHAR_TYPE_BACKSLASH))
 		{
 			ft_tokenizer_advance(tz, 1);
 			if (ft_tokenizer_istype(tz, CHAR_TYPE_END_OF_TEXT)
 				&& ft_tokenizer_error(ERROR_UNKNOWN, tz) == ERROR)
-			{
 				return (NULL);
-			}
 			ft_tokenizer_advance(tz, 1);
 		}
-		index = ft_tokenizer_isdefined_token(tz,
-				FOREACH_DO_NOT_ADVANCE_ITERATOR);
+		index = ft_isdefined_token(tz, FOREACH_DO_NOT_ADVANCE_ITERATOR);
 		if (index == TOKEN_ERROR)
-		{
 			return (NULL);
-		}
 		if (index != TOKEN_NONE)
-		{
 			break ;
-		}
 		quote_type = ft_tokenizer_isquote(tz);
 		if (quote_type != CHAR_TYPE_NONE)
-		{
 			if (ft_tokenizer_pass_quotes(tz, quote_type) == ERROR)
 				return (NULL);
-		}
 	}
 	return (ft_tokenizer_token_grabber(tz, TOKEN_WORD));
 }
