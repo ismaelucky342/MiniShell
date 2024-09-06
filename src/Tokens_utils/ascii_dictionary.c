@@ -18,7 +18,7 @@
  que tienen el mismo sentido (según nuestro léxico).
 */
 
-t_character_type g_token_dictionary[255] = {
+t_character_type	g_token_dictionary[255] = { 
 ['\0'] = CHAR_TYPE_END_OF_TEXT,
 [0x01] = CHAR_TYPE_END_OF_TEXT,
 [0x02] = CHAR_TYPE_PASS,
@@ -77,7 +77,7 @@ t_character_type g_token_dictionary[255] = {
 ** como el enum e_token_type
 ** 'ERR' debe ser el primero y 'NONE' debe ser el último
 */
-t_token g_defined_tokens[NUM_DEFINED_TOKENS] = {
+t_token	g_defined_tokens[NUM_DEFINED_TOKENS] = {
 {NULL, NULL, TOKEN_ERROR, "", 0, 0},
 {NULL, NULL, TOKEN_END_TOKEN, "", 0, 0},
 {NULL, NULL, TOKEN_SPACE, "", 0, 0},
@@ -99,7 +99,7 @@ t_token g_defined_tokens[NUM_DEFINED_TOKENS] = {
 {NULL, NULL, TOKEN_NONE, "", 0, 0}
 };
 
-t_token_string g_token_str[NUM_DEFINED_TOKENS] = {
+t_token_string	g_token_str[NUM_DEFINED_TOKENS] = {
 {TOKEN_ERROR, "ERR"},
 {TOKEN_END_TOKEN, "EOT"},
 {TOKEN_SPACE, "SPACE"},
@@ -121,8 +121,8 @@ t_token_string g_token_str[NUM_DEFINED_TOKENS] = {
 {TOKEN_NONE, "NONE"}
 };
 
-t_token_map g_token_map[NUM_DEFINED_TOKENS] = {
-{TOKEN_ERROR,  TYPE_ERROR},
+t_token_map	g_token_map[NUM_DEFINED_TOKENS] = {
+{TOKEN_ERROR,TYPE_ERROR},
 {TOKEN_END_TOKEN, TYPE_END_TOKEN},
 {TOKEN_SPACE, TYPE_SPACE},
 {TOKEN_IGNORE, TYPE_IGNORE},

@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:07:41 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/09/06 11:59:55 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:07:34 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "AST.h"
 # include "Tokenizer.h"
 # include "tokens.h"
-# include <limits.h> 
 # include <dirent.h>
+# include <limits.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -30,36 +30,35 @@
 # include <termios.h>
 # include <unistd.h>
 
-#ifndef LINE_MAX
-#define LINE_MAX 4096
-#endif
+# ifndef LINE_MAX
+#  define LINE_MAX 4096
+# endif
 
 # define BUILTINS 7
-extern unsigned int g_exit;
 
+extern unsigned int	g_exit;
 
-/*-----------------------------------------RETURN SIGNAL--------------------------------------------------*/
+/*---------------------RETURN SIGNAL-------------------------*/
 typedef enum return_signal
 {
 	CONTINUE,
 	NOMATCH
 }					t_return_signal;
 
-
-/*--------------------------------------EXECUTION ERRORS---------------------------------------------------*/
+/*--------------------EXECUTION ERRORS----------------------*/
 
 typedef enum e_error_value
 {
 	SUCCESS, // Indica que la operación fue exitosa
-	ERROR,   // Indica que ocurrió un error
-	EMPTY    // Indica que no hay datos
+	ERROR,// Indica que ocurrió un error
+	EMPTY// Indica que no hay datos
 }					t_error_value;
 
 typedef struct builtins
 {
-	char *name;                               // Nombre del comando o built-in
-	int (*f)(int argc, char **args, int out);
-		// Puntero a función que implementa el comando
+	char *name; // Nombre del comando o built-in
+	int				(*f)(int argc, char **args, int out);
+	// Puntero a función que implementa el comando
 }					t_builtins;
 
 /*--------------------------------------COLORS STRUCT-------------------------------------------------------*/
@@ -102,7 +101,6 @@ typedef struct builtins
 # define COLOR_BOLD_WHITE_TEXT "\033[37;01m"
 # define COLOR_BOLD_GRAY_TEXT "\033[90;01m"
 
-
 /*---------------------------------------ENV FILES------------------------------------------------------*/
 
 void				ft_env2hashtable(char **env, t_hashtable *hashtable,
@@ -125,6 +123,5 @@ int					execute_fork(t_ast_node *cmd, int out);
 int					execute_simple(t_ast_node *cmd);
 char				*get_path(char *command, int *err);
 */
-
 
 #endif
