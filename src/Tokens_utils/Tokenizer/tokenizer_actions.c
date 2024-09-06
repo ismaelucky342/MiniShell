@@ -67,9 +67,6 @@ int ft_tokenizer_pass_quotes(t_tokenizer *tz, t_character_type type)
     return SUCCESS;
 }
 
-
-
-
 void ft_tokenizer_set_start_pos(t_tokenizer *tz, int new_pos)
 {
     tz->start_index = new_pos;

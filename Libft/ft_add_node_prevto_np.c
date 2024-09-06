@@ -12,8 +12,7 @@
 
 #include "libft.h"
 
-
-void		ft_add_node_prevto_np(t_pnp **start, t_pnp *next, t_pnp *new)
+void	ft_add_node_prevto_np(t_pnp **start, t_pnp *next, t_pnp *new)
 {
 	if (!new && !next && !(*start))
 		return ;

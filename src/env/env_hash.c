@@ -106,4 +106,3 @@ t_hashtable *ft_create_envhash(char **env)
 	return env_hashtable;
 }
 
-

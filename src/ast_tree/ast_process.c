@@ -15,7 +15,6 @@ int process_call_next(t_astb *tool, t_ast_node **sep)
     return (SUCCESS);
 }
 
-
 int process(t_astb *tool)
 {
     t_ast_node *cmd;

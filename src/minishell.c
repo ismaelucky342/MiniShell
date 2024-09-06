@@ -22,7 +22,6 @@ RESUMEN:
 int g_reset; 
 unsigned int g_exit; 
 
-
 void	print_prompt(int sloc)
 {
 	char	prompt[LINE_MAX];
@@ -57,7 +56,6 @@ void	sig_handler(int signo)
 		ft_printf_fd(2, "\b\b  \b\b");
 }
 
-
 int	main(int ac, char **av, char **env)
 {
 	int			sloc;
@@ -74,7 +72,6 @@ int	main(int ac, char **av, char **env)
 		perror("Failed to create environment hash");
 		return (1);
 	}
-
 
 	//ft_print_env(env_hashtable, 0);
 	sloc = 0;

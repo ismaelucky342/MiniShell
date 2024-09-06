@@ -10,15 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-void		ft_foreach_node_f_np(t_pnp **begin_list, int (*f)(t_pnp *curr))
+void	ft_foreach_node_f_np(t_pnp **lst, int (*f)(t_pnp *curr))
 {
 	t_pnp	*tmp;
 	t_pnp	*tmp2;
 
-	tmp = *begin_list;
+	tmp = *lst;
 	while (tmp->next)
 	{
 		tmp2 = tmp->next;

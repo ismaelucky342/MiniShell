@@ -12,13 +12,13 @@
 
 #include "libft.h"
 
-void		ft_add_node_f_prevto_np(
-	t_pnp **begin_list, t_pnp *new, int (*f)(t_pnp *curr))
+void	ft_add_node_f_prevto_np(
+	t_pnp **lst, t_pnp *new, int (*f)(t_pnp *curr))
 {
 	t_pnp	*tmp;
 	t_pnp	*tmp1;
 
-	tmp = *begin_list;
+	tmp = *lst;
 	tmp1 = NULL;
 	while (f(tmp) != DLL_SUCCESS)
 	{
@@ -28,5 +28,5 @@ void		ft_add_node_f_prevto_np(
 	if (tmp1)
 		ft_add_node_nextto_np(tmp1, new);
 	else
-		ft_add_node_start_np(begin_list, new);
+		ft_add_node_start_np(lst, new);
 }

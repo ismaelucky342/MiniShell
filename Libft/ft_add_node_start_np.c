@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-void		ft_add_node_start_np(t_pnp **begin_list, t_pnp *new)
+void	ft_add_node_start_np(t_pnp **lst, t_pnp *new)
 {
-	new->next = *begin_list;
+	new->next = *lst;
 	new->prev = NULL;
-	if (*begin_list)
-		(*begin_list)->prev = new;
-	*begin_list = new;
+	if (*lst)
+		(*lst)->prev = new;
+	*lst = new;
 }

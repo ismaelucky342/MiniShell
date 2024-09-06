@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "libft.h"
 
 t_hashtable	*ft_delete_element(t_hashtable *ht, char *key)

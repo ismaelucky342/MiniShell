@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static void			ft_itoa_b(char *addr, unsigned long long nbr, int *dir)
+static void		ft_itoa_b(char *addr, unsigned long long nbr, int *dir)
 {
 	char			*xbase;
 	int				i;
