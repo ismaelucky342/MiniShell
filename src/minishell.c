@@ -6,13 +6,15 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:41:41 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 13:51:57 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:06:12 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-int g_reset; 
-unsigned int g_exit; 
+
+int				g_reset;
+
+unsigned int	g_exit;
 
 void	sig_handler(int signo)
 {
