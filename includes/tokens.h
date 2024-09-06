@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 10:10:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 10:46:53 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/06 11:58:27 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/06 11:59:18 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,11 @@ typedef struct s_token_map
 	t_token_type		idx;
 }						t_token_map;
 
-typedef struct s_token_data
-{
-	t_token			defined_tokens[NUM_DEFINED_TOKENS];
-	t_token_string	token_str[NUM_DEFINED_TOKENS];
-	t_token_map		token_map[NUM_DEFINED_TOKENS];
-}	t_token_data;
-
+extern t_token		g_defined_tokens[NUM_DEFINED_TOKENS];
+extern t_token_string	g_token_str[NUM_DEFINED_TOKENS];
+extern t_token_map		g_token_map[NUM_DEFINED_TOKENS];
+extern int g_reset;
+extern unsigned int g_exit;
 
 t_token					*ft_token_new(t_token_type_key type,
 							char *value, int pos);
@@ -104,8 +102,5 @@ int						ft_token_issep(t_token *token);
 int						ft_token_isredir(t_token *token);
 int						ft_token_isparenthesis(t_token *token);
 void					ft_token_print(t_token *t);
-
-t_token					*get_defined_token(t_token_map *token_map,
-							t_token_string *token_str, int index);
 
 #endif

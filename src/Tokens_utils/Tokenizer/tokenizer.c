@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:54:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 10:54:04 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 11:50:59 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,21 @@ void quote_as_token(t_tokenizer *tz, t_character_type *search) // el contenido b
     ft_tokenizer_advance(tz, 1);
 }
 
-t_token *ft_tokenizer_handle_defined_token(t_tokenizer *tz, t_token_data *token_data)
+t_token *ft_tokenizer_handle_defined_token(t_tokenizer *tz)
 {
     int index;
-
-    // Avanza mientras encuentra espacios o caracteres ignorables
+    
     while (ft_tokenizer_istype(tz, CHAR_TYPE_SPACE | CHAR_TYPE_PASS))
         ft_tokenizer_advance(tz, 1);
 
-    // Establece la posición de inicio del siguiente token
     ft_tokenizer_set_start_pos(tz, tz->current_position);
 
     // Verifica si llegó al final del texto
     if (ft_tokenizer_istype(tz, CHAR_TYPE_END_OF_TEXT))
     {
-        return ft_token_copy(&token_data->defined_tokens[TOKEN_END_TOKEN]);
+        return ft_token_copy(&tz->token_data->defined_tokens[TOKEN_END_TOKEN]);
     }
 
-    // Verifica si el token actual es uno de los definidos
     index = ft_tokenizer_isdefined_token(tz, FOREACH_ADVANCE_ITERATOR);
     if (index != TYPE_NONE)
     {
@@ -50,20 +47,21 @@ t_token *ft_tokenizer_handle_defined_token(t_tokenizer *tz, t_token_data *token_
         {
             return NULL;
         }
-        return ft_token_copy(&token_data->defined_tokens[index]);
+        return ft_token_copy(&tz->token_data->defined_tokens[index]);
     }
 
     return NULL;
 }
 
-t_token *ft_tokenizer_get_next_token(t_tokenizer *tz, t_token_data *token_data)
+
+t_token *ft_tokenizer_get_next_token(t_tokenizer *tz)
 {
     t_token *token;
     t_character_type quote_type;
     int index;
 
     // Primero maneja tokens definidos
-    token = ft_tokenizer_handle_defined_token(tz, token_data);
+    token = ft_tokenizer_handle_defined_token(tz);
     if (token != NULL)
     {
         return token;
