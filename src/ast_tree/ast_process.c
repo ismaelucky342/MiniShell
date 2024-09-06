@@ -12,7 +12,7 @@
 
 #include "../../includes/minishell.h"
 
-int	process_call_next(t_astb *tool, t_ast_node **sep, t_mem_context *ctx)
+int	proc_next(t_astb *tool, t_ast_node **sep, t_mem_context *ctx)
 {
 	if (ft_token_issep(tool->current_token))
 	{
@@ -47,5 +47,5 @@ int	process(t_astb *tool, t_mem_context *ctx)
 			continue ;
 	}
 	insert_node(tool, cmd);
-	return (process_call_next(tool, &sep, ctx));
+	return (proc_next(tool, &sep, ctx));
 }

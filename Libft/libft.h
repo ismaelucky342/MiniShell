@@ -173,7 +173,7 @@ int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s1);
 char		*ft_strsub(t_mem_context *ctx, char const *s, unsigned int start,
-					size_t len);
+				size_t len);
 char		*ft_strncpy(char *s1, const char *s2, size_t n);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putchar_fd(char c, int fd);
