@@ -14,13 +14,13 @@
 
 int	ft_tokenizer_advance(t_tokenizer *tz, int n)
 {
-	if (tz->current_char == CHAR_TYPE_END_OF_TEXT)
+	if (tz->current_char == CHAR_END_OF_TEXT)
 		return (0);
 	tz->previous_char = tz->current_char;
 	tz->current_position += 1;
 	if (tz->current_position > tz->line_length - 1)
 	{
-		tz->current_char = CHAR_TYPE_END_OF_TEXT;
+		tz->current_char = CHAR_END_OF_TEXT;
 		return (0);
 	}
 	else
@@ -38,12 +38,12 @@ void	ft_tokenizer_advance_foreach(t_tokenizer *tz, t_character_type type,
 {
 	while (1)
 	{
-		if (ft_tokenizer_istype(tz, CHAR_TYPE_BACKSLASH)
-			&& type == CHAR_TYPE_WORD)
+		if (ft_tokenizer_istype(tz, CHAR_BACKSLASH)
+			&& type == CHAR_WORD)
 			ft_tokenizer_advance(tz, 1);
-		else if (ft_tokenizer_istype(tz, CHAR_TYPE_BACKSLASH)
-			&& (type == CHAR_TYPE_DOUBLE_QUOTE
-				|| type == CHAR_TYPE_SINGLE_QUOTE)
+		else if (ft_tokenizer_istype(tz, CHAR_BACKSLASH)
+			&& (type == CHAR_DOUBLE_QUOTE
+				|| type == CHAR_SINGLE_QUOTE)
 			&& whis == FOREACH_WHILE_CONDITION_FALSE)
 			ft_tokenizer_advance(tz, 1);
 		if (!ft_tokenizer_advance(tz, 1))
@@ -66,7 +66,7 @@ int	ft_tokenizer_pass_quotes(t_tokenizer *tz, t_character_type type)
 	ft_tokenizer_advance(tz, 1);
 	while (!ft_tokenizer_istype(tz, type))
 	{
-		if (ft_tokenizer_istype(tz, CHAR_TYPE_BACKSLASH))
+		if (ft_tokenizer_istype(tz, CHAR_BACKSLASH))
 			ft_tokenizer_advance(tz, 1);
 		if (!ft_tokenizer_advance(tz, 1))
 			break ;

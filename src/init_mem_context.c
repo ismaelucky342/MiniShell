@@ -15,7 +15,5 @@
 void	init_mem_context(t_mem_context *ctx)
 {
 	if (ctx)
-	{
 		ctx->allocated_list = NULL;
-	}
 }

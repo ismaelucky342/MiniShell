@@ -28,11 +28,13 @@ static void	handle_new_line(t_tokenizer *tz, char *new_line, t_mem_context *ctx)
 	}
 }
 
+//		Liberar la línea actual con el contexto de memoria
+//	mfree(ctx, (void **)&tz->current_line);
+
 int	ft_tokenizer_refill_line(t_tokenizer *tz, int sloc, t_mem_context *ctx)
 {
 	char	*new_line;
 
-	// Liberar la línea actual con el contexto de memoria
 	mfree(ctx, (void **)&tz->current_line);
 	print_prompt(sloc);
 	while (1)

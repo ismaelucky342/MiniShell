@@ -131,9 +131,10 @@ typedef enum e_binary_option
 }	t_binary_option;
 
 /*-------------------------AST FILES-----------------------*/
-int			coincidence(t_astb *tool, t_token_type_key type, t_mem_context *ctx);
-int			insert_into_node(t_astb *tool, t_token **tokendest, t_ast_tokens type,
+int			coincidence(t_astb *tool, t_token_type_key type,
 				t_mem_context *ctx);
+int			insert_into_node(t_astb *tool, t_token **tokendest,
+				t_ast_tokens type, t_mem_context *ctx);
 void		node_source(t_astb *tool, t_ast_node *node);
 void		find_for_node(t_astb *tool, t_ast_node *node,
 				t_token_type_key type);

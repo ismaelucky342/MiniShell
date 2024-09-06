@@ -20,6 +20,7 @@ static void	init_mem_context(t_mem_context *ctx)
 		ctx->allocated_list = NULL;
 	}
 }
+
 int	init_tool(t_astb *tool, int sloc, t_mem_context *ctx)
 {
 	ft_bzero(tool, sizeof(t_astb));
@@ -45,8 +46,8 @@ int	init_tool(t_astb *tool, int sloc, t_mem_context *ctx)
 
 t_ast_node	*ast_builder(int sloc, t_mem_context *ctx)
 {
-	t_astb tool;
-	int ret;
+	t_astb		tool;
+	int			ret;
 
 	init_mem_context(ctx);
 	ret = init_tool(&tool, sloc, ctx);

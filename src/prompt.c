@@ -22,8 +22,8 @@ static const char	*get_prompt_color(void)
 
 static void	print_prompt_content(const char *color, const char *path)
 {
-	ft_printf_fd(2, "%s➜ Minishell %s%s > %s", color, COLOR_BOLD_CYAN_TEXT, path,
-		COLOR_RESET);
+	ft_printf_fd(2, "%s➜ Minishell %s%s > %s", color,
+		COLOR_BOLD_CYAN_TEXT, path, COLOR_RESET);
 }
 
 void	print_prompt(int sloc)

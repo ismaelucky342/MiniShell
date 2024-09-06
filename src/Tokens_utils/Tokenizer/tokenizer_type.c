@@ -34,12 +34,12 @@ char	ft_tokenizer_peek(t_tokenizer *tz)
 int	ft_tokenizer_isword(t_tokenizer *tz)
 {
 	return (ft_tokenizer_istype(tz,
-			CHAR_TYPE_WORD | CHAR_TYPE_SINGLE_QUOTE
-			| CHAR_TYPE_DOUBLE_QUOTE | CHAR_TYPE_BACKSLASH));
+			CHAR_WORD | CHAR_SINGLE_QUOTE
+			| CHAR_DOUBLE_QUOTE | CHAR_BACKSLASH));
 }
 
 int	ft_tokenizer_isquote(t_tokenizer *tz)
 {
 	return (ft_tokenizer_istype(tz,
-			CHAR_TYPE_SINGLE_QUOTE | CHAR_TYPE_DOUBLE_QUOTE));
+			CHAR_SINGLE_QUOTE | CHAR_DOUBLE_QUOTE));
 }

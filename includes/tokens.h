@@ -12,10 +12,13 @@
 
 #ifndef TOKENS_H
 # define TOKENS_H
+
 # include "minishell.h"
+
 # define NUM_DEFINED_TOKENS 19
+
 extern unsigned int		g_exit;
-extern int 				g_reset;
+extern int				g_reset;
 
 typedef enum e_token_type
 {
@@ -89,17 +92,17 @@ extern t_token			g_defined_tokens[NUM_DEFINED_TOKENS];
 extern t_token_string	g_token_str[NUM_DEFINED_TOKENS];
 extern t_token_map		g_token_map[NUM_DEFINED_TOKENS];
 
-t_token					*ft_token_new(t_token_type_key type, char *value, int pos,
-							t_mem_context *ctx);
-t_token					*ft_token_copy(t_token *token, t_mem_context *ctx);
-void					ft_token_del(t_token **token, t_mem_context *ctx);
-void					ft_token_list_del(t_token **token, t_mem_context *ctx);
-int						ft_token_istype(t_token *token, t_token_type_key type);
-int						ft_token_iseot(t_token *token);
-int						ft_token_isword(t_token *token);
-int						ft_token_issep(t_token *token);
-int						ft_token_isredir(t_token *token);
-int						ft_token_isparenthesis(t_token *token);
-void					ft_token_print(t_token *t);
+t_token		*ft_token_new(t_token_type_key type, char *value, int pos,
+				t_mem_context *ctx);
+t_token		*ft_token_copy(t_token *token, t_mem_context *ctx);
+void		ft_token_del(t_token **token, t_mem_context *ctx);
+void		ft_token_list_del(t_token **token, t_mem_context *ctx);
+int			ft_token_istype(t_token *token, t_token_type_key type);
+int			ft_token_iseot(t_token *token);
+int			ft_token_isword(t_token *token);
+int			ft_token_issep(t_token *token);
+int			ft_token_isredir(t_token *token);
+int			ft_token_isparenthesis(t_token *token);
+void		ft_token_print(t_token *t);
 
 #endif
