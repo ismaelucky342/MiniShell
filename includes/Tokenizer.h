@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Tokenizer.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/06 12:17:29 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/06 12:30:47 by ismherna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TOKENIZER_H
 # define TOKENIZER_H
 # include "minishell.h"
@@ -76,23 +88,23 @@ void					print_prompt(int sloc);
 t_tokenizer				*ft_tokenizer_new(int sloc);
 void					ft_tokenizer_delete(t_tokenizer **tz);
 int						ft_tokenizer_error(int opt, t_tokenizer *tz);
-int						ft_tokenizer_istype(t_tokenizer *tz,
-							t_character_type type);
-int						ft_tokenizer_istype_start(t_tokenizer *tz,
-							t_character_type type);
+int	ft_tokenizer_istype(t_tokenizer *tz,
+						t_character_type type);
+int	ft_tokenizer_istype_start(t_tokenizer *tz,
+								t_character_type type);
 char					ft_tokenizer_peek(t_tokenizer *tz);
 int						ft_tokenizer_isword(t_tokenizer *tz);
 int						ft_tokenizer_isquote(t_tokenizer *tz);
 
 int						ft_tokenizer_advance(t_tokenizer *tz, int n);
-int						ft_tokenizer_pass_quotes(t_tokenizer *tz,
-							t_character_type type);
-t_token					*ft_tokenizer_token_grabber(t_tokenizer *tz,
-							t_token_type_key type);
+int	ft_tokenizer_pass_quotes(t_tokenizer *tz,
+								t_character_type type);
+t_token	*ft_tokenizer_token_grabber(t_tokenizer *tz,
+									t_token_type_key type);
 int						ft_tokenizer_refill_line(t_tokenizer *tz, int sloc);
 t_token					*ft_tokenizer_get_next_token(t_tokenizer *tz);
-void					ft_tokenizer_set_start_pos(t_tokenizer *tz,
-							int new_pos);
+void	ft_tokenizer_set_start_pos(t_tokenizer *tz,
+								int new_pos);
 int						unsupported_feature(t_tokenizer *tz, int *type,
 							char curr, char next);
 int						ft_tokenizer_deftoken_double(t_tokenizer *tz, int *len,

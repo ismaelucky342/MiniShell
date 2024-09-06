@@ -6,10 +6,9 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:58:27 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 11:59:18 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:17:17 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef TOKENS_H
 # define TOKENS_H
@@ -84,11 +83,11 @@ typedef struct s_token_map
 	t_token_type		idx;
 }						t_token_map;
 
-extern t_token		g_defined_tokens[NUM_DEFINED_TOKENS];
+extern t_token			g_defined_tokens[NUM_DEFINED_TOKENS];
 extern t_token_string	g_token_str[NUM_DEFINED_TOKENS];
 extern t_token_map		g_token_map[NUM_DEFINED_TOKENS];
-extern int g_reset;
-extern unsigned int g_exit;
+extern int				g_reset;
+extern unsigned int		g_exit;
 
 t_token					*ft_token_new(t_token_type_key type,
 							char *value, int pos);
