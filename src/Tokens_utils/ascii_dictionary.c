@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ascii_dictionary.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/06 09:46:09 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/06 09:47:59 by ismherna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/minishell.h"
 
 /*
-** Este array etiqueta todos los caracteres ASCII con un código utilizado para agrupar caracteres
-** que tienen el mismo sentido (según nuestro léxico).
+ Este array etiqueta todos los caracteres ASCII con un 
+ código utilizado para agrupar caracteres
+ que tienen el mismo sentido (según nuestro léxico).
 */
 
 t_character_type	g_token_dictionary[255] = {
@@ -110,8 +123,10 @@ t_token_string    g_token_str[NUM_DEFINED_TOKENS] = {
     {TOKEN_NONE, "NONE"}
 };
 
-t_token_map    g_token_map[NUM_DEFINED_TOKENS] = {
-    {TOKEN_ERROR, TYPE_ERROR},
+t_token_map    g_token_map[NUM_DEFINED_TOKENS] =
+{
+
+    {TOKEN_ERROR,  TYPE_ERROR},
     {TOKEN_END_TOKEN, TYPE_END_TOKEN},
     {TOKEN_SPACE, TYPE_SPACE},
     {TOKEN_IGNORE, TYPE_IGNORE},

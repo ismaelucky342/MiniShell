@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AST.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/06 09:53:20 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/06 10:04:18 by ismherna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef AST_H
 # define AST_H
 # include "Tokenizer.h"
 # include "minishell.h"
 # include "tokens.h"
-/*------------------------------------------AST STRUCTURES AREA--------------------------------------------------*/
+/*----------------------AST STRUCTURES AREA------------------------*/
 
-/*===============================================UTILS============================================================*/
+/*=============================UTILS==============================*/
 
 // ast error code
 
@@ -36,11 +48,11 @@ typedef enum clean_node
 	CLEAN_NODE_AND_CHILDS
 }						t_clean_node;
 
-/*-----------------------------------------------AST MAIN STRUCTURE----------------------------------------------------*/
+/*------------------------AST MAIN STRUCTURE------------------------*/
 
 typedef struct ast_ast_node
 {
-	struct ast_ast_node	*Father;
+	struct ast_ast_node	*father;
 	struct ast_ast_node	*left;
 	struct ast_ast_node	*right;
 	size_t				type;
@@ -63,7 +75,7 @@ typedef struct s_astb
 	t_ast_node			*tree_possition;
 }						t_astb;
 
-/*-----------------------------------------------INTERPRETER AST PIPES----------------------------------------------------*/
+/*-------------------INTERPRETER AST PIPES------------------------*/
 
 // Definiciones de descriptores de archivo para pipes y estándares
 # define PIPE_READ_END 0 // Descriptor para leer desde el pipe
@@ -71,16 +83,17 @@ typedef struct s_astb
 # define STDIN_FILENO 0 // Descriptor para la entrada estándar
 # define STDOUT_FILENO 1 // Descriptor para la salida estándar
 
-// Estructura para almacenar la información de los pipes en una lista doblemente enlazada
+// Estructura para almacenar la información de
+// los pipes en una lista doblemente enlazada
 typedef struct s_pipe_node
 {
 	struct s_pipe_node *next; // Apunta al siguiente nodo en la lista
 	struct s_pipe_node *prev; // Apunta al nodo anterior en la lista
 	int					pipe_fds[2];
-	// Descriptores del pipe (pipe_fds[0] para lectura,pipe_fds[1] para escritura)
+	// Descriptores del pipe
 }						t_pipe_node;
 
-// Estructura para almacenar los identificadores de procesos en una lista doblemente enlazada
+// Almacenar los identificadores de procesos en una lista doblemente enlazada
 typedef struct s_pid_node
 {
 	struct s_pid_node *next; // Apunta al siguiente nodo en la lista
@@ -94,7 +107,6 @@ typedef enum e_ast_interpreter_status
 	AST_INTERPRETER_SUCCESS, // Interpretación exitosa del AST
 	AST_INTERPRETER_FAILURE  // Fallo en la interpretación del AST
 }						t_ast_interpreter_status;
-
 // Errores posibles durante la interpretación del AST
 typedef enum e_ast_interpreter_error
 {
@@ -112,7 +124,7 @@ typedef enum e_binary_option
 	BIN_OPT_GET = 0x10   // Opción para obtener (get)
 }						t_binary_option;
 
-/*---------------------------------------AST FILES------------------------------------------*/
+/*-------------------------------AST FILES--------------------------*/
 
 int						coincidence(t_astb *tool, t_token_type_key type);
 int						insert_into_node(t_astb *tool, t_token **tokendest,
@@ -130,7 +142,7 @@ void					ft_node_delete(t_ast_node **node, int opt);
 int						init_tool(t_astb *tool, int sloc);
 t_ast_node				*ast_builder(int sloc);
 
-/*---------------------------------------AST INTERPRETER FILES------------------------------*/
+/*-------------------------AST INTERPRETER FILES----------------------*/
 /*
 int						astTOKEN_error(char *name, int opt);
 int						node__cmd_controller(t_ast_node *cmd);
@@ -145,7 +157,7 @@ int						waitallpipes(int pipe[2], int opt);
 int						pid_save(int pid, int opt);
 int						node__pipe_handle(t_ast_node *ppln);
 int	redir_handle__each(t_ast_node *cmd, t_token *tmp_redir,
-							t_token *tmp_file);
+                                                        t_token *tmp_file);
 int						redir_handle(t_ast_node *cmd);
 */
 

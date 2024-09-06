@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:07:41 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/09/06 09:37:54 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 10:06:19 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,23 @@ typedef enum return_signal
 	NOMATCH
 }					t_return_signal;
 
-/*--------------------------------------EXECUTION ERRORS---------------------------------------------------*/
+/*--------------------------EXECUTION ERRORS------------------------*/
 
 typedef enum e_error_value
 {
 	SUCCESS, // Indica que la operación fue exitosa
-	ERROR,   // Indica que ocurrió un error
-	EMPTY    // Indica que no hay datos
-}					t_error_value;
+	ERROR, // Indica que ocurrió un error
+	EMPTY // Indica que no hay datos
+}t_error_value;
 
 typedef struct builtins
 {
 	char *name; // Nombre del comando o built-in
 	int				(*f)(int argc, char **args, int out);
 	// Puntero a función que implementa el comando
-}					t_builtins;
+}t_builtins;
 
-/*--------------------------------------COLORS STRUCT-------------------------------------------------------*/
+/*------------------------COLORS STRUCT-------------------------*/
 
 // reset color:
 # define COLOR_RESET "\033[0m"
