@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:07:41 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/09/06 14:21:04 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 17:00:36 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <string.h>
 # include <sys/types.h>
 # include <termios.h>
+# include <errno.h>
 # include <unistd.h>
 
 # ifndef LINE_MAX
