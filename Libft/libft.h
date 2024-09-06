@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/06 13:16:42 by dgomez-l          #+#    #+#             */
+/*   Updated: 2024/09/06 13:16:44 by dgomez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
 # include <stdarg.h>
 # include <stddef.h>
-#include <limits.h>
+# include <limits.h>
 # include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -14,13 +25,13 @@
 # define DLL_SUCCESS 0
 # define DLL_FAILURE 1
 
-/*------------------------------------------FT_PRINTF DEFINES----------------------------------------------*/
+/*---------------------FT_PRINTF DEFINES-----------------------*/
 
 # define PF_BUFF_SIZE 16384
 # define C_SPEC "cspdiuxX%n"
 # define NULLSTR "(null)"
 
-/*------------------------------------------GET NEXT LINE DEFINES----------------------------------------------*/
+/*---------------------GET NEXT LINE DEFINES-----------------------*/
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
@@ -28,7 +39,7 @@
 # ifndef OPEN_MAX
 #  define OPEN_MAX 1024
 # endif
-/*---------------------------------------------PRINTF STRUCTS--------------------------------------------------*/
+/*-----------------------PRINTF STRUCTS-------------------------*/
 
 typedef enum e_ft_printf_dir
 {
@@ -44,7 +55,7 @@ typedef enum e_ft_printf_dir
 	PF_PREC,
 	PF_SPEC
 } t_ft_printf_dir;
-/*---------------------------------------------LIST AND MMALLOC------------------------------------------------*/
+/*-----------------------LIST AND MMALLOC------------------------*/
 
 typedef struct s_list
 {
@@ -59,7 +70,7 @@ void	*mrealloc(void *ptr, size_t size);
 int	free_all_malloc(void);
 int	mfree(void **to_free);
 
-/*--------------------------------------------DOUBLE LINKED LIST--------------------------------------------------*/
+/*----------------------DOUBLE LINKED LIST-------------------------*/
 
 typedef struct s_pattern_list_np
 {
@@ -69,13 +80,13 @@ typedef struct s_pattern_list_np
 
 typedef struct s_pattern_list_np t_pnp;
 
-/*-------------------------------------------------BOOLEAN--------------------------------------------------------*/
+/*-------------------------BOOLEAN----------------------------*/
 
 typedef int t_bool;
 # define TRUE 1
 # define FALSE 0
 
-/*---------------------------------------------STRUCT HASH --------------------------------------------------*/
+/*-----------------------STRUCT HASH -------------------------*/
 typedef struct s_element
 {
     char *key;
@@ -103,7 +114,7 @@ int	ft_sqrt(int number);
 int	checkd_bf(int *numbers, int count);
 void	ins_sort(int array[], int n);
 
-/*----------------------------------------------PRINTF--------------------------------------------------------*/
+/*-----------------------PRINTF----------------------------*/
 // dprintf update 
 int	ft_printf(const char *format, ...);
 int	ft_printf_fd(int fd, const char *format, ...);
@@ -171,7 +182,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-/*----------------------------------------------------HASH FUNCTIONS------------------------------------------------------------*/
+/*--------------------------HASH FUNCTIONS------------------------------*/
 
 t_hashtable	*ft_add_element(t_hashtable *ht, char *key, char *value);
 t_element	*ft_get_element(t_hashtable *ht, char *key);
@@ -189,7 +200,7 @@ int	ft_next_prime(int nbr);
 int	ft_index(char *str, char c);
 int	ft_is_prime(int nbr);
 
-/*-------------------------------------------------DOUBLE LINKED LIST FILES------------------------------------------------------*/
+/*-------------------------DOUBLE LINKED LIST FILES---------------------------*/
 void	ft_del_list_np(t_pnp **lst);
 void	*ft_new_node(size_t size, void (*f)(void *, int, va_list), int nb_arg,
 		...);
@@ -207,7 +218,7 @@ void	ft_del_node_start_np(t_pnp **lst, void (*f)(t_pnp *curr));
 void	ft_foreach_node_f_np(t_pnp **lst, int (*f)(t_pnp *curr));
 void	ft_swap_node_np(t_pnp **lst, t_pnp *node_a, t_pnp *node_b);
 
-/*----------------------------------------------------GET NEXT LINE ------------------------------------------------------------*/
+/*--------------------------GET NEXT LINE ------------------------------*/
 //char	*get_next_line(int fd); V1
 char	*get_next_line_v2(void); //V2
 char	*get_next_line_bonus(int fd);

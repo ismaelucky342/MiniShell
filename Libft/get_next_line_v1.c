@@ -33,23 +33,23 @@ char	*ft_strchr_gnl(char *str, int c)
 	return (NULL);
 }
 
-static char	*ft_set_line(char *line_buffer)
+static char	*ft_set_line(char *line_buf)
 {
 	char		*left_c;
 	ssize_t		i;
 
 	i = 0;
-	while (line_buffer[i] != '\n' && line_buffer[i] != '\0')
+	while (line_buf[i] != '\n' && line_buf[i] != '\0')
 		i++;
-	if (line_buffer[i] == 0 || line_buffer[1] == 0)
+	if (line_buf[i] == 0 || line_buf[1] == 0)
 		return (NULL);
-	left_c = ft_substr_gnl(line_buffer, i + 1, ft_strlen_gnl(line_buffer) - i);
+	left_c = ft_substr_gnl(line_buf, i + 1, ft_strlen_gnl(line_buf) - i);
 	if (*left_c == 0)
 	{
 		free(left_c);
 		left_c = NULL;
 	}
-	line_buffer[i + 1] = 0;
+	line_buf[i + 1] = 0;
 	return (left_c);
 }
 
