@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:54:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 13:45:27 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 22:35:31 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	quote_as_token(t_tokenizer *tz, t_character_type *search)
 	ft_tokenizer_advance(tz, 1);
 }
 
-t_token	*ft_tokenizer_handle_defined_token(t_tokenizer *tz)
+t_token	*ft_tokenizer_handle_defined_token(t_tokenizer *tz, t_mem_context *ctx)
 {
 	int	index;
 
@@ -29,7 +29,7 @@ t_token	*ft_tokenizer_handle_defined_token(t_tokenizer *tz)
 	ft_tokenizer_set_start_pos(tz, tz->current_position);
 	if (ft_tokenizer_istype(tz, CHAR_TYPE_END_OF_TEXT))
 	{
-		return (ft_token_copy(&g_defined_tokens[TOKEN_END_TOKEN]));
+		return (ft_token_copy(&g_defined_tokens[TOKEN_END_TOKEN], ctx));
 	}
 	index = ft_isdefined_token(tz, FOREACH_ADVANCE_ITERATOR);
 	if (index != TYPE_NONE)
@@ -38,18 +38,18 @@ t_token	*ft_tokenizer_handle_defined_token(t_tokenizer *tz)
 		{
 			return (NULL);
 		}
-		return (ft_token_copy(&g_defined_tokens[index]));
+		return (ft_token_copy(&g_defined_tokens[index], ctx));
 	}
 	return (NULL);
 }
 
-t_token	*ft_tokenizer_get_next_token_part2(t_tokenizer *tz)
+t_token	*ft_tokenizer_get_next_token_part2(t_tokenizer *tz, t_mem_context *ctx)
 {
-	t_character_type		quote_type;
-	int						index;
+	t_character_type	quote_type;
+	int					index;
 
-	while (!ft_tokenizer_istype(tz, CHAR_TYPE_END_OF_TEXT | CHAR_TYPE_SPACE
-			| CHAR_TYPE_PASS | CHAR_TYPE_ERROR))
+	while (!ft_tokenizer_istype(tz,
+			CHAR_TYPE_END_OF_TEXT | CHAR_TYPE_SPACE | CHAR_TYPE_PASS | CHAR_TYPE_ERROR))
 	{
 		if (ft_tokenizer_istype(tz, CHAR_TYPE_BACKSLASH))
 		{
@@ -69,17 +69,15 @@ t_token	*ft_tokenizer_get_next_token_part2(t_tokenizer *tz)
 			if (ft_tokenizer_pass_quotes(tz, quote_type) == ERROR)
 				return (NULL);
 	}
-	return (ft_tokenizer_token_grabber(tz, TOKEN_WORD));
+	return (ft_tokenizer_token_grabber(tz, TOKEN_WORD, ctx));
 }
 
-t_token	*ft_tokenizer_get_next_token(t_tokenizer *tz)
+t_token	*ft_tokenizer_get_next_token(t_tokenizer *tz, t_mem_context *ctx)
 {
-	t_token					*token;
+	t_token	*token;
 
-	token = ft_tokenizer_handle_defined_token(tz);
+	token = ft_tokenizer_handle_defined_token(tz, ctx);
 	if (token != NULL)
-	{
 		return (token);
-	}
-	return (ft_tokenizer_get_next_token_part2(tz));
+	return (ft_tokenizer_get_next_token_part2(tz, ctx));
 }

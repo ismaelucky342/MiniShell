@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:07:41 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/09/06 17:00:36 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 22:52:25 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ typedef struct builtins
 # define COLOR_BOLD_GRAY_TEXT "\033[90;01m"
 
 /*--------------------ENV FILES---------------*/
-
 void				ft_env2hashtable(char **env, t_hashtable *hashtable,
 						int array_len);
 t_hashtable			*ft_create_envhash(char **env);

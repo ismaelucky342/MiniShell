@@ -6,36 +6,39 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:23:37 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 12:51:30 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 22:26:14 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-static void	handle_new_line(t_tokenizer *tz, char *new_line)
+static void	handle_new_line(t_tokenizer *tz, char *new_line, t_mem_context *ctx)
 {
 	if (g_reset)
 	{
 		g_reset = 0;
-		mfree((void **)&new_line);
+		mfree(ctx, (void **)&new_line);
 	}
 	else if (new_line)
 		tz->current_line = new_line;
 	else
+	{
 		if (ft_tokenizer_error(ERROR_GET_NEXT_LINE, tz) == ERROR)
 			tz->current_line = NULL;
+	}
 }
 
-int	ft_tokenizer_refill_line(t_tokenizer *tz, int sloc)
+int	ft_tokenizer_refill_line(t_tokenizer *tz, int sloc, t_mem_context *ctx)
 {
 	char	*new_line;
 
-	mfree((void **)&tz->current_line);
+	// Liberar la línea actual con el contexto de memoria
+	mfree(ctx, (void **)&tz->current_line);
 	print_prompt(sloc);
 	while (1)
 	{
 		new_line = get_next_line_v2();
-		handle_new_line(tz, new_line);
+		handle_new_line(tz, new_line, ctx);
 		if (tz->current_line != NULL)
 			break ;
 	}

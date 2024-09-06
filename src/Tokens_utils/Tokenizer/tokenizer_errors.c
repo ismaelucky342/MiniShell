@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:40:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 15:34:15 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 22:32:11 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ int	unsupported_feature(t_tokenizer *tz, int *token_type, char curr, char next)
 	return (1);
 }
 
-int	ft_tokenizer_deftoken_double(t_tokenizer *tz,
-			int *len, char curr, char next)
+int	ft_tokenizer_deftoken_double(t_tokenizer *tz, int *len, char curr,
+		char next)
 {
 	if (tz->line_length > 1 && curr == '&' && next == '&')
 	{
 		*len = 2;
 		return (TYPE_LOGICAL_AND);
 	}
-	if (tz->line_length > 1 && curr == '|' && next == '||')
+	if (tz->line_length > 1 && curr == '|' && next == '|')
 	{
 		*len = 2;
 		return (TYPE_LOGICAL_OR);

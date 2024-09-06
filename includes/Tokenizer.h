@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:17:29 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 14:21:04 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 22:37:02 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,12 @@ extern t_character_type	g_token_dictionary[255];
 
 /*-------------------TOKENIZER FILES--------------------*/
 
-t_token					*ft_tokenizer_handle_defined_token(t_tokenizer *tz);
+t_token					*ft_tokenizer_handle_defined_token(t_tokenizer *tz, t_mem_context *ctx);
+t_token					*ft_tokenizer_get_next_token_part2(t_tokenizer *tz, t_mem_context *ctx);
+t_token					*ft_tokenizer_handle_defined_token(t_tokenizer *tz, t_mem_context *ctx);
 void					print_prompt(int sloc);
-t_tokenizer				*ft_tokenizer_new(int sloc);
-void					ft_tokenizer_delete(t_tokenizer **tz);
+t_tokenizer				*ft_tokenizer_new(int sloc, t_mem_context *ctx);
+void					ft_tokenizer_delete(t_tokenizer **tz, t_mem_context *ctx);
 int						ft_tokenizer_error(int opt, t_tokenizer *tz);
 int						ft_tokenizer_istype(t_tokenizer *tz,
 							t_character_type type);
@@ -96,9 +98,10 @@ int						ft_tokenizer_advance(t_tokenizer *tz, int n);
 int						ft_tokenizer_pass_quotes(t_tokenizer *tz,
 							t_character_type type);
 t_token					*ft_tokenizer_token_grabber(t_tokenizer *tz,
-							t_token_type_key type);
-int						ft_tokenizer_refill_line(t_tokenizer *tz, int sloc);
-t_token					*ft_tokenizer_get_next_token(t_tokenizer *tz);
+							t_token_type_key type, t_mem_context *ctx);
+int						ft_tokenizer_refill_line(t_tokenizer *tz, 
+							int sloc, t_mem_context *ctx);
+t_token					*ft_tokenizer_get_next_token(t_tokenizer *tz, t_mem_context *ctx);
 void					ft_tokenizer_set_start_pos(t_tokenizer *tz,
 							int new_pos);
 int						unsupported_feature(t_tokenizer *tz, int *type,

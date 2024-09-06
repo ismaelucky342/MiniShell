@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:41:08 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 12:42:58 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 22:29:54 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int	ft_tokenizer_pass_quotes(t_tokenizer *tz, t_character_type type)
 		if (!ft_tokenizer_advance(tz, 1))
 			break ;
 	}
-	if (!ft_tokenizer_istype(tz, type)
-		&& ft_tokenizer_error(ERROR_UNKNOWN, tz) == ERROR)
+	if (!ft_tokenizer_istype(tz, type) && ft_tokenizer_error(ERROR_UNKNOWN,
+			tz) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }
@@ -83,11 +83,16 @@ void	ft_tokenizer_set_start_pos(t_tokenizer *tz, int new_pos)
 	tz->line_start_char = tz->current_line[new_pos];
 }
 
-t_token	*ft_tokenizer_token_grabber(t_tokenizer *tz, t_token_type_key type)
+t_token	*ft_tokenizer_token_grabber(t_tokenizer *tz, t_token_type_key type,
+		t_mem_context *ctx)
 {
 	t_token	*new;
+	char	*sub_value;
 
-	new = ft_token_new(type, ft_strsub(tz->current_line, tz->start_index,
-				tz->current_position - tz->start_index), tz->start_index);
+	sub_value = ft_strsub(ctx, tz->current_line, tz->start_index,
+			tz->current_position - tz->start_index);
+	if (sub_value == NULL)
+		return (NULL);
+	new = ft_token_new(type, sub_value, tz->start_index, ctx);
 	return (new);
 }

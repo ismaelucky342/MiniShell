@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:11:25 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 13:50:01 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 22:52:57 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static const char	*get_prompt_color(void)
 
 static void	print_prompt_content(const char *color, const char *path)
 {
-	ft_printf_fd(2, "%s➜  %s%s > %s", color, COLOR_BOLD_CYAN_TEXT, path,
+	ft_printf_fd(2, "%s➜ Minishell %s%s > %s", color, COLOR_BOLD_CYAN_TEXT, path,
 		COLOR_RESET);
 }
 

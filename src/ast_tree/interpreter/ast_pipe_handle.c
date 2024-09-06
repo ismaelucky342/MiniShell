@@ -107,12 +107,18 @@ int	ast_subpipe_handle(t_ast_node *pipeline)
 
 	if (pipeline->left->type == CMD)
 	{
-		if ((fdread = ast_cmdpipefirst_controller(pipeline->left)) == -1)
+		fdread = ast_cmdpipefirst_controller(pipeline->left);
+		if (fdread == -1)
 			return (-1);
 	}
-	else if ((fdread = ast_subpipe_handle(pipeline->left)) == -1)
-		return (-1);
-	if ((fdread = ast_cmdpipe_controller(pipeline->right, fdread)) == -1)
+	else
+	{
+		fdread = ast_subpipe_handle(pipeline->left);
+		if (fdread == -1)
+			return (-1);
+	}
+	fdread = ast_cmdpipe_controller(pipeline->right, fdread);
+	if (fdread == -1)
 		return (-1);
 	return (fdread);
 }
