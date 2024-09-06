@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		skip_atoi(const char **s)
+int	skip_atoi(const char **s)
 {
 	int	nb;
 
