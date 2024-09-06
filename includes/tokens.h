@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:10:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 10:14:05 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 10:19:16 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,14 @@ typedef struct s_token_map
 	t_token_type_key	mask;
 	t_token_type		idx;
 }						t_token_map;
+
+typedef struct s_token_data
+{
+	t_token			defined_tokens[NUM_DEFINED_TOKENS];
+	t_token_string	token_str[NUM_DEFINED_TOKENS];
+	t_token_map		token_map[NUM_DEFINED_TOKENS];
+}	t_token_data;
+
 
 t_token					*ft_token_new(t_token_type_key type, char *value,
 							int pos);

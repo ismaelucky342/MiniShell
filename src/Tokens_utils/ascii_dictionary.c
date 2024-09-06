@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 09:46:09 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 09:47:59 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 10:17:36 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  que tienen el mismo sentido (según nuestro léxico).
 */
 
-t_character_type	g_token_dictionary[255] = {
+t_character_type    g_token_dictionary[255] = {
     ['\0'] = CHAR_TYPE_END_OF_TEXT,
     [0x01] = CHAR_TYPE_END_OF_TEXT,
     [0x02] = CHAR_TYPE_PASS,
@@ -146,3 +146,11 @@ t_token_map    g_token_map[NUM_DEFINED_TOKENS] =
     {TOKEN_DOLLAR, TYPE_DOLLAR},
     {TOKEN_NONE, TYPE_NONE}
 };
+
+t_token *get_defined_token(t_token_map *token_map, 
+            t_token_string *token_str, int index)
+{
+    if (index < 0 || index >= NUM_DEFINED_TOKENS)
+        return NULL;
+    return &token_map[index];  
+}
