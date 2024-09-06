@@ -40,8 +40,8 @@ typedef enum e_debug_option
 
 typedef struct s_tokenizer
 {
-	char *current_line;   // Línea actual que se está analizando
-	int line_length;      // Longitud de la línea
+	char *current_line; // Línea actual que se está analizando
+	int line_length; // Longitud de la línea
 	int start_index;      // Índice de inicio para el análisis
 	int current_position; // Posición actual en la línea
 	char previous_char;   // Carácter anterior al actual
