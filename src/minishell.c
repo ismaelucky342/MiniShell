@@ -6,44 +6,15 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:41:41 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 12:13:44 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:23:49 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-RESUMEN: 
-1. Iniciar shell -> 2. Configurar terminal 
--> 3. Leer comando -> 4. Parsear comando (AST) 
--> 5. Ejecutar comando -> 6. Limpiar recursos 
--> 7. Reiniciar bucle
-
-*/
 #include "../includes/minishell.h"
-int g_reset; 
-unsigned int g_exit; 
 
+int				g_reset;
 
-void	print_prompt(int sloc)
-{
-	char	prompt[LINE_MAX];
-	int		i;
-	int		last;
-
-	(!g_exit && sloc) ? g_exit = sloc : 0;
-	if (!getcwd(prompt, LINE_MAX))
-	{
-		ft_printf_fd(2, "%s➜  %sminishell > %s", !g_exit ? COLOR_BOLD_GREEN_TEXT : COLOR_BOLD_RED_TEXT,
-			COLOR_BOLD_CYAN_TEXT, COLOR_RESET);
-		return ;
-	}
-	i = -1;
-
-	while (prompt[++i])
-		if (prompt[i] == '/')
-			last = i + 1;
-	ft_printf_fd(2, "%s➜  %s%s > %s", !g_exit ? COLOR_BOLD_GREEN_TEXT : COLOR_BOLD_RED_TEXT, COLOR_BOLD_CYAN_TEXT,
-		&prompt[last], COLOR_RESET);
-}
+unsigned int	g_exit;
 
 void	sig_handler(int signo)
 {
@@ -57,50 +28,53 @@ void	sig_handler(int signo)
 		ft_printf_fd(2, "\b\b  \b\b");
 }
 
+static int	process_ast(int sloc)
+{
+	t_ast_node	*ast;
+
+	ast = ast_builder(sloc);
+	if (ast)
+	{
+		g_exit = sloc;
+		ft_node_delete(&ast, CLEAN_NODE_AND_CHILDS);
+		return (0);
+	}
+	else
+	{
+		g_exit = 2;
+		return (1);
+	}
+}
+
+static void	cleanup(t_hashtable *env_hashtable)
+{
+	free_all_malloc();
+	ft_free_hashtable(env_hashtable);
+}
 
 int	main(int ac, char **av, char **env)
 {
 	int			sloc;
-	t_ast_node		*ast;
+	int			ast;
 	t_hashtable	*env_hashtable;
 
+	sloc = 0;
+	ast = 0;
 	(void)ac;
 	(void)av;
-
-	// Inicializa el entorno usando la tabla hash
 	env_hashtable = ft_create_envhash(env);
 	if (!env_hashtable)
 	{
 		perror("Failed to create environment hash");
 		return (1);
 	}
-
-
-	//ft_print_env(env_hashtable, 0);
-	sloc = 0;
-	g_exit = 0;
-
 	while (1)
 	{
-		signal(SIGINT, sig_handler);
-		signal(SIGQUIT, sig_handler);
-
-		if ((ast = ast_builder(sloc)))
-		{
-#if DEBUG == 1
-			//tree_draw(ast); // Opcional: Dibuja el árbol si DEBUG está habilitado
-#endif
-			//sloc = ast_interpreter(ast);
-			g_exit = sloc;
-			ft_node_delete(&ast, CLEAN_NODE_AND_CHILDS);
-		}
-		else
-			g_exit = 2; // Error en la construcción del AST
+		setup_signal_handlers();
+		if (process_ast(sloc))
+			break ;
+		sloc = ast_interpreter(ast);
 	}
-
-	free_all_malloc();
-	ft_free_hashtable(env_hashtable);
-
+	cleanup(env_hashtable);
 	return (0);
 }
-
