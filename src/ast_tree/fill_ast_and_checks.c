@@ -29,11 +29,11 @@ void	node_source(t_astb *tool, t_ast_node *node)
 {
 	node->left = tool->ast_tree;
 	node->right = NULL;
-	node->Father = NULL;
+	node->father = NULL;
 	if (tool->ast_tree )
 	{
 		
-		tool->ast_tree->Father = node;
+		tool->ast_tree->father = node;
 		tool->tree_possition = node;
 	}
 	tool->ast_tree = node;
@@ -43,15 +43,15 @@ void	find_for_node(t_astb *tool, t_ast_node *node, t_token_type_key type)
 {
 	while (tool->tree_possition && (tool->tree_possition->type == CMD ||
 		!ft_token_istype(tool->tree_possition->separators, type)))
-		tool->tree_possition = tool->tree_possition->Father;
+		tool->tree_possition = tool->tree_possition->father;
 	if (!tool->tree_possition)
 		node_source(tool, node);
 	else
 	{
 		node->left = tool->tree_possition->right;
-		node->left->Father = node;
+		node->left->father = node;
 		node->right = NULL;
-		node->Father = tool->tree_possition;
+		node->father = tool->tree_possition;
 		tool->tree_possition->right = node;
 	}
 }
@@ -67,7 +67,7 @@ int		insert_node(t_astb *tool, t_ast_node *node)
 	else
 	{
 		if (node->type == CMD && (tool->tree_possition->right = node))
-			node->Father = tool->tree_possition;
+			node->father = tool->tree_possition;
 		else if (node->type == SEPARATOR)
 		{
 			if (!node->separators)

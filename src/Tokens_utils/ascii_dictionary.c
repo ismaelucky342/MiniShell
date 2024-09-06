@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 09:46:09 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 10:17:36 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 10:33:08 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,11 +146,3 @@ t_token_map    g_token_map[NUM_DEFINED_TOKENS] =
     {TOKEN_DOLLAR, TYPE_DOLLAR},
     {TOKEN_NONE, TYPE_NONE}
 };
-
-t_token *get_defined_token(t_token_map *token_map, 
-            t_token_string *token_str, int index)
-{
-    if (index < 0 || index >= NUM_DEFINED_TOKENS)
-        return NULL;
-    return &token_map[index];  
-}
