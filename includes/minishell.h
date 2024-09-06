@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:07:41 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/09/06 13:07:34 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:57:39 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef enum return_signal
 typedef enum e_error_value
 {
 	SUCCESS, // Indica que la operación fue exitosa
-	ERROR,// Indica que ocurrió un error
-	EMPTY// Indica que no hay datos
+	ERROR,   // Indica que ocurrió un error
+	EMPTY    // Indica que no hay datos
 }					t_error_value;
 
 typedef struct builtins
@@ -107,6 +107,19 @@ void				ft_env2hashtable(char **env, t_hashtable *hashtable,
 						int array_len);
 t_hashtable			*ft_create_envhash(char **env);
 void				ft_print_env(t_hashtable *env_hashtable, int is_export);
+void				print_prompt(int sloc);
+
+void				ft_env2hashtable(char **env, t_hashtable *hashtable,
+						int array_len);
+
+void				process_env_variable(char **env, t_hashtable *hashtable,
+						int array_len);
+
+void				insert_into_hashtable(char *key, char *value,
+						t_hashtable *hashtable, int array_len);
+
+void				add_new_element(char *key, char *value,
+						t_hashtable *hashtable, int hash_index);
 
 /*------------------------------------EXECUTION FILES------------------------------------------------------*/
 /*

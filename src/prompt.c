@@ -6,15 +6,11 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:11:25 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 13:13:21 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:50:01 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-int					g_reset;
-
-unsigned int		g_exit;
 
 static const char	*get_prompt_color(void)
 {

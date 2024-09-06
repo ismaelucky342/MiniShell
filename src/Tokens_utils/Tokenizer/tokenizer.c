@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:54:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 12:40:08 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:45:27 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,6 @@ t_token	*ft_tokenizer_handle_defined_token(t_tokenizer *tz)
 	return (NULL);
 }
 
-t_token	*ft_tokenizer_get_next_token(t_tokenizer *tz)
-{
-	t_token					*token;
-	t_character_type		quote_type;
-	int						index;
-
-	token = ft_tokenizer_handle_defined_token(tz);
-	if (token != NULL)
-	{
-		return (token);
-	}
-	return (ft_tokenizer_get_next_token_part2(tz));
-}
-
 t_token	*ft_tokenizer_get_next_token_part2(t_tokenizer *tz)
 {
 	t_character_type		quote_type;
@@ -84,4 +70,16 @@ t_token	*ft_tokenizer_get_next_token_part2(t_tokenizer *tz)
 				return (NULL);
 	}
 	return (ft_tokenizer_token_grabber(tz, TOKEN_WORD));
+}
+
+t_token	*ft_tokenizer_get_next_token(t_tokenizer *tz)
+{
+	t_token					*token;
+
+	token = ft_tokenizer_handle_defined_token(tz);
+	if (token != NULL)
+	{
+		return (token);
+	}
+	return (ft_tokenizer_get_next_token_part2(tz));
 }

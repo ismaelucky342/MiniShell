@@ -7,7 +7,8 @@ NAME = minishell
 
 SRC		=	src/env/env_hash.c \
 			src/ast_tree/ast_process.c	\
-			src/ast_tree/fill_ast_and_checks.c	\
+			src/ast_tree/fill_ast_and_checks_1.c	\
+			src/ast_tree/fill_ast_and_checks_2.c	\
 			src/ast_tree/ft_ast_built.c	\
 			src/ast_tree/ft_node_delete.c	\
 			src/ast_tree/ft_node_new.c	\
@@ -27,7 +28,8 @@ SRC		=	src/env/env_hash.c \
 			src/Tokens_utils/Tokenizer/tokenizer_new.c	\
 			src/Tokens_utils/Tokenizer/tokenizer_type.c	\
 			src/Tokens_utils/Tokenizer/tokenizer.c \
-			src/minishell.c
+			src/minishell.c \
+			src/prompt.c
 
 OBJ_DIR  = objects
 
