@@ -1,8 +1,20 @@
-# include "../../includes/minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_node_new.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/06 12:59:06 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/06 12:59:29 by ismherna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/minishell.h"
 
 t_ast_node	*ft_node_new(t_ast_node_type type)
 {
-	t_ast_node		*new;
+	t_ast_node	*new;
 
 	new = mmalloc(sizeof(t_ast_node));
 	new->type = type;
