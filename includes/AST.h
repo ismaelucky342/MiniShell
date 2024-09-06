@@ -144,7 +144,7 @@ int						node__parent_ispipe(t_ast_node *node);
 int						waitallpipes(int pipe[2], int opt);
 int						pid_save(int pid, int opt);
 int						node__pipe_handle(t_ast_node *ppln);
-int						redir_handle__each(t_ast_node *cmd, t_token *tmp_redir,
+int	redir_handle__each(t_ast_node *cmd, t_token *tmp_redir,
 							t_token *tmp_file);
 int						redir_handle(t_ast_node *cmd);
 */

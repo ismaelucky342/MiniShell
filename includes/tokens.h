@@ -10,7 +10,7 @@ typedef enum e_token_type
 	TYPE_DOUBLE_QUOTE,
 	TYPE_LEFT_PAREN,
 	TYPE_NONE,
-    TYPE_ERROR,
+	TYPE_ERROR,
 	TYPE_END_TOKEN,
 	TYPE_SPACE,
 	TYPE_RIGHT_PAREN,
@@ -71,11 +71,12 @@ typedef struct s_token_map
 	t_token_type		idx;
 }						t_token_map;
 
-extern t_token		g_defined_tokens[NUM_DEFINED_TOKENS];
+extern t_token			g_defined_tokens[NUM_DEFINED_TOKENS];
 extern t_token_string	g_token_str[NUM_DEFINED_TOKENS];
 extern t_token_map		g_token_map[NUM_DEFINED_TOKENS];
 
-t_token					*ft_token_new(t_token_type_key type, char *value, int pos);
+t_token					*ft_token_new(t_token_type_key type, char *value,
+							int pos);
 t_token					*ft_token_copy(t_token *token);
 void					ft_token_del(t_token **token);
 void					ft_token_list_del(t_token **token);

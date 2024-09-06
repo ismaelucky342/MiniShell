@@ -2,7 +2,7 @@
 # define TOKENIZER_H
 # include "minishell.h"
 # include "tokens.h"
-extern int g_reset;
+extern int				g_reset;
 
 /*-------------------------------------TOKENIZER STRUCT--------------------------------------------------------------*/
 
