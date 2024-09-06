@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:56:10 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 12:56:12 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:56:48 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	handle_cmd_node(t_astb *tool, t_ast_node *node)
 {
 	tool->tree_possition->right = node;
-	node->father = tool->tree_possition;
+	node->parent = tool->tree_possition;
 	return (SUCCESS);
 }
 

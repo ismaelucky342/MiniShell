@@ -6,10 +6,11 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:00:25 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 13:03:01 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:15:08 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/AST.h"
 #include "../../includes/minishell.h"
 
 int	init_tool(t_astb *tool, int sloc)
@@ -35,15 +36,28 @@ int	init_tool(t_astb *tool, int sloc)
 	return (SUCCESS);
 }
 
-t_ast_node	*ast_builder(int sloc)
+void	init_mem_context(t_mem_context *ctx)
 {
-	t_astb	tool;
-	int		ret;
+	if (ctx)
+	{
+		ctx->allocated_list = NULL;
+	}
+}
 
+t_ast_node	*ast_builder(int sloc, t_mem_context *ctx)
+{
+	t_astb			tool;
+	int				ret;
+	t_mem_context	ctx;
+
+	init_mem_context(&ctx);
 	ret = init_tool(&tool, sloc);
 	if (ret == EMPTY)
-		return (ast_builder(sloc));
-	if (ret != ERROR && process(&tool) != ERROR)
+	{
+		ft_tokenizer_delete(&tool.ast_tokenizer);
+		return (ast_builder(sloc, &ctx));
+	}
+	if (ret != ERROR && process(&tool, &ctx) != ERROR)
 	{
 		ft_tokenizer_delete(&tool.ast_tokenizer);
 		return (tool.ast_tree);

@@ -6,13 +6,13 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:02:13 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/04 13:02:15 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:46:44 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_del_list_np(t_pnp **lst)
+void	ft_del_list_np(t_pnp **lst, t_mem_context *ctx)
 {
 	t_pnp	*tmp;
 	t_pnp	*tmp2;
@@ -21,7 +21,7 @@ void	ft_del_list_np(t_pnp **lst)
 	while (tmp)
 	{
 		tmp2 = tmp->next;
-		mfree((void **)&tmp);
+		mfree(ctx, (void **)&tmp);
 		tmp = tmp2;
 	}
 	*lst = NULL;

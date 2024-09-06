@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:25:43 by ismherna          #+#    #+#             */
-/*   Updated: 2024/03/12 11:53:54 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:20:02 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ char	*ft_strchr_gnl(const char *str, int c)
 
 static char	*ft_set_line(char *line_buf)
 {
-	char		*left_c;
-	size_t		i;
+	char	*left_c;
+	size_t	i;
 
 	i = 0;
 	while (line_buf[i] != '\n' && line_buf[i] != '\0')
@@ -45,7 +45,8 @@ static char	*ft_set_line(char *line_buf)
 		free(line_buf);
 		return (NULL);
 	}
-	left_c = ft_substr_gnl(line_buf, i +1, ft_strlen_gnl(line_buf) - i -1);
+	left_c = ft_substr_gnl(line_buf, i + 1, ft_strlen_gnl(line_buf) - i
+			- 1);
 	if (!left_c || left_c[0] == '\0')
 	{
 		free(left_c);
@@ -55,10 +56,10 @@ static char	*ft_set_line(char *line_buf)
 	return (left_c);
 }
 
-static char	*ft_fill_line_buffer(char *left_c, char *buffer)
+static char	*ft_fill_line_buf(char *left_c, char *buffer)
 {
-	ssize_t		b_read;
-	char		*tmp;
+	ssize_t	b_read;
+	char	*tmp;
 
 	b_read = 1;
 	while (b_read > 0)
@@ -89,10 +90,11 @@ char	*get_next_line_v2(void)
 	char			*line;
 	char			*buffer;
 
+	left_c = NULL;
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	line = ft_fill_line_buffer(left_c, buffer);
+	line = ft_fill_line_buf(left_c, buffer);
 	free(buffer);
 	if (!line)
 	{

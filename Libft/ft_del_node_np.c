@@ -6,14 +6,14 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:01:57 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/04 13:02:00 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:40:42 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_del_node_np(t_pnp **lst, t_pnp *del,
-	void (*f)(t_pnp *curr))
+void	ft_del_node_np(t_pnp **lst, t_pnp *del, void (*f)(t_pnp *curr),
+		t_mem_context *ctx)
 {
 	t_pnp	*tmp;
 
@@ -31,9 +31,10 @@ void	ft_del_node_np(t_pnp **lst, t_pnp *del,
 		if (tmp->next == NULL)
 			return ;
 		tmp->next = del->next;
-		tmp->next->prev = tmp;
+		if (tmp->next)
+			tmp->next->prev = tmp;
 	}
 	if (f)
 		f(del);
-	mfree((void **)&del);
+	mfree(ctx, (void **)&del);
 }

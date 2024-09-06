@@ -92,18 +92,20 @@ SRC =	checkD_bf.c \
 		ft_swap_node_np.c \
 		mmalloc.c	\
 		ft_printf_fd.c \
+		ft_printf_fd_utils.c \
 		ft_strnlen.c \
 		skip_atoi.c \
 		to_c.c \
 		to_s.c \
 		to_nbr.c \
+		to_nbr_utils.c \
 		to_n.c \
 		get_next_line_v1.c \
 		get_next_line_v2.c \
 		get_next_line_utils.c \
 		get_next_line_bonus.c \
 		ft_strncpy.c 	\
-		ft_strsub.c
+		ft_strsub.c 
 		
 NAME = libft.a
 

@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:17:29 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 12:40:04 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:21:04 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef enum e_character_type
 
 extern t_character_type	g_token_dictionary[255];
 
-/*-------------------------------------TOKENIZER FILES---------------------------------------------------------------*/
+/*-------------------------------------TOKENIZER FILES---------------------------------------*/
 
 t_token					*ft_tokenizer_handle_defined_token(t_tokenizer *tz);
 void					print_prompt(int sloc);

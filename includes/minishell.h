@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:07:41 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/09/06 13:57:39 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 17:00:36 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <string.h>
 # include <sys/types.h>
 # include <termios.h>
+# include <errno.h>
 # include <unistd.h>
 
 # ifndef LINE_MAX
@@ -61,7 +62,7 @@ typedef struct builtins
 	// Puntero a función que implementa el comando
 }					t_builtins;
 
-/*--------------------------------------COLORS STRUCT-------------------------------------------------------*/
+/*--------------------------------------COLORS STRUCT-------------------------------*/
 
 // reset color:
 # define COLOR_RESET "\033[0m"
@@ -101,7 +102,7 @@ typedef struct builtins
 # define COLOR_BOLD_WHITE_TEXT "\033[37;01m"
 # define COLOR_BOLD_GRAY_TEXT "\033[90;01m"
 
-/*---------------------------------------ENV FILES------------------------------------------------------*/
+/*---------------------------------------ENV FILES------------------------------*/
 
 void				ft_env2hashtable(char **env, t_hashtable *hashtable,
 						int array_len);
@@ -121,7 +122,7 @@ void				insert_into_hashtable(char *key, char *value,
 void				add_new_element(char *key, char *value,
 						t_hashtable *hashtable, int hash_index);
 
-/*------------------------------------EXECUTION FILES------------------------------------------------------*/
+/*------------------------------------EXECUTION FILES------------------------------*/
 /*
 int					xecho(int argc, char **args, int out);
 int					xpwd(int argc, char **args, int out);

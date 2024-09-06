@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:00:20 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 12:03:46 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 17:09:37 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef enum clean_node
 
 typedef struct ast_ast_node
 {
-	struct ast_ast_node	*father;
+	struct ast_ast_node	*parent;
 	struct ast_ast_node	*left;
 	struct ast_ast_node	*right;
 	size_t				type;
@@ -126,7 +126,6 @@ typedef enum e_binary_option
 }						t_binary_option;
 
 /*-------------------------AST FILES-----------------------*/
-
 int						coincidence(t_astb *tool, t_token_type_key type);
 int						insert_into_node(t_astb *tool, t_token **tokendest,
 							t_ast_tokens type);
@@ -135,28 +134,30 @@ void					find_for_node(t_astb *tool, t_ast_node *node,
 							t_token_type_key type);
 int						insert_node(t_astb *tool, t_ast_node *node);
 
-int						process_call_next(t_astb *tool, t_ast_node **sep);
-int						process(t_astb *tool);
+
+
+int						process_call_next(t_astb *tool, t_ast_node **sep, t_mem_context *ctx);
+int						process(t_astb *tool, t_mem_context *ctx);
 int						ft_tree_build_error(t_astb *tool, int opt);
-t_ast_node				*ft_node_new(t_ast_node_type type);
-void					ft_node_delete(t_ast_node **node, int opt);
-int						init_tool(t_astb *tool, int sloc);
+t_ast_node				*ft_node_new(t_ast_node_type type, t_mem_context *ctx);
+void					ft_node_delete(t_ast_node **node, int opt, t_mem_context *ctx);
+int						init_tool(t_astb *tool, int sloc, t_mem_context *ctx);
 t_ast_node				*ast_builder(int sloc);
 
 /*---------------------AST INTERPRETER FILES--------------------*/
 /*
 int						astTOKEN_error(char *name, int opt);
-int						node__cmd_controller(t_ast_node *cmd);
-int						node__controller(t_ast_node *node);
+int						ast_cmd_controller(t_ast_node *cmd);
+int						ast_controller(t_ast_node *node);
 int						ast_interpreter(t_ast_node *ast);
-int						node__dbl_and_handle(t_ast_node *cmd_sep);
-int						node__dbl_or_handle(t_ast_node *cmd_sep);
-int						node__semicon_handle(t_ast_node *cmd_sep);
-int						node__sep_controller(t_ast_node *sep);
-int						node__parent_ispipe(t_ast_node *node);
+int						ast_dbl_and_handle(t_ast_node *cmd_sep);
+int						ast_dbl_or_handle(t_ast_node *cmd_sep);
+int						ast_semicon_handle(t_ast_node *cmd_sep);
+int						ast_sep_controller(t_ast_node *sep);
+int						ast_parent_ispipe(t_ast_node *node);
 int						waitallpipes(int pipe[2], int opt);
 int						pid_save(int pid, int opt);
-int						node__pipe_handle(t_ast_node *ppln);
+int						ast_pipe_handle(t_ast_node *ppln);
 int						redir_handle__each(t_ast_node *cmd, t_token *tmp_redir,
 							t_token *tmp_file);
 int						redir_handle(t_ast_node *cmd);

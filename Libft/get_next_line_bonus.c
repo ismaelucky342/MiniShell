@@ -51,7 +51,7 @@ static char	*ft_set_line(char *line_buf)
 	return (left_c);
 }
 
-static char	*ft_fill_line_buffer(int fd, char *left_c, char *buffer)
+static char	*ft_fill_line_buf(int fd, char *left_c, char *buffer)
 {
 	ssize_t	b_read;
 	char	*tmp;
@@ -97,7 +97,7 @@ char	*get_next_line_bonus(int fd)
 	}
 	if (!buffer)
 		return (NULL);
-	line = ft_fill_line_buffer(fd, left_c[fd], buffer);
+	line = ft_fill_line_buf(fd, left_c[fd], buffer);
 	free(buffer);
 	buffer = NULL;
 	if (!line)
