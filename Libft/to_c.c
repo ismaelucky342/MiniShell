@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   to_c.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/15 10:56:39 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:29:20 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	fill_buffer_with_char(char *buf, int width, char fill)
+{
+	while (0 < width--)
+		*buf++ = fill;
+}
+
+static int	get_spec_char(int *dir, va_list ap)
+{
+	if (dir[PF_SPEC] == -1)
+		return ('\0');
+	else if (dir[PF_SPEC] == 8)
+		return ('%');
+	else
+		return (va_arg(ap, int));
+}
 
 int	to_c(char *buf, int *dir, va_list ap)
 {
@@ -21,33 +37,17 @@ int	to_c(char *buf, int *dir, va_list ap)
 	str = buf;
 	fill = ' ';
 	dir[PF_WIDTH]--;
-
 	if (dir[PF_PREC] == -1 && dir[PF_ZERO] == 1)
 		fill = '0';
-
 	if (dir[PF_LEFT] != 1)
 	{
-		while (0 < dir[PF_WIDTH]--)
-			*str++ = fill;
+		fill_buffer_with_char(str, dir[PF_WIDTH], fill);
+		str += dir[PF_WIDTH];
 	}
-
-	if (dir[PF_SPEC] == -1)
-	{
-		spec_char = '\0';
-	}
-	else
-	{
-		if (dir[PF_SPEC] == 8)
-			spec_char = '%';
-		else
-			spec_char = va_arg(ap, int);
-	}
+	spec_char = get_spec_char(dir, ap);
 	*str++ = spec_char;
-
-	while (0 < dir[PF_WIDTH]--)
-		*str++ = ' ';
-
-	if (dir[PF_SPEC] == -1)
+	fill_buffer_with_char(str, dir[PF_WIDTH], ' ');
+	if (spec_char == '\0')
 		return (str - buf - 1);
 	else
 		return (str - buf);
