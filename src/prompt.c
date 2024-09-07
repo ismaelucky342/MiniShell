@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:11:25 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 13:50:15 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/07 14:38:10 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,36 +44,34 @@ static void	print_prompt_content(const char *color, const char *user,
 		COLOR_RESET);
 }
 
-void print_prompt(int sloc, t_hashtable *env_hashtable)
+void	print_prompt(int sloc, t_hashtable *env_hashtable)
 {
-    char prompt[LINE_MAX];
-    char host[HOST_NAME_MAX];
-    const char *user;
-    const char *color;
-    int i, last;
+	char		prompt[LINE_MAX];
+	char		host[HOST_NAME_MAX];
+	const char	*user;
+	const char	*color;
 
-    last = 0;
-    if (g_signals.exit_status == 0 && sloc)
-        g_signals.exit_status = sloc;
-    color = get_prompt_color();
-    user = get_env_var(env_hashtable, "USER");
-    gethostname(host, HOST_NAME_MAX);
-
-    // Debug output
-    //fprintf(stderr, "DEBUG: user=%s, host=%s\n", user ? user : "NULL", host);
-
-    if (!getcwd(prompt, LINE_MAX))
-    {
-        print_prompt_content(color, user, host, "minishell");
-        fflush(stdout); // Asegúrate de que el prompt se imprima
-        return;
-    }
-    i = -1;
-    while (prompt[++i])
-    {
-        if (prompt[i] == '/')
-            last = i + 1;
-    }
-    print_prompt_content(color, user, host, &prompt[last]);
-    fflush(stdout); // Asegúrate de que el prompt se imprima
+	int i, last;
+	last = 0;
+	if (g_signals.exit_status == 0 && sloc)
+		g_signals.exit_status = sloc;
+	color = get_prompt_color();
+	user = get_env_var(env_hashtable, "USER");
+	gethostname(host, HOST_NAME_MAX);
+	// Debug output
+	fprintf(stderr, "DEBUG: user=%s, host=%s\n", user ? user : "NULL", host);
+	if (!getcwd(prompt, LINE_MAX))
+	{
+		print_prompt_content(color, user, host, "minishell");
+		fflush(stdout);
+		return ;
+	}
+	i = -1;
+	while (prompt[++i])
+	{
+		if (prompt[i] == '/')
+			last = i + 1;
+	}
+	print_prompt_content(color, user, host, &prompt[last]);
+	fflush(stdout);
 }

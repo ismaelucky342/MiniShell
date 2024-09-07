@@ -6,13 +6,15 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:58:27 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 11:12:18 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/07 14:35:23 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKENS_H
 # define TOKENS_H
+
 # include "minishell.h"
+
 # define NUM_DEFINED_TOKENS 19
 
 typedef enum e_token_type

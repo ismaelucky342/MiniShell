@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:17:29 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 13:10:36 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/07 14:35:07 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,23 @@ typedef struct s_tokenizer
 
 typedef enum e_character_type
 {
-	CHAR_TYPE_ERROR = 0x0,
-	CHAR_TYPE_END_OF_TEXT = 0x1,
-	CHAR_TYPE_SPACE = 0x2,
-	CHAR_TYPE_WORD = 0x4,
-	CHAR_TYPE_LEFT_PARENTHESIS = 0x8,
-	CHAR_TYPE_RIGHT_PARENTHESIS = 0x10,
-	CHAR_TYPE_REDIRECTION_IN = 0x20,
-	CHAR_TYPE_REDIRECTION_OUT = 0x40,
-	CHAR_TYPE_SINGLE_QUOTE = 0x80,
-	CHAR_TYPE_DOUBLE_QUOTE = 0x100,
-	CHAR_TYPE_LOGICAL_AND = 0x200,
-	CHAR_TYPE_PIPE = 0x400,
-	CHAR_TYPE_SEMICOLON = 0x800,
-	CHAR_TYPE_PASS = 0x1000,
-	CHAR_TYPE_DOLLAR = 0x2000,
-	CHAR_TYPE_BACKSLASH = 0x4000,
-	CHAR_TYPE_NONE = 0x8000
+	CHAR_ERROR = 0x0,
+	CHAR_END_OF_TEXT = 0x1,
+	CHAR_SPACE = 0x2,
+	CHAR_WORD = 0x4,
+	CHAR_LEFT_PARENTHESIS = 0x8,
+	CHAR_RIGHT_PARENTHESIS = 0x10,
+	CHAR_REDIRECTION_IN = 0x20,
+	CHAR_REDIRECTION_OUT = 0x40,
+	CHAR_SINGLE_QUOTE = 0x80,
+	CHAR_DOUBLE_QUOTE = 0x100,
+	CHAR_LOGICAL_AND = 0x200,
+	CHAR_PIPE = 0x400,
+	CHAR_SEMICOLON = 0x800,
+	CHAR_PASS = 0x1000,
+	CHAR_DOLLAR = 0x2000,
+	CHAR_BACKSLASH = 0x4000,
+	CHAR_NONE = 0x8000
 }						t_character_type;
 
 extern t_character_type	g_token_dictionary[255];
