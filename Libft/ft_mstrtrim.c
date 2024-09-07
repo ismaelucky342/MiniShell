@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_error.c                                   :+:      :+:    :+:   */
+/*   ft_mstrtrim.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 12:49:31 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 17:00:21 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/07 16:57:49 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/07 16:58:44 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_error(char *title, int code, char *line)
+char	*ft_mstrtrim(t_mem_context *ctx, char const *s1, char const *set)
 {
-	char	*str;
-	char	*cmd;
+	size_t	end;
+	size_t	start;
 
-	cmd = ft_strtrim(line, " ");
-	str = ft_strjoin(title, cmd);
-	if (!str)
-		exit(1);
-	ft_putendl_fd(str, 2);
-	free(str);
-	free(cmd);
-	exit(code);
+	if ((!*s1 && !*set) || (!*s1 && *set))
+		return (ft_strdup(  ""));
+	end = ft_strlen(s1);
+	start = 0;
+	while (ft_strchr(set, s1[end - 1]))
+		end--;
+	while (ft_strchr(set, s1[start]))
+		start++;
+	return (ft_substr(ctx, s1, start, end - start));
 }

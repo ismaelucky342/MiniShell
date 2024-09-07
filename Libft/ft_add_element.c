@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_hashtable	*ft_add_element(t_hashtable *ht, char *key, char *value)
+t_hashtable	*ft_add_element(t_mem_context *ctx, t_hashtable *ht, char *key, char *value)
 {
 	int	hash;
 
@@ -26,6 +26,6 @@ t_hashtable	*ft_add_element(t_hashtable *ht, char *key, char *value)
 		}
 		hash = (hash + 1) % ht->length;
 	}
-	ht->element_array[hash] = ft_create_element(key, value);
+	ht->element_array[hash] = ft_create_element(ctx, key, value);
 	return (ht);
 }

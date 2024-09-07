@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_token_copy.c                                    :+:      :+:    :+:   */
+/*   free_hash.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 10:29:55 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 17:10:51 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/07 15:59:01 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/07 16:19:04 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_token	*ft_token_copy(t_token *token, t_mem_context *ctx)
+void	free_env_hashtable(t_hashtable *hashtable, int array_len)
 {
-	t_token	*new;
+	t_element	*current;
+	t_element	*next;
+	int			i;
 
-	new = (t_token *)mmalloc(ctx, sizeof(t_token));
-	if (!new)
-		return (NULL);
-	new->type = token->type;
-	new->position_in_line = token->position_in_line;
-	new->length = token->length;
-	new->value = ft_mstrdup(ctx, token->value);
-	if (!new->value)
+	i = 0;
+	if (!hashtable || !hashtable->element_array)
+		return ;
+	while (i < array_len)
 	{
-		mfree(ctx, (void **)&new);
-		return (NULL);
+		current = hashtable->element_array[i];
+		while (current)
+		{
+			next = current->next;
+			free(current->key);
+			free(current->value);
+			free(current);
+			current = next;
+		}
+		i++;
 	}
-	return (new);
+	free(hashtable->element_array);
+	free(hashtable);
 }

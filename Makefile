@@ -7,6 +7,7 @@ NAME = minishell
 
 SRC		=	src/env/env_hash.c \
 			src/env/print_env.c \
+			src/env/free_hash.c \
 			src/env/get_env.c \
 			src/ast_tree/ast_process.c	\
 			src/ast_tree/fill_ast_and_checks_1.c	\

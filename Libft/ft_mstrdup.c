@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_error.c                                   :+:      :+:    :+:   */
+/*   ft_mstrdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 12:49:31 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 17:00:21 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/07 16:38:22 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/07 16:39:26 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_error(char *title, int code, char *line)
+char	*ft_mstrdup(t_mem_context *ctx, char *s1)
 {
-	char	*str;
-	char	*cmd;
+	size_t	len;
+	char	*duplicate;
 
-	cmd = ft_strtrim(line, " ");
-	str = ft_strjoin(title, cmd);
-	if (!str)
-		exit(1);
-	ft_putendl_fd(str, 2);
-	free(str);
-	free(cmd);
-	exit(code);
+	len = ft_strlen(s1) + 1;
+	duplicate = (char *)mmalloc(ctx, len);
+	if (duplicate == NULL)
+		return (NULL);
+	ft_memcpy(duplicate, s1, len);
+	return (duplicate);
 }

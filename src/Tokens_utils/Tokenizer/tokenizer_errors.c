@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:40:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 13:12:27 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/07 15:45:40 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_tokenizer_error(int opt, t_tokenizer *tz)
 	else if (opt == ERROR_UNSUPPORTED_FEATURE)
 		handle_error_unsupported_feature(tz, code);
 	else if (opt == ERROR_GET_NEXT_LINE)
-		return (0);
+		exit (0);
 	else
 		handle_specific_errors(opt, code);
 	return (ERROR);

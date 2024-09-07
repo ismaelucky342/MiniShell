@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:11:25 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 14:38:10 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/07 14:43:50 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	print_prompt(int sloc, t_hashtable *env_hashtable)
 	color = get_prompt_color();
 	user = get_env_var(env_hashtable, "USER");
 	gethostname(host, HOST_NAME_MAX);
-	// Debug output
-	fprintf(stderr, "DEBUG: user=%s, host=%s\n", user ? user : "NULL", host);
 	if (!getcwd(prompt, LINE_MAX))
 	{
 		print_prompt_content(color, user, host, "minishell");

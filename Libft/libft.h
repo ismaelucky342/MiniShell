@@ -171,6 +171,7 @@ char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s1);
+char		*ft_mstrdup(t_mem_context *ctx, char *s1);
 char		*ft_strsub(t_mem_context *ctx, char const *s, unsigned int start,
 				size_t len);
 char		*ft_strncpy(char *s1, const char *s2, size_t n);
@@ -181,9 +182,11 @@ void		ft_putnbr_fd(int n, int fd);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 char		**ft_split(char const *s, char c);
 char		*ft_strtrim(char const *s1, char const *set);
+char		*ft_mstrtrim(t_mem_context *ctx, char const *s1, char const *set);
 char		*ft_itoa(int n);
 char		*ft_strjoin(const char *s1, const char *s2);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char		*ft_msubstr(t_mem_context *ctx, char const *s, unsigned int start, size_t len);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 void		ft_print_error(char *title, int code, char *line);
 t_list		*ft_lstnew(void *data);
@@ -198,10 +201,10 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*---------------------HASH FUNCTIONS------------------------------------*/
 
-t_hashtable	*ft_add_element(t_hashtable *ht, char *key, char *value);
+t_hashtable	*ft_add_element(t_mem_context *ctx, t_hashtable *ht, char *key, char *value);
 t_element	*ft_get_element(t_hashtable *ht, char *key);
 t_hashtable	*ft_ch_value(t_hashtable *ht, char *key, char *value, int is_apnd);
-t_element	*ft_create_element(char *key, char *value);
+t_element	*ft_create_element(t_mem_context *ctx, char *key, char *value);
 t_hashtable	*ft_create_hashtable(int length);
 t_hashtable	*ft_delete_element(t_hashtable *ht, char *key);
 void		ft_free_hashtable(t_hashtable *hashtable);

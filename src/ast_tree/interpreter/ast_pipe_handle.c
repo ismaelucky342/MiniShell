@@ -57,6 +57,8 @@ RUN THE RIGHT CHILD THEN CLOSE THE READ SIDE OF THE PIPE CAUSE THE RIGHT
 CHILD HAS FINISHED TO USE IT
 */
 
+#include "minishell.h"
+
 int	ast_cmdpipefirst_controller(t_ast_node *cmd)
 {
 	if (cmd->stdin != STDIN_FILENO)
@@ -68,7 +70,7 @@ int	ast_cmdpipefirst_controller(t_ast_node *cmd)
 	cmd->stdout = cmd->pipe_ltor[PIPE_WRITE_END];
 	if (redir_handle(cmd) == ERROR)
 		return (-1);
-	g_exit = execute_fork(cmd, cmd->pipe_ltor[PIPE_READ_END]);
+	g_signals.exit_status = execute_fork(cmd, cmd->pipe_ltor[PIPE_READ_END]);
 	close(cmd->pipe_ltor[PIPE_WRITE_END]);
 	return (cmd->pipe_ltor[PIPE_READ_END]);
 }
@@ -89,9 +91,10 @@ int	ast_cmdpipe_controller(t_ast_node *cmd, int fdread)
 	if (redir_handle(cmd) == ERROR)
 		return (-1);
 	if (ast_parent_ispipe(cmd->parent))
-		g_exit = execute_fork(cmd, cmd->pipe_ltor[PIPE_READ_END]);
+		g_signals.exit_status = execute_fork(cmd,
+				cmd->pipe_ltor[PIPE_READ_END]);
 	else
-		g_exit = execute_fork(cmd, 0);
+		g_signals.exit_status = execute_fork(cmd, 0);
 	close(fdread);
 	if (ast_parent_ispipe(cmd->parent))
 	{
@@ -130,6 +133,6 @@ int	ast_pipe_handle(t_ast_node *pipeline)
 	if ((ast_subpipe_handle(pipeline)) == -1)
 		return (1);
 	sig = pid_save(0, BIN_OPT_WAIT | BIN_OPT_FREE);
-	g_exit = WEXITSTATUS(sig);
+	g_signals.exit_status = WEXITSTATUS(sig);
 	return (WEXITSTATUS(sig));
 }

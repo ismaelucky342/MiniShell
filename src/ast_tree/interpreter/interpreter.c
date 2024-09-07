@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 22:32:02 by tharchen          #+#    #+#             */
-/*   Updated: 2024/09/06 17:30:40 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/07 14:51:35 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ast_parent_ispipe(t_ast_node *node)
 int	asti_error(char *name, int opt)
 {
 	if (opt == AST_INTERPRETER_ERROR_OPEN)
-		ft_dprintf(2, "minishell: %s: %s\n", name, strerror(errno));
+		ft_print_error(name, errno, strerror(errno));
 	else if (opt == AST_INTERPRETER_ERROR_PIPE)
-		ft_dprintf(2, "minishell: %s\n", strerror(errno));
+		ft_print_error(name, errno, strerror(errno));
 	return (ERROR);
 }
 
@@ -32,12 +32,12 @@ int	ast_cmd_controller(t_ast_node *cmd)
 {
 	if (redir_handle(cmd) == ERROR)
 		return (ERROR);
-	g_exit = execute_simple(cmd);
+	g_signals.exit_status = execute_simple(cmd);
 	if (cmd->stdout != STDOUT_FILENO)
 		close(cmd->stdout);
 	if (cmd->stdin != STDIN_FILENO)
 		close(cmd->stdin);
-	return (g_exit);
+	return (g_signals.exit_status);
 }
 
 int	ast_controller(t_ast_node *node)
