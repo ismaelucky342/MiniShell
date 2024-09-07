@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   to_s.c                                             :+:      :+:    :+:   */
+/*   ft_print_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 12:48:23 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/07 12:49:31 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/07 12:52:07 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	to_s(char *buf, int *dir, va_list ap)
+void	ft_print_error(char *title, int code, char *line)
 {
 	char	*str;
-	char	*s;
-	char	fill;
-	int		len;
-	int		i;
+	char	*cmd;
 
-	s = va_arg(ap, char *);
-	if (s == NULL)
-		s = NULLSTR;
-	len = ft_strnlen(s, dir[PF_PREC]);
-	fill = ' ';
-	if (dir[PF_ZERO] == 1)
-		fill = '0';
-	str = buf;
-	i = -1;
-	if (dir[PF_LEFT] != 1)
-	{
-		while (len < dir[PF_WIDTH]--)
-			*str++ = fill;
-	}
-	while (++i < len)
-		*str++ = *s++;
-	while (len < dir[PF_WIDTH]--)
-		*str++ = ' ';
-	return (str - buf);
+	cmd = ft_strtrim(line, " ");
+	str = ft_strjoin(title, cmd);
+	if (!str)
+		exit(1);
+	ft_putendl_fd(str, 2);
+	free(str);
+	free(cmd);
+	exit(code);
 }

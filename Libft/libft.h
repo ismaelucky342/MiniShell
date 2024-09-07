@@ -136,7 +136,6 @@ char		*fill_width(char *str, int *dir, char fill_char);
 char		*ft_number_str(char *n, char *str, char sign, int *dir);
 char		*ft_number_str(char *n, char *str, char sign, int *dir);
 long long	get_nbr(int *dir, va_list ap);
-
 void		to_n(int i, int *dir, va_list ap);
 int			ft_printf_fd(int fd, const char *format, ...);
 //simple printf
@@ -186,7 +185,7 @@ char		*ft_itoa(int n);
 char		*ft_strjoin(const char *s1, const char *s2);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_substr(char const *s, unsigned int start, size_t len);
-
+void		ft_print_error(char *title, int code, char *line);
 t_list		*ft_lstnew(void *data);
 void		ft_lstadd_front(t_list **list, t_list *new);
 int			ft_lstsize(t_list *lst);
@@ -208,7 +207,7 @@ t_hashtable	*ft_delete_element(t_hashtable *ht, char *key);
 void		ft_free_hashtable(t_hashtable *hashtable);
 void		ft_free_element(t_element *element);
 char		*ft_get_value(t_hashtable *hashtable, char *key);
-int			ft_monkey_hash(char *str, int length);
+int			ft_monkey_hash(const char *str, int length);
 void		ft_print_hashtable(t_hashtable *hashtable, char *delimeter);
 int			ft_arraylen(char **str);
 int			ft_next_prime(int nbr);

@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:07:41 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/09/06 22:52:25 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/07 13:45:34 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,22 @@
 # include "../Libft/libft.h"
 # include "AST.h"
 # include "Tokenizer.h"
+# include "signal.h"
 # include "tokens.h"
 # include <dirent.h>
+# include <errno.h>
 # include <limits.h>
 # include <readline/history.h>
+# include <readline/history.h>
+# include <readline/readline.h>
 # include <readline/readline.h>
 # include <signal.h>
-# include <stdbool.h>
-# include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <stdlib.h>
 # include <string.h>
 # include <sys/types.h>
 # include <termios.h>
-# include <errno.h>
 # include <unistd.h>
 
 # ifndef LINE_MAX
@@ -37,15 +40,6 @@
 
 # define BUILTINS 7
 
-extern unsigned int	g_exit;
-
-/*-----------RETURN SIGNAL-------------*/
-typedef enum return_signal
-{
-	CONTINUE,
-	NOMATCH
-}					t_return_signal;
-
 /*----------EXECUTION ERRORS-----------*/
 
 typedef enum e_error_value
@@ -53,13 +47,13 @@ typedef enum e_error_value
 	SUCCESS,
 	ERROR,
 	EMPTY
-}					t_error_value;
+}			t_error_value;
 
 typedef struct builtins
 {
-	char			*name;
-	int				(*f)(int argc, char **args, int out);
-}					t_builtins;
+	char	*name;
+	int		(*f)(int argc, char **args, int out);
+}			t_builtins;
 
 /*-------------------COLORS STRUCT----------------*/
 
@@ -96,38 +90,35 @@ typedef struct builtins
 # define COLOR_BOLD_GRAY_TEXT "\033[90;01m"
 
 /*--------------------ENV FILES---------------*/
-void				ft_env2hashtable(char **env, t_hashtable *hashtable,
-						int array_len);
-t_hashtable			*ft_create_envhash(char **env);
-void				ft_print_env(t_hashtable *env_hashtable, int is_export);
-void				print_prompt(int sloc);
+void		ft_env2hashtable(char **env, t_hashtable *hashtable, int array_len);
+t_hashtable	*ft_create_envhash(char **env);
+void		ft_print_env(t_hashtable *env_hashtable, int is_export);
 
-void				ft_env2hashtable(char **env, t_hashtable *hashtable,
-						int array_len);
+void		ft_env2hashtable(char **env, t_hashtable *hashtable, int array_len);
+const char	*ft_hashtable_get(t_hashtable *hashtable, const char *key);
+void		process_env_variable(char **env, t_hashtable *hashtable,
+				int array_len);
 
-void				process_env_variable(char **env, t_hashtable *hashtable,
-						int array_len);
+void		insert_into_hashtable(char *key, char *value,
+				t_hashtable *hashtable, int array_len);
 
-void				insert_into_hashtable(char *key, char *value,
-						t_hashtable *hashtable, int array_len);
-
-void				add_new_element(char *key, char *value,
-						t_hashtable *hashtable, int hash_index);
+void		add_new_element(char *key, char *value, t_hashtable *hashtable,
+				int hash_index);
 
 /*--------EXECUTION FILES--------*/
 /*
-int					xecho(int argc, char **args, int out);
-int					xpwd(int argc, char **args, int out);
-int					xexit(int argc, char **args, int out);
-int					xcd(int argc, char **args, int out);
-char				**env_to_arr(t_hashtable *hashtable);
-void				sig_exec(int signo);
-char				**convert_to_arr(t_token *args, int ac);
-char				**check_cmd(t_ast_node *cmd, int *ac, int *type);
-int					launch(t_ast_node *cmd, char **av);
-int					execute_fork(t_ast_node *cmd, int out);
-int					execute_simple(t_ast_node *cmd);
-char				*get_path(char *command, int *err);
+int			xecho(int argc, char **args, int out);
+int			xpwd(int argc, char **args, int out);
+int			xexit(int argc, char **args, int out);
+int			xcd(int argc, char **args, int out);
+char		**env_to_arr(t_hashtable *hashtable);
+void		sig_exec(int signo);
+char		**convert_to_arr(t_token *args, int ac);
+char		**check_cmd(t_ast_node *cmd, int *ac, int *type);
+int			launch(t_ast_node *cmd, char **av);
+int			execute_fork(t_ast_node *cmd, int out);
+int			execute_simple(t_ast_node *cmd);
+char		*get_path(char *command, int *err);
 */
 
 #endif

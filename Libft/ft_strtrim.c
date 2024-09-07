@@ -2,34 +2,37 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
 /*   Updated: 2024/02/20 09:32:28 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 //#include <stdio.h>
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
-	size_t	start;
 	size_t	end;
+	size_t	start;
 
-	start = 0;
-	if (!s1 || !set)
-		return (NULL);
-	while (s1[start] && ft_strchr(set, s1[start]))
-		start++;
+	if ((!*s1 && !*set) || (!*s1 && *set))
+		return (ft_strdup(""));
 	end = ft_strlen(s1);
-	while (end > start && ft_strchr(set, s1[end - 1]))
+	start = 0;
+	while (ft_strchr(set, s1[end - 1]))
 		end--;
-	str = ft_substr(s1, start, end - start);
-	return (str);
+	while (ft_strchr(set, s1[start]))
+		start++;
+	return (ft_substr(s1, start, end - start));
 }
-/*int		main(){
+/*int		main(void){
 
 	const char *string = "	hola mundo  ";
 	const char *trimeo = " \t\n";

@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:54:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 22:35:31 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/07 10:06:40 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ t_token	*ft_tokenizer_get_next_token_part2(t_tokenizer *tz, t_mem_context *ctx)
 	t_character_type	quote_type;
 	int					index;
 
-	while (!ft_tokenizer_istype(tz,
-			CHAR_TYPE_END_OF_TEXT | CHAR_TYPE_SPACE | CHAR_TYPE_PASS | CHAR_TYPE_ERROR))
+	while (!ft_tokenizer_istype(tz, CHAR_TYPE_END_OF_TEXT
+			| CHAR_TYPE_SPACE | CHAR_TYPE_PASS | CHAR_TYPE_ERROR))
 	{
 		if (ft_tokenizer_istype(tz, CHAR_TYPE_BACKSLASH))
 		{

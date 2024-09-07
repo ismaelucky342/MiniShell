@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:23:37 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 22:26:14 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/07 11:10:17 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	handle_new_line(t_tokenizer *tz, char *new_line, t_mem_context *ctx)
 {
-	if (g_reset)
+	if (g_signals.reset_flag)
 	{
-		g_reset = 0;
+		g_signals.reset_flag = 0;
 		mfree(ctx, (void **)&new_line);
 	}
 	else if (new_line)
@@ -28,13 +28,13 @@ static void	handle_new_line(t_tokenizer *tz, char *new_line, t_mem_context *ctx)
 	}
 }
 
-int	ft_tokenizer_refill_line(t_tokenizer *tz, int sloc, t_mem_context *ctx)
+int	ft_tokenizer_refill_line(t_tokenizer *tz, int sloc, t_mem_context *ctx,
+		t_hashtable *env_hashtable)
 {
-	char	*new_line;
+	char		*new_line;
 
-	// Liberar la línea actual con el contexto de memoria
 	mfree(ctx, (void **)&tz->current_line);
-	print_prompt(sloc);
+	print_prompt(sloc, env_hashtable);
 	while (1)
 	{
 		new_line = get_next_line_v2();

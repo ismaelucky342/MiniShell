@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:58:27 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 22:24:31 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/07 11:12:18 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define TOKENS_H
 # include "minishell.h"
 # define NUM_DEFINED_TOKENS 19
-extern unsigned int		g_exit;
-extern int 				g_reset;
 
 typedef enum e_token_type
 {
@@ -89,8 +87,8 @@ extern t_token			g_defined_tokens[NUM_DEFINED_TOKENS];
 extern t_token_string	g_token_str[NUM_DEFINED_TOKENS];
 extern t_token_map		g_token_map[NUM_DEFINED_TOKENS];
 
-t_token					*ft_token_new(t_token_type_key type, char *value, int pos,
-							t_mem_context *ctx);
+t_token					*ft_token_new(t_token_type_key type, char *value,
+							int pos, t_mem_context *ctx);
 t_token					*ft_token_copy(t_token *token, t_mem_context *ctx);
 void					ft_token_del(t_token **token, t_mem_context *ctx);
 void					ft_token_list_del(t_token **token, t_mem_context *ctx);

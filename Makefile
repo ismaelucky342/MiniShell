@@ -6,6 +6,8 @@ NC = \033[0m
 NAME = minishell
 
 SRC		=	src/env/env_hash.c \
+			src/env/print_env.c \
+			src/env/get_env.c \
 			src/ast_tree/ast_process.c	\
 			src/ast_tree/fill_ast_and_checks_1.c	\
 			src/ast_tree/fill_ast_and_checks_2.c	\
@@ -13,7 +15,6 @@ SRC		=	src/env/env_hash.c \
 			src/ast_tree/ft_node_delete.c	\
 			src/ast_tree/ft_node_new.c	\
 			src/ast_tree/ft_tree_build_err.c \
-			src/env/print_env.c \
 			src/Tokens_utils/ascii_dictionary.c \
 			src/Tokens_utils/ft_token_copy.c \
 			src/Tokens_utils/ft_token_del.c \
@@ -26,10 +27,12 @@ SRC		=	src/env/env_hash.c \
 			src/Tokens_utils/Tokenizer/tokenizer_delete.c	\
 			src/Tokens_utils/Tokenizer/tokenizer_errors.c	\
 			src/Tokens_utils/Tokenizer/tokenizer_new.c	\
+			src/Tokens_utils/Tokenizer/tokenizer_handler.c	\
 			src/Tokens_utils/Tokenizer/tokenizer_type.c	\
 			src/Tokens_utils/Tokenizer/tokenizer.c \
 			src/minishell.c \
-			src/prompt.c
+			src/prompt.c	\
+			src/signals.c \
 
 OBJ_DIR  = objects
 
@@ -53,7 +56,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) includes/minishell.h
 	@echo "$(YELLOW)--------------------- Compiling Minishell ----------------------$(NC)"
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -lreadline -o $(NAME)
 	@echo "$(GREEN)------------------ Minishell Finished Compiling ----------------$(NC)\n"
 	@echo "$(GREEN)----------------------------------------------------------------$(NC)"
 	@echo "$(GREEN)---------------------- Minishell Is Ready ----------------------$(NC)"
@@ -76,6 +79,7 @@ $(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
 	@mkdir -p $(dir $@)  # Esto garantiza que el directorio exista
 	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 	@printf "%-100s\r" ">Minishell compiling: ""$(CC) -o $@"
+
 
 clean:
 	@make -sC ./Libft fclean
