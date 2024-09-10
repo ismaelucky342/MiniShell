@@ -6,25 +6,25 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:58:54 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 22:51:20 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:27:07 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ft_node_delete(t_ast_node **node, int opt, t_mem_context *ctx)
+void	ft_node_delete(t_ast_node **node, int opt)
 {
 	if (node == NULL || *node == NULL)
 		return ;
-	ft_token_list_del(&(*node)->av, ctx);
-	ft_token_list_del(&(*node)->redirections, ctx);
-	ft_token_list_del(&(*node)->separators, ctx);
+	ft_token_list_del(&(*node)->av);
+	ft_token_list_del(&(*node)->redirections);
+	ft_token_list_del(&(*node)->separators);
 	if (opt == CLEAN_NODE_AND_CHILDS)
 	{
 		if ((*node)->left != NULL)
-			ft_node_delete(&(*node)->left, opt, ctx);
+			ft_node_delete(&(*node)->left, opt);
 		if ((*node)->right != NULL)
-			ft_node_delete(&(*node)->right, opt, ctx);
+			ft_node_delete(&(*node)->right, opt);
 	}
-	mfree(ctx, (void **)node);
+	free( (void **)node);
 }

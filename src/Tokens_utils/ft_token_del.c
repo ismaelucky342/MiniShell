@@ -6,17 +6,18 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:23:18 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 22:19:34 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:37:53 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ft_token_del(t_token **token, t_mem_context *ctx)
+void	ft_token_del(t_token **token)
 {
-	if (*token)
+	if (token && *token)
 	{
-		mfree(ctx, (void **)&(*token)->value);
-		mfree(ctx, (void **)token);
+		free((*token)->value);
+		free(*token);
+		*token = NULL;
 	}
 }

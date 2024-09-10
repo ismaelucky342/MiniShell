@@ -90,7 +90,6 @@ SRC =	checkD_bf.c \
 		ft_del_node_start_np.c \
 		ft_foreach_node_f_np.c \
 		ft_swap_node_np.c \
-		mmalloc.c	\
 		ft_printf_fd.c \
 		ft_printf_fd_utils.c \
 		ft_strnlen.c \
@@ -106,8 +105,7 @@ SRC =	checkD_bf.c \
 		get_next_line_bonus.c \
 		ft_strncpy.c 	\
 		ft_strsub.c \
-		ft_mstrdup.c \
-		ft_msubstr.c \
+		ft_strcmp.c	\
 		ft_print_error.c 
 		
 NAME = libft.a

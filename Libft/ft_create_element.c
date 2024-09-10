@@ -16,26 +16,26 @@
 #include "libft.h"
 
 
-t_element	*ft_create_element(t_mem_context *ctx, char *key, char *value)
+t_element	*ft_create_element(char *key, char *value)
 {
 	t_element *new_element;
 
-	new_element = (t_element *)mmalloc(ctx, sizeof(t_element));
+	new_element = (t_element *)malloc(sizeof(t_element));
 	if (!new_element)
 		return (NULL);
 
-	new_element->key = ft_mstrdup(ctx, key);
+	new_element->key = ft_strdup(key);
 	if (!new_element->key)
 	{
-		mfree(ctx, (void **)&new_element);
+		free(new_element); // Solo libera el objeto de `new_element`
 		return (NULL);
 	}
 
-	new_element->value = ft_mstrdup(ctx, value);
+	new_element->value = ft_strdup(value);
 	if (!new_element->value)
 	{
-		mfree(ctx, (void **)&new_element->key);
-		mfree(ctx, (void **)&new_element);
+		free(new_element->key); // Libera la memoria para `key`
+		free(new_element);      // Libera la memoria para `new_element`
 		return (NULL);
 	}
 

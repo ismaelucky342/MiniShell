@@ -6,27 +6,27 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:03:16 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 16:04:50 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:22:22 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	proc_next(t_astb *tool, t_ast_node **sep, t_mem_context *ctx)
+int	proc_next(t_astb *tool, t_ast_node **sep)
 {
 	if (ft_token_issep(tool->current_token))
 	{
-		*sep = ft_node_new(SEPARATOR, ctx);
+		*sep = ft_node_new(SEPARATOR);
 		if (*sep == NULL)
 			return (ERROR);
 		insert_node(tool, *sep);
-		if (process(tool, ctx) == ERROR)
+		if (process(tool) == ERROR)
 			return (ERROR);
 	}
 	return (SUCCESS);
 }
 
-int	process(t_astb *tool, t_mem_context *ctx)
+int	process(t_astb *tool)
 {
 	t_ast_node	*cmd;
 	t_ast_node	*sep;
@@ -37,7 +37,7 @@ int	process(t_astb *tool, t_mem_context *ctx)
 	if (ft_token_issep(tool->current_token)
 		|| ft_token_iseot(tool->current_token))
 		return (ft_tree_build_error(tool, BAD_TOKEN));
-	cmd = ft_node_new(CMD, ctx);
+	cmd = ft_node_new(CMD);
 	if (cmd == NULL)
 		return (ERROR);
 	while (ft_token_isword(tool->current_token)
@@ -47,5 +47,5 @@ int	process(t_astb *tool, t_mem_context *ctx)
 			continue ;
 	}
 	insert_node(tool, cmd);
-	return (proc_next(tool, &sep, ctx));
+	return (proc_next(tool, &sep));
 }

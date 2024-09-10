@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:25:43 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 17:32:14 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:55:38 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,40 +20,49 @@ char	*get_next_line_v2(void)
 	int		pos;
 	char	red[2];
 
-	static t_mem_context ctx; 
 	static t_signal_context signals;
-	if (!ctx.allocated_list)
-		ft_bzero(&ctx, sizeof(t_mem_context));
 	if (!signals.env_hashtable)
 		init_signal_context(&signals);
 	pos = 0;
-	buf = (char *)mmalloc(&ctx, 4096);
+	buf = (char *)malloc(4096);  // Usar malloc en lugar de malloc
+	if (!buf)
+		return (NULL);
 	while (1)
 	{
 		ret = read(0, red, 1);
 		if (ret == -1)
+		{
+			free(buf);  // Liberar buf si hay error de lectura
 			return (NULL);
+		}
 		if (signals.reset_flag == 1)
 		{
 			signals.reset_flag = 0;
-			pos = 0;
+			pos = 0;  // Resetear el buffer
 		}
-		if (ret == 0 && pos == 0)
+		if (ret == 0 && pos == 0)  // Manejar Ctrl-D (EOF)
 		{
-			printf("  \b\bexit\n");
-			free_all_malloc(&ctx);
+			printf("  \b\b\nexit\n");
+			
+			free_env_hashtable(signals.env_hashtable);
+			signals.env_hashtable = NULL;
+			
+			free(buf);  // Liberar la línea antes de salir
+			
 			exit(signals.exit_status);
 		}
-		if (!ret)
+		if (ret == 0)
 		{
-			printf("  \b\b");
+			printf("  \b\b");  // Imprimir una nueva línea
 		}
-		else if (red[0] == '\n' || pos >= 4095)
+		else if (red[0] == '\n' || pos >= 4095)  // Fin de línea o buffer lleno
 		{
 			buf[pos] = '\0';
-			return (buf);
+			return (buf);  // Devolver la línea leída
 		}
 		else
-			buf[pos++] = red[0];
+			buf[pos++] = red[0];  // Agregar el caracter al buffer
 	}
 }
+
+

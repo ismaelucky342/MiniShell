@@ -6,13 +6,13 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:04:48 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 15:58:48 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:16:04 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(t_mem_context *ctx, char const *s, unsigned int start,
+char	*ft_strsub( char const *s, unsigned int start,
 		size_t len)
 {
 	size_t	length;
@@ -24,7 +24,7 @@ char	*ft_strsub(t_mem_context *ctx, char const *s, unsigned int start,
 	out = NULL;
 	if ((start + len) <= length)
 	{
-		out = mmalloc(ctx, sizeof(char) * (len + 1));
+		out = malloc(sizeof(char) * (len + 1));
 		if (out)
 		{
 			ft_strncpy(out, s + start, len);

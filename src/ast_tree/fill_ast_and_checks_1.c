@@ -6,34 +6,33 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:00:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 22:49:43 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:22:50 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	coincidence(t_astb *tool, t_token_type_key type, t_mem_context *ctx)
+int	coincidence(t_astb *tool, t_token_type_key type)
 {
 	if (!ft_token_istype(tool->current_token, type))
 		return (ft_tree_build_error(tool, BAD_TOKEN));
 	tool->previous_token = tool->current_token;
-	tool->current_token = ft_tokenizer_get_next_token(tool->ast_tokenizer, ctx);
+	tool->current_token = ft_tokenizer_get_next_token(tool->ast_tokenizer);
 	if (tool->current_token == NULL)
 		return (ERROR);
 	return (SUCCESS);
 }
 
-int	insert_into_node(t_astb *tool, t_token **tokendest, t_ast_tokens type,
-		t_mem_context *ctx)
+int	insert_into_node(t_astb *tool, t_token **tokendest, t_ast_tokens type)
 {
 	if (type == ASTREDIR && coincidence(tool,
-			ft_token_isword(tool->current_token), ctx) == ERROR)
+			ft_token_isword(tool->current_token)) == ERROR)
 		return (ERROR);
 	if (type == ASTWORDS && coincidence(tool,
-			ft_token_isword(tool->current_token), ctx) == ERROR)
+			ft_token_isword(tool->current_token)) == ERROR)
 		return (ERROR);
 	if (type == ASTSEPARATOR && coincidence(tool,
-			ft_token_issep(tool->current_token), ctx) == ERROR)
+			ft_token_issep(tool->current_token)) == ERROR)
 		return (ERROR);
 	ft_add_node_end_np((t_pnp **)tokendest, (t_pnp *)tool->previous_token);
 	return (SUCCESS);

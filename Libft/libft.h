@@ -71,9 +71,6 @@ typedef struct s_mem_context
 	t_list	*allocated_list;
 }	t_mem_context;
 
-void		*mmalloc(t_mem_context *ctx, unsigned int size);
-int			free_all_malloc(t_mem_context *ctx);
-int			mfree(t_mem_context *ctx, void **to_free);
 
 /*-------------DOUBLE LINKED LIST--------------------------*/
 
@@ -148,6 +145,7 @@ int			ft_print_hex(unsigned int num, const char word);
 int			ft_print_pointer(unsigned long long ptr);
 
 // libft
+int			ft_strcmp(const char *s1, const char *s2);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
@@ -171,8 +169,8 @@ char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s1);
-char		*ft_mstrdup(t_mem_context *ctx, char *s1);
-char		*ft_strsub(t_mem_context *ctx, char const *s, unsigned int start,
+char		*ft_mstrdup( char *s1);
+char		*ft_strsub( char const *s, unsigned int start,
 				size_t len);
 char		*ft_strncpy(char *s1, const char *s2, size_t n);
 void		ft_putstr_fd(char *s, int fd);
@@ -182,11 +180,11 @@ void		ft_putnbr_fd(int n, int fd);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 char		**ft_split(char const *s, char c);
 char		*ft_strtrim(char const *s1, char const *set);
-char		*ft_mstrtrim(t_mem_context *ctx, char const *s1, char const *set);
+char		*ft_mstrtrim( char const *s1, char const *set);
 char		*ft_itoa(int n);
 char		*ft_strjoin(const char *s1, const char *s2);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char		*ft_msubstr(t_mem_context *ctx, char const *s, unsigned int start, size_t len);
+char		*ft_msubstr( char const *s, unsigned int start, size_t len);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 void		ft_print_error(char *title, int code, char *line);
 t_list		*ft_lstnew(void *data);
@@ -201,10 +199,10 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*---------------------HASH FUNCTIONS------------------------------------*/
 
-t_hashtable	*ft_add_element(t_mem_context *ctx, t_hashtable *ht, char *key, char *value);
+t_hashtable	*ft_add_element( t_hashtable *ht, char *key, char *value);
 t_element	*ft_get_element(t_hashtable *ht, char *key);
 t_hashtable	*ft_ch_value(t_hashtable *ht, char *key, char *value, int is_apnd);
-t_element	*ft_create_element(t_mem_context *ctx, char *key, char *value);
+t_element	*ft_create_element( char *key, char *value);
 t_hashtable	*ft_create_hashtable(int length);
 t_hashtable	*ft_delete_element(t_hashtable *ht, char *key);
 void		ft_free_hashtable(t_hashtable *hashtable);
@@ -218,7 +216,7 @@ int			ft_index(char *str, char c);
 int			ft_is_prime(int nbr);
 
 /*------------------DOUBLE LINKED LIST FILES------------------------------*/
-void		ft_del_list_np(t_pnp **lst, t_mem_context *ctx);
+void		ft_del_list_np(t_pnp **lst);
 void		*ft_new_node(size_t size,
 				void (*f)(void *, int, va_list), int nb_arg, ...);
 void		ft_add_node_end_np(t_pnp **lst, t_pnp *new);
@@ -229,12 +227,9 @@ void		ft_add_node_f_prevto_np(t_pnp **lst, t_pnp *new,
 void		ft_add_node_nextto_np(t_pnp *prev, t_pnp *new);
 void		ft_add_node_prevto_np(t_pnp **start, t_pnp *next, t_pnp *new);
 void		ft_add_node_start_np(t_pnp **lst, t_pnp *new);
-void		ft_del_node_end_np(t_pnp **lst, void (*f)(t_pnp *curr),
-				t_mem_context *ctx);
-void		ft_del_node_np(t_pnp **lst, t_pnp *del, void (*f)(t_pnp *curr),
-				t_mem_context *ctx);
-void		ft_del_node_start_np(t_pnp **lst, void (*f)(t_pnp *curr),
-				t_mem_context *ctx);
+void		ft_del_node_end_np(t_pnp **lst, void (*f)(t_pnp *curr));
+void		ft_del_node_np(t_pnp **lst, t_pnp *del, void (*f)(t_pnp *curr));
+void		ft_del_node_start_np(t_pnp **lst, void (*f)(t_pnp *curr));
 void		ft_foreach_node_f_np(t_pnp **lst, int (*f)(t_pnp *curr));
 void		ft_swap_node_np(t_pnp **lst, t_pnp *node_a, t_pnp *node_b);
 

@@ -6,27 +6,35 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:02:05 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 15:43:48 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:30:49 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_del_node_end_np(t_pnp **lst, void (*f)(t_pnp *curr),
-		t_mem_context *ctx)
-{
-	t_pnp	*tmp;
+#include "libft.h"
 
-	tmp = *lst;
-	if (tmp == NULL)
-		return ;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	if (tmp != *lst)
-	{
-		tmp->prev->next = NULL;
-	}
-	if (f)
-		f(tmp);
-	mfree(ctx, (void **)&tmp);
+void ft_del_node_end_np(t_pnp **lst, void (*f)(t_pnp *curr))
+{
+    t_pnp *tmp;
+    t_pnp *prev;
+
+    tmp = *lst;
+    if (tmp == NULL)
+        return;
+
+    while (tmp->next != NULL)
+        tmp = tmp->next;
+
+    if (tmp != *lst)
+    {
+        prev = tmp->prev;
+        if (prev)
+            prev->next = NULL;
+    }
+    else
+        *lst = NULL;
+    if (f)
+        f(tmp);
+    free(tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:41:08 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/06 22:29:54 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:24:51 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,15 @@ void	ft_tokenizer_set_start_pos(t_tokenizer *tz, int new_pos)
 	tz->line_start_char = tz->current_line[new_pos];
 }
 
-t_token	*ft_tokenizer_token_grabber(t_tokenizer *tz, t_token_type_key type,
-		t_mem_context *ctx)
+t_token	*ft_tokenizer_token_grabber(t_tokenizer *tz, t_token_type_key type)
 {
 	t_token	*new;
 	char	*sub_value;
 
-	sub_value = ft_strsub(ctx, tz->current_line, tz->start_index,
+	sub_value = ft_strsub( tz->current_line, tz->start_index,
 			tz->current_position - tz->start_index);
 	if (sub_value == NULL)
 		return (NULL);
-	new = ft_token_new(type, sub_value, tz->start_index, ctx);
+	new = ft_token_new(type, sub_value, tz->start_index);
 	return (new);
 }

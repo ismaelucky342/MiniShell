@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:07:41 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/09/07 16:52:25 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:16:04 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,16 @@ typedef struct builtins
 # define COLOR_BOLD_GRAY_TEXT "\033[90;01m"
 
 /*--------------------ENV FILES---------------*/
-void		ft_env2hashtable(t_mem_context *ctx, char **env, t_hashtable *hashtable, int array_len);
-t_hashtable	*ft_create_envhash(t_mem_context *ctx, char **env);
+void		ft_env2hashtable( char **env, t_hashtable *hashtable);
+t_hashtable	*ft_create_envhash( char **env);
 void		ft_print_env(t_hashtable *env_hashtable, int is_export);
-void		free_env_hashtable(t_hashtable *hashtable, int array_len);
+void		free_env_hashtable(t_hashtable *hashtable);
 const char	*ft_hashtable_get(t_hashtable *hashtable, const char *key);
-void		process_env_variable(t_mem_context *ctx, char **env, t_hashtable *hashtable,
-				int array_len);
+void		process_env_variable( char **env, t_hashtable *hashtable);
 
-void		insert_into_hashtable(t_mem_context *ctx, char *key, char *value,
-				t_hashtable *hashtable, int array_len);
-void		add_new_element(t_mem_context *ctx, char *key, char *value, t_hashtable *hashtable,
+void		insert_into_hashtable( char *key, char *value,
+				t_hashtable *hashtable);
+void		add_new_element( char *key, char *value, t_hashtable *hashtable,
 				int hash_index);
 
 /*--------EXECUTION FILES--------*/

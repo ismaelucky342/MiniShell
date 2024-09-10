@@ -6,13 +6,13 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:59:01 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 16:19:04 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:10:11 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	free_env_hashtable(t_hashtable *hashtable, int array_len)
+void	free_env_hashtable(t_hashtable *hashtable)
 {
 	t_element	*current;
 	t_element	*next;
@@ -21,7 +21,7 @@ void	free_env_hashtable(t_hashtable *hashtable, int array_len)
 	i = 0;
 	if (!hashtable || !hashtable->element_array)
 		return ;
-	while (i < array_len)
+	while (i < hashtable->length)
 	{
 		current = hashtable->element_array[i];
 		while (current)
@@ -37,3 +37,4 @@ void	free_env_hashtable(t_hashtable *hashtable, int array_len)
 	free(hashtable->element_array);
 	free(hashtable);
 }
+

@@ -23,7 +23,7 @@ int	pid_save(int process_id, int opt)
 	sloc = 0;
 	if (opt & BIN_OPT_ADD)
 	{
-		new = mmalloc(sizeof(t_pid_node));
+		new = malloc(sizeof(t_pid_node));
 		new->process_id = process_id;
 		ft_add_node_end_np((t_pnp **)&list, (t_pnp *)new);
 	}

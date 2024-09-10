@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:58:27 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 14:35:23 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:16:47 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ extern t_token_string	g_token_str[NUM_DEFINED_TOKENS];
 extern t_token_map		g_token_map[NUM_DEFINED_TOKENS];
 
 t_token					*ft_token_new(t_token_type_key type, char *value,
-							int pos, t_mem_context *ctx);
-t_token					*ft_token_copy(t_token *token, t_mem_context *ctx);
-void					ft_token_del(t_token **token, t_mem_context *ctx);
-void					ft_token_list_del(t_token **token, t_mem_context *ctx);
+							int pos);
+t_token					*ft_token_copy(t_token *token);
+void					ft_token_del(t_token **token);
+void					ft_token_list_del(t_token **token);
 int						ft_token_istype(t_token *token, t_token_type_key type);
 int						ft_token_iseot(t_token *token);
 int						ft_token_isword(t_token *token);
