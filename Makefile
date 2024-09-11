@@ -37,6 +37,7 @@ SRC		=	src/env/env_hash.c \
 
 OBJ_DIR  = objects
 
+
 OBJ = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
