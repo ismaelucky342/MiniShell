@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include "../../../includes/minishell.h"
 
 int	handle_redir_input(t_ast_node *cmd, t_token *tmp_file)
 {

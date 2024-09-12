@@ -39,7 +39,7 @@ int	insert_node(t_astb *tool, t_ast_node *node)
 {
 	if (tool->ast_tree == NULL)
 	{
-		if (node->type == SEPARATOR)
+		if (node->type == PIPE_DIV)
 			return (ft_tree_build_error(tool, BAD_TOKEN));
 		node_source(tool, node);
 	}
@@ -47,7 +47,7 @@ int	insert_node(t_astb *tool, t_ast_node *node)
 	{
 		if (node->type == CMD)
 			return (handle_cmd_node(tool, node));
-		else if (node->type == SEPARATOR)
+		else if (node->type == PIPE_DIV)
 			return (handle_separator_node(tool, node));
 	}
 	return (SUCCESS);

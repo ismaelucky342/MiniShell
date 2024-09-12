@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include "../../../includes/minishell.h"
 
 /*
 int	pid_save(int process_id, int opt)
@@ -57,7 +57,7 @@ RUN THE RIGHT CHILD THEN CLOSE THE READ SIDE OF THE PIPE CAUSE THE RIGHT
 CHILD HAS FINISHED TO USE IT
 */
 
-#include "minishell.h"
+#include "../../../includes/minishell.h"
 
 int	ast_cmdpipefirst_controller(t_ast_node *cmd)
 {
