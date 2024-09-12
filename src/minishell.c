@@ -52,12 +52,13 @@ int main(int ac, char **av, char **env)
         cleanup(g_signals.env_hashtable);
         return (1);
     }
+	ft_print_env(g_signals.env_hashtable, 0);
     signal(SIGINT, sig_handler);
     signal(SIGQUIT, sig_handler);
     while (1)
     {
         if (process_ast(sloc, g_signals.env_hashtable))
-            break;
+            break ;
     }
     cleanup(g_signals.env_hashtable);
     return (g_signals.exit_status);
