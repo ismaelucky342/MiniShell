@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include "../../../includes/minishell.h"
 
 /*
  RUN THE LEFT CHILD OF THE DBL_AND NODE THEN WAIT FOR ITS END

@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:58:54 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/10 12:27:07 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:30:27 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	ft_node_delete(t_ast_node **node, int opt)
 		if ((*node)->right != NULL)
 			ft_node_delete(&(*node)->right, opt);
 	}
-	free( (void **)node);
+	free(*node);
+	*node = NULL;
 }

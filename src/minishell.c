@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:41:41 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/10 13:13:29 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:50:14 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int main(int ac, char **av, char **env)
     (void)av;
     init_signal_context(&g_signals);
     g_signals.env_hashtable = ft_create_envhash(env);
+	ft_print_env(g_signals.env_hashtable, 0); 
     if (!g_signals.env_hashtable)
     {
         perror("Failed to create environment hash");
@@ -57,7 +58,7 @@ int main(int ac, char **av, char **env)
     while (1)
     {
         if (process_ast(sloc, g_signals.env_hashtable))
-            break;
+            break ;
     }
     cleanup(g_signals.env_hashtable);
     return (g_signals.exit_status);

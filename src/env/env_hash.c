@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:48:50 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/10 12:47:25 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/11 20:03:40 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	process_env_variable(char **env, t_hashtable *hashtable)
 
 	char_index = ft_index(*env, '=');
 	if (char_index == -1)
+		return ;
+	if (ft_strncmp(*env, "_=", 2) == 0)
 		return ;
 	key = ft_substr(*env, 0, char_index);
 	if (!key)
@@ -61,7 +63,7 @@ void	insert_into_hashtable(char *key, char *value, t_hashtable *hashtable)
 		{
 			free(current->value);
 			current->value = value;
-			free(key);
+			free(key); // Libera la clave nueva ya que no se va a usar
 			return ;
 		}
 		current = current->next;
@@ -103,5 +105,11 @@ t_hashtable	*ft_create_envhash(char **env)
 		return (NULL);
 	}
 	ft_env2hashtable(env, env_hashtable);
+	if (!ft_hashtable_get(env_hashtable, "PATH"))
+	{
+		insert_into_hashtable(ft_strdup("PATH"),
+			ft_strdup("/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"),
+			env_hashtable);
+	}
 	return (env_hashtable);
 }

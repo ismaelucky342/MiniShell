@@ -16,7 +16,7 @@ int	proc_next(t_astb *tool, t_ast_node **sep)
 {
 	if (ft_token_issep(tool->current_token))
 	{
-		*sep = ft_node_new(SEPARATOR);
+		*sep = ft_node_new(PIPE_DIV);
 		if (*sep == NULL)
 			return (ERROR);
 		insert_node(tool, *sep);

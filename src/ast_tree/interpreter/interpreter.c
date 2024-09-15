@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
-#include <string.h>
+#include "../../../includes/minishell.h"
 
 int	ast_parent_ispipe(t_ast_node *node)
 {
-	return (node && node->parent && node->parent->type == SEPARATOR
+	return (node && node->parent && node->parent->type == PIPE_DIV
 		&& node->parent->separators->type == TOKEN_PIPE);
 }
 
@@ -42,7 +41,7 @@ int	ast_cmd_controller(t_ast_node *cmd)
 
 int	ast_controller(t_ast_node *node)
 {
-	if (node->type == SEPARATOR)
+	if (node->type == PIPE_DIV)
 		return (ast_sep_controller(node));
 	else if (node->type == CMD)
 		return (ast_cmd_controller(node));

@@ -30,7 +30,7 @@ typedef enum err_code
 typedef enum node_type
 {
 	CMD,
-	SEPARATOR
+	PIPE_DIV
 }						t_ast_node_type;
 
 // ast tokens
@@ -131,21 +131,42 @@ typedef enum e_binary_option
 }						t_binary_option;
 
 /*-------------------------AST FILES-----------------------*/
-int						coincidence(t_astb *tool, t_token_type_key type);
-int						insert_into_node(t_astb *tool, t_token **tokendest,
-							t_ast_tokens type);
-void					node_source(t_astb *tool, t_ast_node *node);
-void					find_for_node(t_astb *tool, t_ast_node *node,
-							t_token_type_key type);
-int						insert_node(t_astb *tool, t_ast_node *node);
 
-int						proc_next(t_astb *tool, t_ast_node **sep);
-int						process(t_astb *tool);
-int						ft_tree_build_error(t_astb *tool, int opt);
-t_ast_node				*ft_node_new(t_ast_node_type type);
-void					ft_node_delete(t_ast_node **node, int opt);
-t_ast_node				*ast_builder(int sloc, t_hashtable *env_hashtable);
-int						init_tool(t_astb *tool, int sloc,t_hashtable *env_hashtable);
+int				coincidence(t_astb *tool, t_token_type_key type);
+int				insert_into_node(t_astb *tool, t_token **tokendest,
+					t_ast_tokens type);
+void			node_source(t_astb *tool, t_ast_node *node);
+void			find_for_node(t_astb *tool, t_ast_node *node,
+					t_token_type_key type);
+int				insert_node(t_astb *tool, t_ast_node *node);
+
+int				proc_next(t_astb *tool, t_ast_node **sep);
+int				process(t_astb *tool);
+int				ft_tree_build_error(t_astb *tool, int opt);
+t_ast_node		*ft_node_new(t_ast_node_type type);
+void			ft_node_delete(t_ast_node **node, int opt);
+t_ast_node		*ast_builder(int sloc, t_hashtable *env_hashtable);
+int				init_tool(t_astb *tool, int sloc,t_hashtable *env_hashtable);
+
+/*--------------------AST TREE INTERPRETER-------------------*/
+
+int				ast_cmdpipefirst_controller(t_ast_node *cmd);
+int				ast_cmdpipe_controller(t_ast_node *cmd, int fdread);
+int				ast_subpipe_handle(t_ast_node *pipeline);
+int				ast_pipe_handle(t_ast_node *pipeline);
+int				ast_dbl_and_handle(t_ast_node *cmd_sep);
+int				ast_dbl_or_handle(t_ast_node *cmd_sep);
+int				ast_semicon_handle(t_ast_node *cmd_sep);
+int				ast_sep_controller(t_ast_node *sep);
+int				ast_parent_ispipe(t_ast_node *node);
+int				asti_error(char *name, int opt);
+int				ast_cmd_controller(t_ast_node *cmd);
+int				ast_controller(t_ast_node *node);
+int				ast_interpreter(t_ast_node *ast);
+int				handle_redir_input(t_ast_node *cmd, t_token *tmp_file);
+int				handle_redir_output(t_ast_node *cmd, t_token *tmp_file, int flags);
+int				redir_handle__each(t_ast_node *cmd, t_token *tmp_redir, t_token *tmp_file);
+int				redir_handle(t_ast_node *cmd);
 
 /*---------------------AST INTERPRETER FILES--------------------*/
 /*
