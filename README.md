@@ -2,7 +2,6 @@
 Our own fully functional Shell terminal
 Efficiency is not guaranteed!
 
-
 # Program Sequence
 ### 1. Program Start (main)
 
