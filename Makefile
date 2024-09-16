@@ -91,7 +91,6 @@ $(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 	@printf "%-100s\r" ">Minishell compiling: ""$(CC) -o $@"
 
-
 clean:
 	@make -sC ./Libft fclean
 	@rm -rf $(OBJ_DIR)
