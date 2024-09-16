@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+#include <sys/wait.h>
 
-/*
 int	pid_save(int process_id, int opt)
 {
 	static t_pid_node	*list;
@@ -23,7 +23,7 @@ int	pid_save(int process_id, int opt)
 	sloc = 0;
 	if (opt & BIN_OPT_ADD)
 	{
-		new = malloc(sizeof(t_pid_node));
+		new = (t_pid_node *)malloc(sizeof(t_pid_node));
 		new->process_id = process_id;
 		ft_add_node_end_np((t_pnp **)&list, (t_pnp *)new);
 	}
@@ -41,7 +41,6 @@ int	pid_save(int process_id, int opt)
 		ft_del_list_np((t_pnp **)&list);
 	return (0);
 }
-*/
 
 /*
 THIS FUNCTION OPEN A NEW PIPE AND ASSIGN THE WRITE SIDE TO THE LEFT CHILD
@@ -56,8 +55,6 @@ HAS FINISHED TO USE IT
 RUN THE RIGHT CHILD THEN CLOSE THE READ SIDE OF THE PIPE CAUSE THE RIGHT
 CHILD HAS FINISHED TO USE IT
 */
-
-#include "../../../includes/minishell.h"
 
 int	ast_cmdpipefirst_controller(t_ast_node *cmd)
 {

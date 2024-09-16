@@ -12,10 +12,6 @@ SRC		=	src/ast_tree/ast_process.c \
 			src/ast_tree/ft_node_delete.c \
 			src/ast_tree/ft_node_new.c \
 			src/ast_tree/ft_tree_build_err.c \
-			src/ast_tree/interpreter/ast_pipe_handle.c \
-			src/ast_tree/interpreter/ast_separator_controller.c \
-			src/ast_tree/interpreter/interpreter.c \
-			src/ast_tree/interpreter/redir_handle.c \
 			src/env/env_hash.c \
 			src/env/print_env.c \
 			src/env/free_hash.c \
@@ -34,7 +30,6 @@ SRC		=	src/ast_tree/ast_process.c \
 			src/Tokens_utils/Tokenizer/tokenizer_errors.c \
 			src/Tokens_utils/Tokenizer/tokenizer_new.c \
 			src/Tokens_utils/Tokenizer/tokenizer_handler.c \
-			src/Tokens_utils/Tokenizer/tokenizer_new.c \
 			src/Tokens_utils/Tokenizer/tokenizer_type.c \
 			src/Tokens_utils/Tokenizer/tokenizer.c \
 			src/Tokens_utils/ascii_dictionary.c \
@@ -46,7 +41,7 @@ SRC		=	src/ast_tree/ast_process.c \
 			src/Tokens_utils/ft_token_type.c \
 			src/minishell.c \
 			src/prompt.c \
-			src/signals.c \
+			src/signals.c 
 
 OBJ_DIR  = objects
 

@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 11:58:27 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/10 12:16:47 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:44:20 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "minishell.h"
 
-# define NUM_DEFINED_TOKENS 19
+# define NUM_DEFINED_TOKENS 20
 
 typedef enum e_token_type
 {
@@ -44,7 +44,6 @@ typedef enum e_token_type_key
 {
 	TOKEN_ERROR = 0x0,
 	TOKEN_RIGHT_PAREN = 0x80,
-	TOKEN_REDIR_INPUT = 0x100,
 	TOKEN_SEMICOLON = 0x8000,
 	TOKEN_END_TOKEN = 0x1,
 	TOKEN_SPACE = 0x2,
@@ -55,8 +54,9 @@ typedef enum e_token_type_key
 	TOKEN_LEFT_PAREN = 0x40,
 	TOKEN_BACKSLASH = 0x10000,
 	TOKEN_DOLLAR = 0x40000,
+	TOKEN_REDIR_INPUT = 0x100,
 	TOKEN_REDIR_OUTPUT = 0x200,
-	TOKEN_DBL_REDIR_INPUT = 0x400,
+	TOKEN_DBL_REDIR_INPUT = 0x1000,
 	TOKEN_DBL_REDIR_OUTPUT = 0x400,
 	TOKEN_LOGICAL_AND = 0x800,
 	TOKEN_LOGICAL_OR = 0x2000,

@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:00:20 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/10 12:24:19 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:57:25 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,5 +186,16 @@ int	redir_handle__each(t_ast_node *cmd, t_token *tmp_redir,
 		t_token *tmp_file);
 int						redir_handle(t_ast_node *cmd);
 */
+
+
+char *get_value(t_ast_node *node);
+
+// Función auxiliar para imprimir el árbol en formato DOT
+void bst_print_dot_aux(t_ast_node *node, int fd, int deep);
+
+// Función principal para imprimir el árbol en formato DOT
+void bst_print_dot(t_ast_node *tree, int fd);
+// Función para dibujar el árbol en un archivo
+void tree_draw(t_ast_node *node);
 
 #endif
