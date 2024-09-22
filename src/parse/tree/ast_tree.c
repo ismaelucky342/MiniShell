@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:50:53 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 12:50:55 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:07:17 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	assign_redirection_type(t_list *token_list, t_list **tmp)
 
 static int	add_file_info(t_list *token_list, t_tree_node *current)
 {
-	t_list		*tmp;
+	t_list	*tmp;
 
 	if (!token_list->next)
 		return (1);
@@ -44,8 +44,8 @@ static int	add_file_info(t_list *token_list, t_tree_node *current)
 		tmp = current->redir_list;
 	}
 	tmp->data = ft_calloc(1, sizeof(t_redirection_token));
-	((t_redirection_token *)tmp->data)->name = ft_strdup(((t_token *)
-				token_list->next->data)->str);
+	((t_redirection_token *)tmp->data)->name
+		= ft_strdup(((t_token *)token_list->next->data)->str);
 	assign_redirection_type(token_list, &tmp);
 	return (0);
 }
@@ -53,7 +53,7 @@ static int	add_file_info(t_list *token_list, t_tree_node *current)
 static int	ft_count_args(t_list *begin)
 {
 	t_token	*tkn;
-	int			res;
+	int		res;
 
 	res = 0;
 	if (begin)
@@ -73,8 +73,7 @@ static int	fill_management(t_list **bgn, t_tree_node **current,
 		t_tree_node **p_curr, int *i)
 {
 	if (((t_token *)(*bgn)->data)->type >= ARG)
-		(*current)->args[(*i)++] = ft_strdup(((t_token *)
-					(*bgn)->data)->str);
+		(*current)->args[(*i)++] = ft_strdup(((t_token *)(*bgn)->data)->str);
 	else if (((t_token *)(*bgn)->data)->type == FILE_REDIR)
 	{
 		if (add_file_info((*bgn), (*current)))
@@ -101,7 +100,7 @@ static int	fill_management(t_list **bgn, t_tree_node **current,
 
 int	ft_fill_list(t_list *begin, t_ast_tree *tree_node)
 {
-	t_token	*tkn;
+	t_token		*tkn;
 	t_tree_node	*current;
 	t_tree_node	*p_curr;
 	int			ctr[2];

@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:57:18 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/20 17:30:24 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:46:08 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	merge_strings(t_token *tok, int *cont, char **files, char **regex)
 void	wildcard_expand(t_list *curr, int *i)
 {
 	int			cont[3];
-	t_token	*tok;
+	t_token		*tok;
 	char		*regex;
 	char		*files;
 

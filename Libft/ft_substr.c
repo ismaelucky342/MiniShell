@@ -1,15 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                           :+:      :+:    :+:*/
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/20 10:08:00 by ismherna         ###   ########.fr       */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/22 18:22:53 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/22 18:22:53 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +14,9 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *str;
-	size_t s_len;
-	size_t max_len;
+	char		*str;
+	size_t		s_len;
+	size_t		max_len;
 
 	if (!s)
 		return (NULL);

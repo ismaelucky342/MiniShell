@@ -71,7 +71,6 @@ typedef struct s_mem_context
 	t_list	*allocated_list;
 }	t_mem_context;
 
-
 /*-------------DOUBLE LINKED LIST--------------------------*/
 
 typedef struct s_pattern_list_np
@@ -145,6 +144,7 @@ int			ft_print_hex(unsigned int num, const char word);
 int			ft_print_pointer(unsigned long long ptr);
 
 // libft
+char		*ft_strndup(const char *s1, size_t n);
 char		*ft_strcpy(char *dest, const char *src);
 char		*ft_strjoin_free(char *s1, const char *s2);
 void		ft_close(int fd);

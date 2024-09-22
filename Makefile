@@ -47,7 +47,7 @@ OBJ_DIR  = objects
 OBJ = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
 
 LIBFT = ./Libft/libft.a
 

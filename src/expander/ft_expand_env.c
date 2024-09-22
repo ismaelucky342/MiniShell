@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:51:48 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 12:16:56 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:45:13 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	ft_expand_env(t_list *curr, int *i, int check_w_cards,
 
 	j = *i;
 	tok = curr->data;
-	while (tok->str[j + 1] && !ft_is_reserved_char(tok->str[j + 1]) && tok->str[j
-		+ 1] != '"' && tok->str[j + 1] != '\'' && tok->str[j + 1] != '*'
-		&& !ft_isspace(tok->str[j + 1]))
+	while (tok->str[j + 1] && !ft_is_reserved_char(tok->str[j + 1])
+		&& tok->str[j + 1] != '"' && tok->str[j + 1] != '\'' && tok->str[j
+			+ 1] != '*' && !ft_isspace(tok->str[j + 1]))
 		j++;
 	tmp[0] = ft_substr(tok->str, *i + 1, j - *i);
 	if (!*tmp[0])
@@ -57,7 +57,7 @@ void	ft_expand_env(t_list *curr, int *i, int check_w_cards,
 	tmp[1] = ft_substr(tok->str, 0, *i);
 	tok->str = ft_join_env(tok, j, tmp, sack);
 	if (check_w_cards)
-		retokenize(curr, E_EXP_ARG, *i, (int[]){*i
+		retokenize(curr, E_EXP_ARG, *i, (int []){*i
 			+ ft_strlen(get_value_from_env(sack->envp, tmp[0], NULL))});
 	*i = *i + ft_strlen(get_value_from_env(sack->envp, tmp[0], NULL));
 	free_cmd_token(tok);

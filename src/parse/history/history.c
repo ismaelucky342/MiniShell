@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:29:42 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 12:16:56 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:08:30 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	ft_h_fill(t_minishell *sack)
 	char	*line;
 	char	*trimmed_line;
 
-	while ((line = get_next_line(sack->history_fd)))
+	line = get_next_line(sack->history_fd);
+	while (line)
 	{
 		trimmed_line = ft_strtrim(line, "\n");
 		if (!trimmed_line)
@@ -49,6 +50,7 @@ void	ft_h_fill(t_minishell *sack)
 		add_history(trimmed_line);
 		free(line);
 		free(trimmed_line);
+		line = get_next_line(sack->history_fd);
 	}
 }
 

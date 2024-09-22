@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:58:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/20 17:19:53 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:41:08 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	double_quote_expand(t_list *curr, int *i, t_minishell *sack)
 {
-	int			j;
+	int		j;
 	t_token	*tok;
 
 	j = *i;
@@ -42,7 +42,7 @@ void	double_quote_expand(t_list *curr, int *i, t_minishell *sack)
 
 void	single_quote_expand(t_list *curr, int *i)
 {
-	int			j;
+	int		j;
 	t_token	*tok;
 
 	j = *i;
@@ -62,6 +62,7 @@ void	single_quote_expand(t_list *curr, int *i)
 	}
 	tok->str[j] = '\0';
 }
+
 int	ft_list_expand(t_list *list, t_minishell *sack)
 {
 	while (list)
@@ -79,13 +80,13 @@ int	ft_list_expand(t_list *list, t_minishell *sack)
 void	list_expand(t_list *curr, t_minishell *sack)
 {
 	t_token	*tok;
-	int			i;
-	int			pre_type;
+	int		i;
+	int		pre_type;
 
 	tok = curr->data;
 	i = 0;
 	pre_type = tok->type;
-	while (i < (int) ft_strlen(tok->str))
+	while (i < (int)ft_strlen(tok->str))
 	{
 		if (tok->str[i] == '\'' && pre_type == ARG)
 			single_quote_expand(curr, &i);

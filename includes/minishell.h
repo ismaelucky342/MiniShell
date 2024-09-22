@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:51:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 12:51:57 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:34:10 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # include <sys/wait.h>
 # include <readline/history.h>
 
-# define PROMPT_BASE "\001\x1b[32m\002Minishell\001\x1b[0m\002 - \001\x1b[31m\002"
+# define PB "\001\x1b[32m\002Minishell\001\x1b[0m\002 - \001\x1b[31m\002"
 # define HIST_ERROR_MSG "Minishell: HOME is not set, history unavailable."
 # define H_DOC_TMP_BASE "/tmp/.dash_tmp_heredoc_"
 # define HIST_TMP_BASE "/.dash_history"
@@ -42,7 +42,6 @@ int			ft_echo(t_tree_node *node);
 int			ft_export(t_tree_node *node, t_minishell *sack);
 int			ft_unset(t_tree_node *node, t_minishell *sack);
 int			ft_isbuiltin(char *str);
-
 
 //execute (2,3,4)
 

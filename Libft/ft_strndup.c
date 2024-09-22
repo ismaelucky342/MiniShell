@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_node_f_prevto_np.c                          :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 13:05:56 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 18:15:25 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/22 17:45:42 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/22 18:28:45 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_add_node_f_prevto_np(t_pnp **lst, t_pnp *new, int (*f)(t_pnp *curr))
+char	*ft_strndup(const char *s1, size_t n)
 {
-	t_pnp	*tmp;
-	t_pnp	*tmp1;
+	char	*dup;
+	size_t	i;
 
-	tmp = *lst;
-	tmp1 = NULL;
-	while (f(tmp) != DLL_SUCCESS)
+	dup = malloc((n + 1) * sizeof(char));
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (i < n)
 	{
-		tmp1 = tmp;
-		tmp = tmp->next;
+		dup[i] = s1[i];
+		i++;
 	}
-	if (tmp1)
-		ft_add_node_nextto_np(tmp1, new);
-	else
-		ft_add_node_start_np(lst, new);
+	dup[i] = '\0';
+	return (dup);
 }

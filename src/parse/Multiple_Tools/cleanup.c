@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:11:08 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/20 17:29:45 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:46:42 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_array_free(char **array)
 
 void	free_cmd_token(void *tok)
 {
-	t_token *tofree;
+	t_token		*tofree;
 
 	tofree = tok;
 	if (tofree)

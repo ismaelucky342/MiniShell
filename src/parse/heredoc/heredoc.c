@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:27:16 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 12:24:55 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:59:17 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ static char	*extract_delimiter(char **str, int *i)
 	while (ft_isspace((*str)[*i]))
 		(*i)++;
 	j = *i;
-	while ((*str)[j] && !ft_isspace((*str)[j]) && !ft_is_reserved_char((*str)[j])
-		&& (*str)[j] != '(' && (*str)[j] != ')')
+	while ((*str)[j] && !ft_isspace((*str)[j])
+		&& !ft_is_reserved_char((*str)[j]) && (*str)[j] != '('
+		&& (*str)[j] != ')')
 	{
 		if ((*str)[j] == '\'' || (*str)[j] == '"')
 			skip_to_delimiter(*str, &j, (*str)[j]);
@@ -105,16 +106,11 @@ int	ft_heredoc(char **str, int *i, char **f_name)
 		return (1);
 	}
 	pid = fork();
+	free(delim);
 	if (pid < 0)
-	{
-		free(delim);
 		return (1);
-	}
-	if (pid > 0)
-	{
-		free(delim);
+	else
 		return (0);
-	}
 	signal(SIGINT, SIG_DFL);
 	handle_heredoc_input(delim, fd);
 	free(delim);

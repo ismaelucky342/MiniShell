@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:19:00 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 12:06:43 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:45:33 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ static char	*generate_tmp_filename(int index)
 char	*get_tmp_filename(void)
 {
 	char	*name;
+	int		i;
 
-	int i = 1;
+	i = 1;
 	while (i <= 1000)
 	{
 		name = generate_tmp_filename(i);

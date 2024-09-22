@@ -110,14 +110,15 @@ SRC =	checkD_bf.c \
 		ft_skip_spaces.c \
 		ft_strcpy.c \
 		ft_strjoin_free.c \
-		ft_is_reserved_char.c 
+		ft_is_reserved_char.c \
+		ft_strndup.c
 		
 NAME = libft.a
 
 OBJ = $(SRC:.c=.o) 
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
 
 all: speak $(NAME)
 	@echo "$(GREEN)----------------------------------------------------------------$(NC)"
