@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:20:18 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 18:59:51 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/22 22:21:31 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	get_command_str(t_minishell *sack)
 		free(res);
 }
 
-/* void	leaks(void)
+/*void	leaks(void)
 {
 	system("leaks minishell");
 } */
