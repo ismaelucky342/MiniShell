@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 13:16:35 by sacorder          #+#    #+#             */
-/*   Updated: 2024/09/22 12:27:03 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/22 12:51:34 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/22 12:51:57 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,6 @@
 # define FILE_REDIR 0
 # define PIPE 1
 # define LOGIC 2
-# define CONCATOUT_MASK 0b1000
-# define OUTFILE_MASK 0b10
-# define HEREDOC_MASK 0b100
-# define AND_MASK 0b1
-# define OR_MASK 0b10
-# define WAIT_MASK 0b100
-# ifndef SIZE_T_MAX
-# define ARG 3
-# define E_EXP_ARG 4
-# define W_EXP_ARG 5
-# define INFILE_MASK 0b1
-#  define SIZE_T_MAX UINT_MAX
-# endif
-# ifndef ECHOCTL
-#  define ECHOCTL 0000400
-# endif
 
 int			ft_msh_exit(t_tree_node *node, t_minishell *sack, char print);
 int			ft_change_dir(t_tree_node *node, t_minishell *sack);

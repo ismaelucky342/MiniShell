@@ -14,6 +14,24 @@
 # include <sys/wait.h>
 # include <readline/history.h>
 
+# define CONCATOUT_MASK 0b1000
+# define OUTFILE_MASK 0b10
+# define HEREDOC_MASK 0b100
+# define AND_MASK 0b1
+# define OR_MASK 0b10
+# define WAIT_MASK 0b100
+# ifndef SIZE_T_MAX
+# define ARG 3
+# define E_EXP_ARG 4
+# define W_EXP_ARG 5
+# define INFILE_MASK 0b1
+#  define SIZE_T_MAX UINT_MAX
+# endif
+
+# ifndef ECHOCTL
+#  define ECHOCTL 0000400
+# endif
+
 typedef struct s_token
 {
 	char	*str;
