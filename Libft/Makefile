@@ -118,7 +118,7 @@ NAME = libft.a
 OBJ = $(SRC:.c=.o) 
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
 all: speak $(NAME)
 	@echo "$(GREEN)----------------------------------------------------------------$(NC)"

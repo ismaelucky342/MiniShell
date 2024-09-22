@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:59:36 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 18:38:47 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/09/22 19:00:54 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*process_directory(char *original_dir, char *home)
 	char	*dir;
 	char	*temp;
 
-	*dir = original_dir;
+	dir = original_dir;
 	if (home && ft_strncmp(dir, home, ft_strlen(home)) == 0)
 	{
 		dir += ft_strlen(home);
