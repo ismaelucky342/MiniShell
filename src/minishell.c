@@ -5,71 +5,75 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 13:41:41 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/16 16:57:27 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/20 17:20:18 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/22 12:28:26 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int process_ast(int sloc, t_hashtable *env_hashtable)
-{
-    t_ast_node *ast;
+int	g_exit;
 
-    ast = ast_builder(sloc, env_hashtable);
-    if (ast)
-    {
-        //tree_draw(ast); // Dibuja el AST antes de liberarlo
-        g_signals.exit_status = sloc;
-        ft_node_delete(&ast, CLEAN_NODE_AND_CHILDS);
-        return 0;
-    }
-    else
-    {
-        g_signals.exit_status = 2;
-        return 1;
-    }
+static void	get_command_str(t_minishell *sack)
+{
+	char	*tmp;
+	char	*res;
+
+	ft_set_echo(1);
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	tmp = readline(sack->ft_prompt);
+	if (!tmp)
+	{
+		sack->eof = 1;
+		return ;
+	}
+	res = ft_strtrim(tmp, " \v\t\n\r");
+	free(tmp);
+	if (res && *res)
+	{
+		ft_add_history(res, sack);
+		sack->cmd_tree = ft_calloc(1, sizeof(t_ast_tree));
+		if (!sack->cmd_tree)
+			ft_memory_error(sack);
+		sack->cmd_tree->cmd_str = res;
+		return ;
+	}
+	if (res)
+		free(res);
 }
 
-static void cleanup(t_hashtable *env_hashtable)
+/* void	leaks(void)
 {
-    if (env_hashtable)
-        free_env_hashtable(env_hashtable);
+	system("leaks minishell");
+} */
+
+void	ft_setsigint(t_minishell *sack)
+{
+	ft_env_build(sack, "?=130");
+	g_exit = 0;
 }
 
-int main(int ac, char **av, char **env)
+int	main(int argc, char **argv, char **envp)
 {
-    int sloc;
+	t_minishell	m_sack;
 
-    sloc = 0;
-    (void)ac;
-    (void)av;
-
-    init_signal_context(&g_signals);
-
-    // Crear la tabla hash del entorno
-    g_signals.env_hashtable = ft_create_envhash(env);
-    if (!g_signals.env_hashtable)
-    {
-        perror("Failed to create environment hash");
-        return 1;
-    }
-
-    ft_print_env(g_signals.env_hashtable, 0);
-
-    // Configurar señales
-    signal(SIGINT, sig_handler);
-    signal(SIGQUIT, sig_handler);
-
-    while (1)
-    {
-        if (process_ast(sloc, g_signals.env_hashtable))
-            break;
-    }
-
-    // Limpiar recursos antes de salir
-    cleanup(g_signals.env_hashtable);
-
-    return g_signals.exit_status;
+	rl_initialize();
+	init_minishell(&m_sack, envp, argc, argv);
+	while (1)
+	{
+		get_command_str(&m_sack);
+		if (g_exit == 3)
+			ft_setsigint(&m_sack);
+		if (m_sack.cmd_tree && !m_sack.eof)
+		{
+			if (ft_check_heredoc(&m_sack))
+				//expand_execute(m_sack.cmd_tree, &m_sack);
+				//print_ast_tree(m_sack.cmd_tree);
+			m_sack.cmd_tree = ft_free_ast_tree(m_sack.cmd_tree);
+		}
+		else if (m_sack.eof)
+			ft_exit_msg(0, &m_sack, 1);
+	}
+	return (0);
 }
-

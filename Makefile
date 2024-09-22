@@ -5,40 +5,38 @@ NC = \033[0m
 
 NAME = minishell
 
-SRC		=	src/ast_tree/ast_process.c \
-			src/ast_tree/fill_ast_and_checks_1.c \
-			src/ast_tree/fill_ast_and_checks_2.c \
-			src/ast_tree/ft_ast_built.c \
-			src/ast_tree/ft_node_delete.c \
-			src/ast_tree/ft_node_new.c \
-			src/ast_tree/ft_tree_build_err.c \
-			src/env/env_hash.c \
-			src/env/print_env.c \
-			src/env/free_hash.c \
-			src/env/get_env.c \
-			src/execution/builtins/cd_comm.c \
-			src/execution/builtins/echo_comm.c \
-			src/execution/builtins/env_comm.c \
-			src/execution/builtins/exit_comm.c \
-			src/execution/builtins/export_comm.c \
-			src/execution/builtins/pwd_comm.c \
-			src/execution/builtins/unset_comm.c \
-			src/execution/execution.c \
-			src/Tokens_utils/Tokenizer/ft_tokenizer_refill_line.c \
-			src/Tokens_utils/Tokenizer/tokenizer_actions.c \
-			src/Tokens_utils/Tokenizer/tokenizer_delete.c \
-			src/Tokens_utils/Tokenizer/tokenizer_errors.c \
-			src/Tokens_utils/Tokenizer/tokenizer_new.c \
-			src/Tokens_utils/Tokenizer/tokenizer_handler.c \
-			src/Tokens_utils/Tokenizer/tokenizer_type.c \
-			src/Tokens_utils/Tokenizer/tokenizer.c \
-			src/Tokens_utils/ascii_dictionary.c \
-			src/Tokens_utils/ft_token_copy.c \
-			src/Tokens_utils/ft_token_del.c \
-			src/Tokens_utils/ft_token_list_del.c \
-			src/Tokens_utils/ft_token_new.c \
-			src/Tokens_utils/ft_token_parenthesis.c \
-			src/Tokens_utils/ft_token_type.c \
+SRC		=	src/env/enviroment.c \
+			src/env/ft_env_get_value.c \
+			src/env/ft_env_no_value.c \
+			src/env/ft_remove_env.c \
+			src/expander/dictionary.c \
+			src/expander/expander.c \
+			src/expander/expand_types.c \
+			src/expander/ft_expand_env.c \
+			src/expander/heredoc_expander.c \
+			src/expander/wildcard_expand.c \
+			src/parse/checker/check_heredoc.c \
+			src/parse/checker/checker_errors.c \
+			src/parse/checker/checker.c \
+			src/parse/Errors/Errors_1.c \
+			src/parse/Errors/Errors_2.c \
+			src/parse/heredoc/heredoc.c \
+			src/parse/heredoc/input.c \
+			src/parse/history/history.c \
+			src/parse/lexer/ft_remove_quotes.c \
+			src/parse/lexer/tokenizer.c \
+			src/parse/lexer/retokenizer.c \
+			src/parse/Multiple_Tools/cleanup.c \
+			src/parse/Multiple_Tools/utils.c \
+			src/parse/tree/ast_tree.c \
+			src/parse/tree/ft_free_list.c \
+			src/parse/tree/ft_free_redirections.c \
+			src/parse/tree/ft_free_tree.c \
+			src/parse/wildcards/wildcards.c \
+			src/parse/wildcards/wildcards_utils.c \
+			src/parse/wildcards/wildcards_files.c \
+			src/parse/wildcards/ft_wdc_len.c \
+			src/init.c \
 			src/minishell.c \
 			src/prompt.c \
 			src/signals.c 
@@ -49,7 +47,7 @@ OBJ_DIR  = objects
 OBJ = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
+CFLAGS = -Wall -Wextra -Werror -g3
 
 LIBFT = ./Libft/libft.a
 
@@ -80,7 +78,13 @@ $(OBJ_DIR):
 	@echo "$(YELLOW)------------------ Creating Object Directory -------------------$(NC)"
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/src/env
-	@mkdir -p $(OBJ_DIR)/src/ast_tree
+	@mkdir -p $(OBJ_DIR)/src/parse
+	@mkdir -p $(OBJ_DIR)/src/parse/heredoc
+	@mkdir -p $(OBJ_DIR)/src/parse/history
+	@mkdir -p $(OBJ_DIR)/src/parse/syntax
+	@mkdir -p $(OBJ_DIR)/src/parse/tokenizer
+	@mkdir -p $(OBJ_DIR)/src/parse/tree
+	@mkdir -p $(OBJ_DIR)/src/parse/wildcards
 	@mkdir -p $(OBJ_DIR)/src/ast_tree/interpreter
 	@mkdir -p $(OBJ_DIR)/src/Tokens_utils
 	@mkdir -p $(OBJ_DIR)/src/Tokens_utils/Tokenizer

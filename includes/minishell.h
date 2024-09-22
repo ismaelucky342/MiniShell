@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/31 15:07:41 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/09/12 16:57:18 by ismherna         ###   ########.fr       */
+/*   Created: 2023/07/05 13:16:35 by sacorder          #+#    #+#             */
+/*   Updated: 2024/09/22 12:27:03 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,108 +14,130 @@
 # define MINISHELL_H
 
 # include "../Libft/libft.h"
-# include "AST.h"
-# include "Tokenizer.h"
-# include "signal.h"
-# include "tokens.h"
+# include "colors.h"
+# include "parse.h"
+# include <stdio.h>
 # include <dirent.h>
-# include <errno.h>
-# include <limits.h>
-# include <readline/history.h>
-# include <readline/history.h>
-# include <readline/readline.h>
+# include <termios.h>
 # include <readline/readline.h>
 # include <signal.h>
-# include <readline/readline.h>
-# include <readline/history.h>
 # include <stdlib.h>
-# include <string.h>
+# include <fcntl.h>
 # include <sys/types.h>
-# include <termios.h>
-# include <unistd.h>
+# include <sys/wait.h>
+# include <readline/history.h>
 
-# ifndef LINE_MAX
-#  define LINE_MAX 4096
+# define PROMPT_BASE "\001\x1b[32m\002Minishell\001\x1b[0m\002 - \001\x1b[31m\002"
+# define HIST_ERROR_MSG "Minishell: HOME is not set, history unavailable."
+# define H_DOC_TMP_BASE "/tmp/.dash_tmp_heredoc_"
+# define HIST_TMP_BASE "/.dash_history"
+# define FILE_REDIR 0
+# define PIPE 1
+# define LOGIC 2
+# define CONCATOUT_MASK 0b1000
+# define OUTFILE_MASK 0b10
+# define HEREDOC_MASK 0b100
+# define AND_MASK 0b1
+# define OR_MASK 0b10
+# define WAIT_MASK 0b100
+# ifndef SIZE_T_MAX
+# define ARG 3
+# define E_EXP_ARG 4
+# define W_EXP_ARG 5
+# define INFILE_MASK 0b1
+#  define SIZE_T_MAX UINT_MAX
+# endif
+# ifndef ECHOCTL
+#  define ECHOCTL 0000400
 # endif
 
-# define BUILTINS 7
+int			ft_msh_exit(t_tree_node *node, t_minishell *sack, char print);
+int			ft_change_dir(t_tree_node *node, t_minishell *sack);
+int			ft_print_working_dir(t_tree_node *node, char **envp);
+int			ft_echo(t_tree_node *node);
+int			ft_export(t_tree_node *node, t_minishell *sack);
+int			ft_unset(t_tree_node *node, t_minishell *sack);
+int			ft_isbuiltin(char *str);
 
-/*----------EXECUTION ERRORS-----------*/
 
-typedef enum e_error_value
-{
-	SUCCESS,
-	ERROR,
-	EMPTY
-}			t_error_value;
+//execute (2,3,4)
 
-typedef struct builtins
-{
-	char	*name;
-	int		(*f)(int argc, char **args, int out);
-}			t_builtins;
+int			execute(t_ast_tree *tree_node, t_minishell *sack);
+int			expand_execute(t_ast_tree *tree_node, t_minishell *sack);
+int			ft_parse_and_exec(t_ast_tree *tree_node, t_minishell *sack);
+char		*ft_remove_brackets(char *str);
+int			logic_expansion(t_ast_tree *tree_node);
+void		ft_remove_outer_brackets(char *str);
+int			get_log_expandible(char *str);
+void		is_quote(char *str, int *i, int *last);
+int			if_mask(char *str, int last);
+char		*ft_get_left_token(char *str);
+char		*ft_get_right_token(char *str);
+void		ft_brackets(char *str, int *i);
+char		ft_has_brackets(char *str);
+void		ft_expansion_error(t_ast_tree *tree_node);
 
-/*-------------------COLORS STRUCT----------------*/
+//execute_utils (1)
 
-# define COLOR_RESET "\033[0m"
+void		ft_fork(t_tree_node *node);
+t_tree_node	*ft_execute_lst(t_ast_tree *tree_node,
+				t_minishell *sack, int *last_pid);
+int			ft_file_redirs(t_list *files, int input_fd, int output_fd,
+				char **envp);
+int			ft_exec_first_cmd(t_tree_node *node, t_minishell *sack,
+				int *outfd);
+int			exec_first_management(t_tree_node *node, t_minishell *sack,
+				char **path);
+int			ft_exec_single_cmd(t_tree_node *node, t_minishell *sack);
+int			ft_no_path(t_tree_node *node, int close, int fd);
 
-# define COLOR_BACKGROUND_BLACK "\033[40m"
-# define COLOR_BACKGROUND_RED "\033[41m"
-# define COLOR_BACKGROUND_GREEN "\033[42m"
-# define COLOR_BACKGROUND_YELLOW "\033[43m"
-# define COLOR_BACKGROUND_BLUE "\033[44m"
-# define COLOR_BACKGROUND_MAGENTA "\033[45m"
-# define COLOR_BACKGROUND_CYAN "\033[46m"
-# define COLOR_BACKGROUND_WHITE "\033[47m"
-# define COLOR_BACKGROUND_GRAY "\033[100m"
+//expander
 
-# define COLOR_BLACK_TEXT "\033[30m"
-# define COLOR_RED_TEXT "\033[31m"
-# define COLOR_GREEN_TEXT "\033[32m"
-# define COLOR_YELLOW_TEXT "\033[33m"
-# define COLOR_BLUE_TEXT "\033[34m"
-# define COLOR_MAGENTA_TEXT "\033[35m"
-# define COLOR_CYAN_TEXT "\033[36m"
-# define COLOR_WHITE_TEXT "\033[37m"
-# define COLOR_GRAY_TEXT "\033[90m"
+char		*ft_expand(char *line, char **envp, char expand_all);
+int			ft_list_expand(t_list *list, t_minishell *sack);
+void		list_expand(t_list *curr, t_minishell *sack);
 
-# define COLOR_BOLD_BLACK_TEXT "\033[30;01m"
-# define COLOR_BOLD_RED_TEXT "\033[31;01m"
-# define COLOR_BOLD_GREEN_TEXT "\033[32;01m"
-# define COLOR_BOLD_YELLOW_TEXT "\033[33;01m"
-# define COLOR_BOLD_BLUE_TEXT "\033[34;01m"
-# define COLOR_BOLD_MAGENTA_TEXT "\033[35;01m"
-# define COLOR_BOLD_CYAN_TEXT "\033[36;01m"
-# define COLOR_BOLD_WHITE_TEXT "\033[37;01m"
-# define COLOR_BOLD_GRAY_TEXT "\033[90;01m"
+void		wildcard_expand(t_list *curr, int *i);
+void		ft_expand_env(t_list *curr, int *i, int check_w_cards,
+				t_minishell *sack);
+void		double_quote_expand(t_list *curr, int *i, t_minishell *sack);
+void		single_quote_expand(t_list *curr, int *i);
 
-/*--------------------ENV FILES---------------*/
-void		ft_env2hashtable( char **env, t_hashtable *hashtable);
-t_hashtable	*ft_create_envhash( char **env);
-void		ft_print_env(t_hashtable *env_hashtable, int is_export);
-void		free_env_hashtable(t_hashtable *hashtable);
-const char	*ft_hashtable_get(t_hashtable *hashtable, const char *key);
-void		process_env_variable( char **env, t_hashtable *hashtable);
+//redirect_utils
 
-void		insert_into_hashtable( char *key, char *value,
-				t_hashtable *hashtable);
-void		add_new_element( char *key, char *value, t_hashtable *hashtable,
-				int hash_index);
+int			ft_open(t_redirection_token *f_tok);
+void		ft_close(int fd);
+void		ft_dup2(int oldfd, int newfd);
 
-/*--------EXECUTION FILES--------*/
-/*
-int			xecho(int argc, char **args, int out);
-int			xpwd(int argc, char **args, int out);
-int			xexit(int argc, char **args, int out);
-int			xcd(int argc, char **args, int out);
-char		**env_to_arr(t_hashtable *hashtable);
-void		sig_exec(int signo);
-char		**convert_to_arr(t_token *args, int ac);
-char		**check_cmd(t_ast_node *cmd, int *ac, int *type);
-int			launch(t_ast_node *cmd, char **av);
-int			execute_fork(t_ast_node *cmd, int out);
-int			execute_simple(t_ast_node *cmd);
-char		*get_path(char *command, int *err);
-*/
+//syntax_checker
+
+int			ft_check_heredoc(t_minishell *sack);
+void		ft_syntax_error(char *str);
+void		ft_quote_error(void);
+void		ft_bracket_error(void);
+int			ft_create_heredocs(char **str);
+int			ft_check_quotes(char *str);
+int			ft_check_brackets(char *str);
+int			ft_check_fredirs(char *str);
+void		skip_to_delimiter(char *str, int *i, char delim);
+//path_finder
+
+char		*extract_exec_path(t_minishell *sack, t_tree_node *node);
+void		ft_execbuiltin(t_tree_node *node, t_minishell *sack, char parent);
+
+//term_settings
+
+int			ft_set_signal(int val);
+int			ft_set_echo(int val);
+
+//utils
+
+void		ft_exit_msg(int exit, t_minishell *sack, char print);
+void		ft_array_free(char **array);
+void		free_cmd_token(void *tok);
+char		*get_cwd_str(void);
+void		ft_memory_error(t_minishell *sack);
+void		ft_tmp(char **tmp, int *shllvl);
+int			ft_check_file(char *str, int *i);
 
 #endif

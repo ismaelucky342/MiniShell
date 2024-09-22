@@ -99,21 +99,25 @@ SRC =	checkD_bf.c \
 		to_nbr.c \
 		to_nbr_utils.c \
 		to_n.c \
-		get_next_line_v1.c \
-		get_next_line_v2.c \
+		get_next_line.c \
 		get_next_line_utils.c \
 		get_next_line_bonus.c \
 		ft_strncpy.c 	\
 		ft_strsub.c \
 		ft_strcmp.c	\
-		ft_print_error.c 
+		ft_print_error.c \
+		ft_close.c \
+		ft_skip_spaces.c \
+		ft_strcpy.c \
+		ft_strjoin_free.c \
+		ft_is_reserved_char.c 
 		
 NAME = libft.a
 
 OBJ = $(SRC:.c=.o) 
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
+CFLAGS = -Wall -Wextra -Werror -g3
 
 all: speak $(NAME)
 	@echo "$(GREEN)----------------------------------------------------------------$(NC)"

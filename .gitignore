@@ -1,5 +1,5 @@
-objects
 *.o
 *.a
+.DS_*
+.vscode
 minishell
-normi.txt

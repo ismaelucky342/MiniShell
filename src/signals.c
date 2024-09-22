@@ -5,33 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/07 13:01:12 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/07 13:34:12 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/20 16:59:21 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/22 12:25:21 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-t_signal_context	g_signals;
+extern int	g_exit;
 
-void	init_signal_context(t_signal_context *context)
+void	ft_sig_handler(int signum)
 {
-	context->exit_status = 0;
-	context->reset_flag = 0;
-	context->env_hashtable = NULL;
+	if (signum == SIGINT && (!g_exit || g_exit == 3))
+	{
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		ft_putendl_fd("\n^C", STDERR_FILENO);
+		rl_redisplay();
+		g_exit = 3;
+	}
+	else if (signum == SIGQUIT && g_exit == 1)
+	{
+		ft_putstr_fd("\nQuit (core dumped)", STDERR_FILENO);
+		g_exit = 0;
+	}
+	else if (signum == SIGINT && g_exit == 1)
+		g_exit = 0;
+	else if (signum == SIGINT && g_exit == 2)
+	{
+		g_exit = 0;
+		ft_putendl_fd("^C", STDERR_FILENO);
+	}
 }
 
-void	sig_handler(int signo)
+void	ft_set_signal_handlers(void)
 {
-	if (signo == SIGINT)
-	{
-		printf("\n");
-		g_signals.reset_flag = 1;
-		g_signals.exit_status = 130;
-		print_prompt(0, g_signals.env_hashtable);
-	}
-	else if (signo == SIGTSTP)
-	{
-		printf("\b\b  \b\b");
-	}
+	signal(SIGINT, ft_sig_handler);
+	signal(SIGQUIT, ft_sig_handler);
 }

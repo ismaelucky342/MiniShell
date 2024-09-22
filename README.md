@@ -1,65 +1,59 @@
-# MiniShell
-Our own fully functional Shell terminal
-Efficiency is not guaranteed!
+# Minishell
 
+## Description (Descripción)
 
-# Program Sequence
-### 1. Program Start (main)
+**Minishell** is a self-made recreation of Bash, complete with features like input/output redirection via pipes and files, as well as logical operators such as || and &&. It also recognizes the semicolon (;) separator. This project is implemented entirely using system calls and custom functions, with the exception of the "readline" library.
 
-#### Initialization of Variables:
+**Minishell** es una recreación propia de Bash, con características como la redirección de entrada/salida a través de tuberías y archivos, así como operadores lógicos como || y &&. También reconoce el separador de punto y coma (;). Este proyecto está implementado completamente utilizando llamadas al sistema y funciones personalizadas, con la excepción de la biblioteca "readline".
 
-- Global variables such as g_signal are initialized to handle signals.
-- The fill_struct() function is called to initialize the t_exec structure, which contains the shell environment in the form of a hash table, the abstract syntax tree (AST), and other control parameters.
+## Requirements (Requisitos)
 
-#### Main Loop:
-- The program enters a while (1) loop that repeats indefinitely, allowing the shell to continue running until the user decides to exit.
-  
-### 2. Environment and Terminal Configuration
+To run **Minishell**, you need the following requirement:
 
-#### Restoring and Configuring the Terminal:
-- ft_restore_terminal(0) and ft_configure_terminal() are responsible for configuring the terminal for interactive input, ensuring that the settings are suitable for reading commands.
-#### Waiting for Commands:
-- The shell waits for the user to type a command. Typically, this is done by using readline to capture user input.
+Para ejecutar **Minishell**, necesitas el siguiente requisito:
 
-### 3. Command Parsing
+- **libreadline** (including installation for Ubuntu, Fedora, Arch, and macOS using Brew).
 
-#### Tokenization:
-- The command entered by the user is parsed and broken down into tokens. Tokens are the meaningful parts of the command (such as words, operators, etc.).
+    **libreadline** (incluyendo la instalación para Ubuntu, Fedora, Arch y macOS a través de Brew).
 
-#### AST Construction:
+    - **Ubuntu**:
 
-- An Abstract Syntax Tree (AST) is built from the tokens using the parser() function.
-- This tree represents the logical structure of the command, allowing the identification of which part is a command, a redirection, a pipe, etc.
+      ```bash
+      sudo apt-get install libreadline-dev
+      ```
 
-#### Error Checking:
+    - **Fedora**:
 
-- If there are syntax errors in the command, the shell will detect them and may display an error message or decide how to handle it. If the error occurs in a non-interactive environment, the shell may exit.
+      ```bash
+      sudo dnf install readline-devel
+      ```
 
-### 4. Command Execution
+    - **Arch Linux**:
 
-#### Node Type Determination:
+      ```bash
+      sudo pacman -S readline
+      ```
 
-- Depending on the type of node (command, redirection, logical operator such as AND or OR, etc.), the execution() function is responsible for executing the corresponding part of the tree.
+    - **macOS** (using Brew):
 
-#### Node Execution:
+      ```bash
+      brew install readline
+      ```
 
-- The actual execution of the command(s) specified in the AST is performed. This may involve running a binary, handling redirections, executing conditional commands, handling pipes, etc.
+## Compilation (Compilación)
 
-#### Redirections and Pipes: 
-- If the command involves redirections (> or <) or pipes (|), file descriptors are adjusted and subprocesses are created if necessary.
+To compile the project, follow these steps:
 
-#### Signal Handling:
-- During execution, signals (such as SIGINT for Ctrl+C or SIGQUIT for Ctrl+) are handled to allow controlled interruption or termination of commands.
+Para compilar el proyecto, sigue estos pasos:
 
-### 5. Post-Execution
+1. Navigate to the cloned directory. (Ir al directorio clonado)
+2. Run the `make` command. (Ejecutar el comando `make`)
 
-#### Releasing Resources:
-- Once the command has been executed, the syntax tree (AST) is released using node_tree_delete(), preventing memory leaks.
+## Execution (Ejecución)
 
-#### Loop Restart:
-- After execution and cleanup, the shell returns to the start of the loop, waiting for a new command from the user.
+To execute **Minishell**, use the following command:
 
-### 6. Shell Exit
-#### Exit Command:
-- If the user types an exit command, such as exit, or is in a non-interactive environment and finishes processing the input, the shell will call exit_shell() to exit cleanly.
-- Final Cleanup: All remaining resources are freed and the shell ends its execution.
+Para ejecutar **Minishell**, utiliza el siguiente comando:
+
+```bash
+./minishell

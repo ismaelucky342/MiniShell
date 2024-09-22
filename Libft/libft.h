@@ -145,6 +145,11 @@ int			ft_print_hex(unsigned int num, const char word);
 int			ft_print_pointer(unsigned long long ptr);
 
 // libft
+char		*ft_strcpy(char *dest, const char *src);
+char		*ft_strjoin_free(char *s1, const char *s2);
+void		ft_close(int fd);
+void		skip_spaces(char *str, int *i, int *start, int mode);
+char		ft_is_reserved_char(char c);
 int			ft_strcmp(const char *s1, const char *s2);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -204,7 +209,7 @@ t_element	*ft_get_element(t_hashtable *ht, char *key);
 t_hashtable	*ft_ch_value(t_hashtable *ht, char *key, char *value, int is_apnd);
 t_element	*ft_create_element( char *key, char *value);
 t_hashtable	*ft_create_hashtable(int length);
-t_hashtable	*ft_delete_element(t_hashtable *ht, char *key);
+int			ft_delete_element(t_hashtable *ht, char *key);
 void		ft_free_hashtable(t_hashtable *hashtable);
 void		ft_free_element(t_element *element);
 char		*ft_get_value(t_hashtable *hashtable, char *key);
@@ -235,9 +240,8 @@ void		ft_swap_node_np(t_pnp **lst, t_pnp *node_a, t_pnp *node_b);
 
 /*---------------------GET NEXT LINE ------------------------------------*/
 //char	*get_next_line(int fd); V1
-char		*get_next_line_v2(void); //V2
 char		*get_next_line_bonus(int fd);
-char		*get_next_line_v1(int fd);
+char		*get_next_line(int fd);
 char		*ft_strdup_gnl(char *s);
 size_t		ft_strlen_gnl(char *s);
 char		*ft_substr_gnl(char *s, unsigned int start, size_t len);
