@@ -29,10 +29,10 @@ static int	ft_init_envp(t_minishell *sack, char **envp)
 		sack->env_size = 32;
 	sack->envp = ft_calloc(sack->env_size, sizeof(char *));
 	if (!sack->envp)
-		return (1);
+		return (KO);
 	while (++ctr < sack->env_elems)
 		sack->envp[ctr] = ft_strdup(envp[ctr]);
-	return (0);
+	return (OK);
 }
 
 static void	ft_fill_envp(t_minishell *sack)

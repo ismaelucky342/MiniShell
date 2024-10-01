@@ -39,5 +39,5 @@ char	*ft_strtrim(char const *s1, char const *set)
 	printf("La cadena original es: %s\n", string);
 	printf("la cadena recortada es: %s\n", cadena);
 	free(cadena);
-	return (0);
+	return (OK);
 }*/

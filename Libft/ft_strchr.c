@@ -38,5 +38,5 @@ char	*ft_strchr(const char *str, int c)
 	char	*resultado =  ft_strchr(string, busqueda);
 	printf("Caracter '%c' encontrado en la posicion: %ld\n",
  *resultado, resultado - string);
-	return (0);
+	return (OK);
 }*/

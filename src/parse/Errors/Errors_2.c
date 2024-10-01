@@ -25,7 +25,7 @@ int	ft_set_signal(int val)
 	if (tcgetattr(STDIN_FILENO, &settings) == -1)
 	{
 		perror("tcgetattr");
-		return (1);
+		return (KO);
 	}
 	if (val)
 		settings.c_lflag |= ECHOCTL;
@@ -34,9 +34,9 @@ int	ft_set_signal(int val)
 	if (tcsetattr(STDIN_FILENO, TCSANOW, &settings) == -1)
 	{
 		perror("tcsetattr");
-		return (1);
+		return (KO);
 	}
-	return (0);
+	return (OK);
 }
 
 void	ft_memory_error(t_minishell *sack)

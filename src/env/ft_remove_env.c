@@ -46,5 +46,5 @@ int	ft_remove_env(t_minishell *sack, char *key)
 		sack->envp[i] = sack->envp[i + 1];
 		i++;
 	}
-	return (0);
+	return (OK);
 }

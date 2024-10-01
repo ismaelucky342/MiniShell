@@ -40,5 +40,5 @@ char	*ft_strrchr(const char *str, int c)
 	}else {
 		printf("ERROR");
 	}
-	return (0);
+	return (OK);
 }*/

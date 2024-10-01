@@ -106,7 +106,6 @@ SRC =	checkD_bf.c \
 		ft_strsub.c \
 		ft_strcmp.c	\
 		ft_print_error.c \
-		ft_close.c \
 		ft_skip_spaces.c \
 		ft_strcpy.c \
 		ft_strjoin_free.c \

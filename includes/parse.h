@@ -44,13 +44,13 @@
 #  define ECHOCTL 0000400
 # endif
 
-typedef struct s_token
+typedef struct s_token//parseo entero
 {
 	char				*str;
 	int					type;
 }						t_token;
 
-typedef struct s_redirection_token
+typedef struct s_redirection_token//parseo entero
 {
 	char				*name;
 	char				type;

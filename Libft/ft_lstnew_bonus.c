@@ -28,5 +28,5 @@ t_list	*ft_lstnew(void *data)
 
 	printf("nuevo nodo %d\n", *((int *)nodo->data));
 	free(nodo);
-	return (0);
+	return (OK);
 }*/

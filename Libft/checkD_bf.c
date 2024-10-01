@@ -24,10 +24,10 @@ int	checkd_bf(int *numbers, int count)
 		while (j < count)
 		{
 			if (numbers[i] == numbers[j])
-				return (1);
+				return (KO);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (OK);
 }

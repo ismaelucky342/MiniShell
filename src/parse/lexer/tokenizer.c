@@ -69,10 +69,10 @@ static int	tokener(char *str, t_list *list)
 		skip_spaces(str, &i, &start, 1);
 		current->data = add_token_next(str, start, &i);
 		if (!current->data)
-			return (1);
+			return (KO);
 		current->next = ft_calloc(1, sizeof(t_list));
 		if (!current->next)
-			return (1);
+			return (KO);
 		current = current->next;
 	}
 	if (current != list)
@@ -80,7 +80,7 @@ static int	tokener(char *str, t_list *list)
 		free(current->next);
 		current->next = NULL;
 	}
-	return (0);
+	return (OK);
 }
 
 t_list	*tokenizer(char *str)

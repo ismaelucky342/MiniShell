@@ -18,5 +18,5 @@ int	ft_print_char(int character)
 	{
 		return (-1);
 	}
-	return (1);
+	return (KO);
 }

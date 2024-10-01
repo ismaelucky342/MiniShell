@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_close.c                                         :+:      :+:    :+:   */
+/*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 12:35:28 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 18:24:19 by ismherna         ###   ########.fr       */
+/*   Created: 2024/10/01 17:48:30 by dgomez-l          #+#    #+#             */
+/*   Updated: 2024/10/01 17:48:32 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef EXEC_H
+# define EXECS_H
 
-void	ft_close(int fd)
-{
-	if (fd < 0)
-		return ;
-	if (close(fd) == -1)
-		perror("close");
-}
+# include "minishell.h"
+
+int			isbuiltin(char *str);
+
+#endif

@@ -103,14 +103,14 @@ int	ft_heredoc(char **str, int *i, char **f_name)
 	if (fd == -1 || !g_exit)
 	{
 		free(delim);
-		return (1);
+		return (KO);
 	}
 	pid = fork();
 	free(delim);
 	if (pid < 0)
-		return (1);
+		return (KO);
 	else
-		return (0);
+		return (OK);
 	signal(SIGINT, SIG_DFL);
 	handle_heredoc_input(delim, fd);
 	free(delim);

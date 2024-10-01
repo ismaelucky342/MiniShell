@@ -74,7 +74,7 @@ int	ft_list_expand(t_list *list, t_minishell *sack)
 		else
 			list = list->next;
 	}
-	return (0);
+	return (OK);
 }
 
 void	list_expand(t_list *curr, t_minishell *sack)

@@ -42,5 +42,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	char *resultado = ft_strnstr(cadena, subcadena, 11);
 	printf("la subcadena %s, fue encontrada en: %s", subcadena, resultado);
 
-	return (0);
+	return (OK);
 }*/

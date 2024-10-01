@@ -33,7 +33,7 @@ void	*ft_calloc(size_t count, size_t size)
 
     if (array == NULL) {
         fprintf(stderr, "Error al asignar memoria\n");
-        return (1);
+        return (KO);
     }
     for (int i = 0;i < size;i++) {
         array[i] = i + 1;
@@ -43,5 +43,5 @@ void	*ft_calloc(size_t count, size_t size)
         printf("%d ", array[i]);
     }
     free(array);
-    return (0);
+    return (OK);
 }*/

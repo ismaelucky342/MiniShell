@@ -16,6 +16,7 @@
 # include "../Libft/libft.h"
 # include "colors.h"
 # include "parse.h"
+# include "exec.h"
 # include <stdio.h>
 # include <dirent.h>
 # include <termios.h>

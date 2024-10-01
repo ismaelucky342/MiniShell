@@ -31,5 +31,5 @@ int	ft_toupper(int c)
 
 	printf("%c\n", lowerch);
 
-	return (0);
+	return (OK);
 }*/

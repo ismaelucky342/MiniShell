@@ -20,8 +20,8 @@ int	ft_is_prime(int nbr)
 	while (mod < nbr / 2)
 	{
 		if (nbr % mod == 0)
-			return (0);
+			return (OK);
 		mod++;
 	}
-	return (1);
+	return (KO);
 }

@@ -19,7 +19,7 @@ static int	ft_is_wildcard(char *f_name, char *regex)
 	ft_memset(cont, 0, sizeof(int) * 2);
 	if (!ft_strncmp(".", f_name, 2) || !ft_strncmp("..", f_name, 3)
 		|| (f_name[0] == '.' && regex[0] != '.'))
-		return (0);
+		return (OK);
 	while (f_name[cont[0]] && regex[cont[1]])
 	{
 		if (regex[cont[1]] == '*')
@@ -30,12 +30,12 @@ static int	ft_is_wildcard(char *f_name, char *regex)
 				++cont[0];
 		}
 		if (f_name[cont[0]] != regex[cont[1]])
-			return (0);
+			return (OK);
 		handle_wildcard(cont, f_name, regex);
 	}
 	if (!regex_iterator(regex, f_name, &cont[1], cont[0]))
-		return (0);
-	return (1);
+		return (OK);
+	return (KO);
 }
 
 char	*ft_wildcards(char *regex)

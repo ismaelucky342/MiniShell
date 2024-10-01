@@ -20,10 +20,10 @@ static int	ft_env_realloc(t_minishell *sack)
 	if (sack->env_size + 32 < INT_MAX)
 		sack->env_size += 32;
 	else
-		return (1);
+		return (KO);
 	new_envp = ft_calloc(sack->env_size, sizeof(char *));
 	if (!new_envp)
-		return (1);
+		return (KO);
 	src = sack->envp;
 	while (*src)
 	{
@@ -31,7 +31,7 @@ static int	ft_env_realloc(t_minishell *sack)
 	}
 	free(sack->envp);
 	sack->envp = new_envp - (src - sack->envp);
-	return (0);
+	return (OK);
 }
 
 static void	ft_entry(t_minishell *sack, char *key_val)
@@ -66,11 +66,11 @@ static int	ft_new_env(t_minishell *sack, char *key_val)
 			ft_putendl_fd("Minishell: couldn't add more envp tuples",
 				STDERR_FILENO);
 			ft_memory_error(sack);
-			return (1);
+			return (KO);
 		}
 	}
 	ft_entry(sack, key_val);
-	return (0);
+	return (OK);
 }
 
 int	ft_env_build(t_minishell *sack, char *key_val)
@@ -88,5 +88,5 @@ int	ft_env_build(t_minishell *sack, char *key_val)
 	else if (!exists)
 		ft_new_env(sack, key_val);
 	free(key);
-	return (0);
+	return (OK);
 }

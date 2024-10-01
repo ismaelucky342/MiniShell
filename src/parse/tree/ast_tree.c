@@ -29,7 +29,7 @@ static int	add_file_info(t_list *token_list, t_tree_node *current)
 	t_list	*tmp;
 
 	if (!token_list->next)
-		return (1);
+		return (KO);
 	tmp = current->redir_list;
 	while (tmp && tmp->next)
 		tmp = tmp->next;
@@ -47,7 +47,7 @@ static int	add_file_info(t_list *token_list, t_tree_node *current)
 	((t_redirection_token *)tmp->data)->name
 		= ft_strdup(((t_token *)token_list->next->data)->str);
 	assign_redirection_type(token_list, &tmp);
-	return (0);
+	return (OK);
 }
 
 static int	ft_count_args(t_list *begin)
@@ -77,13 +77,13 @@ static int	fill_management(t_list **bgn, t_tree_node **current,
 	else if (((t_token *)(*bgn)->data)->type == FILE_REDIR)
 	{
 		if (add_file_info((*bgn), (*current)))
-			return (1);
+			return (KO);
 		(*bgn) = (*bgn)->next;
 	}
 	else if (((t_token *)(*bgn)->data)->type == PIPE)
 	{
 		if (!(*bgn)->next || ((t_token *)(*bgn)->next->data)->type == PIPE)
-			return (1);
+			return (KO);
 		(*current) = ft_calloc(1, sizeof(t_tree_node));
 		if (!(*current))
 			return (2);
@@ -95,7 +95,7 @@ static int	fill_management(t_list **bgn, t_tree_node **current,
 		if (!(*current)->args)
 			return (2);
 	}
-	return (0);
+	return (OK);
 }
 
 int	ft_fill_list(t_list *begin, t_ast_tree *tree_node)
@@ -115,7 +115,7 @@ int	ft_fill_list(t_list *begin, t_ast_tree *tree_node)
 	if (!current->args)
 		return (2);
 	if (tkn->type == PIPE)
-		return (1);
+		return (KO);
 	ctr[0] = 0;
 	while (begin)
 	{
@@ -124,5 +124,5 @@ int	ft_fill_list(t_list *begin, t_ast_tree *tree_node)
 			return (ctr[1]);
 		begin = begin->next;
 	}
-	return (0);
+	return (OK);
 }

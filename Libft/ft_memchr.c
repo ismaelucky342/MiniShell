@@ -34,5 +34,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	void *resultado = ft_memchr(string, car, inicio);
 	printf("%s", resultado);
-	return (0);
+	return (OK);
 }*/

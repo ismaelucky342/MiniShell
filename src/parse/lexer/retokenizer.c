@@ -77,7 +77,7 @@ int	retokenize(t_list *curr, int type, int start, int *lngths)
 			lngths[1] = conts[0];
 		curr->next = ft_calloc(1, sizeof(t_list));
 		if (!curr->data || !curr->next)
-			return (1);
+			return (KO);
 		skip_spaces(tmp, &conts[0], &conts[1], 1);
 		curr = curr->next;
 	}

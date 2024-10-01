@@ -27,7 +27,7 @@ int	ft_check_quotes(char *str)
 			if (!str[i])
 			{
 				ft_quote_error();
-				return (1);
+				return (KO);
 			}
 			else
 				++i;
@@ -35,7 +35,7 @@ int	ft_check_quotes(char *str)
 		else
 			++i;
 	}
-	return (0);
+	return (OK);
 }
 
 int	ft_check_brackets(char *str)
@@ -61,9 +61,9 @@ int	ft_check_brackets(char *str)
 	if (opening != closing)
 	{
 		ft_bracket_error();
-		return (1);
+		return (KO);
 	}
-	return (0);
+	return (OK);
 }
 
 int	ft_create_heredocs(char **str)
@@ -79,7 +79,7 @@ int	ft_create_heredocs(char **str)
 			skip_to_delimiter(*str, &i, (*str)[i]);
 		if (!ft_strncmp("<<", &(*str)[i], 2))
 			if (ft_heredoc(str, &i, &f_name))
-				return (1);
+				return (KO);
 		waitpid(-1, NULL, 0);
 		if (f_name)
 		{
@@ -91,7 +91,7 @@ int	ft_create_heredocs(char **str)
 		if ((*str)[i])
 			++i;
 	}
-	return (0);
+	return (OK);
 }
 
 int	ft_check_fredirs(char *str)
@@ -115,5 +115,5 @@ int	ft_check_fredirs(char *str)
 		if (check)
 			return (check);
 	}
-	return (0);
+	return (OK);
 }

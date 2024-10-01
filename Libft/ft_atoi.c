@@ -56,5 +56,5 @@ int	ft_atoi(const char *str)
     printf("'%s' convertido a entero: %d\n", str5, ft_atoi(str5));
     printf("'%s' convertido a entero: %d\n", str6, ft_atoi(str6));
 
-    return (0);
+    return (OK);
 }*/

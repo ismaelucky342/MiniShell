@@ -23,6 +23,6 @@ int	regex_iterator(char *regex, char *f_name, int *j, int i)
 	while (regex[*j] == '*')
 		++*j;
 	if (f_name[i] || (regex[*j]))
-		return (0);
-	return (1);
+		return (OK);
+	return (KO);
 }

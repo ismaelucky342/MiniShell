@@ -5,46 +5,48 @@ NC = \033[0m
 
 NAME = minishell
 
-SRC		=	src/env/enviroment.c \
-			src/env/ft_env_get_value.c \
-			src/env/ft_env_no_value.c \
-			src/env/ft_remove_env.c \
-			src/expander/dictionary.c \
-			src/expander/expander.c \
-			src/expander/expand_types.c \
-			src/expander/ft_expand_env.c \
-			src/expander/heredoc_expander.c \
-			src/expander/wildcard_expand.c \
-			src/parse/checker/check_heredoc.c \
-			src/parse/checker/checker_errors.c \
-			src/parse/checker/checker.c \
-			src/parse/Errors/Errors_1.c \
-			src/parse/Errors/Errors_2.c \
-			src/parse/heredoc/heredoc.c \
-			src/parse/heredoc/input.c \
-			src/parse/history/history.c \
-			src/parse/lexer/ft_remove_quotes.c \
-			src/parse/lexer/tokenizer.c \
-			src/parse/lexer/retokenizer.c \
-			src/parse/Multiple_Tools/cleanup.c \
-			src/parse/Multiple_Tools/utils.c \
-			src/parse/tree/ast_tree.c \
-			src/parse/tree/ft_free_list.c \
-			src/parse/tree/ft_free_redirections.c \
-			src/parse/tree/ft_free_tree.c \
-			src/parse/wildcards/wildcards.c \
-			src/parse/wildcards/wildcards_utils.c \
-			src/parse/wildcards/wildcards_files.c \
-			src/parse/wildcards/ft_wdc_len.c \
-			src/init.c \
-			src/minishell.c \
-			src/prompt.c \
-			src/signals.c 
+VPATH = src/env/:src/expander/:src/parse/checker/:src/parse/Errors/:src/parse/heredoc/:src/parse/history/:src/parse/lexer/:src/parse/Multiple_Tools/:src/parse/tree/:src/parse/wildcards/:src/
+
+SRC		=	enviroment.c \
+			ft_env_get_value.c \
+			ft_env_no_value.c \
+			ft_remove_env.c \
+			dictionary.c \
+			expander.c \
+			expand_types.c \
+			ft_expand_env.c \
+			heredoc_expander.c \
+			wildcard_expand.c \
+			check_heredoc.c \
+			checker_errors.c \
+			checker.c \
+			Errors_1.c \
+			Errors_2.c \
+			heredoc.c \
+			input.c \
+			history.c \
+			ft_remove_quotes.c \
+			tokenizer.c \
+			retokenizer.c \
+			cleanup.c \
+			utils.c \
+			ast_tree.c \
+			ft_free_list.c \
+			ft_free_redirections.c \
+			ft_free_tree.c \
+			wildcards.c \
+			wildcards_utils.c \
+			wildcards_files.c \
+			ft_wdc_len.c \
+			init.c \
+			minishell.c \
+			prompt.c \
+			signals.c 
 
 OBJ_DIR  = objects
 
 
-OBJ = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRC))
+OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
@@ -79,7 +81,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(GREEN)------------------------------------------------- Object Directory Done --------------------------------------------------$(NC)"
 
-$(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	@mkdir -p $(dir $@)  # Esto garantiza que el directorio exista
 	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 	@printf "%-200s\r" ">Minishell compiling: ""$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<"

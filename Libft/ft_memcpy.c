@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	i = 0;
 	if (!dst && !src)
-		return (0);
+		return (OK);
 	while (i < n)
 	{
 		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
@@ -35,5 +35,5 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	void	*resultado = ft_memcpy(destino, origen, t);
 	printf("la cadena resultante es: %s", resultado);
-	return (0);
+	return (OK);
 }*/

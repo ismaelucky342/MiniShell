@@ -25,9 +25,9 @@ int	ft_delete_element(t_hashtable *ht, char *key)
 		{
 			ft_free_element(elem_arr[hash_index]);
 			elem_arr[hash_index] = NULL;
-			return (1);
+			return (KO);
 		}
 		hash_index = (hash_index + 1) % ht->length;
 	}
-	return (0);
+	return (OK);
 }

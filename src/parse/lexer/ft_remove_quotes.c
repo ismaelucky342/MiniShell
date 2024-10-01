@@ -58,5 +58,5 @@ int	ft_remove_quotes(t_list *tokens)
 		ft_str_unquote(content->str);
 		tokens = tokens->next;
 	}
-	return (0);
+	return (OK);
 }

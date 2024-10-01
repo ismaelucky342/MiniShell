@@ -35,14 +35,14 @@ int	ft_check_file(char *str, int *i)
 	while (str[*i] && !ft_is_reserved_char(str[*i]) && !ft_isspace(str[*i]))
 		++(*i);
 	if (starting[1] != *i)
-		return (0);
+		return (OK);
 	if (!ft_strncmp("<<", &str[starting[0]], 2) || !ft_strncmp(">>",
 			&str[starting[0]], 2))
 		print_syntax_error(&str[starting[0]]);
 	else if (!ft_strncmp("<", &str[starting[0]], 1) || !ft_strncmp(">",
 			&str[starting[0]], 1))
 		print_syntax_error(&str[starting[0]]);
-	return (1);
+	return (KO);
 }
 
 int	ft_set_echo(int val)
@@ -52,7 +52,7 @@ int	ft_set_echo(int val)
 	if (tcgetattr(STDIN_FILENO, &settings) == -1)
 	{
 		perror("tcgetattr");
-		return (1);
+		return (KO);
 	}
 	if (val)
 		settings.c_lflag |= ECHO;
@@ -61,7 +61,7 @@ int	ft_set_echo(int val)
 	if (tcsetattr(STDIN_FILENO, TCSANOW, &settings) == -1)
 	{
 		perror("tcsetattr");
-		return (1);
+		return (KO);
 	}
-	return (0);
+	return (OK);
 }

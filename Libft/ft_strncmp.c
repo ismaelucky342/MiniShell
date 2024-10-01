@@ -23,7 +23,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
 	}
-	return (0);
+	return (OK);
 }
 /*int		main()
 {
@@ -32,5 +32,5 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	
 	int		resultado = ft_strncmp(string1,string2, 5);
 	printf("el resultado es: %d\n", resultado);
-	return (0);
+	return (OK);
 }*/

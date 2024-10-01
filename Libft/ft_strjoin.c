@@ -23,7 +23,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	dst = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!dst)
-		return (0);
+		return (OK);
 	ft_strlcpy(dst, s1, ft_strlen(s2) + ft_strlen(s1) + 1);
 	ft_strlcat(dst, s2, ft_strlen(s2) + ft_strlen(s1) + 1);
 	return (dst);
@@ -42,5 +42,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}else{
 		printf("ERROR CADENA NULA");
 	}
-	return (0);
+	return (OK);
 }*/

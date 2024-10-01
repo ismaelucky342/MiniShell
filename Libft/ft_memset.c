@@ -35,5 +35,5 @@ void	*ft_memset(void *b, int c, size_t len)
 	void	*resultado = ft_memset(string1, c, len);
 
 	printf("%s", resultado);
-	return (0);
+	return (OK);
 }*/

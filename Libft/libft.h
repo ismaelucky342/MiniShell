@@ -25,6 +25,9 @@
 # define DLL_SUCCESS 0
 # define DLL_FAILURE 1
 
+# define OK 0
+# define KO 1
+
 /*-----------FT_PRINTF DEFINES----------------------*/
 
 # define PF_BUFF_SIZE 16384

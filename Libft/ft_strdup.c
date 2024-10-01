@@ -33,5 +33,5 @@ char	*ft_strdup(const char *s1)
 
 	char	*resultado = ft_strdup(  string1);
 	printf("la original es: %s\n y la duplicada: %s\n ",string1, resultado);
-	return (0);
+	return (OK);
 }*/

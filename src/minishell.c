@@ -75,5 +75,5 @@ int	main(int argc, char **argv, char **envp)
 		else if (m_sack.eof)
 			ft_exit_msg(0, &m_sack, 1);
 	}
-	return (0);
+	return (OK);
 }

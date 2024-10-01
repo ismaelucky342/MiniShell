@@ -23,7 +23,7 @@ int	ft_memcmp(const void *dst, const void *str, size_t n)
 		while (n--)
 			if (*dst2++ != *str2++)
 				return (*(--dst2) - *(--str2));
-	return (0);
+	return (OK);
 }
 
 /*int		main(){
@@ -37,5 +37,5 @@ int	ft_memcmp(const void *dst, const void *str, size_t n)
     } else {
         printf("Strings are identical\n");
     }
-	return (0);
+	return (OK);
 }*/

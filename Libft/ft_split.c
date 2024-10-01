@@ -45,7 +45,7 @@ static char	*splitter(char const *s, int index, char c)
 		count ++;
 	res = (char *)malloc(count +1);
 	if (res == 0)
-		return (0);
+		return (OK);
 	res[count] = 0;
 	count2 = 0;
 	while (count > count2)
@@ -65,7 +65,7 @@ static char	**filler(char const *s, char c)
 	nseg = occurrences(s, c) + 1;
 	res = (char **)malloc((nseg +1) * sizeof(char *));
 	if (res == 0)
-		return (0);
+		return (OK);
 	res[nseg] = 0;
 	index = 0;
 	while (index < nseg)
@@ -76,7 +76,7 @@ static char	**filler(char const *s, char c)
 			while (index-- > 0)
 				free(res[index]);
 			free (res);
-			return (0);
+			return (OK);
 		}
 		index ++;
 	}
@@ -89,7 +89,7 @@ static char	**case_empty(void)
 
 	res = (char **)malloc(sizeof(char **));
 	if (res == 0)
-		return (0);
+		return (OK);
 	res[0] = 0;
 	return (res);
 }
@@ -97,7 +97,7 @@ static char	**case_empty(void)
 char	**ft_split(char const *s, char c)
 {
 	if (!s)
-		return (0);
+		return (OK);
 	while (*s == c)
 	{
 		if (*s == 0)
@@ -113,5 +113,5 @@ char	**ft_split(char const *s, char c)
 {
 	char	**test;
 	test = ft_split("hello!", ' ');
-	return (0);
+	return (OK);
 }*/
