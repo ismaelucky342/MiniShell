@@ -47,66 +47,54 @@ OBJ_DIR  = objects
 OBJ = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 LIBFT = ./Libft/libft.a
 
 all: $(NAME)
-	@echo "$(GREEN) ███$(RED)╗$(GREEN)   ███$(RED)╗$(GREEN) ██$(RED)╗$(GREEN) ███$(RED)╗$(GREEN)   ██$(RED)╗$(GREEN) ██$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ██$(RED)╗$(GREEN)  ██$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ██$(RED)╗$(GREEN)      ██$(RED)╗$(GREEN)     $(NC)"
-	@echo "$(GREEN) ████$(RED)╗$(GREEN) ████$(RED)║$(GREEN) ██$(RED)║$(GREEN) ████$(RED)╗$(GREEN)  ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)╔════╝$(GREEN) ██$(RED)║$(GREEN)  ██$(RED)║$(GREEN) ██$(RED)╔════╝$(GREEN) ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
-	@echo "$(GREEN) ██$(RED)╔$(GREEN)████$(RED)╔$(GREEN)██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)╔$(GREEN)██$(RED)╗$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ███████$(RED)╗$(GREEN) ███████$(RED)║$(GREEN) █████$(RED)╗$(GREEN)   ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
-	@echo "$(GREEN) ██$(RED)║$(GREEN)$(RED)╚$(GREEN)██$(RED)╔╝$(GREEN)██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║╚$(GREEN)██$(RED)╗$(GREEN)██$(RED)║$(GREEN) ██$(RED)║ ╚════$(GREEN)██$(RED)║$(GREEN) ██$(RED)╔══$(GREEN)██$(RED)║$(GREEN) ██$(RED)╔══╝$(GREEN)   ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
-	@echo "$(GREEN) ██$(RED)║$(GREEN) $(RED)╚═╝$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) $(RED)╚$(GREEN)████$(RED)║$(GREEN) ██$(RED)║$(GREEN) ███████$(RED)║$(GREEN) ██$(RED)║$(GREEN)  ██$(RED)║$(GREEN) ███████$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN)$(NC)"
-	@echo "$(GREEN) $(RED)╚═╝$(GREEN)     $(RED)╚═╝$(GREEN) $(RED)╚═╝$(GREEN) $(RED)╚═╝$(GREEN)  $(RED)╚═══╝$(GREEN) $(RED)╚═╝$(GREEN) $(RED)╚══════╝$(GREEN) $(RED)╚═╝$(GREEN)  $(RED)╚═╝$(GREEN) $(RED)╚══════╝$(GREEN) $(RED)╚══════╝$(GREEN) $(RED)╚══════╝$(GREEN)$(NC)"
-	@echo "			   $(GREEN)dgomez-l $(YELLOW)/ $(RED)ismherna$(NC)"
-	@echo "			NEVER GONNA GIVE YOU PIPE"
+	@echo "			  $(GREEN) ███$(RED)╗$(GREEN)   ███$(RED)╗$(GREEN) ██$(RED)╗$(GREEN) ███$(RED)╗$(GREEN)   ██$(RED)╗$(GREEN) ██$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ██$(RED)╗$(GREEN)  ██$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ██$(RED)╗$(GREEN)      ██$(RED)╗$(GREEN)     $(NC)"
+	@echo "			  $(GREEN) ████$(RED)╗$(GREEN) ████$(RED)║$(GREEN) ██$(RED)║$(GREEN) ████$(RED)╗$(GREEN)  ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)╔════╝$(GREEN) ██$(RED)║$(GREEN)  ██$(RED)║$(GREEN) ██$(RED)╔════╝$(GREEN) ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
+	@echo "			  $(GREEN) ██$(RED)╔$(GREEN)████$(RED)╔$(GREEN)██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)╔$(GREEN)██$(RED)╗$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ███████$(RED)╗$(GREEN) ███████$(RED)║$(GREEN) █████$(RED)╗$(GREEN)   ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
+	@echo "			  $(GREEN) ██$(RED)║$(GREEN)$(RED)╚$(GREEN)██$(RED)╔╝$(GREEN)██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║╚$(GREEN)██$(RED)╗$(GREEN)██$(RED)║$(GREEN) ██$(RED)║ ╚════$(GREEN)██$(RED)║$(GREEN) ██$(RED)╔══$(GREEN)██$(RED)║$(GREEN) ██$(RED)╔══╝$(GREEN)   ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
+	@echo "			  $(GREEN) ██$(RED)║$(GREEN) $(RED)╚═╝$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) $(RED)╚$(GREEN)████$(RED)║$(GREEN) ██$(RED)║$(GREEN) ███████$(RED)║$(GREEN) ██$(RED)║$(GREEN)  ██$(RED)║$(GREEN) ███████$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN)$(NC)"
+	@echo "			  $(GREEN) $(RED)╚═╝$(GREEN)     $(RED)╚═╝$(GREEN) $(RED)╚═╝$(GREEN) $(RED)╚═╝$(GREEN)  $(RED)╚═══╝$(GREEN) $(RED)╚═╝$(GREEN) $(RED)╚══════╝$(GREEN) $(RED)╚═╝$(GREEN)  $(RED)╚═╝$(GREEN) $(RED)╚══════╝$(GREEN) $(RED)╚══════╝$(GREEN) $(RED)╚══════╝$(GREEN)$(NC)"
+	@echo "						    $(GREEN)dgomez-l $(YELLOW)/ $(RED)ismherna$(NC)"
+	@echo "						 NEVER GONNA GIVE YOU PIPE"
 
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) includes/minishell.h
-	@echo "$(YELLOW)--------------------- Compiling Minishell ----------------------$(NC)"
+	@echo "$(YELLOW)------------------------------------------------- Compiling Minishell ----------------------------------------------------$(NC)"
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -lreadline -o $(NAME)
-	@echo "$(GREEN)------------------ Minishell Finished Compiling ----------------$(NC)\n"
-	@echo "$(GREEN)----------------------------------------------------------------$(NC)"
-	@echo "$(GREEN)---------------------- Minishell Is Ready ----------------------$(NC)"
-	@echo "$(GREEN)----------------------------------------------------------------$(NC)\n"
+	@echo "$(GREEN)------------------------------------------------ Minishell Finished Compiling --------------------------------------------$(NC)\n"
+	@echo "$(GREEN)--------------------------------------------------------------------------------------------------------------------------$(NC)"
+	@echo "$(GREEN)--------------------------------------------------- Minishell Is Ready ---------------------------------------------------$(NC)"
+	@echo "$(GREEN)--------------------------------------------------------------------------------------------------------------------------$(NC)\n"
 
 $(LIBFT):
-	@make -sC ./Libft
+	@make -sC ./Libft CFLAGS="$(CFLAGS)"
 
 $(OBJ_DIR):
-	@echo "$(RED)--------------- Object Directory Does Not Exist ----------------$(NC)"
-	@echo "$(YELLOW)------------------ Creating Object Directory -------------------$(NC)"
+	@echo "$(RED)------------------------------------------- Object Directory Does Not Exist ----------------------------------------------$(NC)"
+	@echo "$(YELLOW)----------------------------------------------- Creating Object Directory ------------------------------------------------$(NC)"
 	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(OBJ_DIR)/src/env
-	@mkdir -p $(OBJ_DIR)/src/parse
-	@mkdir -p $(OBJ_DIR)/src/parse/heredoc
-	@mkdir -p $(OBJ_DIR)/src/parse/history
-	@mkdir -p $(OBJ_DIR)/src/parse/syntax
-	@mkdir -p $(OBJ_DIR)/src/parse/tokenizer
-	@mkdir -p $(OBJ_DIR)/src/parse/tree
-	@mkdir -p $(OBJ_DIR)/src/parse/wildcards
-	@mkdir -p $(OBJ_DIR)/src/ast_tree/interpreter
-	@mkdir -p $(OBJ_DIR)/src/Tokens_utils
-	@mkdir -p $(OBJ_DIR)/src/Tokens_utils/Tokenizer
-	@echo "$(GREEN)-------------------- Object Directory Done ---------------------$(NC)"
+	@echo "$(GREEN)------------------------------------------------- Object Directory Done --------------------------------------------------$(NC)"
 
 $(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
 	@mkdir -p $(dir $@)  # Esto garantiza que el directorio exista
 	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
-	@printf "%-100s\r" ">Minishell compiling: ""$(CC) -o $@"
+	@printf "%-200s\r" ">Minishell compiling: ""$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<"
 
 clean:
 	@make -sC ./Libft fclean
 	@rm -rf $(OBJ_DIR)
-	@echo "$(RED)----------------------- Objects Cleaned ------------------------$(NC)"
+	@echo "$(RED)--------------------------------------------------- Objects Cleaned ------------------------------------------------------$(NC)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(RED)---------------------- Minishell Cleaned -----------------------$(NC)"
+	@echo "$(RED)--------------------------------------------------- Minishell Cleaned ----------------------------------------------------$(NC)"
 
 re: fclean all
 
 .DEFAULT_GOAL: all
 
 .PHONY: all clean fclean re
-
