@@ -1,9 +1,8 @@
-GREEN = \033[1;32m
-YELLOW = \033[1;33m
-RED = \033[0;31m
+G = \033[1;32m
+R = \033[0;31m
 NC = \033[0m
 
-SRC =	checkD_bf.c \
+LIB_SRC =	checkD_bf.c \
 		free_2d.c \
 		ft_addFS.c \
 		ft_add_element.c \
@@ -114,30 +113,36 @@ SRC =	checkD_bf.c \
 		
 NAME = libft.a
 
-OBJ = $(SRC:.c=.o) 
+LIB_OBJ_DIR = objects
+
+LIB_OBJ = $(patsubst %.c, $(LIB_OBJ_DIR)/%.o, $(LIB_SRC))
 
 CC = cc
 
-all: speak $(NAME)
-	@echo "$(GREEN)--------------------------------------------------------------------------------------------------------------------------$(NC)"
-	@echo "$(GREEN)----------------------------------------------------- Libft Is Ready -----------------------------------------------------$(NC)"
-	@echo "$(GREEN)--------------------------------------------------------------------------------------------------------------------------$(NC)\n"
+all: $(NAME)
+	@echo "$(G)----------------------------------------------------------------------------------------------------$(NC)"
+	@echo "$(G)------------------------------------------ Libft Is Ready ------------------------------------------$(NC)"
+	@echo "$(G)----------------------------------------------------------------------------------------------------\n$(NC)"
 
-$(NAME): $(OBJ) libft.h
-	@ar -rcs $(NAME) $(OBJ)
-	@echo "$(GREEN)----------------------------------------------- Libft.a Finished Compiling -----------------------------------------------$(NC)\n"
+$(NAME): $(LIB_OBJ) libft.h
+	ar -rcs $(NAME) $(LIB_OBJ)
+	@echo "$(G)------------------------------------ Libft.a Finished Compiling ------------------------------------$(NC)\n"
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
+$(LIB_OBJ_DIR):
+	@mkdir -p $(LIB_OBJ_DIR)
+
+$(LIB_OBJ_DIR)/%.o: %.c | $(LIB_OBJ_DIR)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 	@printf "%-200s\r" ">Libft compiling: ""$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<"
 
 clean:
-	@rm -f $(OBJ) $(B_OBJ)
-	@echo "$(RED)----------------------------------------------------- Libft Cleaned ------------------------------------------------------$(NC)"
+	@rm -rf $(LIB_OBJ_DIR)
+	@echo "$(R)-------------------------------------- Libft Has Been Cleaned --------------------------------------$(NC)"
 
 fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all speak clean fclean re
+.PHONY: all clean fclean re

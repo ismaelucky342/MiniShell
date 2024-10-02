@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef EXEC_H
-# define EXECS_H
+# define EXEC_H
 
 # include "minishell.h"
 

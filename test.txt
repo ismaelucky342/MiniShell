@@ -1,0 +1,172 @@
+-------------------------------------- Libft Has Been Cleaned --------------------------------------
+----------------------------------------- Objects  Cleaned -----------------------------------------
+---------------------------------------- Minishell Is Clean ----------------------------------------
+
+------------------------------------ Compiling Libft With Bonus ------------------------------------
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/checkD_bf.o checkD_bf.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/free_2d.o free_2d.c                                                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_addFS.o ft_addFS.c                                                                                                                    
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_add_element.o ft_add_element.c                                                                                                        
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_arraylen.o ft_arraylen.c                                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_atoi.o ft_atoi.c                                                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_atoll.o ft_atoll.c                                                                                                                    
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_bin2ascii.o ft_bin2ascii.c                                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_bzero.o ft_bzero.c                                                                                                                    
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_calloc.o ft_calloc.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_ch_value.o ft_ch_value.c                                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_char.o ft_char.c                                                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_char2bin.o ft_char2bin.c                                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_create_element.o ft_create_element.c                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_create_hashtable.o ft_create_hashtable.c                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_delete_element.o ft_delete_element.c                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_free_hashtable.o ft_free_hashtable.c                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_get_value.o ft_get_value.c                                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_hexadecimals.o ft_hexadecimals.c                                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_index.o ft_index.c                                                                                                                    
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_is_prime.o ft_is_prime.c                                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_isalnum.o ft_isalnum.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_isalpha.o ft_isalpha.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_isascii.o ft_isascii.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_isdigit.o ft_isdigit.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_ishexdigit.o ft_ishexdigit.c                                                                                                          
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_isprint.o ft_isprint.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_isspace.o ft_isspace.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_itoa.o ft_itoa.c                                                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_lstadd_back_bonus.o ft_lstadd_back_bonus.c                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_lstadd_front_bonus.o ft_lstadd_front_bonus.c                                                                                          
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_lstclear_bonus.o ft_lstclear_bonus.c                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_lstdelone_bonus.o ft_lstdelone_bonus.c                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_lstiter_bonus.o ft_lstiter_bonus.c                                                                                                    
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_lstlast_bonus.o ft_lstlast_bonus.c                                                                                                    
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_lstmap_bonus.o ft_lstmap_bonus.c                                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_lstnew_bonus.o ft_lstnew_bonus.c                                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_lstsize_bonus.o ft_lstsize_bonus.c                                                                                                    
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_memchr.o ft_memchr.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_memcmp.o ft_memcmp.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_memcpy.o ft_memcpy.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_memmove.o ft_memmove.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_memset.o ft_memset.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_monkey_hash.o ft_monkey_hash.c                                                                                                        
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_next_prime.o ft_next_prime.c                                                                                                          
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_number.o ft_number.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_pointers.o ft_pointers.c                                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_print_hashtable.o ft_print_hashtable.c                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_printf.o ft_printf.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_putchar_fd.o ft_putchar_fd.c                                                                                                          
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_putendl_fd.o ft_putendl_fd.c                                                                                                          
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_putnbr_fd.o ft_putnbr_fd.c                                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_putstr_fd.o ft_putstr_fd.c                                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_split.o ft_split.c                                                                                                                    
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_sqrt.o ft_sqrt.c                                                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strchr.o ft_strchr.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strdup.o ft_strdup.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_string.o ft_string.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_string2bin.o ft_string2bin.c                                                                                                          
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_striteri.o ft_striteri.c                                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strjoin.o ft_strjoin.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strlcat.o ft_strlcat.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strlcpy.o ft_strlcpy.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strlen.o ft_strlen.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strmapi.o ft_strmapi.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strncmp.o ft_strncmp.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strnstr.o ft_strnstr.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strrchr.o ft_strrchr.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strtrim.o ft_strtrim.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_substr.o ft_substr.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_tolower.o ft_tolower.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_toupper.o ft_toupper.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_unsigned.o ft_unsigned.c                                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ins_sort.o ins_sort.c                                                                                                                    
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_del_list_np.o ft_del_list_np.c                                                                                                        
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_new_node.o ft_new_node.c                                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_add_node_end_np.o ft_add_node_end_np.c                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_add_node_f_nextto_np.o ft_add_node_f_nextto_np.c                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_add_node_f_prevto_np.o ft_add_node_f_prevto_np.c                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_add_node_nextto_np.o ft_add_node_nextto_np.c                                                                                          
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_add_node_prevto_np.o ft_add_node_prevto_np.c                                                                                          
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_add_node_start_np.o ft_add_node_start_np.c                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_del_node_end_np.o ft_del_node_end_np.c                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_del_node_np.o ft_del_node_np.c                                                                                                        
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_del_node_start_np.o ft_del_node_start_np.c                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_foreach_node_f_np.o ft_foreach_node_f_np.c                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_swap_node_np.o ft_swap_node_np.c                                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_printf_fd.o ft_printf_fd.c                                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_printf_fd_utils.o ft_printf_fd_utils.c                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strnlen.o ft_strnlen.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/skip_atoi.o skip_atoi.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/to_c.o to_c.c                                                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/to_s.o to_s.c                                                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/to_nbr.o to_nbr.c                                                                                                                        
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/to_nbr_utils.o to_nbr_utils.c                                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/to_n.o to_n.c                                                                                                                            
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/get_next_line.o get_next_line.c                                                                                                          
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/get_next_line_utils.o get_next_line_utils.c                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/get_next_line_bonus.o get_next_line_bonus.c                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strncpy.o ft_strncpy.c                                                                                                                
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strsub.o ft_strsub.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strcmp.o ft_strcmp.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_print_error.o ft_print_error.c                                                                                                        
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_skip_spaces.o ft_skip_spaces.c                                                                                                        
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strcpy.o ft_strcpy.c                                                                                                                  
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strjoin_free.o ft_strjoin_free.c                                                                                                      
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_is_reserved_char.o ft_is_reserved_char.c                                                                                              
+>Libft compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_strndup.o ft_strndup.c                                                                                                                
+------------------------------------ Libft.a Finished Compiling ------------------------------------
+
+----------------------------------------------------------------------------------------------------
+------------------------------------------ Libft Is Ready ------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+---------------------------------- Object Directory Doesn't Exist ----------------------------------
+------------------------------------ Creating Objects Directory ------------------------------------
+-------------------------------------- Objects Directory Done --------------------------------------
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/enviroment.o src/env/enviroment.c                                                                                                    
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_env_get_value.o src/env/ft_env_get_value.c                                                                                        
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_env_no_value.o src/env/ft_env_no_value.c                                                                                          
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_remove_env.o src/env/ft_remove_env.c                                                                                              
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/dictionary.o src/expander/dictionary.c                                                                                               
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/expander.o src/expander/expander.c                                                                                                   
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/expand_types.o src/expander/expand_types.c                                                                                           
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_expand_env.o src/expander/ft_expand_env.c                                                                                         
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/heredoc_expander.o src/expander/heredoc_expander.c                                                                                   
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/wildcard_expand.o src/expander/wildcard_expand.c                                                                                     
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/check_heredoc.o src/parse/checker/check_heredoc.c                                                                                    
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/checker_errors.o src/parse/checker/checker_errors.c                                                                                  
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/checker.o src/parse/checker/checker.c                                                                                                
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/Errors_1.o src/parse/Errors/Errors_1.c                                                                                               
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/Errors_2.o src/parse/Errors/Errors_2.c                                                                                               
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/heredoc.o src/parse/heredoc/heredoc.c                                                                                                
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/input.o src/parse/heredoc/input.c                                                                                                    
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/history.o src/parse/history/history.c                                                                                                
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_remove_quotes.o src/parse/lexer/ft_remove_quotes.c                                                                                
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/tokenizer.o src/parse/lexer/tokenizer.c                                                                                              
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/retokenizer.o src/parse/lexer/retokenizer.c                                                                                          
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/cleanup.o src/parse/Multiple_Tools/cleanup.c                                                                                         
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/utils.o src/parse/Multiple_Tools/utils.c                                                                                             
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ast_tree.o src/parse/tree/ast_tree.c                                                                                                 
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_free_list.o src/parse/tree/ft_free_list.c                                                                                         
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_free_redirections.o src/parse/tree/ft_free_redirections.c                                                                         
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_free_tree.o src/parse/tree/ft_free_tree.c                                                                                         
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/wildcards.o src/parse/wildcards/wildcards.c                                                                                          
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/wildcards_utils.o src/parse/wildcards/wildcards_utils.c                                                                              
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/wildcards_files.o src/parse/wildcards/wildcards_files.c                                                                              
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/ft_wdc_len.o src/parse/wildcards/ft_wdc_len.c                                                                                        
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/init.o src/init.c                                                                                                                    
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/minishell.o src/minishell.c                                                                                                          
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/prompt.o src/prompt.c                                                                                                                
+>Minishell compiling: cc -Wall -Wextra -Werror -g3   -c -o objects/signals.o src/signals.c                                                                                                              
+--------------------------------------- Compiling  Minishell ---------------------------------------
+----------------------------------- Minishell Finished Compiling -----------------------------------
+
+----------------------------------------------------------------------------------------------------
+---------------------------------------- Minishell Is Ready ----------------------------------------
+----------------------------------------------------------------------------------------------------
+
+		   ███╗   ███╗ ██╗ ███╗   ██╗ ██╗ ███████╗ ██╗  ██╗ ███████╗ ██╗      ██╗     
+		   ████╗ ████║ ██║ ████╗  ██║ ██║ ██╔════╝ ██║  ██║ ██╔════╝ ██║      ██║     
+		   ██╔████╔██║ ██║ ██╔██╗ ██║ ██║ ███████╗ ███████║ █████╗   ██║      ██║     
+		   ██║╚██╔╝██║ ██║ ██║╚██╗██║ ██║ ╚════██║ ██╔══██║ ██╔══╝   ██║      ██║     
+		   ██║ ╚═╝ ██║ ██║ ██║ ╚████║ ██║ ███████║ ██║  ██║ ███████╗ ███████╗ ███████╗
+		   ╚═╝     ╚═╝ ╚═╝ ╚═╝  ╚═══╝ ╚═╝ ╚══════╝ ╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ╚══════╝
+					    dgomez-l / ismherna
+					 NEVER GONNA GIVE YOU PIPE

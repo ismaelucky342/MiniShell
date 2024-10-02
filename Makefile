@@ -1,11 +1,11 @@
-GREEN = \033[1;32m
-YELLOW = \033[1;33m
-RED = \033[0;31m
+G = \033[1;32m
+Y = \033[1;33m
+R = \033[0;31m
 NC = \033[0m
 
 NAME = minishell
 
-VPATH = src/env/:src/expander/:src/parse/checker/:src/parse/Errors/:src/parse/heredoc/:src/parse/history/:src/parse/lexer/:src/parse/Multiple_Tools/:src/parse/tree/:src/parse/wildcards/:src/
+VPATH	=	src/env/:src/expander/:src/parse/checker/:src/parse/Errors/:src/parse/heredoc/:src/parse/history/:src/parse/lexer/:src/parse/Multiple_Tools/:src/parse/tree/:src/parse/wildcards/:src/
 
 SRC		=	enviroment.c \
 			ft_env_get_value.c \
@@ -54,32 +54,33 @@ CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 LIBFT = ./Libft/libft.a
 
 all: $(NAME)
-	@echo "			  $(GREEN) ███$(RED)╗$(GREEN)   ███$(RED)╗$(GREEN) ██$(RED)╗$(GREEN) ███$(RED)╗$(GREEN)   ██$(RED)╗$(GREEN) ██$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ██$(RED)╗$(GREEN)  ██$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ██$(RED)╗$(GREEN)      ██$(RED)╗$(GREEN)     $(NC)"
-	@echo "			  $(GREEN) ████$(RED)╗$(GREEN) ████$(RED)║$(GREEN) ██$(RED)║$(GREEN) ████$(RED)╗$(GREEN)  ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)╔════╝$(GREEN) ██$(RED)║$(GREEN)  ██$(RED)║$(GREEN) ██$(RED)╔════╝$(GREEN) ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
-	@echo "			  $(GREEN) ██$(RED)╔$(GREEN)████$(RED)╔$(GREEN)██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)╔$(GREEN)██$(RED)╗$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ███████$(RED)╗$(GREEN) ███████$(RED)║$(GREEN) █████$(RED)╗$(GREEN)   ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
-	@echo "			  $(GREEN) ██$(RED)║$(GREEN)$(RED)╚$(GREEN)██$(RED)╔╝$(GREEN)██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║╚$(GREEN)██$(RED)╗$(GREEN)██$(RED)║$(GREEN) ██$(RED)║ ╚════$(GREEN)██$(RED)║$(GREEN) ██$(RED)╔══$(GREEN)██$(RED)║$(GREEN) ██$(RED)╔══╝$(GREEN)   ██$(RED)║$(GREEN)      ██$(RED)║$(GREEN)     $(NC)"
-	@echo "			  $(GREEN) ██$(RED)║$(GREEN) $(RED)╚═╝$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) ██$(RED)║$(GREEN) $(RED)╚$(GREEN)████$(RED)║$(GREEN) ██$(RED)║$(GREEN) ███████$(RED)║$(GREEN) ██$(RED)║$(GREEN)  ██$(RED)║$(GREEN) ███████$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN) ███████$(RED)╗$(GREEN)$(NC)"
-	@echo "			  $(GREEN) $(RED)╚═╝$(GREEN)     $(RED)╚═╝$(GREEN) $(RED)╚═╝$(GREEN) $(RED)╚═╝$(GREEN)  $(RED)╚═══╝$(GREEN) $(RED)╚═╝$(GREEN) $(RED)╚══════╝$(GREEN) $(RED)╚═╝$(GREEN)  $(RED)╚═╝$(GREEN) $(RED)╚══════╝$(GREEN) $(RED)╚══════╝$(GREEN) $(RED)╚══════╝$(GREEN)$(NC)"
-	@echo "						    $(GREEN)dgomez-l $(YELLOW)/ $(RED)ismherna$(NC)"
-	@echo "						 NEVER GONNA GIVE YOU PIPE"
+	@echo "	     $(G) ███$(R)╗$(G)   ███$(R)╗$(G) ██$(R)╗$(G) ███$(R)╗$(G)   ██$(R)╗$(G) ██$(R)╗$(G) ███████$(R)╗$(G) ██$(R)╗$(G)  ██$(R)╗$(G) ███████$(R)╗$(G) ██$(R)╗$(G)      ██$(R)╗$(G)     $(NC)"
+	@echo "	     $(G) ████$(R)╗$(G) ████$(R)║$(G) ██$(R)║$(G) ████$(R)╗$(G)  ██$(R)║$(G) ██$(R)║$(G) ██$(R)╔════╝$(G) ██$(R)║$(G)  ██$(R)║$(G) ██$(R)╔════╝$(G) ██$(R)║$(G)      ██$(R)║$(G)     $(NC)"
+	@echo "	     $(G) ██$(R)╔$(G)████$(R)╔$(G)██$(R)║$(G) ██$(R)║$(G) ██$(R)╔$(G)██$(R)╗$(G) ██$(R)║$(G) ██$(R)║$(G) ███████$(R)╗$(G) ███████$(R)║$(G) █████$(R)╗$(G)   ██$(R)║$(G)      ██$(R)║$(G)     $(NC)"
+	@echo "	     $(G) ██$(R)║$(G)$(R)╚$(G)██$(R)╔╝$(G)██$(R)║$(G) ██$(R)║$(G) ██$(R)║╚$(G)██$(R)╗$(G)██$(R)║$(G) ██$(R)║ ╚════$(G)██$(R)║$(G) ██$(R)╔══$(G)██$(R)║$(G) ██$(R)╔══╝$(G)   ██$(R)║$(G)      ██$(R)║$(G)     $(NC)"
+	@echo "	     $(G) ██$(R)║$(G) $(R)╚═╝$(G) ██$(R)║$(G) ██$(R)║$(G) ██$(R)║$(G) $(R)╚$(G)████$(R)║$(G) ██$(R)║$(G) ███████$(R)║$(G) ██$(R)║$(G)  ██$(R)║$(G) ███████$(R)╗$(G) ███████$(R)╗$(G) ███████$(R)╗$(G)$(NC)"
+	@echo "	     $(G) $(R)╚═╝$(G)     $(R)╚═╝$(G) $(R)╚═╝$(G) $(R)╚═╝$(G)  $(R)╚═══╝$(G) $(R)╚═╝$(G) $(R)╚══════╝$(G) $(R)╚═╝$(G)  $(R)╚═╝$(G) $(R)╚══════╝$(G) $(R)╚══════╝$(G) $(R)╚══════╝$(G)$(NC)"
+	@echo "	     			   $(G)dgomez-l $(Y)/ $(R)ismherna$(NC)"
+	@echo "	     			NEVER GONNA GIVE YOU PIPE"
 
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) includes/minishell.h
-	@echo "$(YELLOW)------------------------------------------------- Compiling Minishell ----------------------------------------------------$(NC)"
+	@echo "$(Y)--------------------------------------- Compiling  Minishell ---------------------------------------$(NC)"
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -lreadline -o $(NAME)
-	@echo "$(GREEN)------------------------------------------------ Minishell Finished Compiling --------------------------------------------$(NC)\n"
-	@echo "$(GREEN)--------------------------------------------------------------------------------------------------------------------------$(NC)"
-	@echo "$(GREEN)--------------------------------------------------- Minishell Is Ready ---------------------------------------------------$(NC)"
-	@echo "$(GREEN)--------------------------------------------------------------------------------------------------------------------------$(NC)\n"
+	@echo "$(G)----------------------------------- Minishell Finished Compiling -----------------------------------$(NC)\n"
+	@echo "$(G)----------------------------------------------------------------------------------------------------$(NC)"
+	@echo "$(G)---------------------------------------- Minishell Is Ready ----------------------------------------$(NC)"
+	@echo "$(G)----------------------------------------------------------------------------------------------------$(NC)\n"
 
 $(LIBFT):
+	@echo "$(Y)------------------------------------ Compiling Libft With Bonus ------------------------------------$(NC)"
 	@make -sC ./Libft CFLAGS="$(CFLAGS)"
 
 $(OBJ_DIR):
-	@echo "$(RED)------------------------------------------- Object Directory Does Not Exist ----------------------------------------------$(NC)"
-	@echo "$(YELLOW)----------------------------------------------- Creating Object Directory ------------------------------------------------$(NC)"
+	@echo "$(R)---------------------------------- Object Directory Doesn't Exist ----------------------------------$(NC)"
+	@echo "$(Y)------------------------------------ Creating Objects Directory ------------------------------------$(NC)"
 	@mkdir -p $(OBJ_DIR)
-	@echo "$(GREEN)------------------------------------------------- Object Directory Done --------------------------------------------------$(NC)"
+	@echo "$(G)-------------------------------------- Objects Directory Done --------------------------------------$(NC)"
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	@mkdir -p $(dir $@)  # Esto garantiza que el directorio exista
@@ -89,11 +90,11 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 clean:
 	@make -sC ./Libft fclean
 	@rm -rf $(OBJ_DIR)
-	@echo "$(RED)--------------------------------------------------- Objects Cleaned ------------------------------------------------------$(NC)"
+	@echo "$(R)----------------------------------------- Objects  Cleaned -----------------------------------------$(NC)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(RED)--------------------------------------------------- Minishell Cleaned ----------------------------------------------------$(NC)"
+	@echo "$(R)---------------------------------------- Minishell Is Clean ----------------------------------------\n$(NC)"
 
 re: fclean all
 

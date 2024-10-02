@@ -45,3 +45,5 @@ Uso: Buscar la ruta correcta de un comando si no es un comando interno (builtin)
 
 
 */
+
+#include "minishell.h"

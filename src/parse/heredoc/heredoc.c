@@ -70,7 +70,7 @@ static int	create_temp_heredoc(char **str, int *i, char **delim, char **f_name)
 	*delim = extract_delimiter(str, i);
 	if (!*delim)
 	{
-		ft_close(fd);
+		close(fd);
 		return (-1);
 	}
 	substitute_and_create_new_string(str, i, *f_name);
