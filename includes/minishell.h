@@ -36,45 +36,6 @@
 # define PIPE 1
 # define LOGIC 2
 
-int			ft_msh_exit(t_tree_node *node, t_minishell *sack, char print);
-int			ft_change_dir(t_tree_node *node, t_minishell *sack);
-int			ft_print_working_dir(t_tree_node *node, char **envp);
-int			ft_echo(t_tree_node *node);
-int			ft_export(t_tree_node *node, t_minishell *sack);
-int			ft_unset(t_tree_node *node, t_minishell *sack);
-int			ft_isbuiltin(char *str);
-
-//execute (2,3,4)
-
-int			execute(t_ast_tree *tree_node, t_minishell *sack);
-int			expand_execute(t_ast_tree *tree_node, t_minishell *sack);
-int			ft_parse_and_exec(t_ast_tree *tree_node, t_minishell *sack);
-char		*ft_remove_brackets(char *str);
-int			logic_expansion(t_ast_tree *tree_node);
-void		ft_remove_outer_brackets(char *str);
-int			get_log_expandible(char *str);
-void		is_quote(char *str, int *i, int *last);
-int			if_mask(char *str, int last);
-char		*ft_get_left_token(char *str);
-char		*ft_get_right_token(char *str);
-void		ft_brackets(char *str, int *i);
-char		ft_has_brackets(char *str);
-void		ft_expansion_error(t_ast_tree *tree_node);
-
-//execute_utils (1)
-
-void		ft_fork(t_tree_node *node);
-t_tree_node	*ft_execute_lst(t_ast_tree *tree_node,
-				t_minishell *sack, int *last_pid);
-int			ft_file_redirs(t_list *files, int input_fd, int output_fd,
-				char **envp);
-int			ft_exec_first_cmd(t_tree_node *node, t_minishell *sack,
-				int *outfd);
-int			exec_first_management(t_tree_node *node, t_minishell *sack,
-				char **path);
-int			ft_exec_single_cmd(t_tree_node *node, t_minishell *sack);
-int			ft_no_path(t_tree_node *node, int close, int fd);
-
 //expander
 
 char		*ft_expand(char *line, char **envp, char expand_all);
