@@ -39,16 +39,16 @@ t_tree_node	*ft_interpreter(t_ast_tree *node, t_minishell *sack, int *lastpid)
 	fd_output = 0;
 	list = node->cmd_list;
 	if (!list->next)
-		return (ft_exec_single_cmd(list, sack), *lastpid = list->pid, list);
+		return (exec_single_cmd(list, sack), *lastpid = list->pid, list);
 	// Ejecuta el comando,Almacena el PID del último comando.
 	// Devuelve el nodo del comando.
 	// Si hay múltiples comandos en la lista, ejecuta el primer comando.
-	ft_exec_first_cmd(list, sack, &fd_input);
+	exec_first_cmd(list, sack, &fd_input);
 	list = list->next; // Avanza al siguiente comando.
 	// Ejecuta los comandos intermedios de la lista.
 	while (list->next)
 	{
-		ft_exec_mid_cmd(list, sack, fd_input, &fd_output);
+		exec_mid_cmd(list, sack, fd_input, &fd_output);
 			// Ejecuta el comando intermedio.
 		fd_input = fd_output;
 			// Actualiza el descriptor de entrada para el siguiente comando.
@@ -56,5 +56,5 @@ t_tree_node	*ft_interpreter(t_ast_tree *node, t_minishell *sack, int *lastpid)
 			// Avanza al siguiente comando.
 	}
 	// Ejecuta el último comando de la lista y almacena el PID del último.
-	return (ft_exec_last_cmd(list, sack, fd_input), *lastpid = list->pid, list);
+	return (exec_last_cmd(list, sack, fd_input), *lastpid = list->pid, list);
 }
