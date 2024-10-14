@@ -1,7 +1,3 @@
-G = \033[1;32m
-R = \033[0;31m
-NC = \033[0m
-
 LIB_SRC =	checkD_bf.c \
 		free_2d.c \
 		ft_addFS.c \
@@ -110,7 +106,11 @@ LIB_SRC =	checkD_bf.c \
 		ft_strjoin_free.c \
 		ft_is_reserved_char.c \
 		ft_strndup.c
-		
+
+G = \033[1;32m
+R = \033[0;31m
+NC = \033[0m
+
 NAME = libft.a
 
 LIB_OBJ_DIR = objects

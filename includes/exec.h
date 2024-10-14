@@ -45,7 +45,6 @@ void		expansion_error(t_ast_tree *tree_node);
 
 //execute_utils (1)
 
-void		fork(t_tree_node *node);
 t_tree_node	*execute_lst(t_ast_tree *tree_node,
 				t_minishell *sack, int *last_pid);
 int			file_redirs(t_list *files, int input_fd, int output_fd,
