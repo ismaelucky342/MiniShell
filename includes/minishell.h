@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:51:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/27 17:11:32 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 23:02:25 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void		ft_array_free(char **array);
 void		free_cmd_token(void *tok);
 char		*get_cwd_str(void);
 void		ft_memory_error(t_minishell *boogeyman);
-void		ft_tmp(char **tmp, int *shllvl);
+void		ft_tmp(char **tmp, int *chell);
 int			ft_check_file(char *str, int *i);
 
 #endif

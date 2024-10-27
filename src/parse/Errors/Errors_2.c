@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:09:30 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/27 17:28:55 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 23:02:25 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void	ft_memory_error(t_minishell *boogeyman)
 	ft_exit_msg(2, boogeyman, 0);
 }
 
-void	ft_tmp(char **tmp, int *shllvl)
+void	ft_tmp(char **tmp, int *chell)
 {
 	ft_putstr_fd("Minishell: warning: shell level (", STDERR_FILENO);
-	*tmp = ft_itoa(*shllvl);
+	*tmp = ft_itoa(*chell);
 	ft_putstr_fd(*tmp, STDERR_FILENO);
 	free(*tmp);
 	*tmp = NULL;
 	ft_putendl_fd(") too high, resetting to 1", STDERR_FILENO);
-	*shllvl = 1;
+	*chell = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:50:36 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/27 17:32:50 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 23:02:25 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static void	ft_fill_envp(t_minishell *boogeyman)
 {
 	char	*tmp;
 	char	*tmp2;
-	int		shllvl;
+	int		chell;
 
-	shllvl = 1 + ft_atoi(get_value_from_env(boogeyman->envp, "SHLVL", NULL));
-	if (shllvl >= 1000)
-		ft_tmp(&tmp, &shllvl);
-	tmp = ft_itoa(shllvl);
+	chell = 1 + ft_atoi(get_value_from_env(boogeyman->envp, "SHLVL", NULL));
+	if (chell >= 1000)
+		ft_tmp(&tmp, &chell);
+	tmp = ft_itoa(chell);
 	tmp2 = ft_strjoin("SHLVL=", tmp);
 	ft_env_build(boogeyman, tmp2);
 	free(tmp);
