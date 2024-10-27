@@ -6,12 +6,11 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 14:52:37 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/20 17:19:53 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:28:07 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
 static int	ft_find_env_index(char **envp, char *key)
 {
 	int	i;
@@ -30,20 +29,20 @@ static int	ft_find_env_index(char **envp, char *key)
 	return (-1);
 }
 
-int	ft_remove_env(t_minishell *sack, char *key)
+int	ft_remove_env(t_minishell *boogeyman, char *key)
 {
 	int	index;
 	int	i;
 
-	index = ft_find_env_index(sack->envp, key);
+	index = ft_find_env_index(boogeyman->envp, key);
 	if (index == -1)
 		return (-1);
-	free(sack->envp[index]);
-	sack->env_elems--;
+	free(boogeyman->envp[index]);
+	boogeyman->env_elems--;
 	i = index;
-	while (sack->envp[i])
+	while (boogeyman->envp[i])
 	{
-		sack->envp[i] = sack->envp[i + 1];
+		boogeyman->envp[i] = boogeyman->envp[i + 1];
 		i++;
 	}
 	return (OK);

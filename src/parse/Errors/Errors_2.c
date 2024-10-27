@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:09:30 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 18:46:26 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:28:55 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int	ft_set_signal(int val)
 	return (OK);
 }
 
-void	ft_memory_error(t_minishell *sack)
+void	ft_memory_error(t_minishell *boogeyman)
 {
 	print_error("memory error");
-	ft_exit_msg(2, sack, 0);
+	ft_exit_msg(2, boogeyman, 0);
 }
 
 void	ft_tmp(char **tmp, int *shllvl)

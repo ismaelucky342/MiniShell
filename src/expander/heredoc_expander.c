@@ -6,12 +6,11 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:19:00 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 18:45:33 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:28:07 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
 static char	*generate_tmp_filename(int index)
 {
 	char	*tmp;

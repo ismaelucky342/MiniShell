@@ -6,21 +6,21 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:17:35 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 12:11:24 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:30:35 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-void	ft_exit_msg(int exit_key, t_minishell *sack, char print)
+void	ft_exit_msg(int exit_key, t_minishell *boogeyman, char print)
 {
 	if (print)
 		ft_putendl_fd("exit", STDERR_FILENO);
-	close(sack->history_fd);
-	free(sack->ft_prompt);
-	ft_array_free(sack->envp);
-	if (sack->cmd_tree)
-		ft_free_ast_tree(sack->cmd_tree);
+	close(boogeyman->history_fd);
+	free(boogeyman->ft_prompt);
+	ft_array_free(boogeyman->envp);
+	if (boogeyman->cmd_tree)
+		ft_free_ast_tree(boogeyman->cmd_tree);
 	exit (exit_key);
 }
 

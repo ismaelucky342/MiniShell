@@ -6,12 +6,11 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:57:18 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 18:46:08 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:28:07 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
 static void	remove_line_numbers(t_token *tok,
 		int *cont)
 {

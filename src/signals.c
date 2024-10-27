@@ -6,12 +6,11 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:59:21 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 12:25:21 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:33:27 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
 extern int	g_exit;
 
 void	ft_sig_handler(int signum)

@@ -6,38 +6,38 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 14:42:45 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 18:40:21 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:27:49 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	ft_env_realloc(t_minishell *sack)
+static int	ft_env_realloc(t_minishell *boogeyman)
 {
 	char	**new_envp;
 	char	**src;
 
-	if (sack->env_size + 32 < INT_MAX)
-		sack->env_size += 32;
+	if (boogeyman->env_size + 32 < INT_MAX)
+		boogeyman->env_size += 32;
 	else
 		return (KO);
-	new_envp = ft_calloc(sack->env_size, sizeof(char *));
+	new_envp = ft_calloc(boogeyman->env_size, sizeof(char *));
 	if (!new_envp)
 		return (KO);
-	src = sack->envp;
+	src = boogeyman->envp;
 	while (*src)
 	{
 		*new_envp++ = *src++;
 	}
-	free(sack->envp);
-	sack->envp = new_envp - (src - sack->envp);
+	free(boogeyman->envp);
+	boogeyman->envp = new_envp - (src - boogeyman->envp);
 	return (OK);
 }
 
-static void	ft_entry(t_minishell *sack, char *key_val)
+static void	ft_entry(t_minishell *boogeyman, char *key_val)
 {
-	sack->envp[sack->env_elems] = ft_strdup(key_val);
-	sack->env_elems++;
+	boogeyman->envp[boogeyman->env_elems] = ft_strdup(key_val);
+	boogeyman->env_elems++;
 }
 
 static void	ft_replace_entry(char **envp, char *key_val, char *key)
@@ -57,23 +57,23 @@ static void	ft_replace_entry(char **envp, char *key_val, char *key)
 	}
 }
 
-static int	ft_new_env(t_minishell *sack, char *key_val)
+static int	ft_new_env(t_minishell *boogeyman, char *key_val)
 {
-	if (sack->env_elems + 1 >= sack->env_size)
+	if (boogeyman->env_elems + 1 >= boogeyman->env_size)
 	{
-		if (ft_env_realloc(sack))
+		if (ft_env_realloc(boogeyman))
 		{
 			ft_putendl_fd("Minishell: couldn't add more envp tuples",
 				STDERR_FILENO);
-			ft_memory_error(sack);
+			ft_memory_error(boogeyman);
 			return (KO);
 		}
 	}
-	ft_entry(sack, key_val);
+	ft_entry(boogeyman, key_val);
 	return (OK);
 }
 
-int	ft_env_build(t_minishell *sack, char *key_val)
+int	ft_env_build(t_minishell *boogeyman, char *key_val)
 {
 	char	*key;
 	int		exists;
@@ -82,11 +82,11 @@ int	ft_env_build(t_minishell *sack, char *key_val)
 		key = ft_substr(key_val, 0, ft_strchr(key_val, '=') - key_val);
 	else
 		key = ft_strdup(key_val);
-	get_value_from_env(sack->envp, key, &exists);
+	get_value_from_env(boogeyman->envp, key, &exists);
 	if (exists && ft_strchr(key_val, '='))
-		ft_replace_entry(sack->envp, key_val, key);
+		ft_replace_entry(boogeyman->envp, key_val, key);
 	else if (!exists)
-		ft_new_env(sack, key_val);
+		ft_new_env(boogeyman, key_val);
 	free(key);
 	return (OK);
 }

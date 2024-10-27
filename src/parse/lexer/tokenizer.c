@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:40:15 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 12:13:16 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:29:33 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ static t_token	*create_token(char *str, int start, int end)
 		return (NULL);
 	token->str = ft_substr(str, start, end - start);
 	if (!token->str)
-	{
-		free(token);
-		return (NULL);
-	}
+		return (free(token), NULL);
 	token->type = ARG;
 	if (!ft_strncmp(token->str, "<", 2) || !ft_strncmp(token->str, "<<", 3)
 		|| !ft_strncmp(token->str, ">", 2) || !ft_strncmp(token->str, ">>", 3))

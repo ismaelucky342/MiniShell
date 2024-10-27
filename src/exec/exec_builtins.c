@@ -16,7 +16,7 @@ Uso: Determinar si el comando proporcionado por el usuario es una ruta que debe 
 Ejecuta un comando interno (builtin) de la minishell.
 Parámetros:
 t_cmd_node *node: Nodo de la lista de comandos que contiene la información del comando a ejecutar.
-t_mshell_sack *sack: Estructura que contiene el estado de la shell.
+t_mshell_boogeyman *boogeyman: Estructura que contiene el estado de la shell.
 char parent: Indica si el comando es ejecutado en el proceso padre.
 Funcionalidad:
 Si el comando es ejecutado en el proceso padre (parent es verdadero), se gestionan las redirecciones de archivo mediante ft_file_redirs.
@@ -34,7 +34,7 @@ Uso: Ejecuta comandos internos de la shell como cd, echo, exit, etc.
 
 Encuentra la ruta de ejecución de un comando no interno.
 Parámetros:
-t_mshell_sack *sack: Estructura con el estado de la shell, incluyendo el entorno (envp).
+t_mshell_boogeyman *boogeyman: Estructura con el estado de la shell, incluyendo el entorno (envp).
 t_cmd_node *node: Nodo del comando a ejecutar.
 Funcionalidad:
 Si el primer argumento del comando (args[0]) es un comando builtin, devuelve NULL (no se necesita buscar una ruta para los builtins).
@@ -47,8 +47,7 @@ Uso: Buscar la ruta correcta de un comando si no es un comando interno (builtin)
 
 */
 
-#include "minishell.h"
-
+#include "../../includes/minishell.h"
 static int	ft_is_rel_path(char *path)
 {
 	if (ft_strchr(path, '/'))
@@ -56,7 +55,7 @@ static int	ft_is_rel_path(char *path)
 	return (0);
 }
 
-int	ft_execbuiltin(t_tree_node *node, t_minishell *sack, char parent)
+int	ft_execbuiltin(t_tree_node *node, t_minishell *boogeyman, char parent)
 {
 
 }

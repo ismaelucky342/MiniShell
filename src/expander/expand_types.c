@@ -6,13 +6,12 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:58:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/14 11:16:25 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:28:07 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-void	double_quote_expand(t_list *curr, int *i, t_minishell *sack)
+void	double_quote_expand(t_list *curr, int *i, t_minishell *boogeyman)
 {
 	int		j;
 	t_token	*tok;
@@ -27,7 +26,7 @@ void	double_quote_expand(t_list *curr, int *i, t_minishell *sack)
 	while (tok->str[*i] != '"' && tok->str[*i])
 	{
 		if (tok->str[*i] == '$')
-			ft_expand_env(curr, i, 0, sack);
+			ft_expand_env(curr, i, 0, boogeyman);
 		else
 			++(*i);
 	}
@@ -63,21 +62,21 @@ void	single_quote_expand(t_list *curr, int *i)
 	tok->str[j] = '\0';
 }
 
-int	ft_list_expand(t_list *list, t_minishell *sack)
+int	ft_list_expand(t_list *list, t_minishell *boogeyman)
 {
 	while (list)
 	{
 		if (((t_token *)list->data)->type == ARG)
-			list_expand(list, sack);
+			list_expand(list, boogeyman);
 		else if (((t_token *)list->data)->type == E_EXP_ARG)
-			list_expand(list, sack);
+			list_expand(list, boogeyman);
 		else
 			list = list->next;
 	}
 	return (OK);
 }
 
-void	list_expand(t_list *curr, t_minishell *sack)
+void	list_expand(t_list *curr, t_minishell *boogeyman)
 {
 	t_token	*tok;
 	int		i;
@@ -91,11 +90,11 @@ void	list_expand(t_list *curr, t_minishell *sack)
 		if (tok->str[i] == '\'' && pre_type == ARG)
 			single_quote_expand(curr, &i);
 		else if (tok->str[i] == '"' && pre_type == ARG)
-			double_quote_expand(curr, &i, sack);
+			double_quote_expand(curr, &i, boogeyman);
 		else if (tok->str[i] == '*' && pre_type == E_EXP_ARG)
 			return (wildcard_expand(curr, &i), (void)0);
 		else if (tok->str[i] == '$' && pre_type == ARG)
-			ft_expand_env(curr, &i, 1, sack);
+			ft_expand_env(curr, &i, 1, boogeyman);
 		else
 			++i;
 		tok = curr->data;

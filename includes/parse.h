@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:29:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 18:29:03 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:11:32 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,25 @@
 #  define W_EXP_ARG 5
 #  define INFILE_MASK 0b1
 #  define SIZE_T_MAX UINT_MAX
+#  define OK 0
+#  define KO 1
+#  define ERROR_MEMORY 2
 # endif
 
 # ifndef ECHOCTL
 #  define ECHOCTL 0000400
 # endif
 
-typedef struct s_token//parseo entero
+typedef struct s_token
 {
-	char				*str;
-	int					type;
+	char *str;
+	int type;
 }						t_token;
 
-typedef struct s_redirection_token//parseo entero
+typedef struct s_redirection_token
 {
-	char				*name;
-	char				type;
+	char *name;
+	char type;
 }						t_redirection_token;
 
 typedef struct s_tree_node
@@ -100,11 +103,11 @@ void					ft_free_redirections(void *t);
 int						ft_fill_list(t_list *begin, t_ast_tree *tree_node);
 void					*ft_free_ast_tree(t_ast_tree *tree);
 char					*dictionary(char *str, int needle_tip);
-int						ft_env_build(t_minishell *sack, char *key_val);
+int						ft_env_build(t_minishell *boogeyman, char *key_val);
 char					*get_value_from_env(char **envp, char *key,
 							int *exists);
-int						ft_remove_env(t_minishell *sack, char *key);
-void					ft_env_no_value(t_minishell *sack);
+int						ft_remove_env(t_minishell *boogeyman, char *key);
+void					ft_env_no_value(t_minishell *boogeyman);
 
 int						ft_heredoc(char **str, int *i, char **f_name);
 int						ft_expand_heredoc(int o_fd, t_redirection_token *tok,
@@ -114,11 +117,11 @@ void					heredoc_input(char **line, char *prompt, char *delim,
 							int *fd);
 char					*get_tmp_filename(void);
 
-void					ft_init_file(t_minishell *sack);
-void					ft_h_fill(t_minishell *sack);
-void					ft_add_history(char *str, t_minishell *sack);
+void					ft_init_file(t_minishell *boogeyman);
+void					ft_h_fill(t_minishell *boogeyman);
+void					ft_add_history(char *str, t_minishell *boogeyman);
 
-void					init_minishell(t_minishell *sack, char **envp, int argc,
+void					init_minishell(t_minishell *boogeyman, char **envp, int argc,
 							char **argv);
 char					*ft_prompt(char **env);
 t_list					*tokenizer(char *str);
@@ -130,7 +133,7 @@ void					skip_to_delimiter(char *str, int *i, char delim);
 void					skip_spaces(char *str, int *i, int *start, int mode);
 int						ft_remove_quotes(t_list *tokens);
 int						ft_exec_and_wait(t_ast_tree *tree_node,
-							t_minishell *sack);
+							t_minishell *boogeyman);
 void					ft_str_unquote(char *str);
 
 int						retokenize(t_list *curr, int type, int start,

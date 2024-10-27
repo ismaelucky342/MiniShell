@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:48:30 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/10/01 17:48:32 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:11:32 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ ARBOL DE PRIORIDADES:
 */
 
 int			isbuiltin(char *str);
-int			ms_exit(t_tree_node *node, t_minishell *sack, char print);
-int			ms_change_dir(t_tree_node *node, t_minishell *sack);
+int			ms_exit(t_tree_node *node, t_minishell *boogeyman, char print);
+int			ms_change_dir(t_tree_node *node, t_minishell *boogeyman);
 int			ms_print_working_dir(t_tree_node *node, char **envp);
 int			ms_echo(t_tree_node *node);
-int			ms_export(t_tree_node *node, t_minishell *sack);
-int			ms_unset(t_tree_node *node, t_minishell *sack);
+int			ms_export(t_tree_node *node, t_minishell *boogeyman);
+int			ms_unset(t_tree_node *node, t_minishell *boogeyman);
 
 //execute (2,3,4)
 
@@ -46,13 +46,13 @@ void		expansion_error(t_ast_tree *tree_node);
 //execute_utils (1)
 
 t_tree_node	*execute_lst(t_ast_tree *tree_node,
-				t_minishell *sack, int *last_pid);
+				t_minishell *boogeyman, int *last_pid);
 int			file_redirs(t_list *files, int input_fd, int output_fd,
 				char **envp);
-int			exec_single_cmd(t_tree_node *node, t_minishell *sack);
-int			exec_first_cmd(t_tree_node *node, t_minishell *sack,
+int			exec_single_cmd(t_tree_node *node, t_minishell *boogeyman);
+int			exec_first_cmd(t_tree_node *node, t_minishell *boogeyman,
 				int *outfd);
-int			exec_first_management(t_tree_node *node, t_minishell *sack,
+int			exec_first_management(t_tree_node *node, t_minishell *boogeyman,
 				char **path);
 int			no_path(t_tree_node *node, int close, int fd);
 

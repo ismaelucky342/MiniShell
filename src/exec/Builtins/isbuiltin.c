@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   isbuiltin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:40:24 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/10/01 17:40:25 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:28:07 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
-
+#include "../../includes/minishell.h"
 int	isbuiltin(char *str)
 {
 	if (ft_strcmp(str, "cd") || ft_strcmp(str, "echo") || ft_strcmp(str, "env")

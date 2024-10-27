@@ -6,35 +6,34 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 14:59:07 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/20 17:19:53 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:28:07 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
 static int	ft_is_valid_env_entry(char *entry)
 {
 	return (ft_strchr(entry, '=') != NULL);
 }
 
-void	ft_env_no_value(t_minishell *sack)
+void	ft_env_no_value(t_minishell *boogeyman)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (sack->envp && sack->envp[i])
+	while (boogeyman->envp && boogeyman->envp[i])
 	{
-		if (!ft_is_valid_env_entry(sack->envp[i]))
+		if (!ft_is_valid_env_entry(boogeyman->envp[i]))
 		{
-			free(sack->envp[i]);
+			free(boogeyman->envp[i]);
 			j = i;
-			while (sack->envp[j])
+			while (boogeyman->envp[j])
 			{
-				sack->envp[j] = sack->envp[j + 1];
+				boogeyman->envp[j] = boogeyman->envp[j + 1];
 				j++;
 			}
-			sack->env_elems--;
+			boogeyman->env_elems--;
 		}
 		else
 			i++;

@@ -6,12 +6,11 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:50:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 18:41:21 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:28:07 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
 char	*dictionary(char *str, int needle_tip)
 {
 	size_t	len;

@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:51:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/22 18:34:10 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:11:32 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@
 //expander
 
 char		*ft_expand(char *line, char **envp, char expand_all);
-int			ft_list_expand(t_list *list, t_minishell *sack);
-void		list_expand(t_list *curr, t_minishell *sack);
+int			ft_list_expand(t_list *list, t_minishell *boogeyman);
+void		list_expand(t_list *curr, t_minishell *boogeyman);
 
 void		wildcard_expand(t_list *curr, int *i);
 void		ft_expand_env(t_list *curr, int *i, int check_w_cards,
-				t_minishell *sack);
-void		double_quote_expand(t_list *curr, int *i, t_minishell *sack);
+				t_minishell *boogeyman);
+void		double_quote_expand(t_list *curr, int *i, t_minishell *boogeyman);
 void		single_quote_expand(t_list *curr, int *i);
 
 //redirect_utils
@@ -56,7 +56,7 @@ void		ft_dup2(int oldfd, int newfd);
 
 //syntax_checker
 
-int			ft_check_heredoc(t_minishell *sack);
+int			ft_check_heredoc(t_minishell *boogeyman);
 void		ft_syntax_error(char *str);
 void		ft_quote_error(void);
 void		ft_bracket_error(void);
@@ -67,8 +67,8 @@ int			ft_check_fredirs(char *str);
 void		skip_to_delimiter(char *str, int *i, char delim);
 //path_finder
 
-char		*extract_exec_path(t_minishell *sack, t_tree_node *node);
-void		ft_execbuiltin(t_tree_node *node, t_minishell *sack, char parent);
+char		*extract_exec_path(t_minishell *boogeyman, t_tree_node *node);
+void		ft_execbuiltin(t_tree_node *node, t_minishell *boogeyman, char parent);
 
 //term_settings
 
@@ -77,11 +77,11 @@ int			ft_set_echo(int val);
 
 //utils
 
-void		ft_exit_msg(int exit, t_minishell *sack, char print);
+void		ft_exit_msg(int exit, t_minishell *boogeyman, char print);
 void		ft_array_free(char **array);
 void		free_cmd_token(void *tok);
 char		*get_cwd_str(void);
-void		ft_memory_error(t_minishell *sack);
+void		ft_memory_error(t_minishell *boogeyman);
 void		ft_tmp(char **tmp, int *shllvl);
 int			ft_check_file(char *str, int *i);
 
