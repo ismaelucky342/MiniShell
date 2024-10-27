@@ -45,6 +45,7 @@ SRC		=	enviroment.c \
 
 OBJ_DIR  = objects
 
+INCLUDE = includes/minishell.h
 
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
 
@@ -63,10 +64,12 @@ all: $(NAME)
 	@echo "	     			   $(G)dgomez-l $(Y)/ $(R)ismherna$(NC)"
 	@echo "	     			NEVER GONNA GIVE YOU PIPE"
 
-
-$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) includes/minishell.h
+print:
 	@echo "$(Y)--------------------------------------- Compiling  Minishell ---------------------------------------$(NC)"
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -lreadline -o $(NAME)
+
+$(NAME): $(LIBFT) $(OBJ_DIR) print $(OBJ) includes/minishell.h
+	@printf "%-147s\r" "                                                                                                              "
+	@$(CC) $(CFLAGS) $(OBJ) -I $(INCLUDE) $(LIBFT) -lreadline -o $(NAME)
 	@echo "$(G)----------------------------------- Minishell Finished Compiling -----------------------------------$(NC)\n"
 	@echo "$(G)----------------------------------------------------------------------------------------------------$(NC)"
 	@echo "$(G)---------------------------------------- Minishell Is Ready ----------------------------------------$(NC)"
@@ -80,12 +83,12 @@ $(OBJ_DIR):
 	@echo "$(R)---------------------------------- Object Directory Doesn't Exist ----------------------------------$(NC)"
 	@echo "$(Y)------------------------------------ Creating Objects Directory ------------------------------------$(NC)"
 	@mkdir -p $(OBJ_DIR)
-	@echo "$(G)-------------------------------------- Objects Directory Done --------------------------------------$(NC)"
+	@echo "$(G)-------------------------------------- Objects Directory Done --------------------------------------\n$(NC)"
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	@mkdir -p $(dir $@)  # Esto garantiza que el directorio exista
-	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
-	@printf "%-200s\r" ">Minishell compiling: ""$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<"
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -I $(INCLUDE) -c -o $@ $<
+	@printf "%-147s\r" ">Minishell compiling: ""$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<"
 
 clean:
 	@make -sC ./Libft fclean

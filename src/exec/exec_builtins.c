@@ -7,6 +7,7 @@ Salida: Devuelve 1 si la ruta es relativa o absoluta, es decir:
 Comienza con ./ (ruta relativa en el directorio actual).
 Comienza con ../ (ruta relativa en el directorio superior).
 Comienza con / (ruta absoluta).
+Contiente / (el archivo del comando está en un subdirectorio).
 En cualquier otro caso, devuelve 0.
 Uso: Determinar si el comando proporcionado por el usuario es una ruta que debe ser interpretada como tal, o si se debe buscar el comando en el PATH.
 
@@ -47,3 +48,15 @@ Uso: Buscar la ruta correcta de un comando si no es un comando interno (builtin)
 */
 
 #include "minishell.h"
+
+static int	ft_is_rel_path(char *path)
+{
+	if (ft_strchr(path, '/'))
+		return (1);
+	return (0);
+}
+
+int	ft_execbuiltin(t_tree_node *node, t_minishell *sack, char parent)
+{
+
+}
