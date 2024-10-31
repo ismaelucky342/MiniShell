@@ -48,6 +48,7 @@ Uso: Buscar la ruta correcta de un comando si no es un comando interno (builtin)
 */
 
 #include "../../includes/minishell.h"
+
 static int	ft_is_rel_path(char *path)
 {
 	if (ft_strchr(path, '/'))
