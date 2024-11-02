@@ -6,11 +6,12 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:58:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/27 17:28:07 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/02 22:40:18 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
 void	double_quote_expand(t_list *curr, int *i, t_minishell *boogeyman)
 {
 	int		j;
