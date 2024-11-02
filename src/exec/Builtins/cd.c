@@ -23,7 +23,7 @@
 	* @returns
 	* returns the status of the executed command.
 */
-int ft_cd(t_tree_node *node, t_minishell *boogeyman, char parent)
+int ft_cd(t_tree_node *node, t_minishell *boogeyman)
 {
 	
 	return (0);

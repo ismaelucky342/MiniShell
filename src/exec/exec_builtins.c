@@ -49,13 +49,27 @@ Uso: Buscar la ruta correcta de un comando si no es un comando interno (builtin)
 
 #include "../../includes/minishell.h"
 
-static int	ft_is_rel_path(char *path)
+/**
+ * Checks if the introduced path is an absolute or relative path
+ * @param
+ * path The user-introduced command string that will be checked
+ * @return
+ * Returns 1 if the introduced path is an absolute or relative path. Otherwise, returns 0
+*/
+int	ft_is_rel_path(char *path)
 {
 	if (ft_strchr(path, '/'))
 		return (1);
 	return (0);
 }
 
+/**
+ * Executes a builtin command
+ * @param
+ * node The node of the command to execute
+ * @param
+ * boogeyman Pointer to the superstructure for env and memory purposes
+ */
 int	ft_execbuiltin(t_tree_node *node, t_minishell *boogeyman, char parent)
 {
 
