@@ -18,14 +18,12 @@
 	* *node The tree node that's being executed.
 	* @param
 	* *boogeyman Pointer to the superstructure for env & memory freeing purposes.
-	* @param
-	* parent ????
 	* @returns
 	* returns the status of the executed command.
 */
 int ft_cd(t_tree_node *node, t_minishell *boogeyman)
 {
-	
+	boogeyman->envp;
 	return (0);
 }
  
