@@ -1,5 +1,5 @@
 /*
-ft_is_rel_path (función estática)
+ft_is_a_path (función estática)
 
 Verifica si un path dado es una ruta relativa o absoluta.
 Entrada: Una cadena path.
@@ -56,7 +56,7 @@ Uso: Buscar la ruta correcta de un comando si no es un comando interno (builtin)
  * @return
  * Returns 1 if the introduced path is an absolute or relative path. Otherwise, returns 0
 */
-int	ft_is_rel_path(char *path)
+int	ft_is_a_path(char *path)
 {
 	if (ft_strchr(path, '/'))
 		return (1);
@@ -72,5 +72,8 @@ int	ft_is_rel_path(char *path)
  */
 int	ft_execbuiltin(t_tree_node *node, t_minishell *boogeyman, char parent)
 {
-
+	if (ft_strcmp(node->args[0], "cd"))
+	{
+		
+	}
 }

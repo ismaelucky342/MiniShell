@@ -68,9 +68,9 @@
  */
 typedef struct s_token
 {
-	char *str;  /**< Contenido del token como cadena de caracteres */
-	int type;   /**< Tipo de token, que puede representar diferentes categorías */
-} t_token;
+	char	*str;	/**< Contenido del token como cadena de caracteres */
+	int		type;	/**< Tipo de token, que representa diferentes categorías */
+}			t_token;
 
 /**
  * @brief Representa un token de redirección en un comando.
@@ -80,9 +80,9 @@ typedef struct s_token
  */
 typedef struct s_redirection_token
 {
-	char *name; /**< Nombre del archivo o dispositivo de redirección */
-	char type;  /**< Tipo de redirección, almacenado como carácter */
-} t_redirection_token;
+	char	*name; /**< Nombre del archivo o dispositivo de redirección */
+	char	type;  /**< Tipo de redirección, almacenado como carácter */
+}			t_redirection_token;
 
 /**
  * @brief Nodo que representa un comando o conjunto de comandos en una tubería.
@@ -102,7 +102,7 @@ typedef struct s_tree_node
 	char				is_builtin;   /**< Indicador de si el comando es un comando incorporado en el shell */
 	int					pipe_fds[2];  /**< Descriptores de archivo para la tubería si se utiliza redirección */
 	char				*path;        /**< Ruta absoluta del ejecutable del comando */
-} t_tree_node;
+}						t_tree_node;
 
 /**
  * @brief Nodo de árbol de sintaxis abstracta (AST) que representa una estructura de comandos.

@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isbuiltin.c                                        :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 14:25:02 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/10/31 14:25:07 by dgomez-l         ###   ########.fr       */
+/*   Created: 2024/10/31 14:23:19 by dgomez-l          #+#    #+#             */
+/*   Updated: 2024/10/31 14:23:20 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
-int	isbuiltin(char *str)
-{
-	if (ft_strcmp(str, "cd") || ft_strcmp(str, "echo") || ft_strcmp(str, "env")
-		|| ft_strcmp(str, "exit") || ft_strcmp(str, "export")
-		|| ft_strcmp(str, "pwd") || ft_strcmp(str, "unset"))
-		return (KO);
-	return (OK);
-}
+#include "../../../includes/minishell.h"
 
+/**
+	* Executes the "exit" command, I have no idea what it does in pipes.
+	* @param
+	* *node The tree node that's being executed.
+	* @param
+	* *boogeyman Superstructure pointer for env & memory freeing purposes.
+	* @returns
+	* returns the status of the executed command.
+*/
+int	ft_exit(t_tree_node *node, t_minishell *boogeyman)
+{
+	return (0);
+}
