@@ -13,27 +13,27 @@
 #include "../../includes/minishell.h"
 
 /**
- * @brief Extrae el valor de una variable de entorno de una entrada dada.
- *
+* @brief Extracts the value of an environment variable from a given entry.
+*
 
-	* Compara una entrada de entorno (`env_entry`) con una clave (`key`) 
-	para determinar
- * si corresponde a una variable de entorno. Si hay coincidencia,
-	se devuelve un puntero
+* Compares an environment entry (`env_entry`) to a key (`key`)
+to determine
+* ​​if it corresponds to an environment variable. If there is a match,
+a pointer
 
-	* al valor asociado y se marca la existencia de la variable. 
-	Si no hay coincidencia,
- * se devuelve NULL.
- *
- * @param env_entry Entrada de entorno que se está evaluando.
- * @param key Clave de la variable de entorno a buscar.
+* to the associated value is returned and the existence of the variable is marked.
+If there is no match,
+* NULL is returned.
+*
+* @param env_entry Environment entry being evaluated.
+* @param key Key of the environment variable to search for.
 
-	* @param exists Puntero a un entero que se establece en 1 
-	si la variable existe,
- *               o no se modifica si la variable no se encuentra.
- * @return char* Puntero al valor de la variable de entorno si existe,
-	NULL si no.
- */
+* @param exists Pointer to an integer that is set to 1
+if the variable exists,
+* or unchanged if the variable is not found.
+* @return char* Pointer to the value of the environment variable if it exists,
+NULL otherwise.
+*/
 static char	*extract_value(char *env_entry, char *key, int *exists)
 {
 	int	key_len;
@@ -50,28 +50,25 @@ static char	*extract_value(char *env_entry, char *key, int *exists)
 
 /**
 
-	* @brief Obtiene el valor de una variable de entorno de un array de entradas 
-	de entorno.
- *
+* @brief Gets the value of an environment variable from an array of environment entries.
 
-	* Recorre un array de punteros a cadenas (`envp`) en busca de una clave 
-	específica
- * (`key`). Llama a `extract_value` para determinar si una entrada en `envp`
- * corresponde a la clave. Si se encuentra,
-	se devuelve el valor asociado; si no,
- * se indica que la variable no existe.
- *
+*
 
-	* @param envp Array de punteros a cadenas que representan las variables 
-	de entorno.
- * @param key Clave de la variable de entorno cuyo valor se busca.
+* Iterates through an array of pointers to strings (`envp`) looking for a specific key
+* (`key`). Calls `extract_value` to determine if an entry in `envp`
+* matches the key. If found,
+the associated value is returned; if not,
+* the variable is indicated as not existing.
+*
 
-	* @param exists Puntero a un entero que se establece en 1 si la variable 
-	existe,
- *               o en 0 si no se encuentra.
- * @return char* Valor de la variable de entorno si se encuentra, cadena vacía
- *                si no existe.
- */
+* @param envp Array of pointers to strings representing environment variables.
+* @param key Key of the environment variable whose value is being searched for.
+
+* @param exists Pointer to an integer that is set to 1 if the variable
+* exists, or 0 if not found.
+* @return char* Value of the environment variable if found, empty string
+* if not.
+*/
 char	*get_value_from_env(char **envp, char *key, int *exists)
 {
 	char	*value;

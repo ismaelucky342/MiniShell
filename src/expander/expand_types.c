@@ -6,16 +6,27 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:58:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/02 22:40:18 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/03 12:54:17 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	double_quote_expand(t_list *curr, int *i, t_minishell *boogeyman)
+/**
+* @brief Expands environment variables within a double-quoted string.
+*
+* Removes double quotes from the current token and expands any environment variables
+* present in the string. Replaces the variable with its corresponding value in the minishell environment.
+*
+* @param curr Node in the list containing the token to expand.
+* @param i Pointer to the current index in the token string.
+* @param boogeyman Minishell context containing environment information and other data
+* needed for expansion.
+*/
+void double_quote_expand(t_list *curr, int *i, t_minishell *boogeyman)
 {
-	int		j;
-	t_token	*tok;
+	int j;
+	t_token *tok;
 
 	j = *i;
 	tok = curr->data;
@@ -40,10 +51,19 @@ void	double_quote_expand(t_list *curr, int *i, t_minishell *boogeyman)
 	tok->str[j] = '\0';
 }
 
-void	single_quote_expand(t_list *curr, int *i)
+/**
+* @brief Removes single quotes from a string and leaves its contents unexpanded.
+*
+* Single quotes indicate that any content within them should not be expanded.
+* This function simply removes the single quotes from the token.
+*
+* @param curr Node in the list containing the token to process.
+* @param i Pointer to the current index in the token string.
+*/
+void single_quote_expand(t_list *curr, int *i)
 {
-	int		j;
-	t_token	*tok;
+	int j;
+	t_token *tok;
 
 	j = *i;
 	tok = curr->data;
@@ -63,7 +83,19 @@ void	single_quote_expand(t_list *curr, int *i)
 	tok->str[j] = '\0';
 }
 
-int	ft_list_expand(t_list *list, t_minishell *boogeyman)
+/**
+* @brief Expands all strings in a list of tokens.
+*
+* Iterates through each node in the list and expands the contents of each token if necessary.
+* The expansion includes handling of environment variables, single quotes, double quotes,
+* and wildcards.
+*
+* @param list List of tokens to expand.
+* @param boogeyman Minishell context containing environment information
+* and other data needed for expansion.
+* @return OK on success.
+*/
+int ft_list_expand(t_list *list, t_minishell *boogeyman)
 {
 	while (list)
 	{
@@ -77,11 +109,22 @@ int	ft_list_expand(t_list *list, t_minishell *boogeyman)
 	return (OK);
 }
 
-void	list_expand(t_list *curr, t_minishell *boogeyman)
+/**
+* @brief Expands a token based on its type and content.
+*
+* Depending on the token's type, performs appropriate expansion for single quotes,
+* double quotes, environment variables, or wildcards. The expansion transforms
+* the token and updates its type if necessary.
+*
+* @param curr Node in the list containing the token to expand.
+* @param boogeyman Minishell context containing environment information
+* and other data needed for expansion.
+*/
+void list_expand(t_list *curr, t_minishell *boogeyman)
 {
-	t_token	*tok;
-	int		i;
-	int		pre_type;
+	t_token *tok;
+	int i;
+	int pre_type;
 
 	tok = curr->data;
 	i = 0;

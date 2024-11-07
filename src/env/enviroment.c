@@ -12,20 +12,14 @@
 
 #include "../../includes/minishell.h"
 
-/**
- * @brief Aumenta el tamaño del entorno de la minishell al reservar más memoria.
- *
- * Esta función realoca el espacio para el array de punteros de cadenas que
- * representa las variables de entorno (`envp`) de la minishell. Si el tamaño
- * actual más 32 excede el límite de un entero, se devuelve un error.
- * Si la realocación es exitosa, los valores existentes son copiados a la
- * nueva memoria y se libera la memoria antigua.
- *
- * @param boogeyman Puntero a la estructura `t_minishell` que contiene el
- *                   estado de la minishell, incluyendo el entorno y su tamaño.
- * @return int Retorna `OK` si la realocación fue exitosa, `KO` en caso de
- *             error.
- */
+/** 
+* @brief Increases the size of the minishell environment by allocating more memory.
+* * This function reallocates space for the array of string pointers that * represents the minishell's environment variables (`envp`). If the actual size * plus 32 exceeds the integer limit, an error is returned.
+* If the reallocation is successful, the existing values ​​are copied to the * new memory and the old memory is freed.
+* 
+* @param boogeyman Pointer to the `t_minishell` structure containing the * state of the minishell, including the environment and its size.
+* @return int Returns `OK` if the reallocation was successful, `KO` on * error.
+*/
 static int	ft_env_realloc(t_minishell *boogeyman)
 {
 	char	**new_envp;
@@ -49,16 +43,16 @@ static int	ft_env_realloc(t_minishell *boogeyman)
 }
 
 /**
- * @brief Añade una nueva entrada al entorno de la minishell.
- *
- * Esta función duplica la cadena `key_val` y la almacena en el array de
- * punteros `envp` en la posición correspondiente al número actual de elementos
- * (`env_elems`). Incrementa el contador de elementos del entorno.
- *
- * @param boogeyman Puntero a la estructura `t_minishell` que contiene el
- *                   estado de la minishell.
- * @param key_val Cadena que representa la nueva variable de entorno a añadir.
- */
+* @brief Adds a new entry to the minishell environment.
+*
+* This function duplicates the string `key_val` and stores it in the array of
+* `envp` pointers at the position corresponding to the current number of elements
+* (`env_elems`). Increments the environment element counter.
+*
+* @param boogeyman Pointer to the `t_minishell` structure containing the
+* state of the minishell.
+* @param key_val String representing the new environment variable to add.
+*/
 static void	ft_entry(t_minishell *boogeyman, char *key_val)
 {
 	boogeyman->envp[boogeyman->env_elems] = ft_strdup(key_val);
@@ -66,17 +60,16 @@ static void	ft_entry(t_minishell *boogeyman, char *key_val)
 }
 
 /**
- * @brief Reemplaza una entrada existente en el entorno de la minishell.
- *
- * Busca la entrada correspondiente en el array `envp` y, si se encuentra,
- * libera la memoria de la entrada antigua y la reemplaza con una nueva
- * que corresponde a `key_val`.
- *
- * @param envp Array de punteros de cadenas que representa las variables de
- *             entorno.
- * @param key_val Nueva cadena que se utilizará para reemplazar la entrada.
- * @param key Cadena que se utiliza para buscar la entrada existente en `envp`.
- */
+* @brief Replaces an existing entry in the minishell environment.
+*
+* Looks for the matching entry in the `envp` array and, if found,
+* frees the memory of the old entry and replaces it with a new one
+* that corresponds to `key_val`.
+*
+* @param envp Array of string pointers representing environment variables.
+* @param key_val New string to use to replace the entry.
+* @param key String used to look up the existing entry in `envp`.
+*/
 static void	ft_replace_entry(char **envp, char *key_val, char *key)
 {
 	char	**current;
@@ -95,18 +88,18 @@ static void	ft_replace_entry(char **envp, char *key_val, char *key)
 }
 
 /**
- * @brief Añade una nueva variable de entorno a la minishell.
- *
- * Esta función verifica si hay espacio en el entorno para una nueva entrada.
- * Si no hay suficiente espacio, llama a `ft_env_realloc` para aumentar el
- * tamaño. Luego, se llama a `ft_entry` para agregar la nueva variable al
- * entorno.
- *
- * @param boogeyman Puntero a la estructura `t_minishell` que contiene el
- *                   estado de la minishell.
- * @param key_val Cadena que representa la nueva variable de entorno a añadir.
- * @return int Retorna `OK` si la operación fue exitosa, `KO` en caso de error.
- */
+* @brief Adds a new environment variable to the minishell.
+*
+* This function checks if there is room in the environment for a new entry.
+* If there is not enough room, it calls `ft_env_realloc` to increase the
+* size. Then, `ft_entry` is called to add the new variable to the
+* environment.
+*
+* @param boogeyman Pointer to the `t_minishell` structure containing the
+* state of the minishell.
+* @param key_val String representing the new environment variable to add.
+* @return int Returns `OK` if the operation was successful, `KO` on error.
+*/
 static int	ft_new_env(t_minishell *boogeyman, char *key_val)
 {
 	if (boogeyman->env_elems + 1 >= boogeyman->env_size)
@@ -124,19 +117,19 @@ static int	ft_new_env(t_minishell *boogeyman, char *key_val)
 }
 
 /**
- * @brief Construye o actualiza una variable de entorno en la minishell.
- *
- * Esta función verifica si `key_val` contiene un signo igual para determinar
- * si se debe crear o actualizar una variable de entorno. Si la variable ya
- * existe y se debe actualizar, se llama a `ft_replace_entry`. Si no existe,
- * se llama a `ft_new_env` para crear una nueva entrada.
- *
- * @param boogeyman Puntero a la estructura `t_minishell` que contiene el
- *                   estado de la minishell.
- * @param key_val Cadena que representa la nueva variable de entorno a construir
- *                o actualizar.
- * @return int Siempre retorna `OK`.
- */
+* @brief Constructs or updates an environment variable in the minishell.
+*
+* This function checks whether `key_val` contains an equal sign to determine
+* ​​whether to create or update an environment variable. If the variable already
+* exists and needs to be updated, `ft_replace_entry` is called. If it does not
+* exist, `ft_new_env` is called to create a new entry.
+*
+* @param boogeyman Pointer to the `t_minishell` structure containing the
+* state of the minishell.
+* @param key_val String representing the new environment variable to be
+* built or updated.
+* @return int Always returns `OK`.
+*/
 int	ft_env_build(t_minishell *boogeyman, char *key_val)
 {
 	char	*key;

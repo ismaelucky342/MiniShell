@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:51:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/02 21:14:58 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/03 12:54:57 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ typedef struct s_token
  */
 typedef struct s_redirection_token
 {
-	char	*name; /**< Nombre del archivo o dispositivo de redirección */
-	char	type;  /**< Tipo de redirección, almacenado como carácter */
+	char	*name;	/**< Nombre del archivo o dispositivo de redirección */
+	char	type;	/**< Tipo de redirección, almacenado como carácter */
 }			t_redirection_token;
 
 /**
@@ -93,15 +93,15 @@ typedef struct s_redirection_token
  */
 typedef struct s_tree_node
 {
-	char				**args;       /**< Argumentos del comando, con el primer argumento siendo el nombre */
-	char				pipe_out;     /**< Indicador de si la salida se dirige a un pipe (1 para verdadero, 0 para falso) */
-	t_list				*redir_list;  /**< Lista de tokens de redirección asociados con el comando */
-	struct s_tree_node	*next;        /**< Puntero al próximo nodo de comando en la misma tubería */
-	int					pid;          /**< ID del proceso cuando el comando se ejecuta */
-	int					exit;         /**< Código de salida del comando */
-	char				is_builtin;   /**< Indicador de si el comando es un comando incorporado en el shell */
-	int					pipe_fds[2];  /**< Descriptores de archivo para la tubería si se utiliza redirección */
-	char				*path;        /**< Ruta absoluta del ejecutable del comando */
+	char				**args;			/**< Argumentos del comando, con el primer argumento siendo el nombre */
+	char				pipe_out;		/**< Indicador de si la salida se dirige a un pipe (1 para verdadero, 0 para falso) */
+	t_list				*redir_list;	/**< Lista de tokens de redirección asociados con el comando */
+	struct s_tree_node	*next;			/**< Puntero al próximo nodo de comando en la misma tubería */
+	int					pid;			/**< ID del proceso cuando el comando se ejecuta */
+	int					exit;			/**< Código de salida del comando */
+	char				is_builtin;		/**< Indicador de si el comando es un comando incorporado en el shell */
+//	int					pipe_fds[2];	/**< Descriptores de archivo para la tubería si se utiliza redirección */
+	char				*path;			/**< Ruta absoluta del ejecutable del comando */
 }						t_tree_node;
 
 /**
@@ -209,39 +209,28 @@ ARBOL DE PRIORIDADES:
 3. PIPES
 */
 
-int			isbuiltin(char *str);
-int			ms_exit(t_tree_node *node, t_minishell *boogeyman, char print);
-int			ms_change_dir(t_tree_node *node, t_minishell *boogeyman);
-int			ms_print_working_dir(t_tree_node *node, char **envp);
-int			ms_echo(t_tree_node *node);
-int			ms_export(t_tree_node *node, t_minishell *boogeyman);
-int			ms_unset(t_tree_node *node, t_minishell *boogeyman);
+int			ft_execution(t_ast_tree *tree_nodes, t_minishell *boogeyman);
+t_tree_node	*ft_interpreter(t_ast_tree *node, t_minishell *boogeyman,
+	int *lastpid);
 
-//execute (2,3,4)
-
-char		*remove_brackets(char *str);
-int			logic_expansion(t_ast_tree *tree_node);
-void		remove_outer_brackets(char *str);
-int			get_log_expandible(char *str);
-void		is_quote(char *str, int *i, int *last);
-int			if_mask(char *str, int last);
-void		brackets(char *str, int *i);
-char		has_brackets(char *str);
-void		expansion_error(t_ast_tree *tree_node);
-
-//execute_utils (1)
-
-t_tree_node	*execute_lst(t_ast_tree *tree_node,
-				t_minishell *boogeyman, int *last_pid);
-int			file_redirs(t_list *files, int input_fd, int output_fd,
-				char **envp);
-int			exec_single_cmd(t_tree_node *node, t_minishell *boogeyman);
+void		ft_exec_single_cmd(t_tree_node *node, t_minishell *boogeyman);
 int			exec_first_cmd(t_tree_node *node, t_minishell *boogeyman,
-				int *outfd);
-int			exec_first_management(t_tree_node *node, t_minishell *boogeyman,
-				char **path);
-int			no_path(t_tree_node *node, int close, int fd);
+	int *outfd);
+int			exec_mid_cmd(t_tree_node *node, t_minishell *boogeyman,
+	int *outfd);
+int			exec_last_cmd(t_tree_node *node, t_minishell *boogeyman,
+	int *outfd);
+int			ft_exec_builtin(t_tree_node *node, t_minishell *boogeyman,
+	char parent);
 
+int			isbuiltin(char *str);
+int			ft_cd(t_tree_node *node, t_minishell *boogeyman);
+int			ft_echo(t_tree_node *node, t_minishell *boogeyman);
+int			ft_env(t_tree_node *node, t_minishell *boogeyman);
+int			ft_exit(t_tree_node *node, t_minishell *boogeyman, char print);
+int			ft_export(t_tree_node *node, t_minishell *boogeyman);
+int			ft_pwd(t_tree_node *node, t_minishell *boogeyman);
+int			ft_unset(t_tree_node *node, t_minishell *boogeyman);
 
 //expander
 

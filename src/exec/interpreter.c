@@ -11,28 +11,20 @@
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-/*COsas q voy necesitando
-ft_isbuiltin()
 
-int	ft_isbuiltin(char *str)
+/**
+ * @brief Interprets the priority tree, executing the commands within.
+ * 
+ * @param node
+ * Base of the ast tree of commands that should be executed.
+ * @param boogeyman
+ * Superstructure pointer for env and memory reasons.
+ */
+t_tree_node	*ft_interpreter(t_ast_tree *node, t_minishell *boogeyman,
+	int *lastpid)
 {
-    if (!ft_strncmp(str, "cd", 3))
-        return (KO);
-    ...
-    return (OK);
-}
-
-APROX
-
-int			ft_exec_single_cmd(t_tree_node *node, t_minishell *boogeyman);
-int         ft_exec_first_cmd(t_tree_node *node, t_minishell *boogeyman);
-int         ft_exec_mid_cmd(t_tree_node *node, t_minishell *boogeyman);
-*/
-t_tree_node	*ft_interpreter(t_ast_tree *node, t_minishell *boogeyman, int *lastpid)
-{
-	t_tree_node	*list = node->cmd_list;
-	int			fd_input = 0;
-	int			fd_output = 0;
+	t_tree_node		*list = node->cmd_list;
+	int				fds[2];
 
 	if (!list->next)
 	{
@@ -40,18 +32,18 @@ t_tree_node	*ft_interpreter(t_ast_tree *node, t_minishell *boogeyman, int *lastp
 		*lastpid = list->pid;
 		return (list);
 	}
-	if (ft_exec_first_cmd(list, boogeyman, &fd_output) == KO)
+	if (ft_exec_first_cmd(list, boogeyman, &fds[1]) == KO)
 		return (NULL);
 	list = list->next;
-	fd_input = fd_output;
+	fds[0] = fds[1];
 	while (list->next)
 	{
-		if (ft_exec_mid_cmd(list, boogeyman, fd_input, &fd_output) == KO)
+		if (ft_exec_mid_cmd(list, boogeyman, fds[0], &fds[1]) == KO)
 			return (NULL);
-		fd_input = fd_output;
+		fds[0] = fds[1];
 		list = list->next;
 	}
-	if (ft_exec_last_cmd(list, boogeyman, fd_input) == KO)
+	if (ft_exec_last_cmd(list, boogeyman, fds[0]) == KO)
 		return (NULL);
 	*lastpid = list->pid;
 	return (list);

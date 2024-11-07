@@ -12,18 +12,38 @@
 
 #include "../../../includes/minishell.h"
 
-void	ft_syntax_error(char *msg)
+/**
+ * @brief Displays a syntax error message to STDERR.
+ *
+ * This function prints a generic syntax error message with the
+ * specified message content to the standard error.
+ *
+ * @param msg The specific syntax error message to display.
+ */
+void ft_syntax_error(char *msg)
 {
 	ft_putstr_fd("minishell: syntax error: ", STDERR_FILENO);
 	ft_putendl_fd((char *)msg, STDERR_FILENO);
 }
 
-void	ft_quote_error(void)
+/**
+ * @brief Displays an unbalanced quotes error message.
+ *
+ * This function prints an error message indicating that quotes
+ * are unbalanced in the current command.
+ */
+void ft_quote_error(void)
 {
 	ft_putstr_fd("minishell: unbalanced quotes\n", STDERR_FILENO);
 }
 
-void	ft_bracket_error(void)
+/**
+ * @brief Displays an unbalanced parentheses error message.
+ *
+ * This function prints an error message indicating that parentheses
+ * are unbalanced in the current command.
+ */
+void ft_bracket_error(void)
 {
 	ft_putstr_fd("minishell: unbalanced parentheses\n", STDERR_FILENO);
 }

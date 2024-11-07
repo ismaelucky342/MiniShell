@@ -9,8 +9,9 @@
 /*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
-//#include<stdio.h>
+
 t_list	*ft_lstnew(void *data)
 {
 	t_list	*ft_ast_new_node;
@@ -22,7 +23,9 @@ t_list	*ft_lstnew(void *data)
 	ft_ast_new_node->next = (NULL);
 	return (ft_ast_new_node);
 }
-/*int		main(){
+
+/*//#include<stdio.h>
+int		main(){
 	int data = 42;
 	t_list *nodo = ft_lstnew(&data);
 

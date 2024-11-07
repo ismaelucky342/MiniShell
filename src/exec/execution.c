@@ -49,6 +49,7 @@ ft_no_path
 */
 
 #include "../../includes/minishell.h"
+
 extern int	g_exit;
 
 static int	ft_wait_all(int last_pid, t_tree_node *last)

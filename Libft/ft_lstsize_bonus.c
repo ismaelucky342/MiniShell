@@ -9,8 +9,9 @@
 /*   Updated: 2024/02/13 03:10:12 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
-//#include <stdio.h>
+
 int	ft_lstsize(t_list *lst)
 {
 	int	count;
@@ -25,7 +26,9 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (count);
 }
-/*int main() {
+
+/*#include <stdio.h>
+int main() {
     t_list *node1 = ft_lstnew("Node 1");
     t_list *node2 = ft_lstnew("Node 2");
     t_list *node3 = ft_lstnew("Node 3");

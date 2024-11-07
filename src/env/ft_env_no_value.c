@@ -13,36 +13,35 @@
 #include "../../includes/minishell.h"
 
 /**
- * @brief Verifica si una entrada de variable de entorno es válida.
- *
- * Determina si una entrada (`entry`) contiene un signo igual (`=`), 
- * lo que indica 
- * que la entrada es una variable de entorno válida. Retorna 1 si es 
- * válida y 0 
- * si no lo es.
- *
- * @param entry Entrada de variable de entorno que se va a evaluar.
- * @return int 1 si la entrada es válida, 0 en caso contrario.
- */
+* @brief Checks if an environment variable entry is valid.
+*
+* Determines whether an entry (`entry`) contains an equal sign (`=`),
+* indicating that the entry is a valid environment variable. Returns 1 if it is
+* valid and 0
+* otherwise.
+*
+* @param entry The environment variable entry to evaluate.
+* @return int 1 if the entry is valid, 0 otherwise.
+*/
 static int	ft_is_valid_env_entry(char *entry)
 {
 	return (ft_strchr(entry, '=') != NULL);
 }
 
 /**
- * @brief Elimina las variables de entorno sin valor del array de variables 
- * de entorno.
- *
- * Recorre el array de variables de entorno (`boogeyman->envp`) y verifica cada 
- * entrada para determinar si es válida utilizando `ft_is_valid_env_entry`. 
- * Si se encuentra una entrada no válida (sin un valor asignado), se libera 
- * su memoria y se desplazan las entradas restantes para llenar el vacío. 
- * Se decrementa el conteo de elementos de las variables de entorno al eliminar 
- * una entrada no válida.
- *
- * @param boogeyman Puntero a la estructura principal que contiene el array de 
- *                  variables de entorno y el conteo de elementos.
- */
+* @brief Removes environment variables without a value from the environment
+* variables array.
+*
+* Iterates through the environment variables array (`boogeyman->envp`) and checks each
+* entry to determine if it is valid using `ft_is_valid_env_entry`.
+* If an invalid entry (without a value assigned) is found, its memory
+* is freed and the remaining entries are shifted to fill the gap.
+* The element count of the environment variables is decremented when
+* an invalid entry is removed.
+*
+* @param boogeyman Pointer to the main structure containing the environment
+* variables array and the element count.
+*/
 void	ft_env_no_value(t_minishell *boogeyman)
 {
 	int	i;

@@ -1,6 +1,8 @@
 *.o
 *.a
+a.out
 .DS_*
 .vscode
 minishell
 objects
+_test_*

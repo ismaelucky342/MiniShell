@@ -51,8 +51,7 @@ Uso: Buscar la ruta correcta de un comando si no es un comando interno (builtin)
 
 /**
  * Checks if the introduced path is an absolute or relative path
- * @param
- * path The user-introduced command string that will be checked
+ * @param path The user-introduced command string that will be checked
  * @return
  * Returns 1 if the introduced path is an absolute or relative path. Otherwise, returns 0
 */
@@ -65,12 +64,10 @@ int	ft_is_a_path(char *path)
 
 /**
  * Executes a builtin command
- * @param
- * node The node of the command to execute
- * @param
- * boogeyman Pointer to the superstructure for env and memory purposes
+ * @param node The node of the command to execute
+ * @param boogeyman Pointer to the superstructure for env and memory purposes
  */
-int	ft_execbuiltin(t_tree_node *node, t_minishell *boogeyman, char parent)
+int	ft_exec_builtin(t_tree_node *node, t_minishell *boogeyman, char parent)
 {
 	if (ft_strcmp(node->args[0], "cd"))
 	{

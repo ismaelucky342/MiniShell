@@ -13,18 +13,6 @@
 #ifndef COLORS_H
 # define COLORS_H
 
-# include "../Libft/libft.h"
-# include <stdio.h>
-# include <dirent.h>
-# include <termios.h>
-# include <readline/readline.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <readline/history.h>
-
 /* COLORS */
 # define COLOR_RESET "\033[0m"
 

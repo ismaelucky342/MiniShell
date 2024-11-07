@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 14:52:37 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/02 22:38:03 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/03 12:54:19 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 
 /**
 
-	* @brief Encuentra el índice de una variable de entorno en un 
-	array de entradas de entorno.
- *
- * Recorre un array de punteros a cadenas (`envp`) 
- * para buscar la clave (`key`).
- * Compara cada entrada con la clave y determina si hay una 
- * coincidencia exacta
+* @brief Finds the index of an environment variable in an array of
+environment entries.
+*
+* Iterates through an array of string pointers (`envp`)
+* to find the key (`key`).
+* Compares each entry to the key and determines if there is an
+* exact match (including the equal sign or the end of the string).
+If the key is found, its index is
+* returned; otherwise, -1 is returned.
+*
 
-	* (incluyendo el signo igual o el final de la cadena). 
-	Si se encuentra la clave,
- * se devuelve su índice; de lo contrario, se retorna -1.
- *
-
-	* @param envp Array de punteros a cadenas que representan las 
-	variables de entorno.
- * @param key Clave de la variable de entorno a buscar.
- * @return int Índice de la variable de entorno si se encuentra,
-	-1 si no existe.
- */
+* @param envp Array of string pointers representing the
+environment variables.
+* @param key Key of the environment variable to find.
+* @return int Index of the environment variable if found,
+-1 if not.
+*/
 static int	ft_find_env_index(char **envp, char *key)
 {
 	int	i;

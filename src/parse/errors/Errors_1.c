@@ -12,6 +12,14 @@
 
 #include "../../../includes/minishell.h"
 
+/**
+ * @brief Prints a syntax error message for a given token.
+ *
+ * This function outputs an error message to the standard error output,
+ * indicating a syntax error near the specified token.
+ *
+ * @param token The token that caused the syntax error.
+ */
 static void	print_syntax_error(char *token)
 {
 	ft_putstr_fd("Minishell: syntax error near token '", STDERR_FILENO);
@@ -19,6 +27,17 @@ static void	print_syntax_error(char *token)
 	ft_putendl_fd("'", STDERR_FILENO);
 }
 
+/**
+ * @brief Checks if a file redirection in the command string is valid.
+ *
+ * This function analyzes the string `str` starting from the index `*i`
+ * to verify if the redirection operators are followed by valid file names.
+ * If a syntax error is found, it prints an error message.
+ *
+ * @param str The command string being checked.
+ * @param i A pointer to the index in the string to check for redirection.
+ * @return OK if the redirection is valid, KO if a syntax error is found.
+ */
 int	ft_check_file(char *str, int *i)
 {
 	int	starting[2];
@@ -44,6 +63,17 @@ int	ft_check_file(char *str, int *i)
 		print_syntax_error(&str[starting[0]]);
 	return (KO);
 }
+/**
+ * @brief Sets the terminal echo mode.
+ *
+ * This function enables or disables the echo mode of the terminal based on
+ * the value of `val`. If `val` is non-zero, echo mode is enabled; if zero,
+ * echo mode is disabled. The function uses the termios structure to change
+ * the terminal settings.
+ *
+ * @param val A non-zero value to enable echo, or zero to disable it.
+ * @return OK on success, KO on failure.
+ */
 
 int	ft_set_echo(int val)
 {
