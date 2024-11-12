@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_expander.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:19:00 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/03 12:51:55 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:27:32 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char *generate_tmp_filename(int index)
 char *get_tmp_filename(void)
 {
 	char *name;
-	int i;
+	int	i;
 
 	i = 1;
 	while (i <= 1000)
@@ -89,7 +89,7 @@ static void handle_heredoc_error(t_redirection_token *tok)
 */
 static int open_and_write_heredoc(int o_fd, t_redirection_token *tok, char **envp)
 {
-	int fd;
+	int	fd;
 	char *line;
 	char *exp;
 

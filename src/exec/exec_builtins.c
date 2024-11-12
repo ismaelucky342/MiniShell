@@ -50,10 +50,11 @@ Uso: Buscar la ruta correcta de un comando si no es un comando interno (builtin)
 #include "../../includes/minishell.h"
 
 /**
- * Checks if the introduced path is an absolute or relative path
- * @param path The user-introduced command string that will be checked
+ * @brief Checks if the introduced path is an absolute or relative path
+ * @param path
+ *  The user-introduced command string that will be checked
  * @return
- * Returns 1 if the introduced path is an absolute or relative path. Otherwise, returns 0
+ * 1 if the introduced path is an absolute or relative path. Otherwise, 0
 */
 int	ft_is_a_path(char *path)
 {
@@ -63,11 +64,14 @@ int	ft_is_a_path(char *path)
 }
 
 /**
- * Executes a builtin command
- * @param node The node of the command to execute
- * @param boogeyman Pointer to the superstructure for env and memory purposes
+ * @brief Executes a builtin command.
+ * 
+ * @param node
+ *  The node of the command to execute
+ * @param boogeyman
+ *  Pointer to the superstructure for env and memory purposes
  */
-int	ft_exec_builtin(t_tree_node *node, t_minishell *boogeyman, char parent)
+t_bool	ft_exec_builtin(t_tree_node *node, t_minishell *boogeyman, char parent)
 {
 	if (ft_strcmp(node->args[0], "cd"))
 	{

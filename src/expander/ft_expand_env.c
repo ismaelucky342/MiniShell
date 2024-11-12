@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expand_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:51:48 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/03 12:51:44 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:27:32 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static char *ft_join_env(t_token *tok, int j, char **tmp, t_minishell *boogeyman
 */
 void ft_expand_env(t_list *curr, int *i, int check_w_cards, t_minishell *boogeyman)
 {
-	int j;
+	int	j;
 	t_token *tok;
 	char *tmp[3];
 	j = *i;

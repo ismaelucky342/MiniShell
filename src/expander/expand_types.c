@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_types.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:58:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/03 12:54:17 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:27:32 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 */
 void double_quote_expand(t_list *curr, int *i, t_minishell *boogeyman)
 {
-	int j;
+	int	j;
 	t_token *tok;
 
 	j = *i;
@@ -62,7 +62,7 @@ void double_quote_expand(t_list *curr, int *i, t_minishell *boogeyman)
 */
 void single_quote_expand(t_list *curr, int *i)
 {
-	int j;
+	int	j;
 	t_token *tok;
 
 	j = *i;
@@ -123,8 +123,8 @@ int ft_list_expand(t_list *list, t_minishell *boogeyman)
 void list_expand(t_list *curr, t_minishell *boogeyman)
 {
 	t_token *tok;
-	int i;
-	int pre_type;
+	int	i;
+	int	pre_type;
 
 	tok = curr->data;
 	i = 0;

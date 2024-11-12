@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 14:31:39 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/27 17:28:44 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:27:32 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ extern int	g_exit;
  */
 int ft_check_quotes(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -58,9 +58,9 @@ int ft_check_quotes(char *str)
  */
 int ft_check_brackets(char *str)
 {
-	int opening;
-	int closing;
-	int i;
+	int	opening;
+	int	closing;
+	int	i;
 
 	opening = 0;
 	closing = 0;
@@ -133,8 +133,8 @@ int ft_create_heredocs(char **str)
  */
 int ft_check_fredirs(char *str)
 {
-	int i;
-	int check;
+	int	i;
+	int	check;
 
 	i = 0;
 	check = 0;

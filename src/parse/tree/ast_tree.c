@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ast_tree.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:50:53 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/27 17:31:41 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/12 10:54:32 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ int	ft_fill_list(t_list *begin, t_ast_tree *tree_node)
 	t_tree_node	*p_curr;
 	int			ctr[2];
 
-	// Inicialización del primer nodo de comando en el árbol
 	current = ft_calloc(1, sizeof(t_tree_node));
 	if (!current)
 		return (ERROR_MEMORY);
@@ -120,11 +119,9 @@ int	ft_fill_list(t_list *begin, t_ast_tree *tree_node)
 	current->args = ft_calloc(ft_count_args(begin) + 1, sizeof(char *));
 	if (!current->args)
 		return (ERROR_MEMORY);
-
 	tkn = begin->data;
 	if (tkn->type == PIPE)  // Si empieza con un PIPE, es un error de sintaxis
 		return (KO);
-
 	ctr[0] = 0;  // Inicializa el índice para los argumentos
 	while (begin) {
 		ctr[1] = fill_management(&begin, &current, &p_curr, &ctr[0]);

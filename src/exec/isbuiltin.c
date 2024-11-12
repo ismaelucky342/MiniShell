@@ -6,11 +6,11 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:25:02 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/10/31 14:25:07 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/12 12:22:00 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 /**
  * @brief Checks whether or not the inputted string belongs to a builtin or not

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:00:25 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/03 12:51:44 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:27:32 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ static char *expand_str(char *str, int *i, char **envp)
 */
 char *ft_expand(char *line, char **envp, char expand_all)
 {
-	int i;
+	int	i;
 	char in_quotes;
 	char *expanded;
 

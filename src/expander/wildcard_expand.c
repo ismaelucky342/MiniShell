@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wildcard_expand.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:57:18 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/27 17:28:07 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:27:32 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void merge_strings(t_token *tok, int *cont, char **files, char **regex)
  */
 void wildcard_expand(t_list *curr, int *i)
 {
-	int cont[3];
+	int	cont[3];
 	t_token *tok;
 	char *regex;
 	char *files;
