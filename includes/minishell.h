@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:51:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/12 12:23:36 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:54:32 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct s_ast_tree
  * Contiene información sobre el historial de comandos, el último código de salida,
  * el árbol de comandos actual, el entorno, y otras variables importantes del estado global.
  */
+
 typedef struct s_minishell
 {
 	int					history_fd;     /**< Descriptor de archivo para el historial de comandos */
