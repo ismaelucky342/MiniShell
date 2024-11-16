@@ -67,9 +67,11 @@ int	ft_is_a_path(char *path)
  * @brief Executes a builtin command.
  * 
  * @param node
- *  The node of the command to execute
+ *  The node of the command to execute.
  * @param boogeyman
- *  Pointer to the superstructure for env and memory purposes
+ *  Pointer to the superstructure for env and memory purposes.
+ * @param parent
+ * 	Boolean that dictates if the command is executed in the parent process.
  */
 t_bool	ft_exec_builtin(t_tree_node *node, t_minishell *boogeyman, char parent)
 {

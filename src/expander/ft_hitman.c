@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:58:00 by apollo            #+#    #+#             */
-/*   Updated: 2024/11/11 11:52:35 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/16 11:32:36 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void ft_hitman(t_minishell *boogeyman)
         return ;
     if (boogeyman->history_fd >= 0)
         close(boogeyman->history_fd);
-
     if (boogeyman->cmd_tree)
     {
         ft_free_ast_tree(boogeyman->cmd_tree); 
