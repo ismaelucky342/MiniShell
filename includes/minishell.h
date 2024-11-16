@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:51:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/16 11:55:39 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/16 12:26:44 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ typedef int t_bool;
 # ifndef ECHOCTL
 #  define ECHOCTL 0000400
 # endif
+
+extern int g_exit;
 
 /**
  * @brief Representa un token individual de la entrada.
@@ -190,8 +192,6 @@ void		ft_sig_handler(int signum);
 void		skip_to_delimiter(char *str, int *i, char delim);
 void		skip_spaces(char *str, int *i, int *start, int mode);
 int			ft_remove_quotes(t_list *tokens);
-int			ft_exec_and_wait(t_ast_tree *tree_node,
-				t_minishell *boogeyman);
 void		ft_str_unquote(char *str);
 
 int			retokenize(t_list *curr, int type, int start,
