@@ -1,4 +1,4 @@
-# MINISHELL
+ras# MINISHELL
 ![image](https://github.com/user-attachments/assets/026ca140-39c5-4fc5-8b51-1b39866beecc)
 
 ## Description
@@ -105,7 +105,7 @@ Minishell supports basic shell operations such as:
 - **Environment variable expansion**: Utilize variables prefixed with `$`.
 - **Quoting**: Use single or double quotes for strings.
 
-## Challenges and Lessons Learned
+## Extras
 
 Developing Minishell has been an extensive learning experience, emphasizing in gaining practical knowledge of `fork`, `execve`, and process management. Ensuring efficient use of `malloc` and `free` to avoid memory leaks. Creating reusable and maintainable code by adhering to project constraints (e.g., no global variables) and implementing an AST to handle complex command syntax efficiently. The project provided invaluable insights into how shells work under the hood, enhancing our understanding of operating systems, process management, and command-line interfaces.
 
