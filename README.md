@@ -107,7 +107,7 @@ Minishell supports basic shell operations such as:
 
 ## Extras
 
-Developing Minishell has been an extensive learning experience, emphasizing in gaining practical knowledge of `fork`, `execve`, and process management. Ensuring efficient use of `malloc` and `free` to avoid memory leaks. Creating reusable and maintainable code by adhering to project constraints (e.g., no global variables) and implementing an AST to handle complex command syntax efficiently. The project provided invaluable insights into how shells work under the hood, enhancing our understanding of operating systems, process management, and command-line interfaces.
+Developing Minishell has been an extensive learning experience, emphasizing in gaining practical knowledge of `fork`, `execve`, and process management. Ensuring efficient use of `malloc` and `free` to avoid memory leaks. Creating reusable and maintainable code by adhering to project constraints (e.g., 1 global variable allowed) and implementing an AST to handle complex command syntax efficiently. The project provided invaluable insights into how shells work under the hood, enhancing our understanding of operating systems, process management, and command-line interfaces.
 
 -Born2code
 ![42madrid](https://github.com/ismaelucky342/Born2code/assets/153450550/3a377f34-9156-4eff-b04b-71c4b128523e)
