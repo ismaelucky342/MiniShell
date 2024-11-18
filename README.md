@@ -8,7 +8,7 @@ Minishell is a group project with the objective of replicating a Unix shell that
 ## Collaborators
 
 - [**Ismael Hernández:**](https://github.com/ismaelucky342)
-- [**Daniel Gómez:**](https://github.com/Danielaco23)
+- [**Daniel Gómez-Llusá:**](https://github.com/Danielaco23)
 
 ## Key Features
 
