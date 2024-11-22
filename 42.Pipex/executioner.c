@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:33:18 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/05/22 11:37:39 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:11:08 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,9 @@ static char	**path_array_b(char **env)
 		path = ft_strnstr(env[i], "PATH=", 5);
 		if (path != NULL)
 		{
-			path_split = ft_split(path, ':');
+			path_split = ft_split(path + 5, ':');
 			if (!path_split)
 				return (NULL);
-			path = path_split[0];
-			path_split[0] = ft_strdup(&path[5]);
-			free(path);
 			return (path_split);
 		}
 		i++;

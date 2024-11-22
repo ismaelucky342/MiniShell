@@ -76,6 +76,15 @@ static int	ft_wait_all(int last_pid, t_tree_node *last)
 	return (exit_code);
 }
 
+static t_tree_node	*ft_interpreter(t_ast_tree *node, t_minishell *boogeyman,
+	int *lastpid)
+{
+	if (node->is_logic == TRUE)
+		return (ft_logic_interpreter(node, boogeyman, lastpid));
+	else
+		return (ft_pipes_interpreter(node, boogeyman, lastpid));
+}
+
 t_bool	ft_execution(t_ast_tree *tree_nodes, t_minishell *boogeyman)
 {
 	int				backup[2];
@@ -87,7 +96,7 @@ t_bool	ft_execution(t_ast_tree *tree_nodes, t_minishell *boogeyman)
 	g_exit = 1;
 	backup[0] = dup(STDIN_FILENO);
 	backup[1] = dup(STDOUT_FILENO);
-	last = ft_pipes_interpreter(tree_nodes, boogeyman, &pid);
+	last = ft_interpreter(tree_nodes, boogeyman, &pid);
 	temp = ft_wait_all(pid, last);
 	dup2(backup[0], STDIN_FILENO);
 	dup2(backup[1], STDOUT_FILENO);

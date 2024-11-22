@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:21:22 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/11/16 11:57:01 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:07:36 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,15 @@
 t_bool	ft_exec_single_cmd(t_tree_node *node, t_minishell *boogeyman)
 {
 	if (isbuiltin(node->args[0]))
-		if (ft_exec_builtin(node, boogeyman, KO) == FALSE)
+		if (ft_exec_builtin(node, boogeyman, TRUE) == FALSE)
 			return (perror(node->args[0]), ft_hitman(boogeyman), FALSE);
 	else
 	{
 		node->pid = fork();
 		if (node->pid < 0)
 			return (perror(node->args[0]), ft_hitman(boogeyman), FALSE);
-		else if (node->pid == 0)
+		if (node->pid == 0)
 			ft_exec_ve(node, boogeyman);
-		else
-		{
-			close(node->pipe_out);
-		}
 	}
+	return (TRUE);
 }

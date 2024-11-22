@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:51:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/16 12:26:44 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:57:33 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 #  define ERROR_MEMORY 2
 # endif
 
-typedef int t_bool;
+typedef char t_bool;
 # define OK 0
 # define KO 1
 # define TRUE 0
@@ -106,7 +106,7 @@ typedef struct s_tree_node
 	int					pid;			/**< ID del proceso cuando el comando se ejecuta */
 	int					exit;			/**< Código de salida del comando */
 	char				is_builtin;		/**< Indicador de si el comando es un comando incorporado en el shell */
-	int					pipe_fds[2];	/**< Descriptores de archivo para la tubería si se utiliza redirección */
+	int					pipe_fds[2];	/**< Descriptores de archivo para la tubería */
 	char				*path;			/**< Ruta absoluta del ejecutable del comando */
 }						t_tree_node;
 
@@ -220,6 +220,9 @@ ARBOL DE PRIORIDADES:
 t_bool		ft_execution(t_ast_tree *tree_nodes, t_minishell *boogeyman);
 t_tree_node	*ft_pipes_interpreter(t_ast_tree *node, t_minishell *boogeyman,
 				int *lastpid);
+
+t_tree_node	*ft_logic_interpreter(t_ast_tree *node, t_minishell *boogeyman,
+	int *lastpid);
 
 t_bool		ft_exec_single_cmd(t_tree_node *node, t_minishell *boogeyman);
 t_bool		exec_first_cmd(t_tree_node *node, t_minishell *boogeyman,

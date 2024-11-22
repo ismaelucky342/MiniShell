@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:19:29 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/11/12 12:26:48 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:08:03 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_tree_node	*ft_pipes_interpreter(t_ast_tree *node, t_minishell *boogeyman,
 
 	if (!list->next)
 	{
-		if (ft_exec_single_cmd(list, boogeyman) == KO)
+		if (ft_exec_single_cmd(list, boogeyman) == FALSE)
 			return (ft_hitman(boogeyman), NULL);
 		*lastpid = list->pid;
 		return (list);
