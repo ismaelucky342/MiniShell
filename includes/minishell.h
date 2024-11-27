@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:51:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/18 11:57:33 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:54:46 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,10 @@ ARBOL DE PRIORIDADES:
 3. PIPES
 */
 
+char		*ft_where_is_comm_b(char *command, char **env);
+
 t_bool		ft_execution(t_ast_tree *tree_nodes, t_minishell *boogeyman);
+t_bool		ft_exec_ve(t_tree_node *node, t_minishell *boogeyman, t_bool single);
 t_tree_node	*ft_pipes_interpreter(t_ast_tree *node, t_minishell *boogeyman,
 				int *lastpid);
 

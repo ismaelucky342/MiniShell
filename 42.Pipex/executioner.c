@@ -102,7 +102,6 @@ static int	last_pipe(int *fds, t_index *index)
 int	execution(int *fds, char *arg, char **env, t_index *index)
 {
 	char	*pth_prog;
-	char	*command;
 	char	**arguments;
 	int		i[2];
 
@@ -118,8 +117,7 @@ int	execution(int *fds, char *arg, char **env, t_index *index)
 	arguments = ft_split(arg, ' ');
 	if (!arguments)
 		exit(EXIT_FAILURE);
-	command = arguments[0];
-	pth_prog = where_is_comm_b(command, env);
+	pth_prog = where_is_comm_b(arguments[0], env);
 	execve(pth_prog, arguments, env);
 	perror(arguments[0]);
 	free(pth_prog);

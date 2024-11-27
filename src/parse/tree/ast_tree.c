@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:50:53 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/12 10:54:32 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:50:28 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int	add_file_info(t_list *token_list, t_tree_node *current)
 	tmp = current->redir_list;
 	while (tmp && tmp->next)
 		tmp = tmp->next;
-
 	if (tmp) {
 		tmp->next = ft_calloc(1, sizeof(t_list));
 		if (!tmp->next)

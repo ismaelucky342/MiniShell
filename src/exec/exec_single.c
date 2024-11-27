@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:21:22 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/11/18 12:07:36 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:53:05 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_bool	ft_exec_single_cmd(t_tree_node *node, t_minishell *boogeyman)
 		if (node->pid < 0)
 			return (perror(node->args[0]), ft_hitman(boogeyman), FALSE);
 		if (node->pid == 0)
-			ft_exec_ve(node, boogeyman);
+			ft_exec_ve(node, boogeyman, TRUE);
 	}
 	return (TRUE);
 }
