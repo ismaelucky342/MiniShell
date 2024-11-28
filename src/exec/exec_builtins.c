@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:20:09 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/11/18 12:03:43 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/28 15:03:11 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,12 @@ int	ft_is_a_path(char *path)
  */
 t_bool	ft_exec_builtin(t_tree_node *node, t_minishell *boogeyman, char parent)
 {
+	(void)node;
+	(void)boogeyman;
+	(void)parent;
 	if (ft_strcmp(node->args[0], "cd"))
 	{
 		
 	}
+	return(FALSE);
 }

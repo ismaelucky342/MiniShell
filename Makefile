@@ -6,7 +6,7 @@
 #    By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:15:58 by dgomez-l          #+#    #+#              #
-#    Updated: 2024/11/27 14:54:03 by dgomez-l         ###   ########.fr        #
+#    Updated: 2024/11/28 15:02:32 by dgomez-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,24 +21,47 @@ VPATH	=	src/:\
 			src/env/:\
 			src/exec/:\
 			src/exec/builtins/:\
+			src/exec/find_path/:\
+			src/exec/pipes/:\
+			src/exec/logic/:\
 			src/expander/:\
+			src/parse/:\
 			src/parse/checker/:\
-			src/parse/errors/:\
 			src/parse/heredoc/:\
 			src/parse/history/:\
 			src/parse/lexer/:\
-			src/parse/multiple_tools/:\
 			src/parse/tree/:\
-			src/parse/wildcards/:
+			src/parse/wildcards/:\
+			src/parse/errors/:\
+			src/parse/multiple_tools/:
 
 SRC		=	enviroment.c \
 			ft_env_get_value.c \
 			ft_env_no_value.c \
 			ft_remove_env.c \
+			cd.c \
+			echo.c \
+			env.c \
+			exit.c \
+			export.c \
+			pwd.c \
+			unset.c \
+			find_path.c \
+			logic_interpreter.c \
+			exec_first.c \
+			exec_last.c \
+			exec_mid.c \
+			pipe_interpreter.c \
+			exec_builtins.c \
+			exec_single.c \
+			exec_ve.c \
+			execution.c \
+			isbuiltin.c \
 			dictionary.c \
-			expander.c \
 			expand_types.c \
+			expander.c \
 			ft_expand_env.c \
+			ft_hitman.c \
 			heredoc_expander.c \
 			wildcard_expand.c \
 			check_heredoc.c \
@@ -50,22 +73,23 @@ SRC		=	enviroment.c \
 			input.c \
 			history.c \
 			ft_remove_quotes.c \
-			tokenizer.c \
 			retokenizer.c \
+			tokenizer.c \
 			cleanup.c \
 			utils.c \
 			ast_tree.c \
 			ft_free_list.c \
 			ft_free_redirections.c \
 			ft_free_tree.c \
-			wildcards.c \
-			wildcards_utils.c \
-			wildcards_files.c \
 			ft_wdc_len.c \
+			wildcards_files.c \
+			wildcards_utils.c \
+			wildcards.c \
 			init.c \
 			minishell.c \
 			prompt.c \
 			signals.c 
+			
 
 OBJ_DIR  = objects
 

@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:23:19 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/10/31 14:23:20 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:55:13 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,8 @@
 */
 int	ft_exit(t_tree_node *node, t_minishell *boogeyman, char print)
 {
+	(void)node;
+	(void)boogeyman;
+	(void)print;
 	return (0);
 }

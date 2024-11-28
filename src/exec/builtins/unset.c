@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:25:48 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/10/31 14:25:50 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:55:30 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 */
 int	ft_unset(t_tree_node *node, t_minishell *boogeyman)
 {
-	boogeyman->envp;
+	(void)node;
+	(void)boogeyman;
 	return (0);
 }

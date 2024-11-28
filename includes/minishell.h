@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:51:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/27 10:54:46 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:41:15 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@
 # define FILE_REDIR 0
 # define PIPE 1
 # define LOGIC 2
+
 # define CONCATOUT_MASK 0b1000
 # define OUTFILE_MASK 0b10
 # define HEREDOC_MASK 0b100
+
 # define AND_MASK 0b1
 # define OR_MASK 0b10
 # define WAIT_MASK 0b100
@@ -225,14 +227,14 @@ t_tree_node	*ft_pipes_interpreter(t_ast_tree *node, t_minishell *boogeyman,
 				int *lastpid);
 
 t_tree_node	*ft_logic_interpreter(t_ast_tree *node, t_minishell *boogeyman,
-	int *lastpid);
+				int *lastpid);
 
 t_bool		ft_exec_single_cmd(t_tree_node *node, t_minishell *boogeyman);
-t_bool		exec_first_cmd(t_tree_node *node, t_minishell *boogeyman,
+t_bool		ft_exec_first_cmd(t_tree_node *node, t_minishell *boogeyman,
 				int *outfd);
-t_bool		exec_mid_cmd(t_tree_node *node, t_minishell *boogeyman,
+t_bool		ft_exec_mid_cmd(t_tree_node *node, t_minishell *boogeyman,
 				int *outfd);
-t_bool		exec_last_cmd(t_tree_node *node, t_minishell *boogeyman,
+t_bool		ft_exec_last_cmd(t_tree_node *node, t_minishell *boogeyman,
 				int *outfd);
 t_bool		ft_exec_builtin(t_tree_node *node, t_minishell *boogeyman,
 				char parent);

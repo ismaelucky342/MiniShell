@@ -6,11 +6,11 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:19:29 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/11/18 12:08:03 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/28 15:04:09 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
 /**
  * @brief Interprets the priority tree, executing piped commands within.
@@ -39,12 +39,12 @@ t_tree_node	*ft_pipes_interpreter(t_ast_tree *node, t_minishell *boogeyman,
 	fds[0] = fds[1];
 	while (list->next)
 	{
-		if (ft_exec_mid_cmd(list, boogeyman, fds[0], &fds[1]) == KO)
+		if (ft_exec_mid_cmd(list, boogeyman, fds) == KO)
 			return (ft_hitman(boogeyman), NULL);
 		fds[0] = fds[1];
 		list = list->next;
 	}
-	if (ft_exec_last_cmd(list, boogeyman, fds[0]) == KO)
+	if (ft_exec_last_cmd(list, boogeyman, &fds[0]) == KO)
 		return (ft_hitman(boogeyman), NULL);
 	*lastpid = list->pid;
 	return (list);

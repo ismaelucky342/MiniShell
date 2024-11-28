@@ -107,7 +107,7 @@ t_bool	ft_execution(t_ast_tree *tree_nodes, t_minishell *boogeyman)
 	g_exit = 0;
 	ft_set_signal(0);
 	ft_putstr_fd("\x1b[0m", STDOUT_FILENO);
-	if (tree_nodes->cmd_list->is_builtin = 1 && !tree_nodes->cmd_list->next)
+	if (tree_nodes->cmd_list->is_builtin == 1 && !tree_nodes->cmd_list->next)
         return (tree_nodes->cmd_list->exit);
     return (temp);
 }

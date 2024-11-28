@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:22:52 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/10/31 14:22:54 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:54:52 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 */
 int	ft_echo(t_tree_node *node, t_minishell *boogeyman)
 {
-	node->args;
+	(void)node;
+	(void)boogeyman;
 	return (0);
 }

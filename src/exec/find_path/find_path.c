@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:11:53 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/11/27 11:49:59 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:55:53 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ char	*ft_where_is_comm_b(char *command, char **env)
 	{
 		pth_prog = ft_strjoin(path_arr[i ++], cmd_slash);
 		if (access(pth_prog, F_OK) != -1 && access(pth_prog, X_OK) != -1)
-			return (arr_freer(path_arr), free(cmd_slash), pth_prog);
+			return (ft_array_free(path_arr), free(cmd_slash), pth_prog);
 		free(pth_prog);
 	}
-	return (arr_freer(path_arr), ft_strdup(command));
+	return (ft_array_free(path_arr), ft_strdup(command));
 }
