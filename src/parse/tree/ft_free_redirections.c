@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_redirections.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:43:17 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/27 17:31:50 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:40:13 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_free_redirections(void *t)
 {
-	t_redirection_token	*tok;
+	t_redir_token	*tok;
 
 	tok = t;
 	free(tok->name);

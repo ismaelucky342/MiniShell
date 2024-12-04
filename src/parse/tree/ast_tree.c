@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:50:53 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/27 14:53:42 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:40:13 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	assign_redirection_type(t_list *token_list, t_list **tmp)
 {
 	if (ft_strncmp("<", ((t_token *)token_list->data)->str, 2) == 0)
-		((t_redirection_token *)(*tmp)->data)->type = INFILE_MASK;
+		((t_redir_token *)(*tmp)->data)->type = INFILE_MASK;
 	else if (ft_strncmp(">", ((t_token *)token_list->data)->str, 2) == 0)
-		((t_redirection_token *)(*tmp)->data)->type = OUTFILE_MASK;
+		((t_redir_token *)(*tmp)->data)->type = OUTFILE_MASK;
 	else if (ft_strncmp("<<", ((t_token *)token_list->data)->str, 3) == 0)
-		((t_redirection_token *)(*tmp)->data)->type = HEREDOC_MASK;
+		((t_redir_token *)(*tmp)->data)->type = HEREDOC_MASK;
 	else if (ft_strncmp(">>", ((t_token *)token_list->data)->str, 3) == 0)
-		((t_redirection_token *)(*tmp)->data)->type = CONCATOUT_MASK;
+		((t_redir_token *)(*tmp)->data)->type = CONCATOUT_MASK;
 }
 
 // Añade información de archivo de redirección al nodo actual
@@ -49,10 +49,10 @@ static int	add_file_info(t_list *token_list, t_tree_node *current)
 	}
 
 	// Asigna el nombre del archivo y tipo de redirección
-	tmp->data = ft_calloc(1, sizeof(t_redirection_token));
+	tmp->data = ft_calloc(1, sizeof(t_redir_token));
 	if (!tmp->data)
 		return (ERROR_MEMORY);
-	((t_redirection_token *)tmp->data)->name
+	((t_redir_token *)tmp->data)->name
 		= ft_strdup(((t_token *)token_list->next->data)->str);
 	assign_redirection_type(token_list, &tmp);
 	return (OK);

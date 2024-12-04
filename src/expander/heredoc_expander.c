@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:19:00 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/12 11:27:32 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:40:13 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char *get_tmp_filename(void)
 *
 * @param tok Redirection token containing the name of the heredoc file.
 */
-static void handle_heredoc_error(t_redirection_token *tok)
+static void handle_heredoc_error(t_redir_token *tok)
 {
 	perror(tok->name);
 	free(tok->name);
@@ -87,7 +87,7 @@ static void handle_heredoc_error(t_redirection_token *tok)
 * @param envp Environment to expand variables in the heredoc lines.
 * @return File descriptor of the temporary file, or -1 on error.
 */
-static int open_and_write_heredoc(int o_fd, t_redirection_token *tok, char **envp)
+static int open_and_write_heredoc(int o_fd, t_redir_token *tok, char **envp)
 {
 	int	fd;
 	char *line;
@@ -126,7 +126,7 @@ static int open_and_write_heredoc(int o_fd, t_redirection_token *tok, char **env
 * @param envp Environment to expand variables in the heredoc lines into.
 * @return File descriptor of the temporary file, or -1 on error.
 */
-int ft_expand_heredoc(int o_fd, t_redirection_token *tok, char **envp)
+int ft_expand_heredoc(int o_fd, t_redir_token *tok, char **envp)
 {
 	return (open_and_write_heredoc(o_fd, tok, envp));
 }

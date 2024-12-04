@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:51:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/28 16:41:15 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:40:20 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@
 # define PIPE 1
 # define LOGIC 2
 
-# define CONCATOUT_MASK 0b1000
+# define INFILE_MASK 0b1
 # define OUTFILE_MASK 0b10
 # define HEREDOC_MASK 0b100
+# define CONCATOUT_MASK 0b1000
 
 # define AND_MASK 0b1
 # define OR_MASK 0b10
@@ -48,7 +49,6 @@
 #  define ARG 3
 #  define E_EXP_ARG 4
 #  define W_EXP_ARG 5
-#  define INFILE_MASK 0b1
 #  define SIZE_T_MAX ULONG_MAX
 #  define ERROR_MEMORY 2
 # endif
@@ -86,11 +86,11 @@ typedef struct s_token
  * Contiene el nombre del archivo o dispositivo al que se va a redirigir
  * la entrada o salida del comando y el tipo de redirección, como `>`, `<`, `>>`, o `<<`.
  */
-typedef struct s_redirection_token
+typedef struct s_redir_token
 {
 	char				*name;	/**< Nombre del archivo o dispositivo de redirección */
 	char				type;	/**< Tipo de redirección, almacenado como carácter */
-}						t_redirection_token;
+}						t_redir_token;
 
 /**
  * @brief Nodo que representa un comando o conjunto de comandos en una tubería.
@@ -172,7 +172,7 @@ int			ft_remove_env(t_minishell *boogeyman, char *key);
 void		ft_env_no_value(t_minishell *boogeyman);
 
 int			ft_heredoc(char **str, int *i, char **f_name);
-int			ft_expand_heredoc(int o_fd, t_redirection_token *tok,
+int			ft_expand_heredoc(int o_fd, t_redir_token *tok,
 				char **envp);
 void		new_string(char **str, int j, char *tmp, char *tmp2);
 void		heredoc_input(char **line, char *prompt, char *delim,
