@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 12:26:34 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/11/28 14:56:57 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:31:39 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 t_tree_node	*ft_logic_interpreter(t_ast_tree *node, t_minishell *boogeyman,
 	int *lastpid)
 {
+	printf("Everything is fine\n");
 	(void)node;
 	(void)boogeyman;
 	(void)lastpid;

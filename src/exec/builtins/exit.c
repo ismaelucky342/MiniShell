@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:23:19 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/11/30 11:06:14 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:13:29 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-
-/**
-	* *node The tree node that's being executed.
-	* @param
-	* *boogeyman Superstructure pointer for env & memory freeing purposes.
-	* @returns
-	* returns the status of the executed command.
-*/
-#include "minishell.h"
 
 static int	ft_check_exit_arg(char *arg)
 {

@@ -6,7 +6,7 @@
 #    By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:15:58 by dgomez-l          #+#    #+#              #
-#    Updated: 2024/11/28 15:02:32 by dgomez-l         ###   ########.fr        #
+#    Updated: 2024/12/04 16:26:00 by dgomez-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ INCLUDE = /includes/minishell.h
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
 
 LIBFT = ./Libft/libft.a
 

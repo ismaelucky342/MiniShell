@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:20:18 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/27 17:33:04 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:17:58 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,25 @@ void	ft_setsigint(t_minishell *boogeyman)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_minishell	m_boogeyman;
+	t_minishell	boogeyman;
 
 	rl_initialize();
-	init_minishell(&m_boogeyman, envp, argc, argv);
+	init_minishell(&boogeyman, envp, argc, argv);
 	while (1)
 	{
-		get_command_str(&m_boogeyman);
+		get_command_str(&boogeyman);
 		if (g_exit == 3)
-			ft_setsigint(&m_boogeyman);
-		if (m_boogeyman.cmd_tree && !m_boogeyman.eof)
+			ft_setsigint(&boogeyman);
+		if (boogeyman.cmd_tree && !boogeyman.eof)
 		{
-			if (ft_check_heredoc(&m_boogeyman))
-				//expand_execute(m_boogeyman.cmd_tree, &m_boogeyman);
-				//print_ast_tree(m_boogeyman.cmd_tree);
-			m_boogeyman.cmd_tree = ft_free_ast_tree(m_boogeyman.cmd_tree);
+			if (ft_check_heredoc(&boogeyman))
+				ft_execution(boogeyman.cmd_tree, &boogeyman);
+				//expand_execute(boogeyman.cmd_tree, &boogeyman);
+				//print_ast_tree(boogeyman.cmd_tree);
+			boogeyman.cmd_tree = ft_free_ast_tree(boogeyman.cmd_tree);
 		}
-		else if (m_boogeyman.eof)
-			ft_exit_msg(0, &m_boogeyman, 1);
+		else if (boogeyman.eof)
+			ft_exit_msg(0, &boogeyman, 1);
 	}
 	return (OK);
 }
