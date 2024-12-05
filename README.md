@@ -1,4 +1,4 @@
-ras# MINISHELL
+# MINISHELL
 ![image](https://github.com/user-attachments/assets/026ca140-39c5-4fc5-8b51-1b39866beecc)
 
 ## Description
