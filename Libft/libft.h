@@ -63,7 +63,7 @@ typedef enum e_ft_printf_dir
 
 typedef struct s_list
 {
-	void			*data;
+	void			*content;
 	struct s_list	*next;
 }	t_list;
 
@@ -110,15 +110,17 @@ char		*ft_string2bin(char *s, size_t i, size_t j);
 void		ft_char2bin(unsigned char c, char *ret, size_t *j);
 char		*ft_add_fs(char *start, char c);
 int			ft_ishexdigit(int c);
-int			ft_isspace(int c);
+int			ft_isspace(char c);
 void		free_2d(char **arr);
 int64_t		ft_atoll(const char *str);
 int			ft_sqrt(int number);
 int			checkd_bf(int *numbers, int count);
 void		ins_sort(int array[], int n);
+char		ft_isreserved(char c);
 
 /*---------------PRINTF--------------------------------*/
 // dprintf update
+
 void		ft_specifier(int *dir, const char **format, int i, va_list ap);
 void		handle_format_flags(int *dir, const char **f);
 void		process_width_precision(int *dir, const char **f, va_list ap);
@@ -195,7 +197,7 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_msubstr( char const *s, unsigned int start, size_t len);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 void		ft_print_error(char *title, int code, char *line);
-t_list		*ft_lstnew(void *data);
+t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **list, t_list *new);
 int			ft_lstsize(t_list *lst);
 t_list		*ft_lstlast(t_list *lst);

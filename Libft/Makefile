@@ -11,6 +11,7 @@ LIB_SRC =	checkD_bf.c \
 		ft_ch_value.c \
 		ft_char.c \
 		ft_char2bin.c \
+		ft_isreserved.c \
 		ft_create_element.c \
 		ft_create_hashtable.c \
 		ft_delete_element.c \

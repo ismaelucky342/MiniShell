@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+         #
+#    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:15:58 by dgomez-l          #+#    #+#              #
-#    Updated: 2024/12/04 16:26:00 by dgomez-l         ###   ########.fr        #
+#    Updated: 2024/12/05 13:48:37 by ismherna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,78 +18,68 @@ NC = \033[0m
 NAME = minishell
 
 VPATH	=	src/:\
-			src/env/:\
-			src/exec/:\
-			src/exec/builtins/:\
-			src/exec/find_path/:\
-			src/exec/pipes/:\
-			src/exec/logic/:\
+			src/enviroment/:\
+			src/execute/:\
+			src/builtins/:\
+			src/tokenizer/:\
+			src/heredoc/:\
+			src/history/:\
+			src/utils/:\
+			src/wildcards/:\
 			src/expander/:\
-			src/parse/:\
-			src/parse/checker/:\
-			src/parse/heredoc/:\
-			src/parse/history/:\
-			src/parse/lexer/:\
-			src/parse/tree/:\
-			src/parse/wildcards/:\
-			src/parse/errors/:\
-			src/parse/multiple_tools/:
+			src/ast_tree/:\
+			src/signals_and_errors/:
 
-SRC		=	enviroment.c \
-			ft_env_get_value.c \
-			ft_env_no_value.c \
-			ft_remove_env.c \
-			cd.c \
-			echo.c \
-			env.c \
-			exit.c \
-			export.c \
-			pwd.c \
-			unset.c \
-			find_path.c \
-			logic_interpreter.c \
-			exec_first.c \
-			exec_last.c \
-			exec_mid.c \
-			pipe_interpreter.c \
-			exec_builtins.c \
-			exec_single.c \
-			exec_ve.c \
-			execution.c \
-			isbuiltin.c \
-			dictionary.c \
-			expand_types.c \
-			expander.c \
-			ft_expand_env.c \
-			ft_hitman.c \
-			heredoc_expander.c \
-			wildcard_expand.c \
-			check_heredoc.c \
-			checker_errors.c \
-			checker.c \
-			Errors_1.c \
-			Errors_2.c \
-			heredoc.c \
-			input.c \
-			history.c \
-			ft_remove_quotes.c \
-			retokenizer.c \
-			tokenizer.c \
-			cleanup.c \
-			utils.c \
-			ast_tree.c \
-			ft_free_list.c \
-			ft_free_redirections.c \
-			ft_free_tree.c \
-			ft_wdc_len.c \
-			wildcards_files.c \
-			wildcards_utils.c \
-			wildcards.c \
+SRC		=	enviroment/enviroment.c \
+			enviroment/get_env.c \
+			enviroment/remove_env.c \
+			execute/1.parse_exec_monitor.c \
+			execute/exec_errors.c \
+			execute/exec_utils.c \
+			execute/execute.c \
+			execute/get_tokens.c \
+			execute/logic_expansion.c \
+			execute/path_finder.c \
+			execute/pipe_interpreter.c \
+			execute/redirect_utils.c \
+			execute/single_cmd.c \
+			builtins/cd.c \
+			builtins/echo.c \
+			builtins/exit.c \
+			builtins/export.c \
+			builtins/pwd.c \
+			builtins/unset.c \
+			builtins/builtins_utils.c \
+			tokenizer/tokenizer.c \
+			tokenizer/ft_free_token.c \
+			tokenizer/quotes.c \
+			tokenizer/retokenizer.c \
+			heredoc/heredoc.c \
+			heredoc/heredoc_checker.c \
+			heredoc/heredoc_monitor.c \
+			heredoc/ft_create_heredoc.c \
+			history/history.c \
+			history/history_file.c \
+			wildcards/wildcards.c \
+			wildcards/wildcards_utils.c \
+			expander/dictionary.c \
+			expander/env_expander.c \
+			expander/expand_list.c \
+			expander/heredoc_expander.c \
+			expander/quotes_expander.c \
+			expander/str_expander.c \
+			expander/wildcards_expander.c \
+			ast_tree/ast_tree.c \
+			ast_tree/ft_free_ast_tree.c \
+			ast_tree/ft_free_array.c \
+			main.c \
 			init.c \
-			minishell.c \
-			prompt.c \
-			signals.c 
-			
+			ft_prompt.c \
+			signals_and_errors/errors_1.c \
+			signals_and_errors/errors_2.c \
+			signals_and_errors/signals.c \
+			signals_and_errors/syntax_checker.c \
+			signals_and_errors/tremios_control.c
 
 OBJ_DIR  = objects
 
@@ -98,7 +88,7 @@ INCLUDE = /includes/minishell.h
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize="address"
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
 LIBFT = ./Libft/libft.a
 
@@ -131,6 +121,7 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 clean: clear
 	@make -sC ./Libft fclean
 	@rm -rf $(OBJ_DIR)
+	@find src -type f -name '*.o' -delete
 	@echo "$(R)----------------------------------------- Objects  Cleaned -----------------------------------------$(NC)"
 
 fclean: clean

@@ -5,27 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 15:50:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/11/03 12:54:18 by ismherna         ###   ########.fr       */
+/*   Created: 2024/07/05 12:29:40 by ismherna          #+#    #+#             */
+/*   Updated: 2024/12/05 12:32:18 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 /**
-* @brief Extracts a substring from a specified position in a string.
-*
-* The function searches the string `str` from index `needle_tip` and extracts a
-* substring that ends in the first space, quote, or one of the
-* special characters (`|`, `;`, `&`, `$`). It also handles
-* special cases for the dollar sign (`$`) and question mark (`?`).
-*
-* @param str Input string from which the substring will be extracted.
-* @param needle_tip Starting position for extraction.
-* @return char* A new extracted substring. If a special case is
-* found or there are no valid characters, an empty string or a pointer to
-* `"$"` or `"?"` is returned.
-*/
+ * @brief Extracts a substring from the input string starting at the given position.
+ *
+ * This function takes a string and a starting position (needle_tip) and returns a 
+ * substring that ends at the first occurrence of a special character or whitespace.
+ * The special characters considered are: space (' '), double quote ('"'), single quote ('\''),
+ * pipe ('|'), semicolon (';'), ampersand ('&'), and dollar sign ('$').
+ *
+ * @param str The input string from which the substring is extracted.
+ * @param needle_tip The starting position in the input string.
+ * @return A newly allocated string containing the extracted substring.
+ *         If the character at needle_tip is '$', returns "$".
+ *         If the character at needle_tip is '?', returns "?".
+ *         If the character at needle_tip is a whitespace, null terminator, or double quote, returns an empty string.
+ */
 char	*dictionary(char *str, int needle_tip)
 {
 	size_t	len;

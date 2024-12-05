@@ -5,20 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/22 12:50:36 by ismherna          #+#    #+#             */
-/*   Updated: 2024/10/27 23:02:25 by ismherna         ###   ########.fr       */
+/*   Created: 2024/10/01 20:49:10 by ismherna          #+#    #+#             */
+/*   Updated: 2024/12/05 13:07:59 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-extern int	g_exit;
+
+extern int	g_is_exec;
 
 static int	ft_init_envp(t_minishell *boogeyman, char **envp)
 {
 	int	ctr;
 
 	ctr = -1;
-	g_exit = 0;
+	g_is_exec = 0;
 	while (envp && envp[boogeyman->env_elems])
 		boogeyman->env_elems++;
 	boogeyman->env_size = boogeyman->env_elems * 2;
@@ -28,55 +29,64 @@ static int	ft_init_envp(t_minishell *boogeyman, char **envp)
 		boogeyman->env_size = 32;
 	boogeyman->envp = ft_calloc(boogeyman->env_size, sizeof(char *));
 	if (!boogeyman->envp)
-		return (KO);
+		return (1);
 	while (++ctr < boogeyman->env_elems)
 		boogeyman->envp[ctr] = ft_strdup(envp[ctr]);
-	return (OK);
+	return (0);
 }
 
 static void	ft_fill_envp(t_minishell *boogeyman)
 {
 	char	*tmp;
 	char	*tmp2;
-	int		chell;
+	int		shllvl;
 
-	chell = 1 + ft_atoi(get_value_from_env(boogeyman->envp, "SHLVL", NULL));
-	if (chell >= 1000)
-		ft_tmp(&tmp, &chell);
-	tmp = ft_itoa(chell);
+	shllvl = 1 + ft_atoi(ft_get_from_env(boogeyman->envp, "SHLVL", NULL));
+	if (shllvl >= 1000)
+		tmp_management(&tmp, &shllvl);
+	tmp = ft_itoa(shllvl);
 	tmp2 = ft_strjoin("SHLVL=", tmp);
-	ft_env_build(boogeyman, tmp2);
+	ft_add_to_env(boogeyman, tmp2);
 	free(tmp);
 	free(tmp2);
-	tmp = get_cwd_str();
+	tmp = cwd_str_status();
 	if (tmp)
 	{
 		tmp2 = ft_strjoin("PWD=", tmp);
-		ft_env_build(boogeyman, tmp2);
+		ft_add_to_env(boogeyman, tmp2);
 		free(tmp);
 		free(tmp2);
 	}
-	ft_env_build(boogeyman, "?=0");
+	ft_add_to_env(boogeyman, "?=0");
 }
 
-void	init_minishell(t_minishell *boogeyman, char **envp, int argc, char **argv)
+/*
+	Initializes main struct,
+	custom envp (allocation and copy of given envp,
+	plus setting of varibles such as SHLVL),
+	creates a custom prompt, sets signal handling 
+	and creates persistent history file if posible
+*/
+void	init(t_minishell *boogeyman, char **envp, int argc, char **argv)
 {
 	(void)argv;
 	if (argc != 1)
 	{
-		ft_putendl_fd("Minishell: no args supported", STDERR_FILENO);
+		ft_putendl_fd("MiniShell: no args supported", STDERR_FILENO);
 		exit(1);
 	}
 	ft_bzero(boogeyman, sizeof(t_minishell));
 	if (ft_init_envp(boogeyman, envp))
 	{
-		ft_putendl_fd("Minishell: error allocating envp space", STDERR_FILENO);
-		ft_memory_error(boogeyman);
+		ft_putendl_fd("MiniShell: error allocating envp space", STDERR_FILENO);
+		ft_memory_err_exit(boogeyman);
 	}
 	ft_fill_envp(boogeyman);
 	boogeyman->cmd_tree = NULL;
-	boogeyman->ft_prompt = ft_prompt(boogeyman->envp);
-	ft_set_signal_handlers();
-	ft_init_file(boogeyman);
-	ft_h_fill(boogeyman);
+	boogeyman->custom_prompt = ft_prompt(boogeyman->envp);
+	signal(SIGINT, ft_signals);
+	signal(SIGQUIT, ft_signals);
+	ft_set_signal_print(0);
+	ft_init_history_file(boogeyman);
+	ft_history_filler(boogeyman);
 }

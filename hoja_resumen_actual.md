@@ -18,11 +18,11 @@
 
 ### 5. **Manejo de `heredoc`**
 
-- **`heredoc.c`, `check_heredoc.c`**: Prepara y verifica el contenido de `heredoc`, donde se espera hasta recibir una entrada coincidente con la palabra clave de finalización. Esta entrada se expande (`ft_expand_heredoc`) y se almacena temporalmente para usarse durante la ejecución.
+- **`heredoc.c`, `check_heredoc.c`**: Prepara y verifica el contenido de `heredoc`, donde se espera hasta recibir una entrada coincidente con la palabra clave de finalización. Esta entrada se expande (`ft_expand_str_heredoc`) y se almacena temporalmente para usarse durante la ejecución.
 
 ### 6. **Expansión de Variables y Comodines**
 
-- **`expander.c`, `expand_types.c`, `ft_expand_env.c`, `heredoc_expander.c`, `wildcard_expand.c`, `wildcards.c`, `wildcards_utils.c`, `wildcards_files.c`**: Realiza la expansión de variables (`$VAR`), reemplazándolas con su valor. También maneja la expansión de comodines, generando listas de archivos que coinciden con patrones como ``.
+- **`expander.c`, `expand_types.c`, `ft_expand_str_env.c`, `heredoc_expander.c`, `wildcard_expand.c`, `wildcards.c`, `wildcards_utils.c`, `wildcards_files.c`**: Realiza la expansión de variables (`$VAR`), reemplazándolas con su valor. También maneja la expansión de comodines, generando listas de archivos que coinciden con patrones como ``.
 Es importante que la expansión se realize dentro de cada subproceso (o builtin) de cada comando, para minimizar errores.
 
 ### 7. **Ejecución de Comandos**
@@ -43,7 +43,7 @@ El orden general de estos archivos y sus funcionalidades en el flujo es:
 1. **Inicialización** (`init.c`, `minishell.c`, `signals.c`)
 2. **Entrada y Tokenización** (`input.c`, `tokenizer.c`, `retokenizer.c`)
 3. **Verificación Sintáctica** (`checker.c`, `checker_errors.c`, `Errors_1.c`, `Errors_2.c`)
-4. **Expansión** (`expander.c`, `expand_types.c`, `ft_expand_env.c`, `heredoc_expander.c`, `wildcard_expand.c`)
+4. **Expansión** (`expander.c`, `expand_types.c`, `ft_expand_str_env.c`, `heredoc_expander.c`, `wildcard_expand.c`)
 5. **Construcción del AST** (`ast_tree.c`)
 6. **Manejo de `heredoc`** (`heredoc.c`, `check_heredoc.c`)
 7. **Ejecución** (`ft_exec_and_wait.c`, `path_finder.c`, `ft_execbuiltin.c`, `redirect_utils.c`)
