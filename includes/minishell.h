@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:16:35 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 13:20:11 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:58:05 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*===============================INCLUDES AREA==============================*/
 
 # include "../Libft/libft.h"
-# include "Structs.h"
+# include "structs.h"
 # include <dirent.h>
 # include <fcntl.h>
 # include <readline/history.h>

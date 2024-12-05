@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
+#    By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:15:58 by dgomez-l          #+#    #+#              #
-#    Updated: 2024/12/05 13:48:37 by ismherna         ###   ########.fr        #
+#    Updated: 2024/12/05 15:04:48 by dgomez-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ clear:
 all: clear $(LIBFT) $(NAME) title_print
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) includes/minishell.h
-	@printf "%-147s\r" "                                                                                                              "
+	@printf "%-183s\r" ""
 	@$(CC) $(CFLAGS) $(OBJ) -I $(INCLUDE) $(LIBFT) -lreadline -o $(NAME)
 	@echo "$(G)----------------------------------- Minishell Finished Compiling -----------------------------------$(NC)\n"
 
