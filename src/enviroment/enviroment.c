@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 23:48:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static int	ft_realloc_and_add_envp(t_mini *boogeyman, char *passkey)
  * @param passkey The new env variable to replace with.
  * @param key The key to search for in the env array.
  */
-
 static void	ft_search_and_replace_env(char **envp, char *passkey, char *key)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:59:26 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:47:35 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:28:52 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ static void	red_compare(t_list *tkn_lst, t_list **tmp)
 }
 
 /**
+ * @brief
  * Sets the file information for the current tree node based on the token list.
  * 
  * @param tkn_lst The list of tokens.
  * @param current The current tree node.
  * @return 0 on success, 1 if there is no next token.
+ * @warning MALLOC. Return for malloc failure = ?
  */
 static int	set_file_info(t_list *tkn_lst, t_tree_node *current)
 {
@@ -99,6 +101,7 @@ static int	ft_count_args(t_list *begin)
  * @param p_curr The previous current tree node.
  * @param i The index for arguments.
  * @return 0 on success, 1 on error, 2 on memory allocation failure.
+ * @warning MALLOC. Return for malloc failure = 2
  */
 static int	fill_management(t_list **bgn, t_tree_node **current,
 		t_tree_node **p_curr, int *i)
@@ -136,6 +139,7 @@ static int	fill_management(t_list **bgn, t_tree_node **current,
  * @param begin The beginning of the token list.
  * @param tree_node The AST tree node.
  * @return 0 on success, 1 on error, 2 on memory allocation failure.
+ * @warning MALLOC. Return for malloc failure = 2.
  */
 int	ft_ast_tree(t_list *begin, t_ast_tree *tree_node)
 {

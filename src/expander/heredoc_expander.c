@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 00:34:15 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:51:54 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 		expanded heredoc,
  *         or -1 if an error occurs.
  */
-
 int	ft_expand_str_heredoc(int o_fd, t_rtoken *tok, char **envp)
 {
 	int		fd;

@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 10:42:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:40:32 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:28:15 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_remove_env_variables(t_mini *boogeyman)
 		}
 	}
 }
+
 /**
  * ft_remove_env
 	- Removes an env variable from the minishell env.
@@ -55,7 +56,6 @@ void	ft_remove_env_variables(t_mini *boogeyman)
  *
  * Return: Always returns 0.
  */
-
 int	ft_remove_env(t_mini *boogeyman, char *key)
 {
 	int		i;

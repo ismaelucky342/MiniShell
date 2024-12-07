@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 10:59:30 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:44:48 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  * @param str The input string to process.
  * @return The left token extracted from the input string.
  */
-
 char	*ft_get_left_token(char *str)
 {
 	int		i;

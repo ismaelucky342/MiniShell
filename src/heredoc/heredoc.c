@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:50:36 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:51:54 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ char	*tmp_filename(void)
  * @return A pointer to the extracted delimiter string, or NULL if no delimiter
  *         was found.
  */
-
 static char	*delimiter(char **str, int *i, char *new_name)
 {
 	int		j;

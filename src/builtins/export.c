@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:44 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:28:23 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
  * @param passkey The key to be validated.
  * @return 1 if the key is valid, 0 otherwise.
  */
-
 static int	ft_is_valid_key(char *passkey)
 {
 	int		i;
@@ -59,7 +58,6 @@ static int	ft_is_valid_key(char *passkey)
  * @param envp The array of env variables.
  * @return Always returns 0.
  */
-
 static int	ft_print_env(char **envp)
 {
 	int		i;
@@ -87,6 +85,7 @@ static int	ft_print_env(char **envp)
 	}
 	return (0);
 }
+
 /**
  * @brief Handles the export builtin command in the minishell.
  *
@@ -99,7 +98,6 @@ static int	ft_print_env(char **envp)
  * @param boogeyman The minishell structure containing the env.
  * @return 0 if all keys are valid, 1 if any key is invalid.
  */
-
 int	ft_export_builtin(t_tree_node *node, t_mini *boogeyman)
 {
 	int	i;

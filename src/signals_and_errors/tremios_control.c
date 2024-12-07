@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:52:06 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 15:24:45 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:28:05 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	ft_set_signal_print(int val)
 	}
 	return (0);
 }
+
 /**
  * @brief Sets the echo flag for terminal input.
  *
@@ -57,7 +58,6 @@ int	ft_set_signal_print(int val)
 	the echo flag is disabled.
  * @return Returns 0 on success, or 1 on failure.
  */
-
 int	ft_set_echo(int val)
 {
 	struct termios	settings;

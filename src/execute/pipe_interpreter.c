@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:12:29 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/05 16:51:54 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
  *
  * Return: 0 on success, 1 on failure.
  */
-
 int	exec_first_management(t_tree_node *node, t_mini *boogeyman, char **path)
 {
 	ft_dup2(node->pipe_fds[1], STDOUT_FILENO);
@@ -90,7 +89,6 @@ int	ft_exec_first_cmd(t_tree_node *node, t_mini *boogeyman, int *outfd)
  *
  * Return: 0 on success, 1 on failure.
  */
-
 static int	ft_exec_mid_cmd(t_tree_node *node, t_mini *boogeyman, int inputfd,
 		int *outfd)
 {
@@ -131,7 +129,6 @@ static int	ft_exec_mid_cmd(t_tree_node *node, t_mini *boogeyman, int inputfd,
  *
  * Return: 0 on success, 1 on failure.
  */
-
 static int	ft_exec_last_cmd(t_tree_node *node, t_mini *boogeyman, int inputfd)
 {
 	if (ft_file_redirs(node->redirs_lst, inputfd, STDOUT_FILENO,

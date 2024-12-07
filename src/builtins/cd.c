@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:50 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:40:45 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
  * 
  * Return: 0 on success, 1 on failure.
  */
-
 static int	cd_management(t_mini *boogeyman, char **path)
 {
 	char	*cwd;

@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 14:07:14 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:47:35 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:28:30 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
  *
  * @param t A pointer to the redirection token to be freed.
  */
-
 static void	free_redirections(void *t)
 {
 	t_rtoken	*tok;
@@ -45,13 +44,13 @@ static void	ft_free_node_list(t_tree_node *cmd_list)
 		cmd_list = next;
 	}
 }
+
 /**
  * Frees the memory allocated for an AST tree.
  *
  * @param tree A pointer to the AST tree to be freed.
  * @return Always returns NULL.
  */
-
 void	*ft_free_cmdtree(t_ast_tree *tree)
 {
 	if (tree->left)

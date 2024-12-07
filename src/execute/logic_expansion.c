@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:20:15 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	if_mask(char *str, int last)
  *
  * Return: The exit code of the executed command or logical expression.
  */
-
 int	expand_execute(t_ast_tree *tree_node, t_mini *boogeyman)
 {
 	char	*keyval;

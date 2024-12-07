@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:29:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 15:19:56 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:07:32 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*ft_prompt(char **env)
 	char	*home;
 	char	*original_dir;
 
-	user = get_val_from_env(env, "USER", NULL);
+	user = get_val_from_env(env, "SHELL", NULL);
 	home = get_val_from_env(env, "HOME", NULL);
 	original_dir = getcwd(NULL, 0);
 	if (!original_dir)
@@ -97,8 +97,5 @@ void	update_prompt(t_mini *boogeyman)
 {
 	free(boogeyman->custom_prompt);
 	boogeyman->custom_prompt = ft_prompt(boogeyman->envp);
-	rl_clear_visible_line();
-	rl_on_new_line();
 	rl_replace_line(boogeyman->custom_prompt, 0);
-	rl_redisplay();
 }
