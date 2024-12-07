@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 22:31:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 13:00:08 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 17:23:15 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 /**
  * @brief Handles cleanup and exits the shell.
  *
- * This function closes the history file descriptor, frees allocated memory for
- * the custom prompt and environment variables, and also frees the command 
+ * This function closes the history fd, frees allocated memory for
+ * the custom prompt and env variables, and also frees the command 
  * tree if present. Finally, it exits the program with the specified exit code.
  *
  * @param exit_code The exit code to be returned by the program.
- * @param boogeyman A pointer to the minishell structure that contains necessary data.
+ * @param boogeyman A pointer to the minishell structure that contains
+		necessary data.
  * @param print A flag that determines whether to print "exit" to STDERR.
  */
-void	ft_printexit(int exit_code, t_minishell *boogeyman, char print) 
+void	ft_printexit(int exit_code, t_mini *boogeyman, char print)
 {
 	if (print)
 		ft_putendl_fd("exit", STDERR_FILENO);
@@ -41,18 +42,18 @@ void	ft_printexit(int exit_code, t_minishell *boogeyman, char print)
  * This function uses `getcwd` to get the current working directory, 
  * handling any errors that may occur during the operation.
  *
- * @return A string representing the current working directory, or NULL if an error occurs.
+ * @return A string representing the current working directory,
+	or NULL if an error occurs.
  */
 char	*cwd_str_status(void)
 {
-	void	*nullable;
-	char	cwd[256];
+	char	*cwd;
 
-	nullable = getcwd(cwd, sizeof(cwd));
-	if (!nullable)
+	cwd = getcwd(NULL, 0);
+	if (!cwd)
 	{
 		perror("MiniShell: update cwd error");
 		return (NULL);
 	}
-	return (ft_strdup(cwd));
+	return (cwd);
 }

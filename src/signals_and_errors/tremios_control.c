@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tremios_control.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:52:06 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 13:34:39 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:24:45 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
  * ^X (where X is the corresponding character) or not echoed at all.
  *
  * @param val An integer value indicating whether to enable or disable ECHOCTL.
- *            If val is non-zero, ECHOCTL is enabled. If val is zero, ECHOCTL is disabled.
+ *            If val is non-zero, ECHOCTL is enabled. If val is zero,
+	ECHOCTL is disabled.
  * @return Returns 0 on success, or 1 if an error occurs.
  */
 int	ft_set_signal_print(int val)
@@ -49,9 +50,11 @@ int	ft_set_signal_print(int val)
  * @brief Sets the echo flag for terminal input.
  *
  * This function modifies the terminal settings to enable or disable the echo
- * flag, which controls whether input characters are echoed back to the terminal.
+ * flag,
+	which controls whether input characters are echoed back to the terminal.
  *
- * @param val If non-zero, the echo flag is enabled. If zero, the echo flag is disabled.
+ * @param val If non-zero, the echo flag is enabled. If zero,
+	the echo flag is disabled.
  * @return Returns 0 on success, or 1 on failure.
  */
 

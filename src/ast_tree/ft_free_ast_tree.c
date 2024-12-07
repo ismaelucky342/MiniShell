@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_ast_tree.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 14:07:14 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 10:32:17 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:47:35 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 static void	free_redirections(void *t)
 {
-	t_redirection_token	*tok;
+	t_rtoken	*tok;
 
 	tok = t;
 	free(tok->file_name);

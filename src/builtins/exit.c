@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:54:10 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:30:17 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:34:07 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@
  */
 static int	ft_check_exit_arg(char *arg)
 {
-	int		i;
-	int		sign_ctr;
-	int		digits;
+	int	i;
+	int	sign_ctr;
+	int	digits;
 
 	i = -1;
 	sign_ctr = 0;
 	digits = 0;
 	while (arg[++i] && sign_ctr <= 1)
 	{
-		if (!ft_isdigit(arg[i]) && !ft_isspace(arg[i])
-			&& (arg[i] != '+' && arg[i] != '-'))
+		if (!ft_isdigit(arg[i]) && !ft_isspace(arg[i]) && (arg[i] != '+'
+				&& arg[i] != '-'))
 			return (0);
 		if (arg[i] == '+' || arg[i] == '-')
 			++sign_ctr;
@@ -47,7 +47,6 @@ static int	ft_check_exit_arg(char *arg)
 		return (1);
 	return (0);
 }
-
 
 /**
  * ft_exit_builtin - Handles the exit command for the minishell.
@@ -64,7 +63,7 @@ static int	ft_check_exit_arg(char *arg)
  *
  * Return: 0 on successful exit, 1 if there are too many arguments.
  */
-int	ft_exit_builtin(t_tree_node *node, t_minishell *boogeyman, char print)
+int	ft_exit_builtin(t_tree_node *node, t_mini *boogeyman, char print)
 {
 	if (node->args[0] && node->args[1])
 	{

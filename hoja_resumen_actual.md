@@ -1,6 +1,6 @@
 ### 1. **Inicialización**
 
-- **`init.c` y `minishell.c`**: Estas funciones se encargan de la configuración inicial de la minishell (`init_minishell`) y la carga del entorno (`ft_env_build` y `ft_h_fill`). También se configura el prompt (`ft_prompt`).
+- **`init.c` y `minishell.c`**: Estas funciones se encargan de la configuración inicial de la minishell (`init_mini`) y la carga del entorno (`ft_env_build` y `ft_h_fill`). También se configura el prompt (`ft_prompt`).
 - **`signals.c`**: Configura los manejadores de señales (`ft_set_signal_handlers`) para capturar señales como `Ctrl-C` y `Ctrl-D`, las cuales deben manejarse durante la ejecución interactiva.
 
 ### 2. **Entrada y Tokenización**

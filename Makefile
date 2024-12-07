@@ -6,7 +6,7 @@
 #    By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:15:58 by dgomez-l          #+#    #+#              #
-#    Updated: 2024/12/05 15:04:48 by dgomez-l         ###   ########.fr        #
+#    Updated: 2024/12/05 17:09:25 by dgomez-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,7 +116,7 @@ $(OBJ_DIR):
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -I $(INCLUDE) -c -o $@ $<
-	@printf "%-147s\r" ">Minishell compiling: ""$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<"
+	@printf "%-183s\r" ">Minishell compiling: ""$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<"
 
 clean: clear
 	@make -sC ./Libft fclean

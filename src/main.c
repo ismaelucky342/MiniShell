@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:16:41 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 10:13:57 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 17:19:25 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	g_is_exec;
+int		g_is_exec;
 
 /*
 	Tries to read a line, with EOF protection
 	Also trims spaces, and stores the str inside a cmd_tree
 	node and in the history
 */
-static void	get_command_str(t_minishell *boogeyman)
+static void	get_command_str(t_mini *boogeyman)
 {
 	char	*tmp;
 	char	*res;
@@ -52,8 +52,7 @@ static void	get_command_str(t_minishell *boogeyman)
 {
 	system("leaks minishell");
 } */
-
-void	ft_setsigint(t_minishell *boogeyman)
+void	ft_setsigint(t_mini *boogeyman)
 {
 	ft_add_to_env(boogeyman, "?=130");
 	g_is_exec = 0;
@@ -61,7 +60,7 @@ void	ft_setsigint(t_minishell *boogeyman)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_minishell	m_boogeyman;
+	t_mini		m_boogeyman;
 
 	rl_initialize();
 	init(&m_boogeyman, envp, argc, argv);

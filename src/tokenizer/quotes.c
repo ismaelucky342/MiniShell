@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:16:39 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:50:56 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:25:39 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	state_quote_delimiter(char *str, int *i, char delim)
  * Removes surrounding quotes from a string by shifting its characters.
  * Both single (`'`) and double (`"`) quotes are handled.
  *
-
-	* @param str The input string to unquote. This string will be modified in place.
+ * @param str The input string to unquote. This string will be modified in place.
  */
 void	ft_str_unquote(char *str)
 {

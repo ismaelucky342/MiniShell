@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:50:36 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 13:17:56 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:51:54 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,23 +85,22 @@ static char	*delimiter(char **str, int *i, char *new_name)
 	return (*i += ft_strlen(new_name), delim);
 }
 
-
 /**
  * Auxiliary function for handling heredoc.
  *
  * This function generates a temporary filename, opens the file, and extracts
- * the delimiter from the input string. It returns the file descriptor of the
+ * the delimiter from the input string. It returns the fd of the
  * opened file.
  *
  * @param str The input string.
  * @param i The current position in the input string.
  * @param delim A pointer to store the extracted delimiter.
  * @param f_name A pointer to store the generated filename.
- * @return The file descriptor of the opened file, or -1 on error.
+ * @return The fd of the opened file, or -1 on error.
  */
 static int	aux_heredoc(char **str, int *i, char **delim, char **f_name)
 {
-	int		fd;
+	int	fd;
 
 	*f_name = tmp_filename();
 	if (!*f_name)
@@ -158,6 +157,5 @@ int	ft_heredoc(char **str, int *i, char **f_name)
 	heredoc_monitor(&line, prompt, delim, &fd);
 	if (line)
 		free(line);
-	return (free(delim), free(prompt),
-		ft_close(fd), free(*f_name), exit(0), 0);
+	return (free(delim), free(prompt), ft_close(fd), free(*f_name), exit(0), 0);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_2.c                                          :+:      :+:    :+:   */
+/*   errors_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:07:54 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:56:29 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:54:00 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ft_memory_err_exit(t_minishell *boogeyman)
+void	ft_memory_err_exit(t_mini *boogeyman)
 {
 	ft_putendl_fd("MiniShell: memory error", STDERR_FILENO);
 	ft_printexit(2, boogeyman, 0);
@@ -28,6 +28,7 @@ void	tmp_management(char **tmp, int *shllvl)
 	ft_putendl_fd(") too high, resetting to 1", STDERR_FILENO);
 	*shllvl = 1;
 }
+
 /**
  * Prints a syntax error message to the standard error output.
  *

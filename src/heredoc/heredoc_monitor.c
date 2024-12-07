@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_monitor.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:23:23 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:39:22 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:51:54 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 extern int	g_is_exec;
 
 /**
- * @brief Substitutes a delimiter in a string with a space and updates the string.
+ * @brief Substitutes a delimeter in a string with a space and
+		updates the string.
  *
  * This function takes a string and substitutes a delimiter at a given position
  * with a space. It then updates the original string with the new value.
@@ -46,12 +47,11 @@ void	delim_subs(char **str, int j, char *tmp, char *tmp2)
  * @param line Pointer to the input line.
  * @param prompt Prompt to be displayed for readline.
  * @param delim Delimiter string to stop reading.
- * @param fd File descriptor to write the lines to.
+ * @param fd fd to write the lines to.
  */
 void	heredoc_monitor(char **line, char *prompt, char *delim, int *fd)
 {
-	while ((*line) && ft_strncmp((*line), delim,
-			ft_strlen(delim) + 1))
+	while ((*line) && ft_strncmp((*line), delim, ft_strlen(delim) + 1))
 	{
 		ft_putendl_fd((*line), *fd);
 		free((*line));

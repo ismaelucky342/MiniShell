@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:11:17 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:30:17 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:49:08 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 	3. Find executable, some builtins may be runned in parent process
 	4. fork if necesary, then execute 
 */
-int	ft_exec_single_cmd(t_tree_node *node, t_minishell *boogeyman)
+int	ft_exec_single_cmd(t_tree_node *node, t_mini *boogeyman)
 {
-	if (ft_file_redirs(node->redirs_lst, STDIN_FILENO,
-			STDOUT_FILENO, boogeyman->envp))
+	if (ft_file_redirs(node->redirs_lst, STDIN_FILENO, STDOUT_FILENO,
+			boogeyman->envp))
 		return (node->exit_code = 1, 1);
 	if (!node->args[0])
 		return (1);

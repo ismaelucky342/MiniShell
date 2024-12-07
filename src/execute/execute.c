@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 18:15:01 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 13:48:12 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:42:41 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 extern int	g_is_exec;
+
 /**
  * Iterates over the provided string starting at the position pointed to by `i`.
- * As `i` is an int pointer, after calling this function, the provided int position
+ * As `i` is an int pointer, after calling this function,
+	the provided int position
  * will be after the brackets.
  *
  * @param str The string to iterate over.
@@ -40,13 +42,14 @@ void	ft_brackets(char *str, int *i)
 }
 
 /**
- * Waits for all child processes to finish and returns the exit code of the last process.
+ * Waits for all child processes to finish and returns the
+		exit code of the last process.
  *
  * @param last_pid The process ID of the last process.
  * @param last Pointer to the last tree node.
  * @return The exit code of the last process.
  */
-static	int	ft_wait_all(int last_pid, t_tree_node *last)
+static int	ft_wait_all(int last_pid, t_tree_node *last)
 {
 	int	status;
 	int	last_exited;
@@ -71,13 +74,14 @@ static	int	ft_wait_all(int last_pid, t_tree_node *last)
 }
 
 /**
- * Executes the commands in the abstract syntax tree and waits for them to finish.
+ * Executes the commands in the abstract syntax tree
+		and waits for them to finish.
  *
  * @param tree_node Pointer to the root of the abstract syntax tree.
  * @param boogeyman Pointer to the minishell structure.
  * @return The exit code of the last executed command.
  */
-int	ft_exec_and_wait(t_ast_tree *tree_node, t_minishell *boogeyman)
+int	ft_exec_and_wait(t_ast_tree *tree_node, t_mini *boogeyman)
 {
 	int			std_backup[2];
 	int			last_pid;
@@ -103,5 +107,3 @@ int	ft_exec_and_wait(t_ast_tree *tree_node, t_minishell *boogeyman)
 		return (tree_node->cmd_list->exit_code);
 	return (tmp);
 }
-
-

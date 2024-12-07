@@ -3,26 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   str_expander.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 00:34:15 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:37:51 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 /**
- * @brief Expands a given string by replacing environment variables with their values.
+ * @brief Expands a given string by replacing env variables with
+		their values.
  *
- * This function takes a string and an index, and replaces any environment variables
- * found in the string with their corresponding values from the provided environment
+ * This function takes a string and an index,
+	and replaces any env variables
+ * found in the string with their corresponding values from the
+		provided env
  * variables array.
  *
  * @param str The input string to be expanded.
  * @param i Pointer to the current index in the string.
- * @param envp Array of environment variables.
- * @return The expanded string with environment variables replaced.
+ * @param envp Array of env variables.
+ * @return The expanded string with env variables replaced.
  */
 static char	*expand_str_check(char *str, int *i, char **envp)
 {
@@ -54,16 +57,17 @@ static char	*expand_str_check(char *str, int *i, char **envp)
 }
 
 /**
- * @brief Expands environment variables in a given line.
+ * @brief Expands env variables in a given line.
  *
- * This function processes a line of text and expands any environment variables
- * found in the line using the provided environment variables array. It also handles
- * quoted strings and selectively expands variables based on the expand_all flag.
+ * This function processes a line of text and expands any env variables
+ * found in the line using the provided env variables array.
+ * It also handles quoted strings and selectively expands variables
+		based on the expand_all flag.
  *
  * @param line The input line to be expanded.
- * @param envp Array of environment variables.
+ * @param envp Array of env variables.
  * @param expand_all Flag indicating whether to expand all variables or not.
- * @return The expanded line with environment variables replaced.
+ * @return The expanded line with env variables replaced.
  */
 char	*ft_expand_str(char *line, char **envp, char expand_all)
 {

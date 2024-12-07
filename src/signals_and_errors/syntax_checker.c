@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_checker.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 11:28:35 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 13:27:09 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:59:46 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ extern int	g_is_exec;
  */
 int	ft_file_name_checker(char *str, int *i)
 {
-	int	starting[2];
+	int		starting[2];
 
 	starting[0] = *i;
 	if (!ft_strncmp("<<", &str[*i], 2) || !ft_strncmp(">>", &str[*i], 2))
@@ -46,12 +46,12 @@ int	ft_file_name_checker(char *str, int *i)
 	if (starting[1] != *i)
 		return (0);
 	ft_putstr_fd("MiniShell: syntax error near token '", STDERR_FILENO);
-	if (!ft_strncmp("<<", &str[starting[0]], 2)
-		|| !ft_strncmp(">>", &str[starting[0]], 2))
-		(void) (write(STDERR_FILENO, &str[starting[0]], 2) + 1);
-	else if (!ft_strncmp("<", &str[starting[0]], 1)
-		|| !ft_strncmp(">", &str[starting[0]], 1))
-		(void) (write(STDERR_FILENO, &str[starting[0]], 1) + 1);
+	if (!ft_strncmp("<<", &str[starting[0]], 2) || !ft_strncmp(">>",
+			&str[starting[0]], 2))
+		write(STDERR_FILENO, &str[starting[0]], 2);
+	else if (!ft_strncmp("<", &str[starting[0]], 1) || !ft_strncmp(">",
+			&str[starting[0]], 1))
+		write(STDERR_FILENO, &str[starting[0]], 1);
 	ft_putendl_fd("'", STDERR_FILENO);
 	return (1);
 }
@@ -64,7 +64,7 @@ int	ft_file_name_checker(char *str, int *i)
  */
 int	ft_check_quotes(char *str)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (str[i])
@@ -94,9 +94,9 @@ int	ft_check_quotes(char *str)
  */
 int	ft_check_brackets(char *str)
 {
-	int	opening;
-	int	closing;
-	int	i;
+	int		opening;
+	int		closing;
+	int		i;
 
 	i = 0;
 	opening = 0;

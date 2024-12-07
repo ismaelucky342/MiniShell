@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 20:49:10 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 13:07:59 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 17:35:23 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern int	g_is_exec;
 
-static int	ft_init_envp(t_minishell *boogeyman, char **envp)
+static int	ft_init_envp(t_mini *boogeyman, char **envp)
 {
 	int	ctr;
 
@@ -35,7 +35,7 @@ static int	ft_init_envp(t_minishell *boogeyman, char **envp)
 	return (0);
 }
 
-static void	ft_fill_envp(t_minishell *boogeyman)
+static void	ft_fill_envp(t_mini *boogeyman)
 {
 	char	*tmp;
 	char	*tmp2;
@@ -67,7 +67,7 @@ static void	ft_fill_envp(t_minishell *boogeyman)
 	creates a custom prompt, sets signal handling 
 	and creates persistent history file if posible
 */
-void	init(t_minishell *boogeyman, char **envp, int argc, char **argv)
+void	init(t_mini *boogeyman, char **envp, int argc, char **argv)
 {
 	(void)argv;
 	if (argc != 1)
@@ -75,7 +75,7 @@ void	init(t_minishell *boogeyman, char **envp, int argc, char **argv)
 		ft_putendl_fd("MiniShell: no args supported", STDERR_FILENO);
 		exit(1);
 	}
-	ft_bzero(boogeyman, sizeof(t_minishell));
+	ft_bzero(boogeyman, sizeof(t_mini));
 	if (ft_init_envp(boogeyman, envp))
 	{
 		ft_putendl_fd("MiniShell: error allocating envp space", STDERR_FILENO);

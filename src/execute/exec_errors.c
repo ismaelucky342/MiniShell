@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   exec_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:31:36 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/05 12:30:17 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:42:10 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
 /**
  * @brief Delimits comparison for brackets and quotes in a string.
  *
@@ -22,7 +23,6 @@
  * @param j Pointer to the current position in the string.
  * @param b_ctr Pointer to the bracket counter.
  */
-
 static void	delimit_cmp(char *str, int *j, int *b_ctr)
 {
 	if (str[*j] == '(')
@@ -32,7 +32,6 @@ static void	delimit_cmp(char *str, int *j, int *b_ctr)
 	else if (str[*j] == '\'')
 		state_quote_delimiter(str, j, '\'');
 }
-
 
 /**
  * @brief Removes outer brackets from a string.
@@ -72,14 +71,16 @@ void	ft_remove_outer_brackets(char *str)
 /**
  * @brief Checks if a string is logically expandable.
  *
- * This function checks if the input string contains logical operators (&&, ||, ;)
- * or brackets that make it logically expandable. It also handles quoted substrings
+ * This function checks if the input string contains logical operators (&&, ||,
+		;)
+ * or brackets that make it logically expandable.
+ * It also handles quoted substrings
  * by calling the state_quote_delimiter function.
  *
  * @param str The input string to be checked.
- * @return Returns 0 if the string is not logically expandable, else returns a positive value.
+ * @return Returns 0 if the string is not logically expandable,
+	else returns a positive value.
  */
-
 int	get_log_expandible(char *str)
 {
 	int	i;
@@ -95,8 +96,8 @@ int	get_log_expandible(char *str)
 			if (str[i] == '\'' || str[i] == '\"')
 				++i;
 		}
-		if ((str[i] == '&' && str[i + 1] == '&')
-			|| (str[i] == '|' && str[i + 1] == '|') || (str[i] == ';'))
+		if ((str[i] == '&' && str[i + 1] == '&') || (str[i] == '|' && str[i
+					+ 1] == '|') || (str[i] == ';'))
 			last = i++;
 		else if (str[i] == '(')
 			ft_brackets(str, &i);
@@ -110,7 +111,8 @@ int	get_log_expandible(char *str)
  * @brief Checks if a string contains brackets.
  *
  * This function iterates through the input string and checks if it contains any
- * brackets. It also handles quoted substrings by calling the state_quote_delimiter function.
+ * brackets. It also handles quoted substrings by calling the
+		state_quote_delimiter function.
  *
  * @param str The input string to be checked.
  * @return Returns the bracket character if found, otherwise returns 0.
@@ -131,7 +133,6 @@ char	ft_has_brackets(char *str)
 	}
 	return (0);
 }
-
 
 /**
  * @brief Prints an expansion error message.

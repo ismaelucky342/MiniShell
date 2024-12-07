@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_token.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:59:11 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:59:21 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:58:30 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  */
 void	free_cmd_tok(void *tok)
 {
-	t_token	*tofree;
+	t_token		*tofree;
 
 	tofree = tok;
 	if (tofree)

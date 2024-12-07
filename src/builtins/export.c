@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:44 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:30:17 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 /**
- * @brief Checks if the given key is a valid environment variable key.
+ * @brief Checks if the given key is a valid env variable key.
  *
  * This function verifies if the provided key is a valid identifier for an
- * environment variable. A valid key must contain at least one alphabetic
+ * env variable. A valid key must contain at least one alphabetic
  * character and can only contain alphanumeric characters. The key cannot
  * contain spaces or equal signs.
  *
@@ -24,7 +24,7 @@
  * @return 1 if the key is valid, 0 otherwise.
  */
 
-static int	ft_is_valid_key(char	*passkey)
+static int	ft_is_valid_key(char *passkey)
 {
 	int		i;
 	char	has_alpha;
@@ -50,13 +50,13 @@ static int	ft_is_valid_key(char	*passkey)
 }
 
 /**
- * @brief Prints the current environment variables in a specific format.
+ * @brief Prints the current env variables in a specific format.
  *
- * This function prints all the environment variables stored in the provided
+ * This function prints all the env variables stored in the provided
  * array in the format "declare -x KEY="VALUE"", where VALUE is enclosed in
  * double quotes if it contains an equal sign.
  *
- * @param envp The array of environment variables.
+ * @param envp The array of env variables.
  * @return Always returns 0.
  */
 
@@ -90,17 +90,17 @@ static int	ft_print_env(char **envp)
 /**
  * @brief Handles the export builtin command in the minishell.
  *
- * This function processes the export command, which sets environment variables.
- * If no arguments are provided, it prints the current environment variables.
- * Otherwise, it validates each provided key and adds it to the environment if
+ * This function processes the export command, which sets env variables.
+ * If no arguments are provided, it prints the current env variables.
+ * Otherwise, it validates each provided key and adds it to the env if
  * valid.
  *
  * @param node The command node containing the arguments.
- * @param boogeyman The minishell structure containing the environment.
+ * @param boogeyman The minishell structure containing the env.
  * @return 0 if all keys are valid, 1 if any key is invalid.
  */
 
-int	ft_export_builtin(t_tree_node *node, t_minishell *boogeyman)
+int	ft_export_builtin(t_tree_node *node, t_mini *boogeyman)
 {
 	int	i;
 	int	ret;

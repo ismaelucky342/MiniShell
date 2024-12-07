@@ -3,28 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:50 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:58:25 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 /**
- * cd_management - Changes the current working directory and updates environment variables.
- * @boogeyman: A pointer to the minishell structure containing environment variables.
- * @path: A double pointer to the path to change to.
+ * cd_management
+	- Changes the current working directory and updates env variables.
+ * @param boogeyman: A pointer to the minishell structure containing
+		env variables.
+ * @param path: A double pointer to the path to change to.
  *
- * This function changes the current working directory to the path specified by @path.
- * It updates the "OLDPWD" and "PWD" environment variables accordingly and updates the shell prompt.
+ * This function changes the current working directory to the path
+		specified by @path.
+ * It updates the "OLDPWD" and "PWD" env variables accordingly and
+		updates the shell prompt.
  * If the directory change fails, it prints an error message and returns 1.
  * 
  * Return: 0 on success, 1 on failure.
  */
 
-static int	cd_management(t_minishell *boogeyman, char **path)
+static int	cd_management(t_mini *boogeyman, char **path)
 {
 	char	*cwd;
 
@@ -44,23 +48,27 @@ static int	cd_management(t_minishell *boogeyman, char **path)
 	ft_add_to_env(boogeyman, *path);
 	free(*path);
 	free(cwd);
-	update_prompt(boogeyman); // Update the prompt after changing directory
+	update_prompt(boogeyman);
 	return (0);
 }
 
 /**
  * ft_cd_builtin - Builtin function to change the current working directory.
- * @node: A pointer to the tree node containing command arguments.
- * @boogeyman: A pointer to the minishell structure containing environment variables.
+ * @param node: A pointer to the tree node containing command arguments.
+ * @param boogeyman: A pointer to the minishell structure containing
+		env variables.
  *
- * This function handles the 'cd' command in the minishell. It checks the arguments provided
- * and determines the target directory. If no directory is specified, it defaults to the "HOME"
- * environment variable. It then calls cd_management to perform the directory change.
+ * This function handles the 'cd' command in the minishell. It checks the
+		arguments provided
+ * and determines the target directory. If no directory is specified,
+	it defaults to the "HOME"
+ * env variable. It then calls cd_management to perform
+		the directory change.
  * If too many arguments are provided, it prints an error message and returns 1.
  * 
  * Return: 0 on success, 1 on failure.
  */
-int	ft_cd_builtin(t_tree_node *node, t_minishell *boogeyman)
+int	ft_cd_builtin(t_tree_node *node, t_mini *boogeyman)
 {
 	char	*path;
 

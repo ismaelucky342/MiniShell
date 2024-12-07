@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   logic_expansion.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:20:15 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/05 12:30:17 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ int	if_mask(char *str, int last)
 	return (0);
 }
 
-
 /**
  * expand_execute - Expands and executes the AST tree node.
  * @tree_node: The current AST tree node to expand and execute.
- * @boogeyman: The minishell context containing environment and execution state.
+ * @boogeyman: The minishell context containing env and execution state.
  *
  * This function attempts to expand logical expressions in the AST tree node.
  * It recursively processes the left and right child nodes based on the logical
@@ -44,21 +43,21 @@ int	if_mask(char *str, int last)
  * Return: The exit code of the executed command or logical expression.
  */
 
-int	expand_execute(t_ast_tree *tree_node, t_minishell *boogeyman)
+int	expand_execute(t_ast_tree *tree_node, t_mini *boogeyman)
 {
-	char		*keyval;
-	char		*nbrstr;
+	char	*keyval;
+	char	*nbrstr;
 
 	boogeyman->cont = 1;
 	if (logic_expansion(tree_node))
-		return (ft_expansion_error(tree_node), ft_printexit(2, boogeyman, 1), 2);
+		return (ft_expansion_error(tree_node), ft_printexit(2, boogeyman, 1),
+			2);
 	if (tree_node->left)
 		tree_node->exit_code = expand_execute(tree_node->left, boogeyman);
 	if (tree_node->right)
 		if (((tree_node->exit_code == 0 && tree_node->is_logic == M_AND_OP)
 				|| (tree_node->exit_code != 0 && tree_node->is_logic == M_OR_OP)
-				|| (tree_node->is_logic == M_WAIT))
-			&& boogeyman->cont)
+				|| (tree_node->is_logic == M_WAIT)) && boogeyman->cont)
 			tree_node->exit_code = expand_execute(tree_node->right, boogeyman);
 	if (!tree_node->is_logic)
 		tree_node->exit_code = ft_parse_and_exec_monitor(tree_node, boogeyman);

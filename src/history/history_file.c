@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:18:19 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:40:47 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:52:44 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 /**
  * Initializes the history file for the minishell.
  *
- * This function attempts to retrieve the user's home directory from the environment
- * variables. If the home directory is found, it appends the history file base name
- * to it and opens the file with read and write permissions. If the home directory
- * is not found or if there is an error during memory allocation, appropriate error
- * handling is performed.
+ * This function attempts to retrieve the user's home directory from the env
+ * variables. If the home directory is found,
+	it appends the history file base name
+ * to it and opens the file with read and write permissions.
+ * If the home directory is not found or if there is an error during memory
+		allocation, appropriate error handling is performed.
  *
- * @param boogeyman A pointer to the minishell structure containing environment
- *                  variables and file descriptors.
+ * @param boogeyman A pointer to the minishell structure containing env
+ *                  variables and fds.
  */
-void	ft_init_history_file(t_minishell *boogeyman)
+void	ft_init_history_file(t_mini *boogeyman)
 {
 	char	*home;
 

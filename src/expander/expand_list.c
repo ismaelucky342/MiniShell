@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:59:26 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:36:15 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,25 @@
 /**
  * expand_list - Expands tokens in a linked list node based on their type.
  * @curr: Pointer to the current node in the linked list.
- * @boogeyman: Pointer to the minishell structure containing environment variables.
+ * @boogeyman: Pointer to the minishell structure containing env
+		variables.
  *
  * This function iterates through the string in the token of the current node
  * and expands it based on the character encountered and the token type.
- * It handles single quotes, double quotes, wildcards, and environment variables.
+ * It handles single quotes, double quotes, wildcards,
+	and env variables.
  * The token type is updated accordingly after expansion.
  */
-void	expand_list_tokens(t_list *curr, t_minishell *boogeyman)
+void	expand_list_tokens(t_list *curr, t_mini *boogeyman)
 {
 	t_token	*tok;
-	int			i;
-	int			pre_type;
+	int		i;
+	int		pre_type;
 
 	tok = curr->content;
 	i = 0;
 	pre_type = tok->type;
-	while (i < (int) ft_strlen(tok->str))
+	while (i < (int)ft_strlen(tok->str))
 	{
 		if (tok->str[i] == '\'' && pre_type == ARG)
 			single_quote_expander(curr, &i);
@@ -52,17 +54,19 @@ void	expand_list_tokens(t_list *curr, t_minishell *boogeyman)
 }
 
 /**
- * @brief Expands environment variables in a list of tokens.
+ * @brief Expands env variables in a list of tokens.
  *
- * This function iterates through a list of tokens and expands any environment
- * variables found in tokens of type ARG or E_EXP_ARG using the provided minishell
+ * This function iterates through a list of tokens and expands any env
+ * variables found in tokens of type ARG or E_EXP_ARG using the
+		provided minishell
  * context.
  *
  * @param list The list of tokens to be expanded.
- * @param boogeyman The minishell context containing environment variables and other settings.
+ * @param boogeyman The minishell context containing env variables
+		and other settings.
  * @return Always returns 0.
  */
-int	ft_expand_str_list(t_list *list, t_minishell *boogeyman)
+int	ft_expand_str_list(t_list *list, t_mini *boogeyman)
 {
 	while (list)
 	{

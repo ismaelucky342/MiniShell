@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 17:46:10 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 14:59:00 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:48:38 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@
 # define H_DOC_TMP_BASE "/tmp/.dash_tmp_heredoc_"
 # define HIST_TMP_BASE "/.dash_history"
 # define HIST_ERROR_MSG "MiniShell: Error creating history file\n"
-# define PROMPT_BASE ft_prompt(boogeyman->envp)
 
 # ifndef SIZE_T_MAX
 #  define SIZE_T_MAX UINT_MAX
@@ -73,11 +72,11 @@ typedef struct s_token
 	int		type;
 }	t_token;
 
-typedef struct s_redirection_token
+typedef struct s_redir_token
 {
 	char	*file_name;
 	char	redir_type;
-}	t_redirection_token;
+}	t_rtoken;
 
 /*------------------------------AST_TREE STRUCTS-----------------------------*/
 
@@ -106,7 +105,7 @@ typedef struct s_ast_tree
 	int					exit_code;
 }	t_ast_tree;
 
-/*------------------------------MINISHELL SUPERSTRUCT--------------------------*/
+/*----------------------------MINISHELL SUPERSTRUCT------------------------*/
 
 typedef struct s_minishell
 {
@@ -119,6 +118,6 @@ typedef struct s_minishell
 	char		*custom_prompt;
 	char		eof;
 	char		cont;
-}	t_minishell;
+}	t_mini;
 
 #endif

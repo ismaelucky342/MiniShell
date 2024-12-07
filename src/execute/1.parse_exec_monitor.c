@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1.parse_exec_monitor.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:05:07 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:36:15 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:23:08 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
     7. Execute the command and wait for it to finish.
     8. Handle redirection errors.
 */
-int	ft_parse_and_exec_monitor(t_ast_tree *tree_node, t_minishell *boogeyman)
+int	ft_parse_and_exec_monitor(t_ast_tree *tree_node, t_mini *boogeyman)
 {
-	int		status;
+	int	status;
 
 	while (ft_has_brackets(tree_node->cmd_str))
 		ft_remove_outer_brackets(tree_node->cmd_str);

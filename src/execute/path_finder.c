@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_finder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 22:52:55 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 11:18:14 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:45:15 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static int	ft_is_rel_path(char *path)
 	return (0);
 }
 
-
 /**
  * Executes a built-in shell command.
  *
@@ -34,7 +33,7 @@ static int	ft_is_rel_path(char *path)
  * @param boogeyman The minishell context.
  * @param parent Indicates if the command is a parent process.
  */
-void	ft_execbuiltin(t_tree_node *node, t_minishell *boogeyman, char parent)
+void	ft_execbuiltin(t_tree_node *node, t_mini *boogeyman, char parent)
 {
 	node->exit_code = 0;
 	node->is_builtin = 1;
@@ -63,7 +62,6 @@ void	ft_execbuiltin(t_tree_node *node, t_minishell *boogeyman, char parent)
 		exit(node->exit_code);
 }
 
-
 /**
  * Extracts the executable path for a given command.
  *
@@ -71,7 +69,7 @@ void	ft_execbuiltin(t_tree_node *node, t_minishell *boogeyman, char parent)
  * @param node The current command node.
  * @return The executable path if found, NULL otherwise.
  */
-char	*extract_exec_path(t_minishell *boogeyman, t_tree_node *node)
+char	*extract_exec_path(t_mini *boogeyman, t_tree_node *node)
 {
 	int		pos;
 	char	**split_path;
@@ -82,7 +80,8 @@ char	*extract_exec_path(t_minishell *boogeyman, t_tree_node *node)
 		return (NULL);
 	if (!(access(node->args[0], F_OK)) && ft_is_rel_path(node->args[0]))
 		return (ft_strdup(node->args[0]));
-	if (ft_is_rel_path(node->args[0]) || (!boogeyman->envp || !*boogeyman->envp))
+	if (ft_is_rel_path(node->args[0]) || (!boogeyman->envp
+			|| !*boogeyman->envp))
 		return (NULL);
 	split_path = ft_split(ft_get_from_env(boogeyman->envp, "PATH", NULL), ':');
 	pos = 0;

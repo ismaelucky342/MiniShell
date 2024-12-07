@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_tokens.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 10:59:30 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:30:17 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:44:48 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,13 @@ char	*ft_get_left_token(char *str)
 			ft_brackets(str, &i);
 		else
 			++i;
-		if ((str[i] == '&' && str[i + 1] == '&')
-			|| (str[i] == '|' && str[i + 1] == '|') || str[i] == ';')
+		if ((str[i] == '&' && str[i + 1] == '&') || (str[i] == '|' && str[i
+					+ 1] == '|') || str[i] == ';')
 			last = i;
 	}
 	tmp = ft_substr(str, 0, last);
 	return (res = ft_strtrim(tmp, " \n\t\v\r"), free(tmp), res);
 }
-
 
 /**
  * Given a logically expandable char *str,
@@ -68,8 +67,8 @@ char	*ft_get_right_token(char *str)
 	last = 0;
 	while (str[i])
 		is_quote(str, &i, &last);
-	if ((str[last] == '&' && str[last + 1] == '&')
-		|| (str[last] == '|' && str[last + 1] == '|'))
+	if ((str[last] == '&' && str[last + 1] == '&') || (str[last] == '|'
+			&& str[last + 1] == '|'))
 		++last;
 	tmp = ft_substr(str, last + 1, SIZE_T_MAX);
 	return (res = ft_strtrim(tmp, " \n\t\v\r"), free(tmp), res);

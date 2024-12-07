@@ -3,31 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_expander.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 00:34:15 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:37:01 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:51:54 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
 /**
- * ft_expand_str_heredoc - Expands a heredoc string and writes it to a temporary file.
- * @o_fd: The file descriptor to read the original heredoc from.
- * @tok: A pointer to a t_redirection_token structure containing the heredoc metadata.
- * @envp: The environment variables used for expanding the heredoc string.
+ * ft_expand_str_heredoc
+	- Expands a heredoc string and writes it to a temporary file.
+ * @o_fd: The fd to read the original heredoc from.
+ * @tok: A pointer to a t_rtoken structure containing the heredoc metadata.
+ * @envp: The env variables used for expanding the heredoc string.
  *
- * This function reads lines from the original heredoc file descriptor, expands
- * any environment variables within those lines, and writes the expanded lines
- * to a new temporary file. The temporary file's name is stored in the tok structure.
- * If any errors occur during this process, appropriate error messages are printed
+ * This function reads lines from the original heredoc fd, expands
+ * any env variables within those lines, and writes the expanded lines
+ * to a new temporary file. The temporary file's name is stored in the
+		tok structure.
+ * If any errors occur during this process,
+	appropriate error messages are printed
  * and the function exits with a failure status.
  *
- * Return: The file descriptor of the new temporary file containing the expanded heredoc,
+ * Return: The fd of the new temporary file containing the
+		expanded heredoc,
  *         or -1 if an error occurs.
  */
 
-int	ft_expand_str_heredoc(int o_fd, t_redirection_token *tok, char **envp)
+int	ft_expand_str_heredoc(int o_fd, t_rtoken *tok, char **envp)
 {
 	int		fd;
 	char	*line;

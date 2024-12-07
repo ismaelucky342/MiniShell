@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:25:43 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/19 12:33:23 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:51:54 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 //------------- GET NEXT LINE V1 -------------
-//----------- read file descriptor -----------
+//----------- read fd -----------
 
 char	*ft_strchr_gnl(char *str, int c)
 {

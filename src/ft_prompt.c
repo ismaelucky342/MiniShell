@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:29:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:30:17 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:19:56 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ char	*get_host_name(void)
 	return (host);
 }
 
-char *process_directory(char *original_dir, char *home)
+char	*process_directory(char *original_dir, char *home)
 {
-	char *dir;
-	char *temp;
+	char	*dir;
+	char	*temp;
 
 	dir = original_dir;
 	if (home && ft_strncmp(dir, home, ft_strlen(home)) == 0)
@@ -54,10 +54,11 @@ char *process_directory(char *original_dir, char *home)
 	return (original_dir);
 }
 
-char *build_prompt(char *user, char *host, char *dir)
+char	*build_prompt(char *user, char *host, char *dir)
 {
-	char *prompt;
-	char *temp;
+	char	*prompt;
+	char	*temp;
+
 	if (user && host)
 	{
 		prompt = ft_strjoin(user, "@");
@@ -66,7 +67,6 @@ char *build_prompt(char *user, char *host, char *dir)
 	}
 	else
 		prompt = ft_strdup("");
-
 	prompt = ft_strjoin_free(prompt, dir);
 	prompt = ft_strjoin_free(prompt, "$ ");
 	return (prompt);
@@ -93,7 +93,7 @@ char	*ft_prompt(char **env)
 	return (prompt);
 }
 
-void update_prompt(t_minishell *boogeyman)
+void	update_prompt(t_mini *boogeyman)
 {
 	free(boogeyman->custom_prompt);
 	boogeyman->custom_prompt = ft_prompt(boogeyman->envp);

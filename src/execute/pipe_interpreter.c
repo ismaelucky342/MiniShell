@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_interpreter.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:12:29 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/05 13:41:40 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:51:54 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 /**
  * exec_first_management
 	- Manages the execution of the first command in a pipeline.
- * @node: Pointer to the current command node.
- * @boogeyman: Pointer to the minishell structure.
- * @path: Pointer to the path of the executable.
+ * @param node: Pointer to the current command node.
+ * @param boogeyman: Pointer to the minishell structure.
+ * @param path: Pointer to the path of the executable.
  *
- * This function sets up the necessary file descriptors,
+ * This function sets up the necessary fds,
 	executes built-in commands,
- * removes environment variables, and executes the command using execve.
+ * removes env variables, and executes the command using execve.
  *
  * Return: 0 on success, 1 on failure.
  */
 
-int	exec_first_management(t_tree_node *node, t_minishell *boogeyman,
-		char **path)
+int	exec_first_management(t_tree_node *node, t_mini *boogeyman, char **path)
 {
 	ft_dup2(node->pipe_fds[1], STDOUT_FILENO);
 	ft_close(node->pipe_fds[0]);
@@ -42,9 +41,9 @@ int	exec_first_management(t_tree_node *node, t_minishell *boogeyman,
 
 /**
  * ft_exec_first_cmd - Executes the first command in a pipeline.
- * @node: Pointer to the current command node.
- * @boogeyman: Pointer to the minishell structure.
- * @outfd: Pointer to the output file descriptor.
+ * @param node: Pointer to the current command node.
+ * @param boogeyman: Pointer to the minishell structure.
+ * @param outfd: Pointer to the output fd.
  *
  * This function sets up the pipe, handles file redirections,
 	checks for built-in commands,
@@ -52,7 +51,7 @@ int	exec_first_management(t_tree_node *node, t_minishell *boogeyman,
  *
  * Return: 0 on success, 1 on failure.
  */
-int	ft_exec_first_cmd(t_tree_node *node, t_minishell *boogeyman, int *outfd)
+int	ft_exec_first_cmd(t_tree_node *node, t_mini *boogeyman, int *outfd)
 {
 	if (pipe(node->pipe_fds) == -1)
 		return (perror("pipe"), 1);
@@ -82,8 +81,8 @@ int	ft_exec_first_cmd(t_tree_node *node, t_minishell *boogeyman, int *outfd)
  * ft_exec_mid_cmd - Executes a middle command in a pipeline.
  * @node: Pointer to the current command node.
  * @boogeyman: Pointer to the minishell structure.
- * @inputfd: Input file descriptor.
- * @outfd: Pointer to the output file descriptor.
+ * @inputfd: Input fd.
+ * @outfd: Pointer to the output fd.
  *
  * This function sets up the pipe, handles file redirections,
 	checks for built-in commands,
@@ -92,8 +91,8 @@ int	ft_exec_first_cmd(t_tree_node *node, t_minishell *boogeyman, int *outfd)
  * Return: 0 on success, 1 on failure.
  */
 
-static int	ft_exec_mid_cmd(t_tree_node *node, t_minishell *boogeyman,
-		int inputfd, int *outfd)
+static int	ft_exec_mid_cmd(t_tree_node *node, t_mini *boogeyman, int inputfd,
+		int *outfd)
 {
 	if (pipe(node->pipe_fds) == -1)
 		return (perror("pipe"), 1);
@@ -125,7 +124,7 @@ static int	ft_exec_mid_cmd(t_tree_node *node, t_minishell *boogeyman,
  * ft_exec_last_cmd - Executes the last command in a pipeline.
  * @node: Pointer to the current command node.
  * @boogeyman: Pointer to the minishell structure.
- * @inputfd: Input file descriptor.
+ * @inputfd: Input fd.
  *
  * This function handles file redirections, checks for built-in commands,
  * and forks the process to execute the command.
@@ -133,10 +132,10 @@ static int	ft_exec_mid_cmd(t_tree_node *node, t_minishell *boogeyman,
  * Return: 0 on success, 1 on failure.
  */
 
-static int	ft_exec_last_cmd(t_tree_node *node, t_minishell *boogeyman,
-		int inputfd)
+static int	ft_exec_last_cmd(t_tree_node *node, t_mini *boogeyman, int inputfd)
 {
-	if (ft_file_redirs(node->redirs_lst, inputfd, STDOUT_FILENO, boogeyman->envp))
+	if (ft_file_redirs(node->redirs_lst, inputfd, STDOUT_FILENO,
+			boogeyman->envp))
 		return (ft_close(inputfd), node->exit_code = 1, 1);
 	if (!node->args[0])
 		return (ft_close(inputfd), node->exit_code = 0, 1);
@@ -169,11 +168,11 @@ static int	ft_exec_last_cmd(t_tree_node *node, t_minishell *boogeyman,
  *
  * This function iterates through the command list,
 	executing each command in the pipeline.
- * It handles built-in commands, sets up pipes, and manages file descriptors.
+ * It handles built-in commands, sets up pipes, and manages fds.
  *
  * Return: Pointer to the last executed command node.
  */
-t_tree_node	*ft_pipes_interpreter(t_ast_tree *tree_node, t_minishell *boogeyman,
+t_tree_node	*ft_pipes_interpreter(t_ast_tree *tree_node, t_mini *boogeyman,
 		int *last_pid)
 {
 	t_tree_node	*lst;

@@ -61,8 +61,7 @@ static int	ft_format(va_list argument, const char word)
 }
 /*#include "libft.h"
 
-
-int main() {
+int	main() {
     char caracter = 'A';
     char cadena[] = "Hola, mundo!";
     void *puntero = (void *)0x12345678;

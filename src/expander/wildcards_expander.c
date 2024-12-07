@@ -3,25 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   wildcards_expander.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:27:42 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 13:06:31 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:26:28 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 /**
- * remove_line_numbers - Adjusts the indices in the token string to remove line numbers.
- * @tok: The token containing the string to be processed.
- * @cont: An array of integers used to keep track of indices in the token string.
+ * @brief remove_line_numbers
+ * 
+ * Adjusts the indices in the token string to remove line numbers.
+ * 
+ * @param tok: The token containing the string to be processed.
+ * @param cont: An array of ints used to keep track of indexes in the
+		token string.
  *
- * This function modifies the indices in the cont array to skip over line numbers
+ * This function modifies the indices in the cont array to skip over
+		line numbers
  * and whitespace in the token string.
  */
-static void	remove_line_numbers(t_token *tok,
-		int *cont)
+static void	remove_line_numbers(t_token *tok, int *cont)
 {
 	while (cont[2] > 0 && !ft_isspace(tok->str[cont[2]]))
 		--cont[2];
@@ -32,11 +36,13 @@ static void	remove_line_numbers(t_token *tok,
 }
 
 /**
- * merge_strings - Merges parts of the token string with the files and wc strings.
- * @tok: The token containing the string to be processed.
- * @cont: An array of integers used to keep track of indices in the token string.
- * @files: A pointer to the string containing file names.
- * @wc: A pointer to the string containing the wc pattern.
+ * merge_strings
+	- Merges parts of the token string with the files and wc strings.
+ * @param tok: The token containing the string to be processed.
+ * @param cont: An array of integers used to keep track of indices in
+		the token string.
+ * @param files: A pointer to the string containing file names.
+ * @param wc: A pointer to the string containing the wc pattern.
  *
  * This function creates a new string by merging parts of the token string with
  * the files and wc strings, and updates the token string with the result.
@@ -59,13 +65,14 @@ static void	merge_strings(t_token *tok, int *cont, char **files, char **wc)
  * @curr: The current list node containing the token to be processed.
  * @i: A pointer to the current index in the token string.
  *
- * This function processes the token string to expand wildcard patterns, updating
+ * This function processes the token string to expand wildcard patterns,
+	updating
  * the token string with the expanded result and retokenizing the list node.
  */
 void	wildcard_expander(t_list *curr, int *i)
 {
 	int			cont[3];
-	t_token	*tok;
+	t_token		*tok;
 	char		*wc;
 	char		*files;
 
@@ -80,7 +87,7 @@ void	wildcard_expander(t_list *curr, int *i)
 	files = ft_wildcard(wc);
 	free(wc);
 	if (!files)
-		return (tok->type = W_EXP_ARG, (void) 0);
+		return (tok->type = W_EXP_ARG, (void)0);
 	merge_strings(tok, cont, &files, &wc);
 	tok->str = files;
 	cont[0] = ft_strlen(files) + *i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_expander.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:26:59 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:37:36 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 /**
  * double_quote_expander - Expands double-quoted strings in the token.
- * @curr: The current node in the list containing the token.
- * @i: Pointer to the current index in the token string.
- * @boogeyman: Pointer to the minishell structure containing environment variables.
+ * @param curr: The current node in the list containing the token.
+ * @param i: Pointer to the current index in the token string.
+ * @param boogeyman: Pointer to the minishell structure containing
+		env variables.
  *
  * This function removes the double quotes from the token string and expands
- * any environment variables within the double quotes.
+ * any env variables within the double quotes.
  */
-
-void	double_quote_expander(t_list *curr, int *i, t_minishell *boogeyman)
+void	double_quote_expander(t_list *curr, int *i, t_mini *boogeyman)
 {
 	int			j;
-	t_token	*tok;
+	t_token		*tok;
 
 	j = *i;
 	tok = curr->content;
@@ -50,19 +50,18 @@ void	double_quote_expander(t_list *curr, int *i, t_minishell *boogeyman)
 	tok->str[j] = '\0';
 }
 
-
 /**
  * single_quote_expander - Expands single-quoted strings in the token.
  * @curr: The current node in the list containing the token.
  * @i: Pointer to the current index in the token string.
  *
- * This function removes the single quotes from the token string. Environment
+ * This function removes the single quotes from the token string. env
  * variables are not expanded within single quotes.
  */
 void	single_quote_expander(t_list *curr, int *i)
 {
 	int			j;
-	t_token	*tok;
+	t_token		*tok;
 
 	j = *i;
 	tok = curr->content;
