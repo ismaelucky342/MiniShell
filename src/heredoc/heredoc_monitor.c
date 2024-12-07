@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:23:23 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:51:54 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ extern int	g_is_exec;
  */
 void	delim_subs(char **str, int j, char *tmp, char *tmp2)
 {
-	free(tmp);
+	freedom((void **)&tmp);
 	tmp = ft_strjoin(tmp2, " ");
-	free(tmp2);
+	freedom((void **)&tmp2);
 	tmp2 = ft_substr(*str, j, SIZE_T_MAX);
-	free(*str);
+	freedom((void **)&*str);
 	*str = ft_strjoin(tmp, tmp2);
-	free(tmp);
-	free(tmp2);
+	freedom((void **)&tmp);
+	freedom((void **)&tmp2);
 }
 
 /**
@@ -54,7 +54,7 @@ void	heredoc_monitor(char **line, char *prompt, char *delim, int *fd)
 	while ((*line) && ft_strncmp((*line), delim, ft_strlen(delim) + 1))
 	{
 		ft_putendl_fd((*line), *fd);
-		free((*line));
+		freedom((void **)&(*line));
 		(*line) = NULL;
 		(*line) = readline(prompt);
 	}

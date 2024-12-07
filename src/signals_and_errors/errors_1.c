@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:07:54 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:54:00 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	tmp_management(char **tmp, int *shllvl)
 	ft_putstr_fd("MiniShell: warning: shell level (", STDERR_FILENO);
 	*tmp = ft_itoa(*shllvl);
 	ft_putstr_fd(*tmp, STDERR_FILENO);
-	free(*tmp);
+	freedom((void **)&*tmp);
 	*tmp = NULL;
 	ft_putendl_fd(") too high, resetting to 1", STDERR_FILENO);
 	*shllvl = 1;

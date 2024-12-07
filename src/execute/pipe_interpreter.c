@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:12:29 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	exec_first_management(t_tree_node *node, t_mini *boogeyman, char **path)
 		ft_execbuiltin(node, boogeyman, 0);
 	ft_remove_env_variables(boogeyman);
 	if (execve(*path, node->args, boogeyman->envp) < 0)
-		return (perror(*path), free(*path), exit(126), 1);
+		return (perror(*path), freedom((void **)&*path), exit(126), 1);
 	return (0);
 }
 
@@ -71,7 +71,7 @@ int	ft_exec_first_cmd(t_tree_node *node, t_mini *boogeyman, int *outfd)
 		ft_close(node->pipe_fds[1]);
 	if (!node->pid)
 		return (exec_first_management(node, boogeyman, &node->path));
-	free(node->path);
+	freedom((void **)&node->path);
 	*outfd = node->pipe_fds[0];
 	return (0);
 }
@@ -115,7 +115,7 @@ static int	ft_exec_mid_cmd(t_tree_node *node, t_mini *boogeyman, int inputfd,
 	if (!node->pid)
 		return (ft_dup2(inputfd, STDIN_FILENO), exec_first_management(node,
 				boogeyman, &node->path));
-	return (free(node->path), *outfd = node->pipe_fds[0], 0);
+	return (freedom((void **)&node->path), *outfd = node->pipe_fds[0], 0);
 }
 
 /**
@@ -150,10 +150,10 @@ static int	ft_exec_last_cmd(t_tree_node *node, t_mini *boogeyman, int inputfd)
 			ft_execbuiltin(node, boogeyman, 0);
 		ft_remove_env_variables(boogeyman);
 		if (execve(node->path, node->args, boogeyman->envp) == -1)
-			return (ft_close(inputfd), perror(node->path), free(node->path),
+			return (ft_close(inputfd), perror(node->path), freedom((void **)&node->path),
 				exit(126), 1);
 	}
-	free(node->path);
+	freedom((void **)&node->path);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:42:42 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:49:21 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_create_heredocs(char **str)
 		{
 			if (!g_is_exec)
 				unlink(f_name);
-			free(f_name);
+			freedom((void **)&f_name);
 			f_name = NULL;
 		}
 		if ((*str)[i])

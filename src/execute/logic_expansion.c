@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:20:15 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,6 @@ int	if_mask(char *str, int last)
  */
 int	expand_execute(t_ast_tree *tree_node, t_mini *boogeyman)
 {
-	char	*keyval;
-	char	*nbrstr;
-
 	boogeyman->cont = 1;
 	if (logic_expansion(tree_node))
 		return (ft_expansion_error(tree_node), ft_printexit(2, boogeyman, 1),
@@ -60,10 +57,8 @@ int	expand_execute(t_ast_tree *tree_node, t_mini *boogeyman)
 			tree_node->exit_code = expand_execute(tree_node->right, boogeyman);
 	if (!tree_node->is_logic)
 		tree_node->exit_code = ft_parse_and_exec_monitor(tree_node, boogeyman);
-	nbrstr = ft_itoa(tree_node->exit_code);
-	keyval = ft_strjoin("?=", nbrstr);
-	ft_add_to_env(boogeyman, keyval);
-	return (free(keyval), free(nbrstr), tree_node->exit_code);
+	boogeyman->rvalue = tree_node->exit_code;
+	return (tree_node->exit_code);
 }
 
 /**
@@ -112,6 +107,6 @@ int	logic_expansion(t_ast_tree *tree_node)
 			|| (!tree_node->right->cmd_str || !(*tree_node->right->cmd_str)))
 			return (2);
 	}
-	free(str);
+	freedom((void **)&str);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:27:42 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:26:28 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ static void	merge_strings(t_token *tok, int *cont, char **files, char **wc)
 
 	tmp = ft_substr(tok->str, 0, cont[2]);
 	*wc = ft_strjoin(tmp, *files);
-	free(*files);
-	free(tmp);
+	freedom((void **)&*files);
+	freedom((void **)&tmp);
 	*files = ft_strjoin(*wc, &(tok->str[cont[1]]));
-	free(*wc);
-	free(tok->str);
+	freedom((void **)&*wc);
+	freedom((void **)&tok->str);
 }
 
 /**
@@ -85,7 +85,7 @@ void	wildcard_expander(t_list *curr, int *i)
 		++cont[1];
 	wc = ft_substr(tok->str, cont[2], cont[1] - cont[2]);
 	files = ft_wildcard(wc);
-	free(wc);
+	freedom((void **)&wc);
 	if (!files)
 		return (tok->type = W_EXP_ARG, (void)0);
 	merge_strings(tok, cont, &files, &wc);

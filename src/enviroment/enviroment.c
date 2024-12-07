@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 23:48:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static int	ft_realloc_and_add_envp(t_mini *boogeyman, char *passkey)
 		return (1);
 	while (boogeyman->envp[++ctr])
 		res[ctr] = boogeyman->envp[ctr];
-	res[ctr] = ft_strdup(passkey);
+	res[ctr] = passkey;
 	boogeyman->env_elems++;
-	free(boogeyman->envp);
+	freedom((void **)&boogeyman->envp);
 	boogeyman->envp = res;
 	return (0);
 }
@@ -54,7 +54,7 @@ static int	ft_realloc_and_add_envp(t_mini *boogeyman, char *passkey)
  * @param passkey The new env variable to replace with.
  * @param key The key to search for in the env array.
  */
-static void	ft_search_and_replace_env(char **envp, char *passkey, char *key)
+void	ft_search_and_replace_env(char **envp, char *passkey, char *key)
 {
 	int	i;
 
@@ -65,8 +65,8 @@ static void	ft_search_and_replace_env(char **envp, char *passkey, char *key)
 		{
 			if (envp[i][ft_strlen(key)] == '=' || !envp[i][ft_strlen(key)])
 			{
-				free(envp[i]);
-				envp[i] = ft_strdup(passkey);
+				freedom((void **)&envp[i]);
+				envp[i] = passkey;
 				break ;
 			}
 		}
@@ -87,7 +87,7 @@ static int	ft_add_env_new(t_mini *boogeyman, char *passkey)
 {
 	if (boogeyman->env_elems + 1 < boogeyman->env_size)
 	{
-		boogeyman->envp[boogeyman->env_elems] = ft_strdup(passkey);
+		boogeyman->envp[boogeyman->env_elems] = passkey;
 		boogeyman->env_elems += 1;
 	}
 	else
@@ -122,18 +122,14 @@ int	ft_add_to_env(t_mini *boogeyman, char *passkey)
 		key = ft_substr(passkey, 0, ft_strchr(passkey, '=') - passkey);
 	else
 		key = ft_strdup(passkey);
+	if (!key)
+		return (1);
 	if ((!ft_strncmp(ft_get_from_env(boogeyman->envp, key, &exists), "", 1)
 			&& exists && ft_strchr(passkey, '=')) || (exists
 			&& ft_strchr(passkey, '=')))
 		ft_search_and_replace_env(boogeyman->envp, passkey, key);
 	else if (!exists)
-	{
 		if (ft_add_env_new(boogeyman, passkey))
-		{
-			free(key);
-			return (1);
-		}
-	}
-	free(key);
-	return (0);
+			return (freedom((void **)&key), freedom((void **)&passkey), 1);
+	return (freedom((void **)&key), 0);
 }

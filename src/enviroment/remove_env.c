@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 10:42:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 16:28:15 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_remove_env_variables(t_mini *boogeyman)
 	{
 		if (!ft_strchr(boogeyman->envp[i], '='))
 		{
-			free(boogeyman->envp[i]);
+			freedom((void **)&boogeyman->envp[i]);
 			j = --i;
 			while (boogeyman->envp[++j])
 				boogeyman->envp[j] = boogeyman->envp[j + 1];
@@ -70,7 +70,7 @@ int	ft_remove_env(t_mini *boogeyman, char *key)
 			++j;
 		if (!key[j] && (!boogeyman->envp[i][j] || boogeyman->envp[i][j] == '='))
 		{
-			free(boogeyman->envp[i]);
+			freedom((void **)&boogeyman->envp[i]);
 			boogeyman->env_elems--;
 			break ;
 		}

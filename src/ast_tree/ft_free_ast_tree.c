@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 14:07:14 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 16:28:30 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static void	free_redirections(void *t)
 	t_rtoken	*tok;
 
 	tok = t;
-	free(tok->file_name);
-	free(tok);
+	freedom((void **)&tok->file_name);
+	freedom((void **)&tok);
 }
 
 /**
@@ -40,7 +40,7 @@ static void	ft_free_node_list(t_tree_node *cmd_list)
 		next = cmd_list->next;
 		ft_lstclear(&cmd_list->redirs_lst, &free_redirections);
 		ft_free_array(cmd_list->args);
-		free(cmd_list);
+		freedom((void **)&cmd_list);
 		cmd_list = next;
 	}
 }
@@ -59,11 +59,11 @@ void	*ft_free_cmdtree(t_ast_tree *tree)
 		ft_free_cmdtree(tree->right);
 	ft_free_node_list(tree->cmd_list);
 	if (tree->cmd_str)
-		free(tree->cmd_str);
+		freedom((void **)&tree->cmd_str);
 	if (tree->expanded_str)
-		free(tree->expanded_str);
+		freedom((void **)&tree->expanded_str);
 	if (tree->cmd_tokens)
 		ft_lstclear(&tree->cmd_tokens, free_cmd_tok);
-	free(tree);
+	freedom((void **)&tree);
 	return (NULL);
 }

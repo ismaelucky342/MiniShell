@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:18:19 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:52:44 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	ft_init_history_file(t_mini *boogeyman)
 	if (!home)
 		ft_memory_err_exit(boogeyman);
 	boogeyman->history_fd = open(home, O_CREAT | O_RDWR, 0644);
-	free(home);
+	freedom((void **)&home);
 }

@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:44 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 16:28:23 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 21:54:18 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	ft_export_builtin(t_tree_node *node, t_mini *boogeyman)
 	while (node->args[++i])
 	{
 		if (ft_is_valid_key(node->args[i]))
-			ft_add_to_env(boogeyman, node->args[i]);
+			ft_add_to_env(boogeyman, ft_strdup(node->args[i]));
 		else
 			ret = 1;
 	}

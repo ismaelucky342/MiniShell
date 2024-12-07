@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 16:44:47 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 17:00:19 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static int	tokener(char *str, t_list *list)
 	}
 	if (last)
 	{
-		free(last->next);
+		freedom((void **)&last->next);
 		last->next = NULL;
 	}
 	return (0);

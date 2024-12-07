@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   retokenizer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 16:44:47 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 12:49:14 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	update_last_node(t_list **last_next, int *conts, int *lngths)
 	next = last_next[1];
 	if (last && last->next)
 	{
-		free(last->next);
+		freedom((void **)&last->next);
 		last->next = next;
 		if (conts[0] > lngths[0])
 			((t_token *)last->content)->type = ARG;
@@ -84,7 +84,7 @@ static void	update_last_node(t_list **last_next, int *conts, int *lngths)
 static void	free_tmp(char *tmp)
 {
 	if (tmp)
-		free(tmp);
+		freedom((void **)&tmp);
 }
 
 /**

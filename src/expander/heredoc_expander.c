@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 00:34:15 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,21 @@ int	ft_expand_str_heredoc(int o_fd, t_rtoken *tok, char **envp)
 	char	*exp;
 
 	unlink(tok->file_name);
-	free(tok->file_name);
+	freedom((void **)&tok->file_name);
 	tok->file_name = tmp_filename();
 	if (!tok->file_name)
 		return (ft_putendl_fd("No heredoc tmp file available!", 2),
 			exit(1), -1);
 	fd = open(tok->file_name, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (fd < 0)
-		return (perror(tok->file_name), free(tok->file_name), exit(1), -1);
+		return (perror(tok->file_name), freedom((void **)&tok->file_name), exit(1), -1);
 	line = get_next_line(o_fd);
 	while (line)
 	{
 		exp = ft_expand_str(line, envp, 1);
 		ft_putstr_fd(exp, fd);
-		free(line);
-		free(exp);
+		freedom((void **)&line);
+		freedom((void **)&exp);
 		line = get_next_line(o_fd);
 	}
 	return (fd);

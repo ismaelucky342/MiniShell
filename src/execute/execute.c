@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 18:15:01 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:42:41 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 21:24:23 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static int	ft_wait_all(int last_pid, t_tree_node *last)
 
 	last_exited = 0;
 	exit_code = INT_MIN;
+	status = 0;
 	while (last_exited != -1)
 	{
 		last_exited = waitpid(-1, &status, 0);
@@ -92,6 +93,7 @@ int	ft_exec_and_wait(t_ast_tree *tree_node, t_mini *boogeyman)
 	std_backup[0] = dup(STDIN_FILENO);
 	std_backup[1] = dup(STDOUT_FILENO);
 	g_is_exec = 1;
+	last_pid = -1;
 	last = ft_pipes_interpreter(tree_node, boogeyman, &last_pid);
 	tmp = ft_wait_all(last_pid, last);
 	ft_dup2(std_backup[0], STDIN_FILENO);

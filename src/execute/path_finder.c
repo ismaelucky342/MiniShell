@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 22:52:55 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:45:15 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_execbuiltin(t_tree_node *node, t_mini *boogeyman, char parent)
 	else if (!ft_strncmp(node->args[0], "exit", 5))
 		node->exit_code = ft_exit_builtin(node, boogeyman, parent);
 	else if (!ft_strncmp(node->args[0], "pwd", 4))
-		node->exit_code = ft_pwd_builtin(node, boogeyman->envp);
+		node->exit_code = ft_pwd_builtin(node, boogeyman->envp, boogeyman);
 	else if (!ft_strncmp(node->args[0], "unset", 6))
 		node->exit_code = ft_unset_builtin(node, boogeyman);
 	else if (!ft_strncmp(node->args[0], "export", 7))
@@ -91,9 +91,9 @@ char	*extract_exec_path(t_mini *boogeyman, t_tree_node *node)
 		path_plus_exec = ft_strjoin(tmp, node->args[0]);
 		if (ft_strncmp(path_plus_exec, tmp, ft_strlen(tmp) + 1)
 			&& !(access(path_plus_exec, F_OK)))
-			return (ft_free_array(split_path), free(tmp), path_plus_exec);
-		free(tmp);
-		free(path_plus_exec);
+			return (ft_free_array(split_path), freedom((void **)&tmp), path_plus_exec);
+		freedom((void **)&tmp);
+		freedom((void **)&path_plus_exec);
 	}
 	return (ft_free_array(split_path), NULL);
 }

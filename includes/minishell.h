@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:16:35 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:47:35 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:35:56 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,14 @@
 int			ft_ast_tree(t_list *begin, t_ast_tree *tree_node);
 void		*ft_free_cmdtree(t_ast_tree *tree);
 
+/*----------------------------------FREEDOM----------------------------------*/
+
+void		freedom(void **ptr);
+
 /*---------------------------------ENVIRONMENT-------------------------------*/
 
 char		*ft_get_from_env(char **envp, char *key, int *exists);
+void		ft_search_and_replace_env(char **envp, char *passkey, char *key);
 int			ft_add_to_env(t_mini *boogeyman, char *passkey);
 char		*get_val_from_env(char **envp, char *key, int *exists);
 int			ft_remove_env(t_mini *boogeyman, char *key);
@@ -76,7 +81,7 @@ int			retokenize(t_list *curr, int type, int start, int *lngths);
 
 int			ft_exit_builtin(t_tree_node *node, t_mini *boogeyman, char print);
 int			ft_cd_builtin(t_tree_node *node, t_mini *boogeyman);
-int			ft_pwd_builtin(t_tree_node *node, char **envp);
+int			ft_pwd_builtin(t_tree_node *node, char **envp, t_mini *boogeyman);
 int			ft_echo_builtin(t_tree_node *node);
 int			ft_export_builtin(t_tree_node *node, t_mini *boogeyman);
 int			ft_unset_builtin(t_tree_node *node, t_mini *boogeyman);

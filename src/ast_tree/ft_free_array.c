@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:00:18 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:30:54 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	ft_free_array(char **array)
 	if (!array)
 		return ;
 	while (array[pos])
-		free(array[pos++]);
-	free(array);
+		freedom((void **)&array[pos++]);
+	freedom((void **)&array);
 }

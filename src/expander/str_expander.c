@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 00:34:15 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,23 @@ static char	*expand_str_check(char *str, int *i, char **envp)
 
 	tmp = dictionary(str, (*i) + 1);
 	needle = ft_strtrim(tmp, " \n\t\r\v");
-	free(tmp);
+	freedom((void **)&tmp);
 	if (!ft_strncmp(needle, "", 1))
-		return (free(needle), ++(*i), str);
+		return (freedom((void **)&needle), ++(*i), str);
 	expanded = ft_substr(str, 0, (size_t)(*i));
 	tmp = expanded;
 	if (!ft_strncmp(needle, "$", 2))
 		expanded = ft_strjoin(tmp, "no PID, sorry :C");
 	else
 		expanded = ft_strjoin(tmp, ft_get_from_env(envp, needle, NULL));
-	free(tmp);
+	freedom((void **)&tmp);
 	tmp = expanded;
 	extract = ft_substr(str, (*i) + 1 + ft_strlen(needle), SIZE_T_MAX);
 	expanded = ft_strjoin(expanded, extract);
-	free(tmp);
-	free(extract);
-	free(needle);
-	free(str);
+	freedom((void **)&tmp);
+	freedom((void **)&extract);
+	freedom((void **)&needle);
+	freedom((void **)&str);
 	return (expanded);
 }
 

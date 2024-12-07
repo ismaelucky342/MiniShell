@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:59:11 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:58:30 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	free_cmd_tok(void *tok)
 	if (tofree)
 	{
 		if (tofree->str)
-			free(tofree->str);
-		free(tofree);
+			freedom((void **)&tofree->str);
+		freedom((void **)&tofree);
 	}
 }

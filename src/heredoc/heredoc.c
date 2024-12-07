@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:50:36 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ char	*tmp_filename(void)
 	{
 		tmp = ft_itoa(i);
 		name = ft_strjoin(H_DOC_TMP_BASE, tmp);
-		free(tmp);
+		freedom((void **)&tmp);
 		if (access(name, F_OK) != 0)
 			return (name);
-		free(name);
+		freedom((void **)&name);
 	}
 	return (NULL);
 }
@@ -107,7 +107,7 @@ static int	aux_heredoc(char **str, int *i, char **delim, char **f_name)
 			exit(1), -1);
 	fd = open(*f_name, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (fd < 0)
-		return (perror(*f_name), free(*f_name), exit(1), -1);
+		return (perror(*f_name), freedom((void **)&*f_name), exit(1), -1);
 	*i += 2;
 	*delim = delimiter(str, i, *f_name);
 	if (!*delim)
@@ -142,19 +142,19 @@ int	ft_heredoc(char **str, int *i, char **f_name)
 	fd = aux_heredoc(str, i, &delim, f_name);
 	ft_str_unquote(delim);
 	if (fd == -1 || !g_is_exec)
-		return (free(delim), 1);
+		return (freedom((void **)&delim), 1);
 	pid = fork();
 	if (pid < 0)
-		return (free(delim), 1);
+		return (freedom((void **)&delim), 1);
 	if (pid)
-		return (free(delim), 0);
+		return (freedom((void **)&delim), 0);
 	signal(SIGINT, SIG_DFL);
 	line = ft_strjoin("here_doc (", delim);
 	prompt = ft_strjoin(line, ") > ");
-	free(line);
+	freedom((void **)&line);
 	line = readline(prompt);
 	heredoc_monitor(&line, prompt, delim, &fd);
 	if (line)
-		free(line);
-	return (free(delim), free(prompt), ft_close(fd), free(*f_name), exit(0), 0);
+		freedom((void **)&line);
+	return (freedom((void **)&delim), freedom((void **)&prompt), ft_close(fd), freedom((void **)&*f_name), exit(0), 0);
 }

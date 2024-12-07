@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wildcards.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 13:43:30 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 13:06:31 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ char	*ft_wildcard(char *wc)
 		if (ft_is_wildcard(directory->d_name, wc))
 		{
 			tmp = ft_strjoin(file_list, directory->d_name);
-			free(file_list);
+			freedom((void **)&file_list);
 			file_list = ft_strjoin(tmp, " ");
-			free(tmp);
+			freedom((void **)&tmp);
 		}
 		directory = readdir(dir_ptr);
 	}
 	if (!file_list[0])
-		return (free(file_list), closedir(dir_ptr), NULL);
+		return (freedom((void **)&file_list), closedir(dir_ptr), NULL);
 	tmp = ft_strtrim(file_list, " \n\t\r\v");
-	free(file_list);
+	freedom((void **)&file_list);
 	return (closedir(dir_ptr), tmp);
 }

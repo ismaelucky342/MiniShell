@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1.parse_exec_monitor.c                             :+:      :+:    :+:   */
+/*   parse_exec_monitor.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:05:07 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 15:23:08 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:35:47 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
     7. Execute the command and wait for it to finish.
     8. Handle redirection errors.
 */
+
 int	ft_parse_and_exec_monitor(t_ast_tree *tree_node, t_mini *boogeyman)
 {
 	int	status;

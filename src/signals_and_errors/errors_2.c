@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 22:31:34 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 17:23:15 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_printexit(int exit_code, t_mini *boogeyman, char print)
 	if (print)
 		ft_putendl_fd("exit", STDERR_FILENO);
 	close(boogeyman->history_fd);
-	free(boogeyman->custom_prompt);
+	freedom((void **)&boogeyman->custom_prompt);
 	ft_free_array(boogeyman->envp);
 	if (boogeyman->cmd_tree)
 		ft_free_cmdtree(boogeyman->cmd_tree);

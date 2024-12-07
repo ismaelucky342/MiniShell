@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 19:17:16 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:51:59 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	ft_history_filler(t_mini *boogeyman)
 		if (!trim)
 			ft_memory_err_exit(boogeyman);
 		add_history(trim);
-		free(line);
-		free(trim);
+		freedom((void **)&line);
+		freedom((void **)&trim);
 		line = get_next_line(boogeyman->history_fd);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 10:59:30 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 13:17:59 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_get_left_token(char *str)
 			last = i;
 	}
 	tmp = ft_substr(str, 0, last);
-	return (res = ft_strtrim(tmp, " \n\t\v\r"), free(tmp), res);
+	return (res = ft_strtrim(tmp, " \n\t\v\r"), freedom((void **)&tmp), res);
 }
 
 /**
@@ -70,5 +70,5 @@ char	*ft_get_right_token(char *str)
 			&& str[last + 1] == '|'))
 		++last;
 	tmp = ft_substr(str, last + 1, SIZE_T_MAX);
-	return (res = ft_strtrim(tmp, " \n\t\v\r"), free(tmp), res);
+	return (res = ft_strtrim(tmp, " \n\t\v\r"), freedom((void **)&tmp), res);
 }

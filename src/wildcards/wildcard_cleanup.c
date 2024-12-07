@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:02:43 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 17:01:18 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 		length is calculated.
  * @return The length of the string, or -1 if `*file` is null.
  */
-int	strlen_and_free(char **tmp, char **tmp2, char **file)
+int	strlen_and_freedom((void **)&char **tmp, char **tmp2, char **file)
 {
 	int		i;
 
@@ -36,7 +36,7 @@ int	strlen_and_free(char **tmp, char **tmp2, char **file)
 	if (*file)
 	{
 		i = (1 + ft_strlen(*file));
-		free(*file);
+		freedom((void **)&*file);
 		return (i);
 	}
 	else

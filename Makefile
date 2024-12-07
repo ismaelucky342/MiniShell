@@ -6,7 +6,7 @@
 #    By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:15:58 by dgomez-l          #+#    #+#              #
-#    Updated: 2024/12/05 17:09:25 by dgomez-l         ###   ########.fr        #
+#    Updated: 2024/12/07 22:34:08 by dgomez-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ VPATH	=	src/:\
 SRC		=	enviroment/enviroment.c \
 			enviroment/get_env.c \
 			enviroment/remove_env.c \
-			execute/1.parse_exec_monitor.c \
+			execute/parse_exec_monitor.c \
 			execute/exec_errors.c \
 			execute/exec_utils.c \
 			execute/execute.c \
@@ -72,9 +72,10 @@ SRC		=	enviroment/enviroment.c \
 			ast_tree/ast_tree.c \
 			ast_tree/ft_free_ast_tree.c \
 			ast_tree/ft_free_array.c \
-			main.c \
-			init.c \
+			freedom.c \
 			ft_prompt.c \
+			init.c \
+			main.c \
 			signals_and_errors/errors_1.c \
 			signals_and_errors/errors_2.c \
 			signals_and_errors/signals.c \

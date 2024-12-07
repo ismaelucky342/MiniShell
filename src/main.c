@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:16:41 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 13:36:37 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	get_command_str(t_mini *boogeyman)
 		return ;
 	}
 	res = ft_strtrim(tmp, " \v\t\n\r");
-	free(tmp);
+	freedom((void **)&tmp);
 	if (res && *res)
 	{
 		ft_add_history(res, boogeyman);
@@ -45,7 +45,7 @@ static void	get_command_str(t_mini *boogeyman)
 		return ;
 	}
 	if (res)
-		free(res);
+		freedom((void **)&res);
 }
 
 /* void	leaks(void)
@@ -54,7 +54,7 @@ static void	get_command_str(t_mini *boogeyman)
 } */
 void	ft_setsigint(t_mini *boogeyman)
 {
-	ft_add_to_env(boogeyman, "?=130");
+	boogeyman->rvalue = 130;
 	g_is_exec = 0;
 }
 

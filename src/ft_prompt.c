@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:29:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 16:07:32 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 22:35:10 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*process_directory(char *original_dir, char *home)
 		temp = ft_strjoin("~/", dir);
 		if (temp)
 		{
-			free(original_dir);
+			freedom((void **)&original_dir);
 			original_dir = temp;
 		}
 	}
@@ -80,7 +80,7 @@ char	*ft_prompt(char **env)
 	char	*home;
 	char	*original_dir;
 
-	user = get_val_from_env(env, "SHELL", NULL);
+	user = get_val_from_env(env, "USER", NULL);
 	home = get_val_from_env(env, "HOME", NULL);
 	original_dir = getcwd(NULL, 0);
 	if (!original_dir)
@@ -88,14 +88,14 @@ char	*ft_prompt(char **env)
 	host = get_host_name();
 	original_dir = process_directory(original_dir, home);
 	prompt = build_prompt(user, host, original_dir);
-	free(original_dir);
-	free(host);
+	freedom((void **)&original_dir);
+	freedom((void **)&host);
 	return (prompt);
 }
 
 void	update_prompt(t_mini *boogeyman)
 {
-	free(boogeyman->custom_prompt);
+	freedom((void **)&boogeyman->custom_prompt);
 	boogeyman->custom_prompt = ft_prompt(boogeyman->envp);
 	rl_replace_line(boogeyman->custom_prompt, 0);
 }

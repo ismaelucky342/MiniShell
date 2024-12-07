@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 17:46:10 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 15:37:18 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/07 21:13:10 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,15 +109,17 @@ typedef struct s_ast_tree
 
 typedef struct s_minishell
 {
-	int			history_fd;
-	int			last_exit;
-	t_ast_tree	*cmd_tree;
-	char		**envp;
-	long		env_size;
-	long		env_elems;
-	char		*custom_prompt;
-	char		eof;
-	char		cont;
+	int				history_fd;
+	int				last_exit;
+	t_ast_tree		*cmd_tree;
+	char			**envp;
+	char			*aux_pwd;
+	unsigned char	rvalue;
+	long			env_size;
+	long			env_elems;
+	char			*custom_prompt;
+	char			eof;
+	char			cont;
 }	t_mini;
 
 #endif
