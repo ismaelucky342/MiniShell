@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:52:47 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 13:22:37 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:58:02 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	ft_echo_builtin(t_tree_node *node)
 		{
 			ft_putstr_fd(node->args[i], STDOUT_FILENO);
 			if (node->args[i + 1])
-				ft_putstr_fd(" ", STDOUT_FILENO);
+				ft_putstr_fd("", STDOUT_FILENO);
 			++i;
 		}
 		if (!flag)

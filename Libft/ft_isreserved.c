@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isreserved.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:46:44 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 15:10:32 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:54:02 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	ft_isreserved(char c)
 {
-	if (c != '|' && c != ';' && c != '<' && c != '>' && c != '&')
+	if (c != ':' && c != '|' && c != ';' && c != '<' && c != '>' && c != '&')
 		return (0);
 	return (1);
 }
