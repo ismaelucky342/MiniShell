@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enviroment.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 23:48:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/10 21:46:16 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:20:01 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int	ft_add_to_env(t_mini *boogeyman, char *passkey)
 		key = ft_strdup(passkey);
 	if (!key)
 		return (1);
-	if ((!ft_strncmp(ft_get_from_env(boogeyman->envp, key, &exists), "", 1)
+	if ((!ft_strncmp(ft_get_from_env(boogeyman->envp, key, &exists), " ", 1)
 			&& exists && ft_strchr(passkey, '=')) || (exists
 			&& ft_strchr(passkey, '=')))
 		ft_search_and_replace_env(boogeyman->envp, passkey, key);
@@ -135,6 +135,3 @@ int	ft_add_to_env(t_mini *boogeyman, char *passkey)
 			return (freedom((void **)&key), freedom((void **)&passkey), 1);
 	return (freedom((void **)&key), 0);
 }
-
-
-

@@ -52,8 +52,5 @@ El orden general de estos archivos y sus funcionalidades en el flujo es:
 
 
 # COSAS QUE FALTAN 
-- PWD auxiliar
-- echo $PATH:"$Carlos":$USER
 - PROTEGER MALLOCS (capullo)
-- Arreglar las strings en stack devueltas por ft_get_from_env (y, si hubiese más returns con solo una string en stack, por el amor de dios, esas también...). No hay forma de distinguir en cual se ha hecho malloc y en cual no.
-- pwd ha dejado de existir
+- PASAR LA CORRECCION
