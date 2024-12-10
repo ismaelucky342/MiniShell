@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   freedom.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 22:31:23 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/10 22:44:18 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:52:30 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ MMMMM8888M8k88888l8Mklllllk:A'                  `V'
 lMMMMMM888888888888MMMMMlll:M  
 l8MM8MMMM8888888888888MMMMllM
 
+		OIL?!?! THAT SHIT MINE!!!!
 		DID SOMEONE SAY FREEDOM??
 
 */
