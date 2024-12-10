@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:50 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 22:46:42 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:40:14 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,20 @@ static int	cd_management(t_mini *boogeyman, char **path)
 {
 	char	*cwd;
 
-	cwd = ft_get_from_env(boogeyman->envp, "PWD", NULL);
-	if (!cwd[0])
-		cwd = boogeyman->aux_pwd;
-	if (chdir(*path) == -1)
-		return (perror(*path), 1);
-	ft_search_and_replace_env(boogeyman->envp, ft_strdup(cwd), "OLDPWD");
-	freedom((void **)&cwd);
 	cwd = cwd_str_status();
 	if (!cwd)
 		return (1);
-	ft_search_and_replace_env(boogeyman->envp, ft_strdup(*path), "PWD");
-	freedom((void **)&boogeyman->aux_pwd);
-	boogeyman->aux_pwd = ft_strdup(*path);
+	ft_search_and_replace_env(boogeyman->envp, ft_strdup(cwd), "OLDPWD");
 	freedom((void **)&cwd);
+	if (chdir(*path) == -1)
+		return (perror(*path), 1);
+	cwd = cwd_str_status();
+	if (!cwd)
+		return (1);
+	ft_search_and_replace_env(boogeyman->envp, ft_strdup(cwd), "PWD");
+	freedom((void **)&cwd);
+	freedom((void **)&boogeyman->aux_pwd);
+	boogeyman->aux_pwd = ft_strdup(cwd);
 	update_prompt(boogeyman);
 	return (0);
 }

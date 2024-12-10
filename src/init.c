@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 20:49:10 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:30:13 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void	ft_fill_envp(t_mini *boogeyman)
 	ft_add_to_env(boogeyman, tmp2);
 	freedom((void **)&tmp);
 	tmp = cwd_str_status();
-	printf("Start: %s\n", tmp);
 	if (tmp)
 		boogeyman->aux_pwd = tmp;
 	boogeyman->rvalue = 0;

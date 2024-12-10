@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 23:48:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:22:36 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_realloc_and_add_envp(t_mini *boogeyman, char *passkey)
  */
 void	ft_search_and_replace_env(char **envp, char *passkey, char *key)
 {
-	int	i;
+	int		i;
 
 	i = -1;
 	while (envp && envp[++i])
@@ -67,10 +67,11 @@ void	ft_search_and_replace_env(char **envp, char *passkey, char *key)
 			{
 				freedom((void **)&envp[i]);
 				envp[i] = passkey;
-				break ;
+				return ;
 			}
 		}
 	}
+	freedom((void **)&passkey);
 }
 
 /**
