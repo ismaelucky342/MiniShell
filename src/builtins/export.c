@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:44 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 21:54:18 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/10 21:28:30 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
 /**
  * @brief Checks if the given key is a valid env variable key.
  *

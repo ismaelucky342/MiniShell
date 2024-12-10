@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 22:55:51 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 22:42:37 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/10 21:04:25 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ char	*get_val_from_env(char **envp, char *key, int *exists)
 			{
 				if (exists)
 					*exists = 1;
-				return (ft_strdup(""));
+				return ("");
 			}
 		}
 	}
-	return (ft_strdup(""));
+	return ("");
 }

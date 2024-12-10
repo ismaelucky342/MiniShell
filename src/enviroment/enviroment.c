@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 23:48:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/10 20:22:36 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/10 21:46:16 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ static int	ft_add_env_new(t_mini *boogeyman, char *passkey)
  * @param passkey The env variable to add or update.
  * @return int Returns 0 on success, 1 on failure.
  */
+
 int	ft_add_to_env(t_mini *boogeyman, char *passkey)
 {
 	char	*key;
@@ -134,3 +135,6 @@ int	ft_add_to_env(t_mini *boogeyman, char *passkey)
 			return (freedom((void **)&key), freedom((void **)&passkey), 1);
 	return (freedom((void **)&key), 0);
 }
+
+
+
