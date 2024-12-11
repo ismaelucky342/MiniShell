@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 22:13:48 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:53:04 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ int	ft_pwd_builtin(t_tree_node *node, char **envp, t_mini *boogeyman)
 	char	*pwd;
 
 	(void)node;
-	pwd = ft_get_from_env(envp, "PWD", NULL);
-	if (!pwd[0])
-		pwd = boogeyman->aux_pwd;
+	pwd = getcwd(NULL, 0);
 	if (pwd)
 		ft_putendl_fd(pwd, STDOUT_FILENO);
 	else
 		ft_putendl_fd("PWD error", STDERR_FILENO);
+	free(pwd);
 	return (0);
 }

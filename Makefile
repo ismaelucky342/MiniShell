@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+         #
+#    By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:15:58 by dgomez-l          #+#    #+#              #
-#    Updated: 2024/12/11 10:24:25 by ismherna         ###   ########.fr        #
+#    Updated: 2024/12/11 14:26:50 by dgomez-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ INCLUDE = /includes/minishell.h
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 LIBFT = ./Libft/libft.a
 
