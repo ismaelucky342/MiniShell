@@ -6,7 +6,7 @@
 #    By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:15:58 by dgomez-l          #+#    #+#              #
-#    Updated: 2024/12/10 22:54:44 by ismherna         ###   ########.fr        #
+#    Updated: 2024/12/11 10:24:25 by ismherna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ INCLUDE = /includes/minishell.h
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = ./Libft/libft.a
 
