@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:52:47 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/10 22:36:57 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/10 23:07:36 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,16 @@ int ft_echo_builtin(t_tree_node *node)
                 ft_putstr_fd(node->args[i] + 1, STDOUT_FILENO);
             }
             else
-                ft_putstr_fd(node->args[i], STDOUT_FILENO);
-            if (node->args[i + 1])
+            	ft_putstr_fd(node->args[i], STDOUT_FILENO);
+            if (node->args[i + 1] && node->args[i + 1][0] != ':' && node->args[i][ft_strlen(node->args[i]) - 1] != ':')
                 ft_putstr_fd(" ", STDOUT_FILENO);
             ++i;
         }
+
         if (!flag)
             ft_putendl_fd("", STDOUT_FILENO);
     }
+
     return (0);
 }
+
