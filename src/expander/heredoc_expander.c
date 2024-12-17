@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_expander.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 00:34:15 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:51:04 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ int	ft_expand_str_heredoc(int o_fd, t_rtoken *tok, char **envp)
 	freedom((void **)&tok->file_name);
 	tok->file_name = tmp_filename();
 	if (!tok->file_name)
-		return (ft_putendl_fd("No heredoc tmp file available!", 2),
-			exit(1), -1);
+		return (ft_putendl_fd("No heredoc tmp file available!", 2), exit(1),
+			-1);
 	fd = open(tok->file_name, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (fd < 0)
-		return (perror(tok->file_name), freedom((void **)&tok->file_name), exit(1), -1);
+		return (perror(tok->file_name), freedom((void **)&tok->file_name),
+			exit(1), -1);
 	line = get_next_line(o_fd);
 	while (line)
 	{

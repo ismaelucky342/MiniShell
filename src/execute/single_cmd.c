@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:11:17 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:50:43 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	1. Try opening files, redirect loops
 	2. Redirect loop for pipes
 	3. Find executable, some builtins may be runned in parent process
-	4. fork if necesary, then execute 
+	4. fork if necesary, then execute
 */
 int	ft_exec_single_cmd(t_tree_node *node, t_mini *boogeyman)
 {
@@ -36,7 +36,8 @@ int	ft_exec_single_cmd(t_tree_node *node, t_mini *boogeyman)
 	{
 		ft_remove_env_variables(boogeyman);
 		if (execve(node->path, node->args, boogeyman->envp) == -1)
-			return (perror(node->path), freedom((void **)&node->path), exit(126), 1);
+			return (perror(node->path), freedom((void **)&node->path),
+				exit(126), 1);
 	}
 	freedom((void **)&node->path);
 	return (0);

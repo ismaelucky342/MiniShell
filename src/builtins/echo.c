@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:52:47 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/10 23:07:36 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:46:52 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,26 @@
  * @param node The tree node containing the command arguments.
  * @param i Pointer to the index of the current argument being processed.
  * @param j Pointer to the index within the current argument string.
- * @param flag Pointer to the flag indicating whether the "-n" option is present.
+
+	* @param flag Pointer to the
+	flag indicating whether the "-n" option is present.
  */
-static void node_args_management(t_tree_node *node, int *i, int *j, char *flag)
+static void	n_args_mg(t_tree_node *node, int *i, int *j, char *flag)
 {
-    if (node->args[1])
-    {
-        while (node->args[*i] && !ft_strncmp("-n", node->args[*i], 2))
-        {
-            *j = 0;
-            while (node->args[*i][++(*j)])
-                if (node->args[*i][*j] != 'n')
-                    break;
-            if (node->args[*i][*j])
-                break;
-            *flag = 1;
-            ++(*i);
-        }
-    }
+	if (node->args[1])
+	{
+		while (node->args[*i] && !ft_strncmp("-n", node->args[*i], 2))
+		{
+			*j = 0;
+			while (node->args[*i][++(*j)])
+				if (node->args[*i][*j] != 'n')
+					break ;
+			if (node->args[*i][*j])
+				break ;
+			*flag = 1;
+			++(*i);
+		}
+	}
 }
 
 /**
@@ -54,35 +56,41 @@ static void node_args_management(t_tree_node *node, int *i, int *j, char *flag)
  * @param node The tree node containing the command arguments.
  * @return Always returns 0.
  */
-int ft_echo_builtin(t_tree_node *node)
+static void	print_echo_arguments(t_tree_node *node, int i, char flag)
 {
-    char flag;
-    int i;
-    int j;
+	int	j;
 
-    flag = 0;
-    i = 1;
-    node_args_management(node, &i, &j, &flag);
-    if (!node->pid)
-    {
-        while (node->args[i])
-        {
-            if (node->args[i][0] == '"' && node->args[i][ft_strlen(node->args[i]) - 1] == '"')
-            {
-                node->args[i][ft_strlen(node->args[i]) - 1] = '\0';
-                ft_putstr_fd(node->args[i] + 1, STDOUT_FILENO);
-            }
-            else
-            	ft_putstr_fd(node->args[i], STDOUT_FILENO);
-            if (node->args[i + 1] && node->args[i + 1][0] != ':' && node->args[i][ft_strlen(node->args[i]) - 1] != ':')
-                ft_putstr_fd(" ", STDOUT_FILENO);
-            ++i;
-        }
-
-        if (!flag)
-            ft_putendl_fd("", STDOUT_FILENO);
-    }
-
-    return (0);
+	j = 0;
+	while (node->args[i])
+	{
+		if (node->args[i][0] == '"' && node->args[i][ft_strlen(node->args[i])
+			- 1] == '"')
+		{
+			node->args[i][ft_strlen(node->args[i]) - 1] = '\0';
+			ft_putstr_fd(node->args[i] + 1, STDOUT_FILENO);
+		}
+		else
+			ft_putstr_fd(node->args[i], STDOUT_FILENO);
+		if (node->args[i + 1] && node->args[i + 1][0] != ':'
+			&& node->args[i][ft_strlen(node->args[i]) - 1] != ':')
+			ft_putstr_fd(" ", STDOUT_FILENO);
+		++i;
+	}
+	if (!flag)
+		ft_putendl_fd("", STDOUT_FILENO);
 }
 
+int	ft_echo_builtin(t_tree_node *node)
+{
+	char	flag;
+	int		j;
+	int		i;
+
+	flag = 0;
+	j = 1;
+	i = 1;
+	n_args_mg(node, &i, &j, &flag);
+	if (!node->pid)
+		print_echo_arguments(node, i, flag);
+	return (0);
+}

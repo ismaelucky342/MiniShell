@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:53:04 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:56:03 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@
  *
  * Return: Always returns 0.
  */
-int	ft_pwd_builtin(t_tree_node *node, char **envp, t_mini *boogeyman)
+int	ft_pwd_builtin(void)
 {
 	char	*pwd;
 
-	(void)node;
 	pwd = getcwd(NULL, 0);
 	if (pwd)
 		ft_putendl_fd(pwd, STDOUT_FILENO);

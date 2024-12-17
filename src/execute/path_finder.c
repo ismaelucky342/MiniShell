@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_finder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 22:52:55 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:50:10 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	ft_execbuiltin(t_tree_node *node, t_mini *boogeyman, char parent)
 	node->is_builtin = 1;
 	if (parent)
 	{
-		if (ft_file_redirs(node->redirs_lst,
-				STDIN_FILENO, STDOUT_FILENO, boogeyman->envp))
+		if (ft_file_redirs(node->redirs_lst, STDIN_FILENO, STDOUT_FILENO,
+				boogeyman->envp))
 		{
 			node->exit_code = 1;
 			return ;
@@ -53,7 +53,7 @@ void	ft_execbuiltin(t_tree_node *node, t_mini *boogeyman, char parent)
 	else if (!ft_strncmp(node->args[0], "exit", 5))
 		node->exit_code = ft_exit_builtin(node, boogeyman, parent);
 	else if (!ft_strncmp(node->args[0], "pwd", 4))
-		node->exit_code = ft_pwd_builtin(node, boogeyman->envp, boogeyman);
+		node->exit_code = ft_pwd_builtin();
 	else if (!ft_strncmp(node->args[0], "unset", 6))
 		node->exit_code = ft_unset_builtin(node, boogeyman);
 	else if (!ft_strncmp(node->args[0], "export", 7))
@@ -69,13 +69,38 @@ void	ft_execbuiltin(t_tree_node *node, t_mini *boogeyman, char parent)
  * @param node The current command node.
  * @return The executable path if found, NULL otherwise.
  */
-char	*extract_exec_path(t_mini *boogeyman, t_tree_node *node)
+/**
+ * Extracts the executable path for a given command.
+ *
+ * @param boogeyman The minishell context.
+ * @param node The current command node.
+ * @return The executable path if found, NULL otherwise.
+ */
+static char	*extract_exec_path_helper(t_mini *boogeyman, t_tree_node *node)
 {
 	int		pos;
 	char	**split_path;
 	char	*tmp;
-	char	*path_plus_exec;
+	char	*pathpexec;
 
+	split_path = ft_split(ft_get_from_env(boogeyman->envp, "PATH", NULL), ':');
+	pos = 0;
+	while (split_path[pos])
+	{
+		tmp = ft_strjoin(split_path[pos++], "/");
+		pathpexec = ft_strjoin(tmp, node->args[0]);
+		if (ft_strncmp(pathpexec, tmp, ft_strlen(tmp) + 1)
+			&& !(access(pathpexec, F_OK)))
+			return (ft_free_array(split_path), freedom((void **)&tmp),
+				pathpexec);
+		freedom((void **)&tmp);
+		freedom((void **)&pathpexec);
+	}
+	return (ft_free_array(split_path), NULL);
+}
+
+char	*extract_exec_path(t_mini *boogeyman, t_tree_node *node)
+{
 	if (!node->args[0] || ft_isbuiltin(node->args[0]))
 		return (NULL);
 	if (!(access(node->args[0], F_OK)) && ft_is_rel_path(node->args[0]))
@@ -83,17 +108,5 @@ char	*extract_exec_path(t_mini *boogeyman, t_tree_node *node)
 	if (ft_is_rel_path(node->args[0]) || (!boogeyman->envp
 			|| !*boogeyman->envp))
 		return (NULL);
-	split_path = ft_split(ft_get_from_env(boogeyman->envp, "PATH", NULL), ':');
-	pos = 0;
-	while (split_path[pos])
-	{
-		tmp = ft_strjoin(split_path[pos++], "/");
-		path_plus_exec = ft_strjoin(tmp, node->args[0]);
-		if (ft_strncmp(path_plus_exec, tmp, ft_strlen(tmp) + 1)
-			&& !(access(path_plus_exec, F_OK)))
-			return (ft_free_array(split_path), freedom((void **)&tmp), path_plus_exec);
-		freedom((void **)&tmp);
-		freedom((void **)&path_plus_exec);
-	}
-	return (ft_free_array(split_path), NULL);
+	return (extract_exec_path_helper(boogeyman, node));
 }

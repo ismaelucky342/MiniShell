@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:16:39 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/10 22:07:44 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:51:45 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * @param i Pointer to the current index in the string, which will be updated.
  * @param delim The delimiter character to search for.
  */
-void state_quote_delimiter(char *str, int *i, char delim)
+void	state_quote_delimiter(char *str, int *i, char delim)
 {
 	++(*i);
 	while (str[*i] != delim && str[*i])
@@ -31,13 +31,15 @@ void state_quote_delimiter(char *str, int *i, char delim)
  * Removes surrounding quotes from a string by shifting its characters.
  * Both single (`'`) and double (`"`) quotes are handled.
  *
- * @param str The input string to unquote. This string will be modified in place.
+
+	* @param str The input string to unquote. This string will 
+	be modified in place.
  */
-void ft_str_unquote(char *str)
+void	ft_str_unquote(char *str)
 {
-	int i;
-	int j;
-	int tmp;
+	int	i;
+	int	j;
+	int	tmp;
 
 	i = 0;
 	while (str && str[i])
@@ -67,9 +69,9 @@ void ft_str_unquote(char *str)
  *               The `str` field of each `t_token` will be unquoted.
  * @return Always returns 0 to indicate success.
  */
-int ft_remove_quotes(t_list *tokens)
+int	ft_remove_quotes(t_list *tokens)
 {
-	t_token *content;
+	t_token	*content;
 
 	while (tokens)
 	{

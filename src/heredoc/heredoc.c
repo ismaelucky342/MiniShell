@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:50:36 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:51:18 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ static int	aux_heredoc(char **str, int *i, char **delim, char **f_name)
 
 	*f_name = tmp_filename();
 	if (!*f_name)
-		return (ft_putendl_fd("No heredoc tmp file available!", 2),
-			exit(1), -1);
+		return (ft_putendl_fd("No heredoc tmp file available!", 2), exit(1),
+			-1);
 	fd = open(*f_name, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (fd < 0)
 		return (perror(*f_name), freedom((void **)&*f_name), exit(1), -1);
@@ -156,5 +156,6 @@ int	ft_heredoc(char **str, int *i, char **f_name)
 	heredoc_monitor(&line, prompt, delim, &fd);
 	if (line)
 		freedom((void **)&line);
-	return (freedom((void **)&delim), freedom((void **)&prompt), ft_close(fd), freedom((void **)&*f_name), exit(0), 0);
+	return (freedom((void **)&delim), freedom((void **)&prompt), ft_close(fd),
+		freedom((void **)&*f_name), exit(0), 0);
 }
