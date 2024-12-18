@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:16:35 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:56:27 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:34:36 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int			retokenize(t_list *curr, int type, int start, int *lngths);
 
 int			ft_exit_builtin(t_tree_node *node, t_mini *boogeyman, char print);
 int			ft_cd_builtin(t_tree_node *node, t_mini *boogeyman);
-int			ft_pwd_builtin(void);
+int			ft_pwd_builtin(t_mini *boogeyman);
 int			ft_echo_builtin(t_tree_node *node);
 int			ft_export_builtin(t_tree_node *node, t_mini *boogeyman);
 int			ft_unset_builtin(t_tree_node *node, t_mini *boogeyman);

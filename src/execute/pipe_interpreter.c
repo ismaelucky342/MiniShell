@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_interpreter.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:12:29 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/15 17:50:29 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:50:30 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

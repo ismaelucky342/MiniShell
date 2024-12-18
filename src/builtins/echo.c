@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:52:47 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/15 17:46:52 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:16:50 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,6 @@ static void	n_args_mg(t_tree_node *node, int *i, int *j, char *flag)
  */
 static void	print_echo_arguments(t_tree_node *node, int i, char flag)
 {
-	int	j;
-
-	j = 0;
 	while (node->args[i])
 	{
 		if (node->args[i][0] == '"' && node->args[i][ft_strlen(node->args[i])
@@ -87,7 +84,7 @@ int	ft_echo_builtin(t_tree_node *node)
 	int		i;
 
 	flag = 0;
-	j = 1;
+	j = 0;
 	i = 1;
 	n_args_mg(node, &i, &j, &flag);
 	if (!node->pid)

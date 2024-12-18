@@ -6,7 +6,7 @@
 /*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 18:15:01 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 21:24:23 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 12:43:24 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,32 @@ static int	ft_wait_all(int last_pid, t_tree_node *last)
 	return (exit_code);
 }
 
+static void	ft_superman(t_mini *boogeyman)
+{
+	char	*aux_pwd;
+	char	*cwd;
+	DIR		*dir;
+
+	cwd = getcwd(NULL, 0);
+	aux_pwd = boogeyman->aux_pwd;
+	if (!cwd)
+	{
+		dir = opendir(aux_pwd);
+		while (!dir && aux_pwd[0])
+		{
+			*(ft_strrchr(aux_pwd, '/')) = '\0';
+			dir = opendir(aux_pwd);
+		}
+		if (dir)
+		{
+			closedir(dir);
+			chdir(aux_pwd);
+			update_prompt(boogeyman);
+		}
+	}
+	free(cwd);
+}
+
 /**
  * Executes the commands in the abstract syntax tree
 		and waits for them to finish.
@@ -100,6 +126,7 @@ int	ft_exec_and_wait(t_ast_tree *tree_node, t_mini *boogeyman)
 	ft_dup2(std_backup[1], STDOUT_FILENO);
 	ft_close(std_backup[0]);
 	ft_close(std_backup[1]);
+	ft_superman(boogeyman);
 	if (g_is_exec == 0)
 		ft_putchar_fd('\n', STDOUT_FILENO);
 	g_is_exec = 0;

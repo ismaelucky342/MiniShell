@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+         #
+#    By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:15:58 by dgomez-l          #+#    #+#              #
-#    Updated: 2024/12/11 14:26:50 by dgomez-l         ###   ########.fr        #
+#    Updated: 2024/12/18 12:50:26 by ismherna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,15 +72,15 @@ SRC		=	enviroment/enviroment.c \
 			ast_tree/ast_tree.c \
 			ast_tree/ft_free_ast_tree.c \
 			ast_tree/ft_free_array.c \
-			freedom.c \
-			ft_prompt.c \
-			init.c \
-			main.c \
 			signals_and_errors/errors_1.c \
 			signals_and_errors/errors_2.c \
 			signals_and_errors/signals.c \
 			signals_and_errors/syntax_checker.c \
-			signals_and_errors/tremios_control.c
+			signals_and_errors/tremios_control.c \
+			freedom.c \
+			ft_prompt.c \
+			init.c \
+			main.c 
 
 OBJ_DIR  = objects
 
@@ -89,7 +89,7 @@ INCLUDE = /includes/minishell.h
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 LIBFT = ./Libft/libft.a
 

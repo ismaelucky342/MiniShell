@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_finder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 22:52:55 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/15 17:50:10 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:35:13 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_execbuiltin(t_tree_node *node, t_mini *boogeyman, char parent)
 	else if (!ft_strncmp(node->args[0], "exit", 5))
 		node->exit_code = ft_exit_builtin(node, boogeyman, parent);
 	else if (!ft_strncmp(node->args[0], "pwd", 4))
-		node->exit_code = ft_pwd_builtin();
+		node->exit_code = ft_pwd_builtin(boogeyman);
 	else if (!ft_strncmp(node->args[0], "unset", 6))
 		node->exit_code = ft_unset_builtin(node, boogeyman);
 	else if (!ft_strncmp(node->args[0], "export", 7))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/11 14:56:03 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 12:44:02 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,17 @@
  *
  * Return: Always returns 0.
  */
-int	ft_pwd_builtin(void)
+int	ft_pwd_builtin(t_mini *boogeyman)
 {
 	char	*pwd;
 
 	pwd = getcwd(NULL, 0);
 	if (pwd)
 		ft_putendl_fd(pwd, STDOUT_FILENO);
+	else if (boogeyman->aux_pwd)
+		ft_putendl_fd(boogeyman->aux_pwd, STDOUT_FILENO);
 	else
-		ft_putendl_fd("PWD error", STDERR_FILENO);
+		perror("PWD error");
 	free(pwd);
 	return (0);
 }

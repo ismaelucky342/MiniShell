@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:50 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/17 21:29:29 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 12:14:04 by dgomez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ static int	cd_management(t_mini *boogeyman, char **path)
 
 	cwd = cwd_str_status();
 	if (!cwd)
-		return (1);
+		return (-1);
 	ft_search_and_replace_env(boogeyman->envp, ft_strdup(cwd), "OLDPWD");
-	freedom((void **)&cwd);
+	free(cwd);
 	if (chdir(*path) == -1)
 		return (perror(*path), 1);
 	cwd = cwd_str_status();
 	if (!cwd)
-		return (1);
+		return (-1);
 	ft_search_and_replace_env(boogeyman->envp, ft_strdup(cwd), "PWD");
-	freedom((void **)&cwd);
 	freedom((void **)&boogeyman->aux_pwd);
 	boogeyman->aux_pwd = ft_strdup(cwd);
+	freedom((void **)&cwd);
 	update_prompt(boogeyman);
 	return (0);
 }
