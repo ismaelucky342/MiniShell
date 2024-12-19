@@ -5,7 +5,6 @@
 ## Description
 
 Minishell is a group project with the objective of replicating a Unix shell that mimics Bash’s fundamental behavior. This project provides a hands-on approach to understanding how command interpretation, parsing, and execution are handled in real-world shells. It incorporates key functionalities such as command history, signal management, input/output redirections, and the parsing and execution of commands through, in our case, with an Abstract Syntax Tree (AST).
-![image](https://github.com/user-attachments/assets/896c67a4-d867-4059-952a-5a93eaa50968)
 
 ## Collaborators
 
