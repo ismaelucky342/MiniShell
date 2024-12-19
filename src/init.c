@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 20:49:10 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/11 01:30:25 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:08:06 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	ft_fill_envp(t_mini *boogeyman)
 	char	*tmp2;
 	int		shllvl;
 
-	shllvl = 1 + ft_atoi(ft_get_from_env(boogeyman->envp, "SHLVL", NULL));
+	shllvl = 1 + ft_atoi(ft_get_env_var(boogeyman->envp, "SHLVL", NULL));
 	if (shllvl >= 1000)
 		tmp_management(&tmp, &shllvl);
 	tmp = ft_itoa(shllvl);
@@ -50,8 +50,12 @@ static void	ft_fill_envp(t_mini *boogeyman)
 	freedom((void **)&tmp);
 	tmp = cwd_str_status();
 	if (tmp)
-		boogeyman->aux_pwd = tmp;
-	boogeyman->rvalue = 0;
+	{
+		tmp2 = ft_strjoin("PWD=", tmp);
+		ft_add_to_env(boogeyman, tmp2);
+		freedom((void **)&tmp);
+	}
+	ft_memcpy(boogeyman->rvalue, "0", 2);
 }
 
 /*

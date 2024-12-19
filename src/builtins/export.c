@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:44 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/10 22:11:23 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:56:25 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static int	ft_is_valid_key(char *passkey)
 	if (i != 0 && has_alpha)
 		return (1);
 	ft_putstr_fd("MiniShell: export: not a valid id: '", STDERR_FILENO);
-	ft_putendl_fd(passkey, STDERR_FILENO);
-	ft_putendl_fd("'", STDERR_FILENO);
+	ft_putstr_fd(passkey, STDERR_FILENO);
+	ft_putstr_fd("'\n", STDERR_FILENO);
 	return (0);
 }
 

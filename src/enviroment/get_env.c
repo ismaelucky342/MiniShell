@@ -6,14 +6,14 @@
 /*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 22:55:51 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/10 22:33:21 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:00:24 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 /**
- * ft_get_from_env
+ * ft_get_env_var
 	- Retrieves the value associated with a given key from the
 		env variables.
  * @param envp: The env variables array.
@@ -31,7 +31,7 @@
  * @return The value associated with the key,
 	or an appropriate message if the key is invalid.
  */
-char	*ft_get_from_env(char **envp, char *key, int *exists)
+char	*ft_get_env_var(char **envp, char *key, int *exists)
 {
 	if (!ft_strncmp(key, "", 1))
 		return ("$");

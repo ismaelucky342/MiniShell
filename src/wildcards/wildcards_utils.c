@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wildcards_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:15:01 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/18 12:36:02 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:53:36 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  *
  * This function increments the indices in `cont` based on the characters in
 		the file name and the regular expression,
-		checking for wildcard patterns. It also updates the indices 
+		checking for wildcard patterns. It also updates the indices
  * when the current character is not the null terminator.
  *
  * @param cont An array holding two integers: [current index in file name,
@@ -25,23 +25,24 @@
  * @param f_name The file name to be processed.
  * @param wc The regular expression to be checked against the file name.
  */
-void	wildcard_process(int *cont, char *f_name, char *wc)
+static void	if_char_unop(char token, int *index)
 {
-	if (f_name[cont[0]] != '\0')
-		++(cont[0]);
-	if (f_name[cont[0]] != '\0')
-		++(cont[1]);
-	if (!wc[cont[1]] && f_name[cont[0]])
-	{
-		while (wc[cont[1]] != '*')
-			--cont[1];
-	}
+	if (token != '\0')
+		++(*index);
+}
+
+void	wildcard_process(int *cont, char *f_name, char *regex)
+{
+	if (regex[cont[1]] == '\0' && f_name[cont[0]])
+		return ;
+	if_char_unop(f_name[cont[0]], &cont[0]);
+	if_char_unop(regex[cont[1]], &cont[1]);
 }
 
 /**
  * @brief Initializes the directory pointer and reads the first directory entry.
  *
- * This function opens the current directory and reads the first entry into the 
+ * This function opens the current directory and reads the first entry into the
  * provided `directory` pointer.
  *
  * @param dir_ptr A pointer to a directory pointer,
@@ -58,9 +59,9 @@ void	get_files_init(DIR **dir_ptr, struct dirent **directory)
  * @brief Iterates over the wc and file name to check for matching characters.
  *
  * This function skips over '*' characters in the wc,
-	then compares the file name 
+	then compares the file name
  * character at the current index with the wc character.
-		It returns 1 if the end of 
+		It returns 1 if the end of
  * both strings is reached, and 0 otherwise.
  *
  * @param wc The regular expression to be checked.

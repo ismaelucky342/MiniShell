@@ -6,7 +6,7 @@
 #    By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:15:58 by dgomez-l          #+#    #+#              #
-#    Updated: 2024/12/18 12:50:26 by ismherna         ###   ########.fr        #
+#    Updated: 2024/12/18 19:57:57 by ismherna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,53 +30,53 @@ VPATH	=	src/:\
 			src/ast_tree/:\
 			src/signals_and_errors/:
 
-SRC		=	enviroment/enviroment.c \
-			enviroment/get_env.c \
-			enviroment/remove_env.c \
-			execute/parse_exec_monitor.c \
-			execute/exec_errors.c \
-			execute/exec_utils.c \
-			execute/execute.c \
-			execute/get_tokens.c \
-			execute/logic_expansion.c \
-			execute/path_finder.c \
-			execute/pipe_interpreter.c \
-			execute/redirect_utils.c \
-			execute/single_cmd.c \
-			builtins/cd.c \
-			builtins/echo.c \
-			builtins/exit.c \
-			builtins/export.c \
-			builtins/pwd.c \
-			builtins/unset.c \
-			builtins/builtins_utils.c \
-			tokenizer/tokenizer.c \
-			tokenizer/ft_free_token.c \
-			tokenizer/quotes.c \
-			tokenizer/retokenizer.c \
-			heredoc/heredoc.c \
-			heredoc/heredoc_checker.c \
-			heredoc/heredoc_monitor.c \
-			heredoc/ft_create_heredoc.c \
-			history/history.c \
-			history/history_file.c \
-			wildcards/wildcards.c \
-			wildcards/wildcards_utils.c \
-			expander/dictionary.c \
-			expander/env_expander.c \
-			expander/expand_list.c \
-			expander/heredoc_expander.c \
-			expander/quotes_expander.c \
-			expander/str_expander.c \
-			expander/wildcards_expander.c \
-			ast_tree/ast_tree.c \
-			ast_tree/ft_free_ast_tree.c \
-			ast_tree/ft_free_array.c \
-			signals_and_errors/errors_1.c \
-			signals_and_errors/errors_2.c \
-			signals_and_errors/signals.c \
-			signals_and_errors/syntax_checker.c \
-			signals_and_errors/tremios_control.c \
+SRC		=	enviroment.c \
+			get_env.c \
+			remove_env.c \
+			parse_exec_monitor.c \
+			exec_errors.c \
+			exec_utils.c \
+			execute.c \
+			get_tokens.c \
+			logic_expansion.c \
+			path_finder.c \
+			pipe_interpreter.c \
+			redirect_utils.c \
+			single_cmd.c \
+			cd.c \
+			echo.c \
+			exit.c \
+			export.c \
+			pwd.c \
+			unset.c \
+			builtins_utils.c \
+			tokenizer.c \
+			ft_free_token.c \
+			quotes.c \
+			retokenizer.c \
+			heredoc.c \
+			heredoc_checker.c \
+			heredoc_monitor.c \
+			ft_create_heredoc.c \
+			history.c \
+			history_file.c \
+			wildcards.c \
+			wildcards_utils.c \
+			dictionary.c \
+			env_expander.c \
+			expand_list.c \
+			heredoc_expander.c \
+			quotes_expander.c \
+			str_expander.c \
+			wildcards_expander.c \
+			ast_tree.c \
+			ft_free_ast_tree.c \
+			ft_free_array.c \
+			errors_1.c \
+			errors_2.c \
+			signals.c \
+			syntax_checker.c \
+			tremios_control.c \
 			freedom.c \
 			ft_prompt.c \
 			init.c \
@@ -89,7 +89,7 @@ INCLUDE = /includes/minishell.h
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIBFT = ./Libft/libft.a
 
@@ -162,9 +162,9 @@ title_print:
 	@echo "	    $(G) ██$(R)║$(G) $(R)╚═╝$(G) ██$(R)║$(G) ██$(R)║$(G) ██$(R)║$(G) $(R)╚$(G)████$(R)║$(G) ██$(R)║$(G) ███████$(R)║$(G) ██$(R)║$(G)  ██$(R)║$(G) ███████$(R)╗$(G) ███████$(R)╗$(G) ███████$(R)╗$(G)$(NC)"
 	@echo "	    $(G) $(R)╚═╝$(G)     $(R)╚═╝$(G) $(R)╚═╝$(G) $(R)╚═╝$(G)  $(R)╚═══╝$(G) $(R)╚═╝$(G) $(R)╚══════╝$(G) $(R)╚═╝$(G)  $(R)╚═╝$(G) $(R)╚══════╝$(G) $(R)╚══════╝$(G) $(R)╚══════╝$(G)$(NC)"
 	@echo "	                                $(G)dgomez-l $(Y)/ $(R)ismherna$(NC)"
-	@echo "	                             NEVER GONNA GIVE YOU PIPE"
+	@echo "	                             $(Y)NEVER GONNA GIVE YOU PIPE$(NC)\n"
 norm: clear
-	@norminette $(find src/) | grep -v OK\! | grep -v GLOBAL_VAR_DETECTED | grep -v WRONG_SCOPE_COMMENT > _test_norm_output.txt
+	@norminette $(find src/) | grep -v OK\!
 	@cat _test_norm_output.txt
 
 .DEFAULT_GOAL= all

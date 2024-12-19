@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 16:21:53 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:48:59 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:03:39 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int	ft_open(t_rtoken *f_tok)
 	fd = -1;
 	if (f_tok->redir_type == M_INFILE || f_tok->redir_type == M_HEREDOC)
 		fd = open(f_tok->file_name, O_RDONLY);
-	else if (f_tok->redir_type == M_OUT || f_tok->redir_type == M_CONCAT_OUT_ST)
+	else if (f_tok->redir_type == M_OUT)
 		fd = open(f_tok->file_name, O_RDWR | O_CREAT | O_TRUNC, 0644);
+	else if (f_tok->redir_type == M_CONCAT_OUT_ST)
+		fd = open(f_tok->file_name, O_RDWR | O_CREAT | O_APPEND, 0644);
 	if (fd < 0)
 		perror(f_tok->file_name);
 	return (fd);

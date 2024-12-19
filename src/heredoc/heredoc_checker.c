@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:58:58 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/07 20:46:26 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:57:38 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ extern int	g_is_exec;
 int	ft_check_syntax_heredoc(t_mini *boogeyman)
 {
 	if (ft_check_quotes(boogeyman->cmd_tree->cmd_str))
-		return (boogeyman->rvalue = 2, 0);
+		return (ft_memcpy(boogeyman->rvalue, "2", 2), 0);
 	if (ft_check_brackets(boogeyman->cmd_tree->cmd_str))
-		return (boogeyman->rvalue = 2, 0);
+		return (ft_memcpy(boogeyman->rvalue, "2", 2), 0);
 	if (ft_check_fredirs(boogeyman->cmd_tree->cmd_str))
-		return (boogeyman->rvalue = 2, 0);
+		return (ft_memcpy(boogeyman->rvalue, "2", 2), 0);
 	g_is_exec = 2;
 	if (ft_create_heredocs(&boogeyman->cmd_tree->cmd_str))
-		return (g_is_exec = 0, boogeyman->rvalue = 2, 0);
+		return (g_is_exec = 0, ft_memcpy(boogeyman->rvalue, "2", 2), 0);
 	if (!g_is_exec)
-		return (boogeyman->rvalue = 130, 0);
+		return (ft_memcpy(boogeyman->rvalue, "130", 4), 0);
 	g_is_exec = 0;
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:50 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/18 12:14:04 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:00:24 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_cd_builtin(t_tree_node *node, t_mini *boogeyman)
 	}
 	else
 	{
-		path = ft_get_from_env(boogeyman->envp, "HOME", NULL);
+		path = ft_get_env_var(boogeyman->envp, "HOME", NULL);
 		if (!*path)
 			return (ft_putendl_fd("HOME is not set", STDERR_FILENO), 1);
 	}

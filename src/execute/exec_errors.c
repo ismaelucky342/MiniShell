@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_errors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:31:36 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/05 16:42:10 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:02:10 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ char	ft_has_brackets(char *str)
  *
  * @param tree_node The AST tree node containing the logical operator.
  */
-void	ft_expansion_error(t_ast_tree *tree_node)
+void	ft_exp_error(t_ast_tree *tree_node)
 {
 	ft_putstr_fd("MiniShell: syntax error near '", STDERR_FILENO);
 	if (tree_node->is_logic == M_AND_OP)

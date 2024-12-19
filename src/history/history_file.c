@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:18:19 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:00:24 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_init_history_file(t_mini *boogeyman)
 {
 	char	*home;
 
-	home = ft_get_from_env(boogeyman->envp, "HOME", NULL);
+	home = ft_get_env_var(boogeyman->envp, "HOME", NULL);
 	if (!*home)
 	{
 		boogeyman->history_fd = -1;

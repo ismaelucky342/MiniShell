@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_finder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 22:52:55 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/18 11:35:13 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:49:23 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_execbuiltin(t_tree_node *node, t_mini *boogeyman, char parent)
 	else if (!ft_strncmp(node->args[0], "exit", 5))
 		node->exit_code = ft_exit_builtin(node, boogeyman, parent);
 	else if (!ft_strncmp(node->args[0], "pwd", 4))
-		node->exit_code = ft_pwd_builtin(boogeyman);
+		node->exit_code = ft_pwd_builtin();
 	else if (!ft_strncmp(node->args[0], "unset", 6))
 		node->exit_code = ft_unset_builtin(node, boogeyman);
 	else if (!ft_strncmp(node->args[0], "export", 7))
@@ -83,7 +83,7 @@ static char	*extract_exec_path_helper(t_mini *boogeyman, t_tree_node *node)
 	char	*tmp;
 	char	*pathpexec;
 
-	split_path = ft_split(ft_get_from_env(boogeyman->envp, "PATH", NULL), ':');
+	split_path = ft_split(ft_get_env_var(boogeyman->envp, "PATH", NULL), ':');
 	pos = 0;
 	while (split_path[pos])
 	{

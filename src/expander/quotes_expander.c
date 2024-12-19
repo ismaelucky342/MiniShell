@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_expander.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:26:59 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:10:08 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	double_quote_expander(t_list *curr, int *i, t_mini *boogeyman)
 			env_expander(curr, i, 0, boogeyman);
 		else
 			++(*i);
+		tok = curr->content;
 	}
 	j = *i;
 	while (tok->str[j] && tok->str[j + 1])

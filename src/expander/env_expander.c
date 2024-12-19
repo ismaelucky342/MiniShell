@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_expander.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:59:26 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:13:17 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
  */
 static char	*ft_join_env(t_token *tok, int j, char **tmp, t_mini *boogeyman)
 {
-	tmp[2] = ft_strjoin(tmp[1], ft_get_from_env(boogeyman->envp, tmp[0], NULL));
+	tmp[2] = ft_strjoin(tmp[1], ft_get_env_var(boogeyman->envp, tmp[0], NULL));
 	freedom((void **)&tmp[0]);
 	freedom((void **)&tmp[1]);
 	tmp[1] = ft_substr(tok->str, j + 1, SIZE_T_MAX);
@@ -39,6 +39,23 @@ static char	*ft_join_env(t_token *tok, int j, char **tmp, t_mini *boogeyman)
 	freedom((void **)&tmp[2]);
 	freedom((void **)&tok->str);
 	return (tmp[0]);
+}
+
+static int	ft_rvalue(t_mini *boogeyman, char *tmp[3], int *i, t_token *tok)
+{
+	int		len;
+
+	if (!ft_strncmp(tmp[0], "?", 2))
+	{
+		len = ft_strlen((char *)boogeyman->rvalue) + *i;
+		tmp[1] = ft_strdup((char *)boogeyman->rvalue);
+	}
+	else
+	{
+		len = ft_strlen(ft_get_env_var(boogeyman->envp, tmp[0], NULL)) + *i;
+		tmp[1] = ft_substr(tok->str, 0, *i);
+	}
+	return (len);
 }
 
 /**
@@ -59,11 +76,11 @@ void	env_expander(t_list *curr, int *i, int check_w_cards, t_mini *boogeyman)
 {
 	int		j;
 	t_token	*tok;
-	int		lengths[2];
+	int		len[2];
 	char	*tmp[3];
 
 	j = *i;
-	lengths[1] = 0;
+	len[1] = 0;
 	tok = curr->content;
 	while (tok->str[j + 1] && tok->str[j + 1] != '"' && tok->str[j + 1] != '$'
 		&& !ft_isreserved(tok->str[j + 1]) && tok->str[j + 1] != '\''
@@ -72,12 +89,11 @@ void	env_expander(t_list *curr, int *i, int check_w_cards, t_mini *boogeyman)
 	tmp[0] = ft_substr(tok->str, *i + 1, j - *i);
 	if (!ft_strncmp(tmp[0], "", 1))
 		return (++(*i), freedom((void **)&tmp[0]), (void)0);
-	lengths[0] = ft_strlen(ft_get_from_env(boogeyman->envp, tmp[0], NULL)) + *i;
-	tmp[1] = ft_substr(tok->str, 0, *i);
+	len[0] = ft_rvalue(boogeyman, tmp, i, tok);
 	tok->str = ft_join_env(tok, j, tmp, boogeyman);
 	if (check_w_cards)
-		retokenize(curr, E_EXP_ARG, *i, lengths);
-	*i = lengths[0];
+		retokenize(curr, E_EXP_ARG, *i, len);
+	*i = len[0];
 	if (tok != curr->content)
 		free_cmd_tok(tok);
 	((t_token *)curr->content)->type = E_EXP_ARG;

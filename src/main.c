@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:16:41 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/18 12:22:01 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:37:04 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	get_command_str(t_mini *boogeyman)
 } */
 void	ft_setsigint(t_mini *boogeyman)
 {
-	boogeyman->rvalue = 130;
+	ft_memcpy(boogeyman->rvalue, "130", 4);
 	g_is_exec = 0;
 }
 

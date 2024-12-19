@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 13:43:30 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/10 20:57:50 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:53:18 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ char	*ft_wildcard(char *wc)
 		if (ft_is_wildcard(directory->d_name, wc))
 		{
 			tmp = ft_strjoin(file_list, directory->d_name);
-			freedom((void **)&file_list);
+			free(file_list);
 			file_list = ft_strjoin(tmp, " ");
-			freedom((void **)&tmp);
+			free(tmp);
 		}
 		directory = readdir(dir_ptr);
 	}
 	if (!file_list[0])
-		return (freedom((void **)&file_list), closedir(dir_ptr), NULL);
+		return (free(file_list), closedir(dir_ptr), NULL);
 	tmp = ft_strtrim(file_list, " \n\t\r\v");
-	freedom((void **)&file_list);
+	free(file_list);
 	return (closedir(dir_ptr), tmp);
 }

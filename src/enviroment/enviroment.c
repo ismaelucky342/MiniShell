@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 23:48:33 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/10 22:20:01 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:44:39 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_search_and_replace_env(char **envp, char *passkey, char *key)
 		{
 			if (envp[i][ft_strlen(key)] == '=' || !envp[i][ft_strlen(key)])
 			{
-				freedom((void **)&envp[i]);
+				free(envp[i]);
 				envp[i] = passkey;
 				return ;
 			}
@@ -113,7 +113,6 @@ static int	ft_add_env_new(t_mini *boogeyman, char *passkey)
  * @param passkey The env variable to add or update.
  * @return int Returns 0 on success, 1 on failure.
  */
-
 int	ft_add_to_env(t_mini *boogeyman, char *passkey)
 {
 	char	*key;
@@ -126,7 +125,7 @@ int	ft_add_to_env(t_mini *boogeyman, char *passkey)
 		key = ft_strdup(passkey);
 	if (!key)
 		return (1);
-	if ((!ft_strncmp(ft_get_from_env(boogeyman->envp, key, &exists), " ", 1)
+	if ((!ft_strncmp(ft_get_env_var(boogeyman->envp, key, &exists), "", 1)
 			&& exists && ft_strchr(passkey, '=')) || (exists
 			&& ft_strchr(passkey, '=')))
 		ft_search_and_replace_env(boogeyman->envp, passkey, key);

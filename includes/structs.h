@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 17:46:10 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/14 03:03:51 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:09:52 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@
 
 /*------------------------------MINISHELL MACROS----------------------------*/
 
-# define H_DOC_TMP_BASE "/tmp/.dash_tmp_heredoc_"
-# define HIST_TMP_BASE "/.dash_history"
+# define H_DOC_TMP_BASE "/tmp/.minishell_tmp_heredoc_"
+# define HIST_TMP_BASE "/.minishell_history"
 # define HIST_ERROR_MSG "MiniShell: Error creating history file\n"
 
 # ifndef SIZE_T_MAX
@@ -114,7 +114,7 @@ typedef struct s_minishell
 	t_ast_tree		*cmd_tree;
 	char			**envp;
 	char			*aux_pwd;
-	unsigned char	rvalue;
+	unsigned char	rvalue[4];
 	long			env_size;
 	long			env_elems;
 	char			*custom_prompt;

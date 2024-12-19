@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:59:26 by ismherna          #+#    #+#             */
-/*   Updated: 2024/12/05 16:39:10 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:16:34 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	expand_list_tokens(t_list *curr, t_mini *boogeyman)
 			single_quote_expander(curr, &i);
 		else if (tok->str[i] == '"' && pre_type == ARG)
 			double_quote_expander(curr, &i, boogeyman);
-		else if (tok->str[i] == '*' && pre_type == E_EXP_ARG)
-			return (wildcard_expander(curr, &i), (void)0);
 		else if (tok->str[i] == '$' && pre_type == ARG)
 			env_expander(curr, &i, 1, boogeyman);
+		else if (tok->str[i] == '*' && pre_type == ARG)
+			return (wildcard_expander(curr, &i), (void)0);
 		else
 			++i;
 		tok = curr->content;

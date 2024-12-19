@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   logic_expansion.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgomez-l <dgomez-l@student.42madrid>       +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:20:15 by dgomez-l          #+#    #+#             */
-/*   Updated: 2024/12/07 22:30:49 by dgomez-l         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:02:47 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,24 @@ int	if_mask(char *str, int last)
  */
 int	expand_execute(t_ast_tree *tree_node, t_mini *boogeyman)
 {
+	char	*str;
+
 	boogeyman->cont = 1;
 	if (logic_expansion(tree_node))
-		return (ft_expansion_error(tree_node), ft_printexit(2, boogeyman, 1),
-			2);
+		return (ft_exp_error(tree_node), ft_printexit(2, boogeyman, 1), 2);
 	if (tree_node->left)
 		tree_node->exit_code = expand_execute(tree_node->left, boogeyman);
 	if (tree_node->right)
 		if (((tree_node->exit_code == 0 && tree_node->is_logic == M_AND_OP)
 				|| (tree_node->exit_code != 0 && tree_node->is_logic == M_OR_OP)
-				|| (tree_node->is_logic == M_WAIT)) && boogeyman->cont)
+				|| (tree_node->is_logic == M_WAIT))
+			&& boogeyman->cont)
 			tree_node->exit_code = expand_execute(tree_node->right, boogeyman);
 	if (!tree_node->is_logic)
 		tree_node->exit_code = ft_parse_and_exec_monitor(tree_node, boogeyman);
-	boogeyman->rvalue = tree_node->exit_code;
+	str = ft_itoa(tree_node->exit_code);
+	ft_memcpy(boogeyman->rvalue, str, ft_strlen(str) + 1);
+	freedom((void **)&str);
 	return (tree_node->exit_code);
 }
 
