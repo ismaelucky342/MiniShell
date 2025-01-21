@@ -11,6 +11,32 @@ Minishell is a group project with the objective of replicating a Unix shell that
 - [**Ismael Hernández Clemente:**](https://github.com/ismaelucky342)
 - [**Daniel Gómez-Llusá:**](https://github.com/Danielaco23)
 
+## Allowed Functions
+
+The following system functions and libraries are permitted in the development of Minishell, in accordance with the project guidelines:
+
+| **Category**                | **Functions**                                                                                     |
+|-----------------------------|---------------------------------------------------------------------------------------------------|
+| **Readline**                | `readline`, `rl_clear_history`, `rl_on_new_line`, `rl_replace_line`, `rl_redisplay`, `add_history`|
+| **Standard I/O**            | `printf`, `write`                                                                                |
+| **Memory Management**       | `malloc`, `free`                                                                                 |
+| **File Operations**         | `access`, `open`, `read`, `close`, `unlink`                                                      |
+| **Directory Operations**    | `opendir`, `readdir`, `closedir`                                                                 |
+| **Process Management**      | `fork`, `wait`, `waitpid`, `wait3`, `wait4`, `execve`                                            |
+| **Pipes and Redirections**  | `dup`, `dup2`, `pipe`                                                                            |
+| **Signals**                 | `signal`, `sigaction`, `kill`                                                                    |
+| **Error Reporting**         | `strerror`, `perror`                                                                             |
+| **Terminal Management**     | `isatty`, `ttyname`, `ttyslot`, `ioctl`                                                          |
+| **Environment Access**      | `getenv`                                                                                        |
+| **Termcap Library**         | `tcsetattr`, `tcgetattr`, `tgetent`, `tgetflag`, `tgetnum`, `tgetstr`, `tgoto`, `tputs`          |
+| **Stat Functions**          | `stat`, `lstat`, `fstat`                                                                         |
+| **Exit**                    | `exit`                                                                                          |
+
+### Libraries
+The use of the custom library `libft` is permitted to facilitate development. This library includes additional utility functions designed for memory management, string manipulation, and more.
+
+> **Note**: Adherence to the allowed functions is crucial for the project's compliance. Any usage of non-permitted functions will lead to non-conformity with the project's requirements.
+
 ## Key Features
 
 - **Interactive Command Prompt**: Displays a prompt, waits for user input, and processes commands.
@@ -50,6 +76,7 @@ An Abstract Syntax Tree (AST) is a tree representation of the abstract syntactic
 - **Structured Parsing**: Simplifies parsing by breaking down complex commands into manageable subunits.
 - **Execution Order**: Ensures commands are executed in the correct order, supporting nested and complex command combinations.
 - **Error Management**: Provides a clear structure for handling syntax errors during parsing.
+
 
 ### Example Structure
 
